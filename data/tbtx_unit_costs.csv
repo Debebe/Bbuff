@@ -1,0 +1,1443 @@
+country,iso3,who.region,resource,unit_cost,cost.m,cost.sd
+Afghanistan,AFG,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,659.83,56.79
+Albania,ALB,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2328.46,2232.35
+Algeria,DZA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2602.82,1257.87
+American Samoa,ASM,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,7707.17,7680.85
+Andorra,AND,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,13047.12,8043.84
+Angola,AGO,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1578.04,810.94
+Antigua and Barbuda,ATG,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,4299.15,379.49
+Argentina,ARG,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1565.32,731.05
+Armenia,ARM,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,6010.18,3295.99
+Aruba,ABW,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,10618.07,5014.95
+Australia,AUS,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,28643.32,38907
+Austria,AUT,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,37511.24,51482.91
+Azerbaijan,AZE,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1615.05,530.37
+Bahamas,BHS,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,7276.83,736.69
+Bahrain,BHR,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,14699.34,20677.69
+Bangladesh,BGD,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2611.11,672.95
+Barbados,BRB,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,4694.51,422.57
+Belarus,BLR,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,6481.52,6151
+Belgium,BEL,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,30391.57,38095.28
+Belize,BLZ,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,5831.99,2416.11
+Benin,BEN,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1356.1,722.62
+Bermuda,BMU,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,36347.19,6293.84
+Bhutan,BTN,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2055.4,1832.64
+Bolivia (Plurinational State of),BOL,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3534.41,1396.5
+Bosnia and Herzegovina,BIH,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,5626.05,4822.56
+Botswana,BWA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3442.97,1987.31
+Brazil,BRA,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,8325.82,3279.88
+British Virgin Islands,VGB,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2255.22,183.55
+Brunei Darussalam,BRN,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,14086.47,16497.48
+Bulgaria,BGR,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,9871.9,10479.56
+Burkina Faso,BFA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1623.39,288.3
+Burundi,BDI,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,724.6,78.32
+Cabo Verde,CPV,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3605.31,1966.88
+Cambodia,KHM,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,927.15,164.81
+Cameroon,CMR,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1952.63,797.2
+Canada,CAN,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,15649.18,7864.89
+Cayman Islands,CYM,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,25535.74,3920.09
+Central African Republic,CAF,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1113.77,166.56
+Chad,TCD,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,664.06,60.2
+Chile,CHL,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,8050.86,3511.4
+China,CHN,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,6070,5842.15
+"China, Hong Kong SAR",HKG,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,41829.98,31613.12
+"China, Macao SAR",MAC,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,29901.09,40942.33
+Colombia,COL,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,4452.12,1804.43
+Comoros,COM,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1390.08,446.14
+Congo,COG,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,482.57,30.52
+Costa Rica,CRI,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,8461.14,3555.79
+Côte d'Ivoire,CIV,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2040.29,669.3
+Croatia,HRV,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,13912.77,15597.56
+Cuba,CUB,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,9519.55,5112.99
+Curaçao,CUW,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,7456.28,3305.9
+Cyprus,CYP,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,23757.42,29925.83
+Czechia,CZE,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,42299.52,74912.7
+Democratic People's Republic of Korea,PRK,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1435.86,490.82
+Democratic Republic of the Congo,COD,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1180.12,160.09
+Denmark,DNK,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,46597.9,66397.27
+Djibouti,DJI,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1780.84,932.72
+Dominica,DMA,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2181.04,177.28
+Dominican Republic,DOM,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,6616.36,1795.29
+Ecuador,ECU,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1108.09,230.82
+Egypt,EGY,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2547.83,2509.91
+El Salvador,SLV,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1362.81,309.36
+Equatorial Guinea,GNQ,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3669.94,5161.89
+Eritrea,ERI,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,6727.4,9292.09
+Estonia,EST,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,9685.33,10713.61
+Eswatini,SWZ,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1213.93,374.06
+Ethiopia,ETH,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2517.74,467.22
+Fiji,FJI,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,4138.6,3360.14
+Finland,FIN,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,15750.46,27122.09
+France,FRA,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,59763.53,96276.64
+French Polynesia,PYF,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2919.19,3117.87
+Gabon,GAB,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1232.27,676.16
+Gambia,GMB,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2390.87,540.04
+Georgia,GEO,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2567.24,2482.25
+Germany,DEU,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,34064.65,45233.15
+Ghana,GHA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,590.2,133.26
+Greece,GRC,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,14915.44,16998.16
+Greenland,GRL,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,38294.4,52750.07
+Grenada,GRD,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,4385.68,1720.05
+Guam,GUM,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,30163.38,17763.35
+Guatemala,GTM,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3414.46,1228.29
+Guinea,GIN,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1062.84,205.55
+Guinea-Bissau,GNB,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1264.21,315.8
+Guyana,GUY,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3385.62,3492.59
+Haiti,HTI,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,873.25,99.24
+Honduras,HND,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3528.13,1340.27
+Hungary,HUN,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,53351.46,71718.32
+Iceland,ISL,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,54956.34,80478.76
+India,IND,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1282.93,593.67
+Indonesia,IDN,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1121.14,166.57
+Iran (Islamic Republic of),IRN,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,4527.81,2013.38
+Iraq,IRQ,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,753.62,124.76
+Ireland,IRL,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,51144.75,67317.38
+Israel,ISR,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,6646.43,1209.52
+Italy,ITA,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,25449.66,32496.57
+Jamaica,JAM,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3082.72,1073.76
+Japan,JPN,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,11304.33,11264.77
+Jordan,JOR,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3241.01,3391.49
+Kazakhstan,KAZ,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,10217.97,8032.51
+Kenya,KEN,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3379.33,1158.18
+Kiribati,KIR,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1411.86,911.59
+Kuwait,KWT,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,12838.68,20369.59
+Kyrgyzstan,KGZ,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2456.82,977.5
+Lao People's Democratic Republic,LAO,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,4588.7,2672.52
+Latvia,LVA,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,14328.19,16175.9
+Lebanon,LBN,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,5653.39,1911.07
+Lesotho,LSO,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,876.88,144.13
+Liberia,LBR,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1095.15,192.02
+Libya,LBY,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2023.59,1437.79
+Lithuania,LTU,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,17816.12,21133.56
+Luxembourg,LUX,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,106339.54,175369.9
+Madagascar,MDG,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,976.06,260.99
+Malawi,MWI,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,5292.18,1210.7
+Malaysia,MYS,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,5435.78,2289.82
+Maldives,MDV,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1302.33,694.63
+Mali,MLI,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,942.75,148.31
+Malta,MLT,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,19986.88,21968.08
+Marshall Islands,MHL,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3189.43,2202.55
+Mauritania,MRT,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1519.07,423.01
+Mauritius,MUS,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,7200.96,10457.4
+Mexico,MEX,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,7914.06,3637.21
+Micronesia (Federated States of),FSM,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1923.99,1189.83
+Monaco,MCO,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,201458.07,356463.53
+Mongolia,MNG,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,4078.9,1751.06
+Montenegro,MNE,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,7343.09,11159.59
+Morocco,MAR,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1555.35,585.29
+Mozambique,MOZ,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1537.38,241.88
+Myanmar,MMR,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,735.42,69.87
+Namibia,NAM,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1143.92,737.59
+Nauru,NRU,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,5655.77,5078.81
+Nepal,NPL,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,743.4,70.6
+New Caledonia,NCL,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,14329.43,16849.32
+New Zealand,NZL,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,20951.94,26768
+Nicaragua,NIC,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,5321.93,1065.62
+Niger,NER,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1279.92,244.78
+Nigeria,NGA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,754.75,76.6
+North Macedonia,MKD,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,5676.14,4830.09
+Northern Mariana Islands,MNP,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,4690.88,422.17
+Norway,NOR,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,61248.07,91273.69
+Oman,OMN,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,10993.43,17253.88
+Pakistan,PAK,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,565.15,36.62
+Palau,PLW,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,10147.74,15609.95
+Panama,PAN,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,22815.42,10822.71
+Papua New Guinea,PNG,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,973.98,163.44
+Paraguay,PRY,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3857.34,1532.78
+Peru,PER,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,13035.34,2921.8
+Philippines,PHL,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,796.41,82.7
+Poland,POL,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,14037.26,15770.58
+Portugal,PRT,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,11372.58,18169.94
+Puerto Rico,PRI,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,13786.69,22740.23
+Qatar,QAT,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,14154.96,20545.8
+Republic of Korea,KOR,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,14155.99,16598.05
+Republic of Moldova,MDA,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,5341.8,2884.38
+Romania,ROU,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,15877.71,12699.69
+Russian Federation,RUS,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,28661.87,20407.6
+Rwanda,RWA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,13104.03,2982.07
+Saint Kitts and Nevis,KNA,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,21902.71,24704.79
+Saint Lucia,LCA,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2797.22,230.95
+Saint Vincent and the Grenadines,VCT,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2291.7,186.66
+Samoa,WSM,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1353.84,107.27
+San Marino,SMR,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,36235.56,49426.92
+Sao Tome and Principe,STP,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2440.21,482.39
+Saudi Arabia,SAU,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,20088.58,28735.06
+Senegal,SEN,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,5472.96,1148.84
+Serbia,SRB,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,5827.85,8423.17
+Seychelles,SYC,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3514.04,4536.45
+Sierra Leone,SLE,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,945.31,166.48
+Singapore,SGP,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,38209.54,54678.09
+Sint Maarten (Dutch part),SXM,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,11692.53,5610.95
+Slovakia,SVK,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,13754.84,20329.1
+Slovenia,SVN,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,19482.31,11979.29
+Solomon Islands,SLB,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1497.96,510.25
+Somalia,SOM,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,840.47,113.56
+South Africa,ZAF,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,859.24,135.35
+South Sudan,SSD,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1748.03,313.11
+Spain,ESP,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,21675.29,26800.88
+Sri Lanka,LKA,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,5422.02,5116.9
+Sudan,SDN,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,970.48,205.56
+Suriname,SUR,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1497.5,1144.72
+Sweden,SWE,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,26908.18,31228.69
+Switzerland,CHE,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,15186.74,21681.89
+Syrian Arab Republic,SYR,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,915.18,123.13
+Tajikistan,TJK,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1978.68,635.77
+Thailand,THA,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2587,1444.56
+Timor-Leste,TLS,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3800.11,1006.52
+Togo,TGO,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,4971.59,1052.62
+Tonga,TON,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1438.66,114.65
+Trinidad and Tobago,TTO,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3960.69,343.85
+Tunisia,TUN,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3333.2,2679.89
+Turkmenistan,TKM,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,6866.94,3898.63
+Turks and Caicos Islands,TCA,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,6047.93,580.68
+Tuvalu,TUV,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1209.6,577.58
+Uganda,UGA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,3008.62,581.16
+Ukraine,UKR,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2007.73,997.6
+United Arab Emirates,ARE,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,65501.04,98674.54
+United Kingdom of Great Britain and Northern Ireland,GBR,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,32798.9,43940.29
+United Republic of Tanzania,TZA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1335.34,283.29
+United States of America,USA,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,22988.4,12261.38
+Uruguay,URY,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,17545.54,9305.66
+Uzbekistan,UZB,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,2301.49,1202.49
+Vanuatu,VUT,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,5237.33,6924.31
+Venezuela (Bolivarian Republic of),VEN,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,5054.24,1961.14
+Viet Nam,VNM,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1892.97,614.78
+Yemen,YEM,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,445.49,22.1
+Zambia,ZMB,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,1742.95,311.08
+Zimbabwe,ZWE,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (0-4 years),c_mdrtb_tx1.04,801.43,87.09
+Afghanistan,AFG,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,566.23,69.17
+Albania,ALB,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2234.86,2232.7
+Algeria,DZA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2509.22,1258.49
+American Samoa,ASM,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,7613.57,7680.95
+Andorra,AND,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,12953.52,8043.94
+Angola,AGO,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1484.44,811.9
+Antigua and Barbuda,ATG,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,4205.55,381.53
+Argentina,ARG,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1471.72,732.11
+Armenia,ARM,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5916.58,3296.22
+Aruba,ABW,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,10524.47,5015.1
+Australia,AUS,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,28549.72,38907.02
+Austria,AUT,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,37417.64,51482.92
+Azerbaijan,AZE,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1521.45,531.84
+Bahamas,BHS,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,7183.23,737.75
+Bahrain,BHR,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,14605.74,20677.72
+Bangladesh,BGD,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2517.51,674.11
+Barbados,BRB,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,4600.91,424.41
+Belarus,BLR,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,6387.92,6151.13
+Belgium,BEL,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,30297.97,38095.3
+Belize,BLZ,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5738.39,2416.43
+Benin,BEN,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1262.5,723.69
+Bermuda,BMU,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,36253.59,6293.97
+Bhutan,BTN,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1961.8,1833.07
+Bolivia (Plurinational State of),BOL,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3440.81,1397.06
+Bosnia and Herzegovina,BIH,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5532.45,4822.72
+Botswana,BWA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3349.37,1987.7
+Brazil,BRA,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,8232.22,3280.12
+British Virgin Islands,VGB,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2161.62,187.75
+Brunei Darussalam,BRN,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,13992.87,16497.52
+Bulgaria,BGR,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,9778.3,10479.64
+Burkina Faso,BFA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1529.79,290.99
+Burundi,BDI,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,631,87.7
+Cabo Verde,CPV,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3511.71,1967.28
+Cambodia,KHM,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,833.55,169.47
+Cameroon,CMR,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1859.03,798.18
+Canada,CAN,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,15555.58,7864.99
+Cayman Islands,CYM,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,25442.14,3920.29
+Central African Republic,CAF,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1020.17,171.17
+Chad,TCD,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,570.46,71.99
+Chile,CHL,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,7957.26,3511.62
+China,CHN,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5976.4,5842.28
+"China, Hong Kong SAR",HKG,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,41736.38,31613.15
+"China, Macao SAR",MAC,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,29807.49,40942.35
+Colombia,COL,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,4358.52,1804.86
+Comoros,COM,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1296.48,447.88
+Congo,COG,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,388.97,49.9
+Costa Rica,CRI,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,8367.54,3556.01
+Côte d'Ivoire,CIV,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1946.69,670.46
+Croatia,HRV,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,13819.17,15597.61
+Cuba,CUB,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,9425.95,5113.14
+Curaçao,CUW,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,7362.68,3306.14
+Cyprus,CYP,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,23663.82,29925.86
+Czechia,CZE,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,42205.92,74912.71
+Democratic People's Republic of Korea,PRK,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1342.26,492.41
+Democratic Republic of the Congo,COD,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1086.52,164.89
+Denmark,DNK,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,46504.3,66397.28
+Djibouti,DJI,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1687.24,933.56
+Dominica,DMA,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2087.44,181.62
+Dominican Republic,DOM,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,6522.76,1795.72
+Ecuador,ECU,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1014.49,234.18
+Egypt,EGY,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2454.23,2510.22
+El Salvador,SLV,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1269.21,311.87
+Equatorial Guinea,GNQ,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3576.34,5162.04
+Eritrea,ERI,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,6633.8,9292.17
+Estonia,EST,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,9591.73,10713.68
+Eswatini,SWZ,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1120.33,376.14
+Ethiopia,ETH,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2424.14,468.89
+Fiji,FJI,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,4045,3360.37
+Finland,FIN,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,15656.86,27122.11
+France,FRA,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,59669.93,96276.64
+French Polynesia,PYF,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2825.59,3118.12
+Gabon,GAB,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1138.67,677.31
+Gambia,GMB,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2297.27,541.49
+Georgia,GEO,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2473.64,2482.56
+Germany,DEU,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,33971.05,45233.17
+Ghana,GHA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,496.6,138.98
+Greece,GRC,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,14821.84,16998.2
+Greenland,GRL,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,38200.8,52750.08
+Grenada,GRD,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,4292.08,1720.5
+Guam,GUM,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,30069.78,17763.4
+Guatemala,GTM,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3320.86,1228.92
+Guinea,GIN,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,969.24,209.31
+Guinea-Bissau,GNB,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1170.61,318.25
+Guyana,GUY,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3292.02,3492.82
+Haiti,HTI,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,779.65,106.8
+Honduras,HND,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3434.53,1340.85
+Hungary,HUN,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,53257.86,71718.33
+Iceland,ISL,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,54862.74,80478.76
+India,IND,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1189.33,594.98
+Indonesia,IDN,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1027.54,171.18
+Iran (Islamic Republic of),IRN,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,4434.21,2013.77
+Iraq,IRQ,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,660.02,130.86
+Ireland,IRL,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,51051.15,67317.39
+Israel,ISR,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,6552.83,1210.17
+Italy,ITA,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,25356.06,32496.59
+Jamaica,JAM,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2989.12,1074.48
+Japan,JPN,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,11210.73,11264.84
+Jordan,JOR,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3147.41,3391.72
+Kazakhstan,KAZ,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,10124.37,8032.6
+Kenya,KEN,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3285.73,1158.85
+Kiribati,KIR,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1318.26,912.44
+Kuwait,KWT,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,12745.08,20369.63
+Kyrgyzstan,KGZ,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2363.22,978.29
+Lao People's Democratic Republic,LAO,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,4495.1,2672.81
+Latvia,LVA,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,14234.59,16175.95
+Lebanon,LBN,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5559.79,1911.48
+Lesotho,LSO,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,783.28,149.44
+Liberia,LBR,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1001.55,196.03
+Libya,LBY,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1929.99,1438.34
+Lithuania,LTU,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,17722.52,21133.6
+Luxembourg,LUX,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,106245.94,175369.9
+Madagascar,MDG,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,882.46,263.96
+Malawi,MWI,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5198.58,1211.34
+Malaysia,MYS,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5342.18,2290.16
+Maldives,MDV,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1208.73,695.75
+Mali,MLI,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,849.15,153.47
+Malta,MLT,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,19893.28,21968.12
+Marshall Islands,MHL,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3095.83,2202.9
+Mauritania,MRT,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1425.47,424.85
+Mauritius,MUS,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,7107.36,10457.47
+Mexico,MEX,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,7820.46,3637.42
+Micronesia (Federated States of),FSM,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1830.39,1190.49
+Monaco,MCO,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,201364.47,356463.53
+Mongolia,MNG,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3985.3,1751.5
+Montenegro,MNE,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,7249.49,11159.66
+Morocco,MAR,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1461.75,586.62
+Mozambique,MOZ,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1443.78,245.08
+Myanmar,MMR,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,641.82,80.25
+Namibia,NAM,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1050.32,738.64
+Nauru,NRU,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5562.17,5078.96
+Nepal,NPL,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,649.8,80.89
+New Caledonia,NCL,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,14235.83,16849.37
+New Zealand,NZL,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,20858.34,26768.03
+Nicaragua,NIC,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5228.33,1066.35
+Niger,NER,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1186.32,247.94
+Nigeria,NGA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,661.15,86.18
+North Macedonia,MKD,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5582.54,4830.25
+Northern Mariana Islands,MNP,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,4597.28,424.01
+Norway,NOR,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,61154.47,91273.7
+Oman,OMN,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,10899.83,17253.93
+Pakistan,PAK,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,471.55,53.85
+Palau,PLW,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,10054.14,15610
+Panama,PAN,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,22721.82,10822.79
+Papua New Guinea,PNG,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,880.38,168.14
+Paraguay,PRY,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3763.74,1533.29
+Peru,PER,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,12941.74,2922.07
+Philippines,PHL,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,702.81,91.64
+Poland,POL,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,13943.66,15770.63
+Portugal,PRT,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,11278.98,18169.99
+Puerto Rico,PRI,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,13693.09,22740.26
+Qatar,QAT,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,14061.36,20545.84
+Republic of Korea,KOR,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,14062.39,16598.1
+Republic of Moldova,MDA,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5248.2,2884.65
+Romania,ROU,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,15784.11,12699.75
+Russian Federation,RUS,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,28568.27,20407.64
+Rwanda,RWA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,13010.43,2982.33
+Saint Kitts and Nevis,KNA,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,21809.11,24704.82
+Saint Lucia,LCA,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2703.62,234.3
+Saint Vincent and the Grenadines,VCT,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2198.1,190.78
+Samoa,WSM,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1260.24,114.3
+San Marino,SMR,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,36141.96,49426.94
+Sao Tome and Principe,STP,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2346.61,484
+Saudi Arabia,SAU,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,19994.98,28735.09
+Senegal,SEN,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5379.36,1149.52
+Serbia,SRB,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5734.25,8423.26
+Seychelles,SYC,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3420.44,4536.62
+Sierra Leone,SLE,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,851.71,171.09
+Singapore,SGP,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,38115.94,54678.11
+Sint Maarten (Dutch part),SXM,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,11598.93,5611.09
+Slovakia,SVK,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,13661.24,20329.14
+Slovenia,SVN,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,19388.71,11979.35
+Solomon Islands,SLB,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1404.36,511.78
+Somalia,SOM,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,746.87,120.22
+South Africa,ZAF,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,765.64,140.99
+South Sudan,SSD,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1654.43,315.59
+Spain,ESP,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,21581.69,26800.91
+Sri Lanka,LKA,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5328.42,5117.06
+Sudan,SDN,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,876.88,209.32
+Suriname,SUR,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1403.9,1145.4
+Sweden,SWE,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,26814.58,31228.72
+Switzerland,CHE,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,15093.14,21681.93
+Syrian Arab Republic,SYR,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,821.58,129.31
+Tajikistan,TJK,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1885.08,636.99
+Thailand,THA,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2493.4,1445.09
+Timor-Leste,TLS,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3706.51,1007.29
+Togo,TGO,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,4877.99,1053.36
+Tonga,TON,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1345.06,121.26
+Trinidad and Tobago,TTO,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3867.09,346.11
+Tunisia,TUN,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,3239.6,2680.18
+Turkmenistan,TKM,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,6773.34,3898.83
+Turks and Caicos Islands,TCA,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5954.33,582.02
+Tuvalu,TUV,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1116,578.93
+Uganda,UGA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2915.02,582.5
+Ukraine,UKR,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1914.13,998.38
+United Arab Emirates,ARE,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,65407.44,98674.55
+United Kingdom of Great Britain and Northern Ireland,GBR,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,32705.3,43940.31
+United Republic of Tanzania,TZA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1241.74,286.03
+United States of America,USA,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,22894.8,12261.44
+Uruguay,URY,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,17451.94,9305.75
+Uzbekistan,UZB,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,2207.89,1203.14
+Vanuatu,VUT,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,5143.73,6924.42
+Venezuela (Bolivarian Republic of),VEN,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,4960.64,1961.54
+Viet Nam,VNM,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1799.37,616.04
+Yemen,YEM,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,351.89,45.24
+Zambia,ZMB,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,1649.35,313.57
+Zimbabwe,ZWE,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (0-4 years),c_mdrtb_tx2.04,707.83,95.62
+Afghanistan,AFG,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1739.27,174.59
+Albania,ALB,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3407.9,2238.44
+Algeria,DZA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3682.26,1268.66
+American Samoa,ASM,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,8786.61,7682.62
+Andorra,AND,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,14126.56,8045.53
+Angola,AGO,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2657.48,827.58
+Antigua and Barbuda,ATG,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,5378.59,413.84
+Argentina,ARG,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2644.76,749.46
+Armenia,ARM,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,7089.62,3300.12
+Aruba,ABW,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,11697.51,5017.66
+Australia,AUS,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,29722.76,38907.35
+Austria,AUT,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,38590.68,51483.17
+Azerbaijan,AZE,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2694.49,555.47
+Bahamas,BHS,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,8356.27,754.96
+Bahrain,BHR,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,15778.78,20678.35
+Bangladesh,BGD,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3690.55,692.9
+Barbados,BRB,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,5773.95,453.68
+Belarus,BLR,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,7560.96,6153.21
+Belgium,BEL,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,31471.01,38095.64
+Belize,BLZ,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,6911.43,2421.74
+Benin,BEN,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2435.54,741.24
+Bermuda,BMU,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,37426.63,6296.01
+Bhutan,BTN,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3134.84,1840.06
+Bolivia (Plurinational State of),BOL,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4613.85,1406.22
+Bosnia and Herzegovina,BIH,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,6705.49,4825.38
+Botswana,BWA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4522.41,1994.15
+Brazil,BRA,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,9405.26,3284.03
+British Virgin Islands,VGB,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3334.66,246.88
+Brunei Darussalam,BRN,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,15165.91,16498.3
+Bulgaria,BGR,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,10951.34,10480.86
+Burkina Faso,BFA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2702.83,332.22
+Burundi,BDI,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1804.04,182.73
+Cabo Verde,CPV,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4684.75,1973.8
+Cambodia,KHM,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2006.59,233.27
+Cameroon,CMR,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3032.07,814.12
+Canada,CAN,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,16728.62,7866.63
+Cayman Islands,CYM,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,26615.18,3923.56
+Central African Republic,CAF,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2193.21,234.51
+Chad,TCD,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1743.5,175.73
+Chile,CHL,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,9130.3,3515.28
+China,CHN,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,7149.44,5844.48
+"China, Hong Kong SAR",HKG,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,42909.42,31613.55
+"China, Macao SAR",MAC,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,30980.53,40942.66
+Colombia,COL,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,5531.56,1811.97
+Comoros,COM,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2469.52,475.71
+Congo,COG,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1562.01,167.89
+Costa Rica,CRI,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,9540.58,3559.63
+Côte d'Ivoire,CIV,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3119.73,689.36
+Croatia,HRV,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,14992.21,15598.43
+Cuba,CUB,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,10598.99,5115.66
+Curaçao,CUW,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,8535.72,3310.02
+Cyprus,CYP,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,24836.86,29926.29
+Czechia,CZE,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,43378.96,74912.88
+Democratic People's Republic of Korea,PRK,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2515.3,517.84
+Democratic Republic of the Congo,COD,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2259.56,229.97
+Denmark,DNK,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,47677.34,66397.48
+Djibouti,DJI,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2860.28,947.22
+Dominica,DMA,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3260.48,242.25
+Dominican Republic,DOM,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,7695.8,1802.86
+Ecuador,ECU,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2187.53,283.79
+Egypt,EGY,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3627.27,2515.33
+El Salvador,SLV,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2442.25,350.65
+Equatorial Guinea,GNQ,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4749.38,5164.53
+Eritrea,ERI,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,7806.84,9293.56
+Estonia,EST,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,10764.77,10714.88
+Eswatini,SWZ,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2293.37,408.88
+Ethiopia,ETH,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3597.18,495.53
+Fiji,FJI,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,5218.04,3364.2
+Finland,FIN,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,16829.9,27122.59
+France,FRA,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,60842.97,96276.78
+French Polynesia,PYF,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3998.63,3122.23
+Gabon,GAB,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2311.71,696.02
+Gambia,GMB,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3470.31,564.72
+Georgia,GEO,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3646.68,2487.73
+Germany,DEU,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,35144.09,45233.46
+Ghana,GHA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1669.64,212.17
+Greece,GRC,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,15994.88,16998.96
+Greenland,GRL,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,39373.84,52750.33
+Grenada,GRD,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,5465.12,1727.95
+Guam,GUM,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,31242.82,17764.12
+Guatemala,GTM,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4493.9,1239.33
+Guinea,GIN,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2142.28,263.64
+Guinea-Bissau,GNB,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2343.65,356.35
+Guyana,GUY,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4465.06,3496.49
+Haiti,HTI,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1952.69,192.62
+Honduras,HND,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4607.57,1350.4
+Hungary,HUN,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,54430.9,71718.51
+Iceland,ISL,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,56035.78,80478.92
+India,IND,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2362.37,616.2
+Indonesia,IDN,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2200.58,234.52
+Iran (Islamic Republic of),IRN,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,5607.25,2020.14
+Iraq,IRQ,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1833.06,206.93
+Ireland,IRL,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,52224.19,67317.58
+Israel,ISR,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,7725.87,1220.74
+Italy,ITA,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,26529.1,32496.99
+Jamaica,JAM,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4162.16,1086.38
+Japan,JPN,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,12383.77,11265.98
+Jordan,JOR,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4320.45,3395.5
+Kazakhstan,KAZ,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,11297.41,8034.2
+Kenya,KEN,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4458.77,1169.88
+Kiribati,KIR,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2491.3,926.42
+Kuwait,KWT,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,13918.12,20370.26
+Kyrgyzstan,KGZ,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3536.26,991.34
+Lao People's Democratic Republic,LAO,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,5668.14,2677.62
+Latvia,LVA,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,15407.63,16176.75
+Lebanon,LBN,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,6732.83,1918.19
+Lesotho,LSO,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1956.32,219.16
+Liberia,LBR,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2174.59,253.23
+Libya,LBY,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3103.03,1447.24
+Lithuania,LTU,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,18895.56,21134.21
+Luxembourg,LUX,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,107418.98,175369.97
+Madagascar,MDG,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2055.5,308.82
+Malawi,MWI,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,6371.62,1221.9
+Malaysia,MYS,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,6515.22,2295.77
+Maldives,MDV,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2381.77,713.98
+Mali,MLI,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2022.19,221.93
+Malta,MLT,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,21066.32,21968.7
+Marshall Islands,MHL,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4268.87,2208.73
+Mauritania,MRT,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2598.51,454.09
+Mauritius,MUS,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,8280.4,10458.7
+Mexico,MEX,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,8993.5,3640.95
+Micronesia (Federated States of),FSM,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3003.43,1201.23
+Monaco,MCO,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,202537.51,356463.57
+Mongolia,MNG,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,5158.34,1758.82
+Montenegro,MNE,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,8422.53,11160.81
+Morocco,MAR,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2634.79,608.13
+Mozambique,MOZ,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2616.82,292.85
+Myanmar,MMR,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1814.86,179.27
+Namibia,NAM,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2223.36,755.84
+Nauru,NRU,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,6735.21,5081.49
+Nepal,NPL,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1822.84,179.56
+New Caledonia,NCL,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,15408.87,16850.13
+New Zealand,NZL,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,22031.38,26768.51
+Nicaragua,NIC,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,6401.37,1078.33
+Niger,NER,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2359.36,295.25
+Nigeria,NGA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1834.19,182
+North Macedonia,MKD,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,6755.58,4832.91
+Northern Mariana Islands,MNP,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,5770.32,453.3
+Norway,NOR,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,62327.51,91273.84
+Oman,OMN,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,12072.87,17254.67
+Pakistan,PAK,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1644.59,169.11
+Palau,PLW,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,11227.18,15610.82
+Panama,PAN,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,23894.86,10823.97
+Papua New Guinea,PNG,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2053.42,232.31
+Paraguay,PRY,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4936.78,1541.65
+Peru,PER,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,14114.78,2926.46
+Philippines,PHL,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1875.85,184.65
+Poland,POL,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,15116.7,15771.45
+Portugal,PRT,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,12452.02,18170.69
+Puerto Rico,PRI,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,14866.13,22740.83
+Qatar,QAT,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,15234.4,20546.47
+Republic of Korea,KOR,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,15235.43,16598.87
+Republic of Moldova,MDA,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,6421.24,2889.1
+Romania,ROU,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,16957.15,12700.76
+Russian Federation,RUS,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,29741.31,20408.27
+Rwanda,RWA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,14183.47,2986.63
+Saint Kitts and Nevis,KNA,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,22982.15,24705.34
+Saint Lucia,LCA,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3876.66,283.89
+Saint Vincent and the Grenadines,VCT,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3371.14,249.19
+Samoa,WSM,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2433.28,196.88
+San Marino,SMR,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,37315,49427.2
+Sao Tome and Principe,STP,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3519.65,509.86
+Saudi Arabia,SAU,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,21168.02,28735.54
+Senegal,SEN,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,6552.4,1160.64
+Serbia,SRB,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,6907.29,8424.79
+Seychelles,SYC,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4593.48,4539.45
+Sierra Leone,SLE,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2024.75,234.46
+Singapore,SGP,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,39288.98,54678.34
+Sint Maarten (Dutch part),SXM,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,12771.97,5613.38
+Slovakia,SVK,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,14834.28,20329.77
+Slovenia,SVN,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,20561.75,11980.43
+Solomon Islands,SLB,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2577.4,536.3
+Somalia,SOM,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1919.91,200.38
+South Africa,ZAF,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1938.68,213.48
+South Sudan,SSD,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2827.47,353.97
+Spain,ESP,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,22754.73,26801.39
+Sri Lanka,LKA,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,6501.46,5119.57
+Sudan,SDN,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2049.92,263.65
+Suriname,SUR,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2576.94,1156.56
+Sweden,SWE,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,27987.62,31229.13
+Switzerland,CHE,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,16266.18,21682.52
+Syrian Arab Republic,SYR,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1994.62,205.96
+Tajikistan,TJK,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3058.12,656.85
+Thailand,THA,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3666.44,1453.96
+Timor-Leste,TLS,SEA,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4879.55,1019.97
+Togo,TGO,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,6051.03,1065.49
+Tonga,TON,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2518.1,201
+Trinidad and Tobago,TTO,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,5040.13,381.43
+Tunisia,TUN,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4412.64,2684.97
+Turkmenistan,TKM,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,7946.38,3902.13
+Turks and Caicos Islands,TCA,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,7127.37,603.69
+Tuvalu,TUV,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2289.04,600.71
+Uganda,UGA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,4088.06,604.15
+Ukraine,UKR,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3087.17,1011.16
+United Arab Emirates,ARE,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,66580.48,98674.68
+United Kingdom of Great Britain and Northern Ireland,GBR,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,33878.34,43940.6
+United Republic of Tanzania,TZA,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2414.78,327.89
+United States of America,USA,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,24067.84,12262.49
+Uruguay,URY,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,18624.98,9307.13
+Uzbekistan,UZB,EUR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,3380.93,1213.77
+Vanuatu,VUT,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,6316.77,6926.27
+Venezuela (Bolivarian Republic of),VEN,AMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,6133.68,1968.08
+Viet Nam,VNM,WPR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2972.41,636.56
+Yemen,YEM,EMR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1524.93,166.57
+Zambia,ZMB,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,2822.39,352.17
+Zimbabwe,ZWE,AFR,Treatment for fluoroquinolone resistant multi-drug resistant TB (5-15 years),c_mdrtb_tx1.514,1880.87,186.66
+Afghanistan,AFG,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1221.77,133.4
+Albania,ALB,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2890.4,2235.61
+Algeria,DZA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3164.76,1263.65
+American Samoa,ASM,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,8269.11,7681.79
+Andorra,AND,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,13609.06,8044.74
+Angola,AGO,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2139.98,819.88
+Antigua and Barbuda,ATG,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,4861.09,398.22
+Argentina,ARG,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2127.26,740.95
+Armenia,ARM,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,6572.12,3298.2
+Aruba,ABW,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,11180.01,5016.4
+Australia,AUS,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,29205.26,38907.18
+Austria,AUT,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,38073.18,51483.05
+Azerbaijan,AZE,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2176.99,543.93
+Bahamas,BHS,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,7838.77,746.52
+Bahrain,BHR,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,15261.28,20678.04
+Bangladesh,BGD,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3173.05,683.69
+Barbados,BRB,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,5256.45,439.47
+Belarus,BLR,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,7043.46,6152.18
+Belgium,BEL,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,30953.51,38095.47
+Belize,BLZ,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,6393.93,2419.12
+Benin,BEN,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1918.04,732.63
+Bermuda,BMU,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,36909.13,6295
+Bhutan,BTN,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2617.34,1836.61
+Bolivia (Plurinational State of),BOL,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,4096.35,1401.7
+Bosnia and Herzegovina,BIH,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,6187.99,4824.07
+Botswana,BWA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,4004.91,1990.97
+Brazil,BRA,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,8887.76,3282.1
+British Virgin Islands,VGB,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2817.16,219.69
+Brunei Darussalam,BRN,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,14648.41,16497.92
+Bulgaria,BGR,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,10433.84,10480.26
+Burkina Faso,BFA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2185.33,312.55
+Burundi,BDI,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1286.54,143.89
+Cabo Verde,CPV,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,4167.25,1970.58
+Cambodia,KHM,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1489.09,204.28
+Cameroon,CMR,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2514.57,806.29
+Canada,CAN,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,16211.12,7865.82
+Cayman Islands,CYM,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,26097.68,3921.95
+Central African Republic,CAF,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1675.71,205.7
+Chad,TCD,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1226,134.89
+Chile,CHL,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,8612.8,3513.47
+China,CHN,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,6631.94,5843.39
+"China, Hong Kong SAR",HKG,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,42391.92,31613.35
+"China, Macao SAR",MAC,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,30463.03,40942.5
+Colombia,COL,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,5014.06,1808.46
+Comoros,COM,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1952.02,462.18
+Congo,COG,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1044.51,124.51
+Costa Rica,CRI,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,9023.08,3557.84
+Côte d'Ivoire,CIV,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2602.23,680.1
+Croatia,HRV,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,14474.71,15598.03
+Cuba,CUB,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,10081.49,5114.42
+Curaçao,CUW,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,8018.22,3308.11
+Cyprus,CYP,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,24319.36,29926.08
+Czechia,CZE,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,42861.46,74912.79
+Democratic People's Republic of Korea,PRK,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1997.8,505.45
+Democratic Republic of the Congo,COD,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1742.06,200.5
+Denmark,DNK,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,47159.84,66397.38
+Djibouti,DJI,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2342.78,940.5
+Dominica,DMA,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2742.98,214.47
+Dominican Republic,DOM,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,7178.3,1799.34
+Ecuador,ECU,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1670.03,260.48
+Egypt,EGY,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3109.77,2512.81
+El Salvador,SLV,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1924.75,332.07
+Equatorial Guinea,GNQ,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,4231.88,5163.3
+Eritrea,ERI,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,7289.34,9292.87
+Estonia,EST,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,10247.27,10714.29
+Eswatini,SWZ,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1775.87,393.06
+Ethiopia,ETH,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3079.68,482.56
+Fiji,FJI,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,4700.54,3362.31
+Finland,FIN,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,16312.4,27122.35
+France,FRA,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,60325.47,96276.71
+French Polynesia,PYF,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3481.13,3120.2
+Gabon,GAB,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1794.21,686.85
+Gambia,GMB,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2952.81,553.37
+Georgia,GEO,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3129.18,2485.18
+Germany,DEU,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,34626.59,45233.32
+Ghana,GHA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1152.14,179.8
+Greece,GRC,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,15477.38,16998.59
+Greenland,GRL,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,38856.34,52750.21
+Grenada,GRD,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,4947.62,1724.28
+Guam,GUM,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,30725.32,17763.76
+Guatemala,GTM,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3976.4,1234.21
+Guinea,GIN,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1624.78,238.38
+Guinea-Bissau,GNB,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1826.15,338.08
+Guyana,GUY,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3947.56,3494.68
+Haiti,HTI,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1435.19,156.26
+Honduras,HND,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,4090.07,1345.69
+Hungary,HUN,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,53913.4,71718.42
+Iceland,ISL,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,55518.28,80478.85
+India,IND,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1844.87,605.82
+Indonesia,IDN,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1683.08,205.71
+Iran (Islamic Republic of),IRN,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,5089.75,2017
+Iraq,IRQ,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1315.56,173.6
+Ireland,IRL,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,51706.69,67317.49
+Israel,ISR,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,7208.37,1215.53
+Italy,ITA,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,26011.6,32496.79
+Jamaica,JAM,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3644.66,1080.52
+Japan,JPN,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,11866.27,11265.42
+Jordan,JOR,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3802.95,3393.63
+Kazakhstan,KAZ,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,10779.91,8033.41
+Kenya,KEN,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3941.27,1164.45
+Kiribati,KIR,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1973.8,919.55
+Kuwait,KWT,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,13400.62,20369.95
+Kyrgyzstan,KGZ,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3018.76,984.92
+Lao People's Democratic Republic,LAO,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,5150.64,2675.25
+Latvia,LVA,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,14890.13,16176.35
+Lebanon,LBN,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,6215.33,1914.88
+Lesotho,LSO,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1438.82,188
+Liberia,LBR,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1657.09,226.81
+Libya,LBY,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2585.53,1442.85
+Lithuania,LTU,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,18378.06,21133.91
+Luxembourg,LUX,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,106901.48,175369.94
+Madagascar,MDG,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1538,287.55
+Malawi,MWI,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,5854.12,1216.7
+Malaysia,MYS,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,5997.72,2293
+Maldives,MDV,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1864.27,705.04
+Mali,MLI,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1504.69,191.22
+Malta,MLT,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,20548.82,21968.41
+Marshall Islands,MHL,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3751.37,2205.85
+Mauritania,MRT,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2081.01,439.9
+Mauritius,MUS,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,7762.9,10458.09
+Mexico,MEX,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,8476,3639.21
+Micronesia (Federated States of),FSM,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2485.93,1195.94
+Monaco,MCO,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,202020.01,356463.55
+Mongolia,MNG,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,4640.84,1755.21
+Montenegro,MNE,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,7905.03,11160.24
+Morocco,MAR,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2117.29,597.61
+Mozambique,MOZ,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2099.32,270.33
+Myanmar,MMR,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1297.36,139.47
+Namibia,NAM,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1705.86,747.4
+Nauru,NRU,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,6217.71,5080.24
+Nepal,NPL,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1305.34,139.84
+New Caledonia,NCL,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,14891.37,16849.75
+New Zealand,NZL,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,21513.88,26768.27
+Nicaragua,NIC,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,5883.87,1072.43
+Niger,NER,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1841.86,272.92
+Nigeria,NGA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1316.69,142.96
+North Macedonia,MKD,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,6238.08,4831.6
+Northern Mariana Islands,MNP,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,5252.82,439.09
+Norway,NOR,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,61810.01,91273.77
+Oman,OMN,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,11555.37,17254.31
+Pakistan,PAK,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1127.09,126.14
+Palau,PLW,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,10709.68,15610.41
+Panama,PAN,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,23377.36,10823.39
+Papua New Guinea,PNG,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1535.92,203.19
+Paraguay,PRY,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,4419.28,1537.53
+Peru,PER,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,13597.28,2924.3
+Philippines,PHL,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1358.35,146.32
+Poland,POL,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,14599.2,15771.05
+Portugal,PRT,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,11934.52,18170.34
+Puerto Rico,PRI,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,14348.63,22740.55
+Qatar,QAT,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,14716.9,20546.16
+Republic of Korea,KOR,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,14717.93,16598.49
+Republic of Moldova,MDA,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,5903.74,2886.9
+Romania,ROU,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,16439.65,12700.26
+Russian Federation,RUS,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,29223.81,20407.95
+Rwanda,RWA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,13665.97,2984.51
+Saint Kitts and Nevis,KNA,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,22464.65,24705.09
+Saint Lucia,LCA,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3359.16,260.59
+Saint Vincent and the Grenadines,VCT,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2853.64,222.29
+Samoa,WSM,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1915.78,161.48
+San Marino,SMR,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,36797.5,49427.07
+Sao Tome and Principe,STP,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3002.15,497.26
+Saudi Arabia,SAU,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,20650.52,28735.31
+Senegal,SEN,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,6034.9,1155.16
+Serbia,SRB,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,6389.79,8424.03
+Seychelles,SYC,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,4075.98,4538.05
+Sierra Leone,SLE,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1507.25,205.63
+Singapore,SGP,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,38771.48,54678.23
+Sint Maarten (Dutch part),SXM,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,12254.47,5612.25
+Slovakia,SVK,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,14316.78,20329.46
+Slovenia,SVN,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,20044.25,11979.9
+Solomon Islands,SLB,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2059.9,524.34
+Somalia,SOM,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1402.41,165.73
+South Africa,ZAF,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1421.18,181.36
+South Sudan,SSD,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2309.97,335.57
+Spain,ESP,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,22237.23,26801.15
+Sri Lanka,LKA,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,5983.96,5118.33
+Sudan,SDN,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1532.42,238.38
+Suriname,SUR,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2059.44,1151.06
+Sweden,SWE,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,27470.12,31228.93
+Switzerland,CHE,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,15748.68,21682.23
+Syrian Arab Republic,SYR,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1477.12,172.43
+Tajikistan,TJK,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2540.62,647.12
+Thailand,THA,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3148.94,1449.59
+Timor-Leste,TLS,SEA,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,4362.05,1013.73
+Togo,TGO,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,5533.53,1059.52
+Tonga,TON,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2000.6,166.48
+Trinidad and Tobago,TTO,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,4522.63,364.42
+Tunisia,TUN,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3895.14,2682.6
+Turkmenistan,TKM,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,7428.88,3900.5
+Turks and Caicos Islands,TCA,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,6609.87,593.1
+Tuvalu,TUV,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1771.54,590.06
+Uganda,UGA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,3570.56,593.56
+Ukraine,UKR,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2569.67,1004.87
+United Arab Emirates,ARE,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,66062.98,98674.62
+United Kingdom of Great Britain and Northern Ireland,GBR,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,33360.84,43940.45
+United Republic of Tanzania,TZA,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1897.28,307.94
+United States of America,USA,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,23550.34,12261.97
+Uruguay,URY,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,18107.48,9306.45
+Uzbekistan,UZB,EUR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2863.43,1208.54
+Vanuatu,VUT,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,5799.27,6925.36
+Venezuela (Bolivarian Republic of),VEN,AMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,5616.18,1964.86
+Viet Nam,VNM,WPR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2454.91,626.51
+Yemen,YEM,EMR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1007.43,122.72
+Zambia,ZMB,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,2304.89,333.68
+Zimbabwe,ZWE,AFR,Treatment for fluoroquinolone susceptible multi-drug resistant TB (5-15 years),c_mdrtb_tx2.514,1363.37,148.85
+Afghanistan,AFG,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,136.88,19.98
+Albania,ALB,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,864.52,346.87
+Algeria,DZA,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,16121.72,204.08
+American Samoa,ASM,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,2421.65,1093.76
+Andorra,AND,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,6127.29,5450.79
+Angola,AGO,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,149.89,68
+Antigua and Barbuda,ATG,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1439.35,187.59
+Argentina,ARG,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,887.67,378.1
+Armenia,ARM,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,3139.12,1936
+Aruba,ABW,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5796.94,3429.37
+Australia,AUS,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,6744.73,5065.99
+Austria,AUT,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,12149.63,16176.47
+Azerbaijan,AZE,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1001.42,258.07
+Bahamas,BHS,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,3961.76,5628.73
+Bahrain,BHR,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5226.19,6068.38
+Bangladesh,BGD,SEA,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,194.2,35.83
+Barbados,BRB,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,635.79,210.37
+Belarus,BLR,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,2149.25,1620.58
+Belgium,BEL,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,8661.25,9577.96
+Belize,BLZ,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,2005.88,657.17
+Benin,BEN,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,778.9,187.62
+Bermuda,BMU,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,41639.31,40154.88
+Bhutan,BTN,SEA,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,488.28,113.45
+Bolivia (Plurinational State of),BOL,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1328.89,538.27
+Bosnia and Herzegovina,BIH,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,687.51,188.93
+Botswana,BWA,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,16314.75,300.31
+Brazil,BRA,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1854.32,684.76
+British Virgin Islands,VGB,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1135.72,110.46
+Brunei Darussalam,BRN,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,8447.19,4706.71
+Bulgaria,BGR,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,4446.06,4310.55
+Burkina Faso,BFA,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,604.35,118.04
+Burundi,BDI,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,237.73,47.67
+Cabo Verde,CPV,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1270.93,482.19
+Cambodia,KHM,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,702.25,160.89
+Cameroon,CMR,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,261.96,36.94
+Canada,CAN,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,8718.01,5827.51
+Cayman Islands,CYM,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5656.12,9230.33
+Central African Republic,CAF,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,189.99,36.05
+Chad,TCD,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,3820.85,22.75
+Chile,CHL,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5434.46,2482.41
+China,CHN,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1380.61,648.74
+"China, Hong Kong SAR",HKG,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,12707.3,6034.75
+"China, Macao SAR",MAC,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,6989.68,5321.19
+Colombia,COL,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,2663.72,1097.45
+Comoros,COM,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,15901.05,115
+Congo,COG,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,138.97,18.75
+Costa Rica,CRI,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5692.5,2506.76
+Côte d'Ivoire,CIV,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,15731.74,96.3
+Croatia,HRV,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,4688.52,4901.66
+Cuba,CUB,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,2814.38,1039.97
+Curaçao,CUW,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,4002.73,2103.07
+Cyprus,CYP,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,7809.02,9403.35
+Czechia,CZE,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,13080.7,22241.19
+Democratic People's Republic of Korea,PRK,SEA,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,743.41,215.26
+Democratic Republic of the Congo,COD,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,228.04,52.17
+Denmark,DNK,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,15011.91,20862.59
+Djibouti,DJI,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,958.78,172.83
+Dominica,DMA,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,8074.45,12684.34
+Dominican Republic,DOM,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5380.6,1341.43
+Ecuador,ECU,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,645.31,140.6
+Egypt,EGY,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,544.01,106.56
+El Salvador,SLV,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,600.16,109.64
+Equatorial Guinea,GNQ,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,717.46,777.67
+Eritrea,ERI,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1498.47,413.44
+Estonia,EST,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,6499.27,5911.27
+Eswatini,SWZ,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1266.61,271.05
+Ethiopia,ETH,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,416.76,91.48
+Fiji,FJI,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1571.41,1000.36
+Finland,FIN,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,4492.32,6756.69
+France,FRA,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,6125.81,5620.05
+French Polynesia,PYF,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,2097.65,1821.32
+Gabon,GAB,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,352.4,190.1
+Gambia,GMB,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,15748.21,91.43
+Georgia,GEO,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,879.88,357.7
+Germany,DEU,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,12718.36,17394.52
+Ghana,GHA,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,240.09,47.57
+Greece,GRC,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5007.35,5341.7
+Greenland,GRL,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,6166.97,4712.02
+Grenada,GRD,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1272.77,1177.44
+Guam,GUM,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,7569.66,3456.65
+Guatemala,GTM,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,2126.44,810.22
+Guinea,GIN,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,122.83,26.16
+Guinea-Bissau,GNB,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,715.55,180.68
+Guyana,GUY,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,2313.89,511.26
+Haiti,HTI,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,342.14,41.1
+Honduras,HND,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1868.15,558.8
+Hungary,HUN,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,3821.8,5361.1
+Iceland,ISL,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,17642.65,25287.07
+India,IND,SEA,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,282.44,80.41
+Indonesia,IDN,SEA,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,284.05,45.41
+Iran (Islamic Republic of),IRN,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1777.74,482.75
+Iraq,IRQ,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,584.98,142.51
+Ireland,IRL,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,10467.91,9227.25
+Israel,ISR,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5496.98,8404.97
+Italy,ITA,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,8343.9,10211.05
+Jamaica,JAM,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,2086.28,2662.08
+Japan,JPN,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,3960.27,2425.93
+Jordan,JOR,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,4200.54,1049.96
+Kazakhstan,KAZ,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,4893.93,2402.78
+Kenya,KEN,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,260.83,53.25
+Kiribati,KIR,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,356.64,57.8
+Kuwait,KWT,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,4513.73,6114.67
+Kyrgyzstan,KGZ,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,2572.3,657.39
+Lao People's Democratic Republic,LAO,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,379.78,70.78
+Latvia,LVA,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,4820.66,5083.36
+Lebanon,LBN,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1061.58,243.51
+Lesotho,LSO,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1474.02,340.97
+Liberia,LBR,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,15689.9,58.92
+Libya,LBY,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1193.93,322.56
+Lithuania,LTU,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5928.11,6640.96
+Luxembourg,LUX,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,32001.33,51385.25
+Madagascar,MDG,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,271.98,60.93
+Malawi,MWI,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,569.19,132.33
+Malaysia,MYS,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1712.39,601.2
+Maldives,MDV,SEA,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,517.85,120.25
+Mali,MLI,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,372.66,50.66
+Malta,MLT,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,8649.23,10676
+Marshall Islands,MHL,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,802.93,142.73
+Mauritania,MRT,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,15839.03,85.16
+Mauritius,MUS,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,18177.92,3922.53
+Mexico,MEX,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1042.75,355.68
+Micronesia (Federated States of),FSM,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,2047.56,383.97
+Monaco,MCO,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,63659.35,112006.42
+Mongolia,MNG,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1318.3,451.79
+Montenegro,MNE,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5093.06,7611.19
+Morocco,MAR,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,950.43,168.04
+Mozambique,MOZ,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,282.08,55.26
+Myanmar,MMR,SEA,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,167.77,29.37
+Namibia,NAM,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,570.43,148.46
+Nauru,NRU,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1562.94,787.41
+Nepal,NPL,SEA,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,191.74,34.21
+New Caledonia,NCL,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,3861.03,2278.55
+New Zealand,NZL,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5221.14,3538.2
+Nicaragua,NIC,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,3056.75,668.22
+Niger,NER,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,15627.49,56.34
+Nigeria,NGA,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,224.67,44.29
+North Macedonia,MKD,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1998.53,1598.19
+Northern Mariana Islands,MNP,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5049.96,2107.95
+Norway,NOR,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,19621.94,28678.93
+Oman,OMN,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,4344.45,5754.65
+Pakistan,PAK,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,110.64,11.16
+Palau,PLW,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1990.91,1651.65
+Panama,PAN,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,6109.01,2781.41
+Papua New Guinea,PNG,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,706.01,54.3
+Paraguay,PRY,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,2469.9,889.93
+Peru,PER,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,2562.77,762.31
+Philippines,PHL,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,212.56,40.14
+Poland,POL,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,4728.13,4956.02
+Portugal,PRT,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1592.19,1569.91
+Puerto Rico,PRI,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5875.16,9099.53
+Qatar,QAT,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,7869.08,10934.98
+Republic of Korea,KOR,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,3824.58,2246.43
+Republic of Moldova,MDA,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,7715.8,2214.47
+Romania,ROU,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,2380.33,1509.2
+Russian Federation,RUS,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,6447.88,3043.18
+Rwanda,RWA,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1000.39,221.02
+Saint Kitts and Nevis,KNA,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,21719.63,24704.68
+Saint Lucia,LCA,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,735.41,218.42
+Saint Vincent and the Grenadines,VCT,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1049.08,815.14
+Samoa,WSM,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,758.13,133.14
+San Marino,SMR,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,11747.53,15530.48
+Sao Tome and Principe,STP,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1805.67,463.91
+Saudi Arabia,SAU,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,6993.79,5808.67
+Senegal,SEN,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,425.3,108.07
+Serbia,SRB,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1745.14,1773.07
+Seychelles,SYC,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,18525.8,4534.63
+Sierra Leone,SLE,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,15753.43,74.52
+Singapore,SGP,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,8584.85,7038.5
+Sint Maarten (Dutch part),SXM,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5256.3,2754.17
+Slovakia,SVK,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,3819.9,5062.38
+Slovenia,SVN,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5366.99,5606.15
+Solomon Islands,SLB,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,789.47,203.6
+Somalia,SOM,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,755.29,84.74
+South Africa,ZAF,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,467.62,75.58
+South Sudan,SSD,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,200.27,38.55
+Spain,ESP,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,7150.46,8421.53
+Sri Lanka,LKA,SEA,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,502.62,75.79
+Sudan,SDN,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,3538.54,43.13
+Suriname,SUR,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1144.02,1085.47
+Sweden,SWE,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,3728.39,4510.49
+Switzerland,CHE,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5300.69,6789.18
+Syrian Arab Republic,SYR,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,343.1,56.79
+Tajikistan,TJK,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,2217.31,460.22
+Thailand,THA,SEA,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,467.18,214.44
+Timor-Leste,TLS,SEA,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1103.9,289.45
+Togo,TGO,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,349.64,78.23
+Tonga,TON,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,694.49,60.44
+Trinidad and Tobago,TTO,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,3158.44,4192.52
+Tunisia,TUN,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,794.9,535.14
+Turkmenistan,TKM,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,3506.32,3403.55
+Turks and Caicos Islands,TCA,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,949.67,377.33
+Tuvalu,TUV,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,906.68,324.07
+Uganda,UGA,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,261.17,44.71
+Ukraine,UKR,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1870.14,612.12
+United Arab Emirates,ARE,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,11965.1,16460.15
+United Kingdom of Great Britain and Northern Ireland,GBR,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,10663.88,13806.59
+United Republic of Tanzania,TZA,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,355.43,71.35
+United States of America,USA,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,13096.25,9824.53
+Uruguay,URY,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,5781.46,3348.44
+Uzbekistan,UZB,EUR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,920.14,378.87
+Vanuatu,VUT,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,3490.75,296.68
+Venezuela (Bolivarian Republic of),VEN,AMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,1175.53,462.95
+Viet Nam,VNM,WPR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,546.62,184.23
+Yemen,YEM,EMR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,110.77,13.36
+Zambia,ZMB,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,271.23,37.1
+Zimbabwe,ZWE,AFR,Treatment for drug sensitive TB (O15 years),c_dstb_txO15,342.72,39.83
+Afghanistan,AFG,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1227.07,52.53
+Albania,ALB,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,6594.54,2232.24
+Algeria,DZA,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4360.03,1257.69
+American Samoa,ASM,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,10751.01,7680.81
+Andorra,AND,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,17313.21,8043.81
+Angola,AGO,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1682.28,810.66
+Antigua and Barbuda,ATG,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,5644.89,378.87
+Argentina,ARG,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1867.56,730.73
+Armenia,ARM,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,9077.42,3295.92
+Aruba,ABW,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,11963.81,5014.9
+Australia,AUS,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,31687.16,38906.99
+Austria,AUT,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,41777.32,51482.9
+Azerbaijan,AZE,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,2277.29,529.93
+Bahamas,BHS,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,8622.57,736.38
+Bahrain,BHR,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,20982.31,20677.68
+Bangladesh,BGD,SEA,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3048.35,672.6
+Barbados,BRB,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,6040.25,422.02
+Belarus,BLR,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,8548.76,6150.96
+Belgium,BEL,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,34657.65,38095.28
+Belize,BLZ,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,6994.23,2416.01
+Benin,BEN,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1798.34,722.29
+Bermuda,BMU,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,37692.93,6293.81
+Bhutan,BTN,SEA,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,2400.64,1832.52
+Bolivia (Plurinational State of),BOL,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3854.65,1396.33
+Bosnia and Herzegovina,BIH,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,9892.13,4822.51
+Botswana,BWA,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,5200.18,1987.19
+Brazil,BRA,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,12967.06,3279.81
+British Virgin Islands,VGB,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3600.96,182.28
+Brunei Darussalam,BRN,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,17130.31,16497.46
+Bulgaria,BGR,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,17120.14,10479.54
+Burkina Faso,BFA,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1883.63,287.49
+Burundi,BDI,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1342.84,75.28
+Cabo Verde,CPV,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3672.55,1966.76
+Cambodia,KHM,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1394.39,163.38
+Cameroon,CMR,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1928.87,796.91
+Canada,CAN,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,16994.92,7864.86
+Cayman Islands,CYM,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,26881.48,3920.03
+Central African Republic,CAF,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1724.01,165.15
+Chad,TCD,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1842.36,56.19
+Chile,CHL,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,9396.6,3511.33
+China,CHN,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,23896.24,5842.11
+"China, Hong Kong SAR",HKG,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,44873.82,31613.11
+"China, Macao SAR",MAC,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,32944.93,40942.32
+Colombia,COL,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4674.36,1804.3
+Comoros,COM,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3147.29,445.62
+Congo,COG,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,775.81,21.56
+Costa Rica,CRI,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,10997.08,3555.73
+Côte d'Ivoire,CIV,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3797.5,668.95
+Croatia,HRV,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,18178.86,15597.55
+Cuba,CUB,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,10865.29,5112.95
+Curaçao,CUW,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,8802.02,3305.83
+Cyprus,CYP,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,28023.5,29925.83
+Czechia,CZE,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,46565.61,74912.69
+Democratic People's Republic of Korea,PRK,SEA,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1981.32,490.35
+Democratic Republic of the Congo,COD,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1628.36,158.63
+Denmark,DNK,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,50863.98,66397.27
+Djibouti,DJI,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,8063.81,932.47
+Dominica,DMA,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3526.78,175.96
+Dominican Republic,DOM,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,7932.6,1795.16
+Ecuador,ECU,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,2445.33,229.81
+Egypt,EGY,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3253.07,2509.81
+El Salvador,SLV,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,7834.05,308.6
+Equatorial Guinea,GNQ,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,5637.18,5161.85
+Eritrea,ERI,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,8279.64,9292.07
+Estonia,EST,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,13951.42,10713.58
+Eswatini,SWZ,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1211.17,373.44
+Ethiopia,ETH,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,8006.98,466.72
+Fiji,FJI,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,7182.44,3360.07
+Finland,FIN,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,20016.55,27122.08
+France,FRA,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,64029.62,96276.63
+French Polynesia,PYF,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,5963.03,3117.79
+Gabon,GAB,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1548.51,675.81
+Gambia,GMB,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4148.09,539.61
+Georgia,GEO,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,6833.32,2482.16
+Germany,DEU,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,38330.73,45233.15
+Ghana,GHA,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,736.44,131.5
+Greece,GRC,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,19181.52,16998.14
+Greenland,GRL,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,42560.49,52750.06
+Grenada,GRD,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,5731.42,1719.91
+Guam,GUM,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,33207.22,17763.34
+Guatemala,GTM,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3794.7,1228.1
+Guinea,GIN,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1246.08,204.42
+Guinea-Bissau,GNB,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1662.45,315.06
+Guyana,GUY,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4593.86,3492.53
+Haiti,HTI,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1538.49,96.86
+Honduras,HND,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4655.37,1340.09
+Hungary,HUN,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,57617.54,71718.32
+Iceland,ISL,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,59222.43,80478.75
+India,IND,SEA,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1255.17,593.28
+Indonesia,IDN,SEA,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,2476.38,165.16
+Iran (Islamic Republic of),IRN,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,10810.78,2013.27
+Iraq,IRQ,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1320.86,122.88
+Ireland,IRL,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,55410.83,67317.38
+Israel,ISR,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,10912.52,1209.33
+Italy,ITA,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,29715.74,32496.56
+Jamaica,JAM,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4428.46,1073.54
+Japan,JPN,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,14348.17,11264.75
+Jordan,JOR,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,5608.25,3391.42
+Kazakhstan,KAZ,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,13183.21,8032.48
+Kenya,KEN,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4746.57,1157.98
+Kiribati,KIR,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3795.1,911.33
+Kuwait,KWT,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,19121.65,20369.58
+Kyrgyzstan,KGZ,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,6722.9,977.26
+Lao People's Democratic Republic,LAO,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,5155.94,2672.43
+Latvia,LVA,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,18594.27,16175.89
+Lebanon,LBN,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,6035.63,1910.95
+Lesotho,LSO,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,2634.09,142.5
+Liberia,LBR,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,2852.36,190.8
+Libya,LBY,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,8306.56,1437.63
+Lithuania,LTU,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,22082.2,21133.55
+Luxembourg,LUX,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,110605.62,175369.89
+Madagascar,MDG,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1075.3,260.09
+Malawi,MWI,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,6105.42,1210.51
+Malaysia,MYS,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,7003.02,2289.72
+Maldives,MDV,SEA,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1847.79,694.29
+Mali,MLI,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,2709.99,146.73
+Malta,MLT,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,24252.97,21968.07
+Marshall Islands,MHL,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,6233.27,2202.44
+Mauritania,MRT,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3276.28,422.46
+Mauritius,MUS,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,8958.17,10457.38
+Mexico,MEX,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,9010.3,3637.14
+Micronesia (Federated States of),FSM,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3461.62,1189.64
+Monaco,MCO,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,205724.15,356463.53
+Mongolia,MNG,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4946.14,1750.92
+Montenegro,MNE,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,11609.17,11159.57
+Morocco,MAR,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3122.59,584.9
+Mozambique,MOZ,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3059.62,240.92
+Myanmar,MMR,SEA,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1214.66,66.44
+Namibia,NAM,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4047.16,737.27
+Nauru,NRU,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,8699.61,5078.76
+Nepal,NPL,SEA,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1318.64,67.22
+New Caledonia,NCL,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,17373.27,16849.31
+New Zealand,NZL,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,23995.78,26767.99
+Nicaragua,NIC,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,7029.17,1065.4
+Niger,NER,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3037.13,243.82
+Nigeria,NGA,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1693.99,73.5
+North Macedonia,MKD,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,9942.23,4830.04
+Northern Mariana Islands,MNP,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,7734.72,421.62
+Norway,NOR,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,65514.15,91273.69
+Oman,OMN,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,17276.4,17253.87
+Pakistan,PAK,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,641.39,29.58
+Palau,PLW,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,13191.58,15609.93
+Panama,PAN,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,24161.16,10822.69
+Papua New Guinea,PNG,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4017.82,162.01
+Paraguay,PRY,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4829.58,1532.63
+Peru,PER,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,14464.58,2921.72
+Philippines,PHL,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,794.65,79.83
+Poland,POL,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,18303.35,15770.57
+Portugal,PRT,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,15638.67,18169.93
+Puerto Rico,PRI,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,15132.43,22740.22
+Qatar,QAT,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,20437.92,20545.79
+Republic of Korea,KOR,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,17199.83,16598.04
+Republic of Moldova,MDA,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,5864.04,2884.3
+Romania,ROU,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,20143.8,12699.67
+Russian Federation,RUS,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,31106.11,20407.59
+Rwanda,RWA,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,13547.27,2981.99
+Saint Kitts and Nevis,KNA,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,23248.45,24704.78
+Saint Lucia,LCA,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4142.96,229.94
+Saint Vincent and the Grenadines,VCT,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3637.44,185.4
+Samoa,WSM,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4397.68,105.07
+San Marino,SMR,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,40501.65,49426.92
+Sao Tome and Principe,STP,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3799.96,481.9
+Saudi Arabia,SAU,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,26371.54,28735.05
+Senegal,SEN,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,8468.2,1148.64
+Serbia,SRB,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,14365.09,8423.14
+Seychelles,SYC,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,5271.25,4536.39
+Sierra Leone,SLE,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,2702.52,165.07
+Singapore,SGP,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,41253.38,54678.09
+Sint Maarten (Dutch part),SXM,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,13038.27,5610.91
+Slovakia,SVK,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,18020.93,20329.09
+Slovenia,SVN,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,23748.4,11979.27
+Solomon Islands,SLB,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4541.8,509.8
+Somalia,SOM,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,7123.44,111.48
+South Africa,ZAF,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1557.48,133.61
+South Sudan,SSD,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4473.27,312.36
+Spain,ESP,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,25941.38,26800.87
+Sri Lanka,LKA,SEA,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,5882.26,5116.86
+Sudan,SDN,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,5002.94,204.43
+Suriname,SUR,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,2843.24,1144.51
+Sweden,SWE,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,31174.27,31228.69
+Switzerland,CHE,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,19452.82,21681.88
+Syrian Arab Republic,SYR,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,5607.42,121.22
+Tajikistan,TJK,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,2700.92,635.4
+Thailand,THA,SEA,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3420.24,1444.39
+Timor-Leste,TLS,SEA,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4251.35,1006.29
+Togo,TGO,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,5232.83,1052.4
+Tonga,TON,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4482.5,112.6
+Trinidad and Tobago,TTO,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,5306.43,343.17
+Tunisia,TUN,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,7460.44,2679.8
+Turkmenistan,TKM,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,11133.03,3898.57
+Turks and Caicos Islands,TCA,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,7393.67,580.28
+Tuvalu,TUV,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,4253.44,577.18
+Uganda,UGA,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3601.86,580.76
+Ukraine,UKR,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3618.97,997.36
+United Arab Emirates,ARE,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,71784,98674.54
+United Kingdom of Great Britain and Northern Ireland,GBR,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,37064.98,43940.28
+United Republic of Tanzania,TZA,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,2631.58,282.47
+United States of America,USA,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,24334.14,12261.36
+Uruguay,URY,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,18891.28,9305.64
+Uzbekistan,UZB,EUR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,6567.57,1202.3
+Vanuatu,VUT,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,12304.57,6924.27
+Venezuela (Bolivarian Republic of),VEN,AMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,5351.48,1961.03
+Viet Nam,VNM,WPR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,2020.21,614.4
+Yemen,YEM,EMR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3212.73,4.68
+Zambia,ZMB,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,3578.19,310.33
+Zimbabwe,ZWE,AFR,Treatment for multi-drug resistant TB (O15 years),c_mdrtb_txO15,1219.67,84.37
+Afghanistan,AFG,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2227.07,52.53
+Albania,ALB,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,7103.78,2232.24
+Algeria,DZA,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,10791.15,1257.69
+American Samoa,ASM,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,9149.41,7680.81
+Andorra,AND,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,17822.45,8043.81
+Angola,AGO,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4177.58,810.66
+Antigua and Barbuda,ATG,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6883.82,378.87
+Argentina,ARG,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,3241.56,730.73
+Armenia,ARM,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,12577.42,3295.92
+Aruba,ABW,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,13202.75,5014.9
+Australia,AUS,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,30085.56,38906.99
+Austria,AUT,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,42286.56,51482.9
+Azerbaijan,AZE,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2277.29,529.93
+Bahamas,BHS,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,9861.51,736.38
+Bahrain,BHR,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,19529.49,20677.68
+Bangladesh,BGD,SEA,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,5678.35,672.6
+Barbados,BRB,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,7279.19,422.02
+Belarus,BLR,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,10648.76,6150.96
+Belgium,BEL,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,35166.89,38095.28
+Belize,BLZ,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6994.23,2416.01
+Benin,BEN,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,7197.34,722.29
+Bermuda,BMU,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,38931.87,6293.81
+Bhutan,BTN,SEA,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,3881.64,1832.52
+Bolivia (Plurinational State of),BOL,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,17040.65,1396.33
+Bosnia and Herzegovina,BIH,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,10401.37,4822.51
+Botswana,BWA,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,11631.3,1987.19
+Brazil,BRA,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,11280.37,3279.81
+British Virgin Islands,VGB,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4839.9,182.28
+Brunei Darussalam,BRN,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,15528.71,16497.46
+Bulgaria,BGR,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,12937.02,10479.54
+Burkina Faso,BFA,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,11847.63,287.49
+Burundi,BDI,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,1010.84,75.28
+Cabo Verde,CPV,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6376.29,1966.76
+Cambodia,KHM,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2369.39,163.38
+Cameroon,CMR,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2183.87,796.91
+Canada,CAN,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,18233.86,7864.86
+Cayman Islands,CYM,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,28120.41,3920.03
+Central African Republic,CAF,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2181.01,165.15
+Chad,TCD,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4726.91,56.19
+Chile,CHL,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,10635.53,3511.33
+China,CHN,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,7512.24,5842.11
+"China, Hong Kong SAR",HKG,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,43272.22,31613.11
+"China, Macao SAR",MAC,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,31343.33,40942.32
+Colombia,COL,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4139.36,1804.3
+Comoros,COM,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,9578.41,445.62
+Congo,COG,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,1547.81,21.56
+Costa Rica,CRI,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,11542.97,3555.73
+Côte d'Ivoire,CIV,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,10228.62,668.95
+Croatia,HRV,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,18688.09,15597.55
+Cuba,CUB,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,12104.22,5112.95
+Curaçao,CUW,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,10040.96,3305.83
+Cyprus,CYP,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,28532.74,29925.83
+Czechia,CZE,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,47074.84,74912.69
+Democratic People's Republic of Korea,PRK,SEA,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2627.1,490.35
+Democratic Republic of the Congo,COD,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,1849.36,158.63
+Denmark,DNK,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,51373.22,66397.27
+Djibouti,DJI,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6610.99,932.47
+Dominica,DMA,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4765.71,175.96
+Dominican Republic,DOM,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6226.6,1795.16
+Ecuador,ECU,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,1964.33,229.81
+Egypt,EGY,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,3722.07,2509.81
+El Salvador,SLV,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4158.93,308.6
+Equatorial Guinea,GNQ,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6237.18,5161.85
+Eritrea,ERI,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,9575.11,9292.07
+Estonia,EST,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,14460.66,10713.58
+Eswatini,SWZ,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2027.17,373.44
+Ethiopia,ETH,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,10084.98,466.72
+Fiji,FJI,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,5580.84,3360.07
+Finland,FIN,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,20525.79,27122.08
+France,FRA,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,64538.85,96276.63
+French Polynesia,PYF,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4361.43,3117.79
+Gabon,GAB,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,1548.51,675.81
+Gambia,GMB,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,10579.2,539.61
+Georgia,GEO,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,7342.56,2482.16
+Germany,DEU,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,38839.97,45233.15
+Ghana,GHA,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,687.44,131.5
+Greece,GRC,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,19690.76,16998.14
+Greenland,GRL,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,43069.72,52750.06
+Grenada,GRD,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6970.36,1719.91
+Guam,GUM,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,31605.62,17763.34
+Guatemala,GTM,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,14891.7,1228.1
+Guinea,GIN,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,5986.08,204.42
+Guinea-Bissau,GNB,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,9452.54,315.06
+Guyana,GUY,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,5970.3,3492.53
+Haiti,HTI,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,3457.93,96.86
+Honduras,HND,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6204.19,1340.09
+Hungary,HUN,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,58126.78,71718.32
+Iceland,ISL,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,59731.66,80478.75
+India,IND,SEA,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,1979.17,593.28
+Indonesia,IDN,SEA,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,1996.38,165.16
+Iran (Islamic Republic of),IRN,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,9357.96,2013.27
+Iraq,IRQ,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,1320.86,122.88
+Ireland,IRL,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,55920.07,67317.38
+Israel,ISR,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,11421.75,1209.33
+Italy,ITA,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,30224.98,32496.56
+Jamaica,JAM,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,5667.4,1073.54
+Japan,JPN,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,12746.57,11264.75
+Jordan,JOR,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,5991.88,3391.42
+Kazakhstan,KAZ,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,16114.21,8032.48
+Kenya,KEN,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4746.57,1157.98
+Kiribati,KIR,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,3990.98,911.33
+Kuwait,KWT,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,17668.83,20369.58
+Kyrgyzstan,KGZ,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,7232.14,977.26
+Lao People's Democratic Republic,LAO,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,5405.94,2672.43
+Latvia,LVA,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,19103.51,16175.89
+Lebanon,LBN,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,5877.63,1910.95
+Lesotho,LSO,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,9065.21,142.5
+Liberia,LBR,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,9283.48,190.8
+Libya,LBY,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6853.74,1437.63
+Lithuania,LTU,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,22591.44,21133.55
+Luxembourg,LUX,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,111114.86,175369.89
+Madagascar,MDG,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,14250.3,260.09
+Malawi,MWI,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6105.42,1210.51
+Malaysia,MYS,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,15003.02,2289.72
+Maldives,MDV,SEA,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2493.57,694.29
+Mali,MLI,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,3330.77,146.73
+Malta,MLT,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,24762.2,21968.07
+Marshall Islands,MHL,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4631.67,2202.44
+Mauritania,MRT,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,9707.4,422.46
+Mauritius,MUS,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,15389.29,10457.38
+Mexico,MEX,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,11020.3,3637.14
+Micronesia (Federated States of),FSM,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4654.41,1189.64
+Monaco,MCO,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,206233.39,356463.53
+Mongolia,MNG,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,5446.14,1750.92
+Montenegro,MNE,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,12118.41,11159.57
+Morocco,MAR,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,5622.59,584.9
+Mozambique,MOZ,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6779.62,240.92
+Myanmar,MMR,SEA,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2187.66,66.44
+Namibia,NAM,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,14353.16,737.27
+Nauru,NRU,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,7098.01,5078.76
+Nepal,NPL,SEA,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2535.64,67.22
+New Caledonia,NCL,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,15771.67,16849.31
+New Zealand,NZL,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,22394.18,26767.99
+Nicaragua,NIC,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,9169.17,1065.4
+Niger,NER,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,9468.25,243.82
+Nigeria,NGA,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2675.99,73.5
+North Macedonia,MKD,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,10451.46,4830.04
+Northern Mariana Islands,MNP,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6133.12,421.62
+Norway,NOR,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,66023.39,91273.69
+Oman,OMN,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,15823.58,17253.87
+Pakistan,PAK,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,613.39,29.58
+Palau,PLW,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,11589.98,15609.93
+Panama,PAN,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,25400.09,10822.69
+Papua New Guinea,PNG,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2416.22,162.01
+Paraguay,PRY,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6690.02,1532.63
+Peru,PER,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,20827.58,2921.72
+Philippines,PHL,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,1008.65,79.83
+Poland,POL,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,18812.58,15770.57
+Portugal,PRT,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,16147.91,18169.93
+Puerto Rico,PRI,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,16371.37,22740.22
+Qatar,QAT,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,18985.1,20545.79
+Republic of Korea,KOR,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,15598.23,16598.04
+Republic of Moldova,MDA,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6344.04,2884.3
+Romania,ROU,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,20653.04,12699.67
+Russian Federation,RUS,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,33437.19,20407.59
+Rwanda,RWA,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,14154.27,2981.99
+Saint Kitts and Nevis,KNA,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,24487.39,24704.78
+Saint Lucia,LCA,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,5381.9,229.94
+Saint Vincent and the Grenadines,VCT,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4876.37,185.4
+Samoa,WSM,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2796.08,105.07
+San Marino,SMR,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,41010.89,49426.92
+Sao Tome and Principe,STP,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,5094.64,481.9
+Saudi Arabia,SAU,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,24918.73,28735.05
+Senegal,SEN,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,8468.2,1148.64
+Serbia,SRB,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,14795.09,8423.14
+Seychelles,SYC,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,11702.37,4536.39
+Sierra Leone,SLE,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,9133.64,165.07
+Singapore,SGP,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,39651.78,54678.09
+Sint Maarten (Dutch part),SXM,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,14277.2,5610.91
+Slovakia,SVK,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,18530.17,20329.09
+Slovenia,SVN,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,24257.64,11979.27
+Solomon Islands,SLB,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2940.2,509.8
+Somalia,SOM,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,5670.62,111.48
+South Africa,ZAF,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,3348.48,133.61
+South Sudan,SSD,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4347.11,312.36
+Spain,ESP,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,26450.62,26800.87
+Sri Lanka,LKA,SEA,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,8137.31,5116.86
+Sudan,SDN,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2499.72,204.43
+Suriname,SUR,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4082.18,1144.51
+Sweden,SWE,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,31683.5,31228.69
+Switzerland,CHE,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,19962.06,21681.88
+Syrian Arab Republic,SYR,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,5607.42,121.22
+Tajikistan,TJK,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2700.92,635.4
+Thailand,THA,SEA,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4464.24,1444.39
+Timor-Leste,TLS,SEA,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6304.78,1006.29
+Togo,TGO,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6069.83,1052.4
+Tonga,TON,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2880.9,112.6
+Trinidad and Tobago,TTO,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6545.36,343.17
+Tunisia,TUN,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,6398.49,2679.8
+Turkmenistan,TKM,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,11642.27,3898.57
+Turks and Caicos Islands,TCA,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,8632.61,580.28
+Tuvalu,TUV,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2651.84,577.18
+Uganda,UGA,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4364.86,580.76
+Ukraine,UKR,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4857.97,997.36
+United Arab Emirates,ARE,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,70331.18,98674.54
+United Kingdom of Great Britain and Northern Ireland,GBR,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,37574.22,43940.28
+United Republic of Tanzania,TZA,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,3795.83,282.47
+United States of America,USA,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,25573.07,12261.36
+Uruguay,URY,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,20130.22,9305.64
+Uzbekistan,UZB,EUR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,7076.81,1202.3
+Vanuatu,VUT,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,7932.81,6924.27
+Venezuela (Bolivarian Republic of),VEN,AMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,5851.48,1961.03
+Viet Nam,VNM,WPR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2765.21,614.4
+Yemen,YEM,EMR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,2711.08,4.68
+Zambia,ZMB,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,4310.19,310.33
+Zimbabwe,ZWE,AFR,Treatment for extensively drug-resistant TB (O15 years),c_xdrtb_txO15,1220.67,84.37
