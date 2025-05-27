@@ -1,6 +1,10 @@
 
 library(flextable)
 library(officer)
+library(here)
+library(dplyr)
+library(data.table)
+library(tidyr)
 
 # some parameters
 bcg_eff_tb <- 0.50
@@ -11,9 +15,16 @@ cfr_utreat <- 0.436 #43·6 (36·8–50·6)
 ucost_proc_bcg <- 0.1205 # for serum institute india- 2023
 disc_rate <- 0.03
 
-data <- readRDS(file="data/gdp_inc_le.rds")
 
-data_all <- data
+
+gdp_inc_le <- readRDS(file="data/gdp_inc_le.rds")
+
+high_tb_iso3 <- c(
+  "AGO", "BGD", "BRA", "CAF", "CHN", "COG", "PRK", "COD", "ETH", "GAB",
+  "IND", "IDN", "KEN", "LSO", "LBR", "MNG", "MOZ", "MMR", "NAM", "NGA",
+  "PAK", "PNG", "PHL", "SLE", "SOM", "ZAF", "THA", "UGA", "TZA", "ZMB")
+
+data_all <- gdp_inc_le
 thresholds <- c(0.3, 0.5, 1.0)  
 
 data_all <- gdp_inc_le%>%
