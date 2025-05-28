@@ -8,7 +8,7 @@ library(tidyr)
 
 # some parameters
 bcg_eff_tb <- 0.50
-cdr <- 0.86
+#cdr <- 0.86
 cfr_treat <- 0.019 #1·9 (0·5–7·1)
 cfr_utreat <- 0.436 #43·6 (36·8–50·6)
 #ucost_treat <- 6667 # https://pubmed.ncbi.nlm.nih.gov/25939501/
