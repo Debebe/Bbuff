@@ -28,6 +28,10 @@ data_all <- gdp_inc_le
 thresholds <- c(0.3, 0.5, 1.0)  
 
 data_all <- gdp_inc_le%>%
+  I0=I/f(1-v)+(1-f)
+   # baseline TB risk/inc without BCG vax
+  mutate(inc0=incbest/(coverage*(1-bcg_eff_tb) + (1-coverage)))%>%
+    
   mutate(LE_disc= (1-exp(-disc_rate*LE))/disc_rate)%>%
   filter(Iso3 %in% high_tb_iso3) %>%
   crossing(Threshold = thresholds) %>%  # create all combinations
