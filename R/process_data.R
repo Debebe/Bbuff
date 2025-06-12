@@ -36,12 +36,13 @@ who_incidence <- inner_join(unpop,inc, by=c("country","Iso2","Iso3","Year","Age"
   mutate(incbest=best/Pop,
          inclo=lo/Pop,
          inchi=hi/Pop, 
-         notif=notif/Pop)
+         notif=notif/Pop)%>%
+  mutate(cdr=notif/incbest)
 
 BCG <- read_excel("data/Bacillus Calmette–Guérin (BCG) vaccination coverage 2025-04-03 10-35 UTC.xlsx")%>%
-  filter(YEAR%in% c(2023))%>%
-  select(Iso3= CODE,Year=YEAR, cat=COVERAGE_CATEGORY,coverage= COVERAGE)%>%filter(!is.na(coverage))%>%
-  mutate(coverage= round(coverage, 1))%>%
+  filter(YEAR%in% c(2023)) %>%
+  select(Iso3= CODE,Year=YEAR, cat=COVERAGE_CATEGORY,bcg_coverage= COVERAGE)%>%filter(!is.na(bcg_coverage))%>%
+  mutate(bcg_coverage= round(bcg_coverage/100, 3))%>%
   as.data.table()
 
 inc_pop_bcg <- inner_join(who_incidence,BCG, by= c("Iso3","Year"))
@@ -90,10 +91,14 @@ uc_vax_delv[grepl("Republic", Country), ]
 
 #gdp_inc_le[grepl("Kor", country), ]
 
+tbtx_unit_costs <- read_csv(here("data/tbtx_unit_costs.csv"))%>%
+  filter(unit_cost=="c_dstb_txO15")%>%
+  select(Iso3= iso3, unit_cost, ucost_tb_trt.m=cost.m, ucost_tb_trt.sd=cost.sd)
 
 gdp_inc_le <- inner_join(inc_pop_bcg, GDP, by= "Iso3")%>%
   inner_join(LE, by= c("Iso3","country", "Age", "Year")) %>%
   inner_join(uc_vax_delv, by="Iso3") %>% 
+  inner_join(tbtx_unit_costs,  by="Iso3")%>%
   rename(cov_cat= "cat")%>%
   select(-Country)%>%
   as.data.table()
@@ -105,10 +110,7 @@ saveRDS(LE, file="data/LE.rds")
 saveRDS(gdp_inc_le, file="data/gdp_inc_le.rds")
 
 
-high_tb_iso3 <- c(
-  "AGO", "BGD", "BRA", "CAF", "CHN", "COG", "PRK", "COD", "ETH", "GAB",
-  "IND", "IDN", "KEN", "LSO", "LBR", "MNG", "MOZ", "MMR", "NAM", "NGA",
-  "PAK", "PNG", "PHL", "SLE", "SOM", "ZAF", "THA", "UGA", "TZA", "ZMB")
+
 
 
 
