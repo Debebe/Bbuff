@@ -7,6 +7,10 @@ library(readr)
 library(tidyr)
 library(readxl)
 
+## This script reads data from different sources -
+  # - GDP, LE, TB-burden, UN-population, BCG coverage,
+
+
 inc <- read_csv(here("data/TB_burden_age_sex_2025-05-15.csv")) %>% 
   filter(sex %in% c("m", "f"), age_group %in% c("0-4","0-14")) %>%
   select(country, iso2, iso3,year,age_group, sex, best, lo, hi)%>%
@@ -49,7 +53,7 @@ inc_pop_bcg <- inner_join(who_incidence,BCG, by= c("Iso3","Year"))
 
 
 GDP <- read_csv(here("data/03baa64d-3ff7-4719-a48a-5c7b5d1690f9_Data.csv"))%>%
-  select(Iso3= "Country Code", GDP= "2023 [YR2023]")%>%
+  select(Iso3= "Country Code", GDP= "2023 [YR2023]") %>%
   mutate(GDP= as.numeric(GDP))
 
 
@@ -92,8 +96,11 @@ uc_vax_delv[grepl("Republic", Country), ]
 #gdp_inc_le[grepl("Kor", country), ]
 
 tbtx_unit_costs <- read_csv(here("data/tbtx_unit_costs.csv"))%>%
-  filter(unit_cost=="c_dstb_txO15")%>%
+  #filter(unit_cost=="c_dstb_txO15")%>%
   select(Iso3= iso3, unit_cost, ucost_tb_trt.m=cost.m, ucost_tb_trt.sd=cost.sd)
+
+tbtx_unit_costs <- readRDS(here("data/cost/outdata/tbtx_unit_costs.Rds")) %>%
+  select(-country)
 
 gdp_inc_le <- inner_join(inc_pop_bcg, GDP, by= "Iso3")%>%
   inner_join(LE, by= c("Iso3","country", "Age", "Year")) %>%
@@ -103,8 +110,29 @@ gdp_inc_le <- inner_join(inc_pop_bcg, GDP, by= "Iso3")%>%
   select(-Country)%>%
   as.data.table()
 
+#=====Prop notif that is TBM=========
 
+# get data from Pete's TBMK package
+vec <- scan("~/Documents/TBMK-main/modelling/data/isoz.txt", what = "", sep = "", quiet = TRUE)
+load("~/Documents/TBMK-main/modelling/data/POP.Rdata")
 
+U5POP <-POP[acat=="1-4"|acat=="<1",] 
+
+TBMUnd1 <- data.frame(M=0.0446, L=0.0243,U=0.0803)
+TMB1to5 <- data.frame(M=0.0312, L=0.0173,U=0.0554)
+
+U5POP[acat=="<1",TBM_M:=pop*TBMUnd1$M]
+U5POP[acat=="<1",TBM_L:=pop*TBMUnd1$L]
+U5POP[acat=="<1",TBM_U:=pop*TBMUnd1$U]
+
+U5POP[acat=="1-4",TBM_M:=pop*TMB1to5$M]
+U5POP[acat=="1-4",TBM_L:=pop*TMB1to5$L]
+U5POP[acat=="1-4",TBM_U:=pop*TMB1to5$U]
+
+U5POP_sum <- U5POP[, lapply(.SD, sum), by = iso3, .SDcols = is.numeric]
+U5POP_sum[, `:=`(M = TBM_M / pop,L = TBM_L / pop, U = TBM_U / pop)]
+
+head(U5POP_sum)
 
 saveRDS(LE, file="data/LE.rds")
 saveRDS(gdp_inc_le, file="data/gdp_inc_le.rds")
