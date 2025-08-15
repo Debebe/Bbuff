@@ -26,8 +26,9 @@ unpop <- read_csv(here("data/unpopulation_dataportal_20250515175045.csv"))%>%
 
 notif <- read_csv("data/TB_notifications_2025-05-21.csv") %>%
   filter(year%in%c(2023)) %>%
+  #filter(year%in%c(2022:2023)) %>%
   select(country, iso3, year,
-         newrel_f04,newrel_f014, newrel_m04,newrel_m014)%>%filter(year%in%c(2023:2024))%>%
+         newrel_f04,newrel_f014, newrel_m04,newrel_m014) %>% #filter(year%in%c(2023:2024))%>%
   mutate(notif04=  newrel_f04 + newrel_m04,
          notif014= newrel_f014 + newrel_m014)%>%
   select(Iso3= iso3,notif04,notif014) %>%
@@ -52,8 +53,12 @@ BCG <- read_excel("data/Bacillus Calmette–Guérin (BCG) vaccination coverage 
 inc_pop_bcg <- inner_join(who_incidence,BCG, by= c("Iso3","Year"))
 
 
-GDP <- read_csv(here("data/03baa64d-3ff7-4719-a48a-5c7b5d1690f9_Data.csv"))%>%
+GDP <- read_csv(here("data/03baa64d-3ff7-4719-a48a-5c7b5d1690f9_Data.csv")) %>%
   select(Iso3= "Country Code", GDP= "2023 [YR2023]") %>%
+  mutate(GDP= as.numeric(GDP))
+
+GDP <- readRDS(here("data/cost/outdata/GDP1.Rds")) %>%
+  select(Iso3= iso3, GDP= gdp) %>%
   mutate(GDP= as.numeric(GDP))
 
 
