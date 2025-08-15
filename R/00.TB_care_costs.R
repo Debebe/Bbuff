@@ -326,7 +326,17 @@ GDP <- gdp |>
   select(iso3 = `Country Code`, gdp) |> 
   distinct()
 
+target_year <-2023
+
+GDP <- gdp |> 
+  #filter(year == max(as.numeric(as.character(year)), na.rm = TRUE)) |>
+  filter(year == target_year) |>
+  select(iso3 = `Country Code`, gdp) |> 
+  distinct()
+
 save(GDP, file = here("data/cost/outdata/GDP1.RData"))
+saveRDS(GDP, file = here("data/cost/outdata/GDP.Rds"))
+
 names(tb_budget)
 # budget data currently not being used in this analysis
 tb_budget <- tb_budget[,c("country","iso2","iso3","iso_numeric","g_whoregion","year", 
