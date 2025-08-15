@@ -52,10 +52,10 @@ BCG <- read_excel("data/Bacillus Calmette–Guérin (BCG) vaccination coverage 
 
 inc_pop_bcg <- inner_join(who_incidence,BCG, by= c("Iso3","Year"))
 
-
-GDP <- read_csv(here("data/03baa64d-3ff7-4719-a48a-5c7b5d1690f9_Data.csv")) %>%
-  select(Iso3= "Country Code", GDP= "2023 [YR2023]") %>%
-  mutate(GDP= as.numeric(GDP))
+# 
+# GDP <- read_csv(here("data/03baa64d-3ff7-4719-a48a-5c7b5d1690f9_Data.csv")) %>%
+#   select(Iso3= "Country Code", GDP= "2023 [YR2023]") %>%
+#   mutate(GDP= as.numeric(GDP))
 
 GDP <- readRDS(here("data/cost/outdata/GDP1.Rds")) %>%
   select(Iso3= iso3, GDP= gdp) %>%
@@ -75,6 +75,12 @@ LE <- read_csv(here("data/unpopulation_dataportal_20250515195649.csv"))%>%
   rename(LE=L)%>%
   as.data.table()
 
+tbtx_unit_costs <- read_csv(here("data/tbtx_unit_costs.csv"))%>%
+  #filter(unit_cost=="c_dstb_txO15")%>%
+  select(Iso3= iso3, unit_cost, ucost_tb_trt.m=cost.m, ucost_tb_trt.sd=cost.sd)
+
+tbtx_unit_costs <- readRDS(here("data/cost/outdata/tbtx_unit_costs.Rds")) %>%
+  select(-country)
 
 
 uc_vax_delv <- read_excel('/Users/debebeadewo/Library/CloudStorage/GoogleDrive-d.shaweno@sheffield.ac.uk/Shared drives/VAXHUB_WP2_HAR/papers/costing/StandardizedDeliveryUnitCosts4Dec2020-5.xlsx')
@@ -100,12 +106,7 @@ uc_vax_delv[grepl("Republic", Country), ]
 
 #gdp_inc_le[grepl("Kor", country), ]
 
-tbtx_unit_costs <- read_csv(here("data/tbtx_unit_costs.csv"))%>%
-  #filter(unit_cost=="c_dstb_txO15")%>%
-  select(Iso3= iso3, unit_cost, ucost_tb_trt.m=cost.m, ucost_tb_trt.sd=cost.sd)
 
-tbtx_unit_costs <- readRDS(here("data/cost/outdata/tbtx_unit_costs.Rds")) %>%
-  select(-country)
 
 gdp_inc_le <- inner_join(inc_pop_bcg, GDP, by= "Iso3")%>%
   inner_join(LE, by= c("Iso3","country", "Age", "Year")) %>%
