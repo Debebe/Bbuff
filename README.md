@@ -19,5 +19,5 @@ with inflated cost - `gdp_inc_le_cost.rds`
 
  ### Modelling
  
- The model is executed using `analysis.R`. It works with the final data - `gdp_inc_le.rds`
+ - The model is executed using `analysis.R`. It works with the final data - `gdp_inc_le_cost.rds`
  
