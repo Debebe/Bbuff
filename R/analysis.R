@@ -12,8 +12,11 @@ library(tidyr)
 ## source("~/Documents/GitHub/Bbuff/R/process_data.R")
 ## source("~/Documents/GitHub/Bbuff/R/inflation_adjustment.R")
 
+gdp_inc_le_costs <- readRDS(file="data/gdp_inc_le_costs.rds") %>%
+  filter(cov_cat=="WUENIC")
+
 # some parameters
-bcg_eff_tb <- 0.50
+bcg_eff_tb <- 0.50  
 bcg_eff_tbm <- 0.73 # 0.73 (0.67 - 0.79), 0.69(0.60- 0.76 in Asia see Trunz
 
 bcg_haz_tb <- 1- bcg_eff_tb
@@ -36,13 +39,17 @@ cfr_untreat_tbm <- 1    # 19·3% (95% CI 14·0–26·1)
 
 
 
-gdp_inc_le_costs <- readRDS(file="data/gdp_inc_le_costs.rds")
+
 
 high_tb_iso3 <- c(
   "AGO", "BGD", "BRA", "CAF", "CHN", "COG", "PRK", "COD", "ETH", "GAB",
   "IND", "IDN", "KEN", "LSO", "LBR", "MNG", "MOZ", "MMR", "NAM", "NGA",
   "PAK", "PNG", "PHL", "SLE", "SOM", "ZAF", "THA", "UGA", "TZA", "ZMB")
 
+FSUlist <- c(
+  "ARM", "AZE", "BLR", "EST", "GEO", "KAZ", "KGZ", "LVA", "LTU",
+  "MDA", "RUS", "TJK", "TKM", "UKR", "UZB"
+)
 #data_all <- gdp_inc_le
 thresholds <- c(0.3, 0.5, 1.0)  
 
@@ -146,6 +153,7 @@ wzout_tbm1 <- gdp_inc_le_costs%>%
   #LE taking into account increased mortality and decreased quality of life
   mutate(LE_disc= (1-exp(-disc_rate*LE))/disc_rate,
          LEtb= post_tb_hrqol*(1-exp(-disc_rate*LE/post_tb_mort_hz))/disc_rate) %>%
+  mutate(tb_avert=  (1-bcg_haz_tb)*inc0)%>%
   
   filter(iso3 %in% high_tb_iso3) %>%
   crossing(Threshold = thresholds) %>%  # create all combinations
@@ -184,54 +192,93 @@ data_wz_tbm <- gdp_inc_le_costs%>%
   # baseline inc of MTB in unvaccinated
   mutate(incm0 = inc0*prop_tbm*(1-bcg_coverage),
          incm_vac=inc0*prop_tbm*bcg_coverage*(1-bcg_eff_tb)*(1-bcg_eff_tbm)) %>% 
+  mutate(inc_tbm= inc0*prop_tbm)%>%
   mutate(tb_avert=  (1-bcg_haz_tb)*inc0,
          prop_tbm_avert=  (1-bcg_haz_mtb)*prop_tbm) %>% #proportion
+  
+
   #LE taking into account increased mortality and decreased quality of life
   mutate(LE_disc= (1-exp(-disc_rate*LE))/disc_rate,
          #Lmtb= tbm_hrqol*(1-exp(-disc_rate*LE/tbm_mort_hz))/disc_rate,
-         Ltb= post_tb_hrqol*(1-exp(-disc_rate*LE/post_tb_mort_hz))/disc_rate
-        ) %>%
+         Ltb= post_tb_hrqol*(1-exp(-disc_rate*LE/post_tb_mort_hz))/disc_rate) %>%
   # different severity levels 
   mutate(Lmtb_mil= prop_mild_seq*tbm_hrqol_mil_seq*(1-exp(-disc_rate*LE/tbm_mort_hz))/disc_rate,
          Lmtb_mod= prop_mod_seq*tbm_hrqol_mod_seq*(1-exp(-disc_rate*LE/tbm_mort_hz))/disc_rate,
          Lmtb_sev= prop_sev_seq*tbm_hrqol_sev_seq*(1-exp(-disc_rate*LE/tbm_mort_hz))/disc_rate) %>%
   mutate(Lmtb=Lmtb_mil+Lmtb_mod+Lmtb_sev)%>%
   
-  mutate(meanH= (1-inc0)*LE_disc + 
-                inc0*(1-prop_tbm)*(cdr*(1-cfr_treat) + (1-cdr)*(1-cfr_utreat))*Ltb +
-                incm0*(cdr*(1-cfr_treat_tbm) + (1-cdr)*(1-cfr_untreat_tbm)*Lmtb)) %>%
-  ##
+  mutate(meanH= (1-incbest)*LE_disc + 
+           incbest*(1-prop_tbm)*(cdr*(1-cfr_treat) + (1-cdr)*(1-cfr_utreat))*Ltb +
+           incbest*prop_tbm*(cdr*(1-cfr_treat_tbm) + (1-cdr)*(1-cfr_untreat_tbm))*Lmtb) %>%
+  
+  mutate(LE_notb = (1-incbest)*LE_disc,
+         LE_dstb = incbest*(1-prop_tbm)*(cdr*(1-cfr_treat) + (1-cdr)*(1-cfr_utreat))*Ltb,
+         LE_tbm  = incbest*prop_tbm*(cdr*(1-cfr_treat_tbm) + (1-cdr)*(1-cfr_untreat_tbm))*Lmtb,
+         
+         avert_treat_dstb =  tb_avert*(1-prop_tbm)*cdr,
+         avert_treat_tbm  =  tb_avert*prop_tbm*cdr,
+         
+         avert_mort_dstb =  tb_avert*(1-prop_tbm)*(cdr*cfr_treat + (1-cdr)*cfr_utreat),
+         avert_mort_tbm  =  tb_avert*prop_tbm*(cdr*cfr_treat_tbm + (1-cdr)*(cfr_untreat_tbm)),
+         
+         # dalys_dstb= incbest*(1-prop_tbm)*(cdr*(1-cfr_treat) + (1 - cdr)*(1 - cfr_utreat))*Ltb,
+         # dalys_tbm=  incbest*prop_tbm*(cdr*(1-cfr_treat_tbm) + (1-cdr)*(1-cfr_untreat_tbm))*Lmtb,
+         
+         avert_cost_dstb_rx= tb_avert*(1-prop_tbm)*cdr*ucost_dstb.m,
+         avert_cost_tbm_rx= tb_avert*prop_tbm*cdr* ucost_tbm.m,
+         
+         cost_vax= bcg_coverage*(ucost_proc_bcg + uc_tot_vax_delv_ave)) %>%
+  
+         mutate(#cost_tb_avert= (cost_vax/tb_avert)+cost_dstb_rx+cost_tbm_rx,
+                cost_tb_avert= cost_vax+avert_cost_dstb_rx+avert_cost_tbm_rx)  %>%
+                                 
   crossing(Threshold = thresholds) %>%  # create all combinations
   mutate(Threshold_label = paste0(Threshold*100,"%"),
          lambda = GDP * Threshold)%>%
   
-  mutate(first= tb_avert*(lambda*LE_disc - (1-prop_tbm)*(cdr*(1-cfr_treat)*(1-cdr)*(1-cfr_utreat))*lambda*Ltb + (1-prop_tbm)*cdr*ucost_dstb.m),
-         second= tb_avert *(prop_tbm*cdr*(1-cfr_treat_tbm) + (1-cdr)*(1-cfr_untreat_tbm)*lambda*Lmtb -prop_tbm*cdr* ucost_tbm.m),
-         third= inc0*(prop_tbm_avert*(cdr*(1-cfr_treat)*(1-cdr)*(1-cfr_utreat))*lambda*Ltb - prop_tbm_avert*cdr*ucost_dstb.m),
-         fourth= inc0*(prop_tbm_avert*(cdr*(1-cfr_treat_tbm)+ (1-cdr)*(1-cfr_untreat_tbm))*lambda*Lmtb-prop_tbm_avert*cdr*ucost_tbm.m),
-         h=(ucost_proc_bcg + uc_tot_vax_delv_med),
-         g=first-second +third-fourth,
+  mutate(benf_dir_ave_dstb= tb_avert*(lambda*LE_disc - (1-prop_tbm)*(cdr*(1-cfr_treat)*(1-cdr)*(1-cfr_utreat))*lambda*Ltb + (1-prop_tbm)*cdr*ucost_dstb.m),
+         benf_indir_ave_tbm= tb_avert *(prop_tbm*cdr*(1-cfr_treat_tbm) + (1-cdr)*(1-cfr_untreat_tbm)*lambda*Lmtb -prop_tbm*cdr* ucost_tbm.m),
+         benf_dir_ave_tbm= inc0*(prop_tbm_avert*(cdr*(1-cfr_treat)*(1-cdr)*(1-cfr_utreat))*lambda*Ltb - prop_tbm_avert*cdr*ucost_dstb.m),
+         benf_four= inc0*(prop_tbm_avert*(cdr*(1-cfr_treat_tbm)+ (1-cdr)*(1-cfr_untreat_tbm))*lambda*Lmtb-prop_tbm_avert*cdr*ucost_tbm.m),
+         fifth=(ucost_proc_bcg + uc_tot_vax_delv_ave),
+         #h=(ucost_proc_bcg + uc_tot_vax_delv_med),
+         h=(uc_labor_ave + uc_sc_ave+uc_capital_ave+ucost_proc_bcg),
+         g=benf_dir_ave_dstb-benf_indir_ave_tbm +benf_dir_ave_tbm-benf_four-fifth,
+         
          NB=g-h,
          # DALYs averted from averting TB cases
          averted_dalys_tb=  tb_avert*( LE_disc - (1 - prop_tbm)*(cdr*(1 - cfr_treat) + (1 - cdr)*(1 - cfr_utreat) ) * Ltb),
          # DALYs averted from TB meningitis cases
          averted_dalys_tbm= inc0 * prop_tbm_avert * (cdr * (1 - cfr_treat_tbm) + (1 - cdr) * (1 - cfr_untreat_tbm) * Lmtb),
-         avertd_tb = inc0*(1-bcg_haz_tb),
-         averted_mtb= inc0*prop_tbm*(1-bcg_haz_mtb),
-         averted_tb_costs= tb_avert * (1 - prop_tbm) * cdr * ucost_dstb.m,
-         averted_mtb_costs= inc0*prop_tbm_avert* cdr * ucost_tbm.m)%>%
          
-         # Total DALYs averted
-         mutate(averted_total_dalys = averted_dalys_tb + averted_dalys_tbm)%>%
-        
-         mutate(pdemand_met =round(100*(g/(g + h)), 1),
-                `g/h`= round(g/h,1))%>%
+         avert_DALY1= tb_avert*(LE_disc - (1-prop_tbm)*(cdr*(1-cfr_treat)*(1-cdr)*(1-cfr_utreat))*Ltb),
+         avert_DALY2= tb_avert*(prop_tbm*cdr*(1-cfr_treat_tbm) + (1-cdr)*(1-cfr_untreat_tbm)*Lmtb),
+         avert_DALY3= inc0*(prop_tbm_avert*(cdr*(1-cfr_treat)*(1-cdr)*(1-cfr_utreat))*Ltb),
+         avert_DALY4= inc0*(prop_tbm_avert*(cdr*(1-cfr_treat_tbm)+ (1-cdr)*(1-cfr_untreat_tbm))*Lmtb),
+         
+         avertd_tb = inc0*(1-bcg_haz_tb),
+         averted_mtb= inc0*prop_tbm*(1-bcg_haz_mtb)
+         # bcg_averted_tb_costs= tb_avert * (1 - prop_tbm) * cdr * ucost_dstb.m,
+         # bcg_averted_mtb_costs= inc0*prop_tbm_avert* cdr * ucost_tbm.m
+         ) %>%
+  # Total DALYs averted
+  mutate(averted_DALYS = avert_DALY1- avert_DALY2 + avert_DALY3-avert_DALY4) %>%
+  mutate(ICER= cost_tb_avert/averted_DALYS)%>%
+  mutate(pdemand_met =round(100*(g/(g + h)), 1),
+                `g/h`= round(g/h,1))%>% 
+  mutate(pdemand_met=ifelse(pdemand_met>0, pdemand_met, " "))%>%
   mutate(mean_demand= Pop*bcg_coverage/100)%>%
   mutate(CV1=0.05,CV2=0.1,CV3=0.15)%>%
   mutate(z_score= qnorm(g/(g + h), mean = 0, sd = 1))%>%
   mutate(Buffer1= round(100*z_score*CV1,1),
          Buffer2= round(100*z_score*CV2,1),
-         Buffer3= round(100*z_score*CV3,1))%>%as.data.table()
+         Buffer3= round(100*z_score*CV3,1))%>%
+  mutate(pdemand_met=ifelse(g>0, pdemand_met, " "),
+         Buffer1=ifelse(g>0, Buffer1, " "),
+         Buffer2=ifelse(g>0, Buffer2, " "),
+         Buffer3=ifelse(g>0, Buffer3, " "))%>%
+  as.data.table()
+
   
   # mutate(supply1= mean_demand + CV1*mean_demand *qnorm(g/(g + h)),
   #        supply2= mean_demand + CV2*mean_demand *qnorm(g/(g + h)),
@@ -254,8 +301,8 @@ buffdata <-data_wz_tbm%>%
 averted_stuff <- data_wz_tbm%>%
   filter(cov_cat=="WUENIC")%>%
   distinct(country,.keep_all = TRUE)%>%
-  transmute(Country=country,ISO=iso3, TB=1e6*avertd_tb, MTB=1e6*averted_mtb,DALYs=1e6*averted_total_dalys,
-            `TB costs`=1e6*averted_tb_costs, `MTB costs`=1e6*averted_mtb_costs) %>%
+  transmute(Country=country,ISO=iso3, TB=1e6*avertd_tb, MTB=1e6*averted_mtb,DALYs=1e6*averted_DALYS,
+            `TB costs`=1e6*avert_cost_dstb_rx, `MTB costs`=1e6*avert_cost_tbm_rx) %>%
   filter(TB>0, !is.na(DALYs))
 
 expensive_settings <- data_wz_tbm%>%
@@ -400,18 +447,49 @@ doc <- read_docx() |>
 print(doc, target = "outputs/buffersize_CE_asean.docx")
 
 
-all_settings <- data_wz_tbm%>%
+all_settings <- inner_join(data_wz_tbm, without_bcg, by=c("iso3", "Threshold_label","Year")) %>%
   filter(cov_cat=="WUENIC", !is.na(GDP), !is.na(cdr)) %>%
   distinct(country,.keep_all = TRUE)%>%
-  select(country,Iso3=iso3, GDP, Threshold_label,incbest, uc_tot_vax_delv_ave,ucost_dstb.m, NB,g, h,pdemand_met, Buffer1)%>%
-  rename_with(~c("Country", "ISO", "GDP", "WTP(%GDP)","Inc", "ucvax","uctb", "Net benefit","g","h","g/(g+h)", "CV=5%")) %>%
+  select(country,Iso3=iso3, GDP, Threshold_label,incbest, cdr,bcg_coverage,ICER, NB,g, h,pdemand_met, Buffer1)%>%
+  rename_with(~c("Country", "ISO", "GDP", "WTP(%GDP)","Inc","CDR","BCG", "ICER", "ENB","g","h","g/(g+h)", "CV=5%")) %>%
   mutate(GDP= round(GDP, 0),
-         `Net benefit`= round(`Net benefit`, 0),
+         ENB= round(ENB, 0),
          Inc= round(1e5*Inc, 0),
-         ucvax= round(ucvax, 2),
-         uctb= round(uctb, 2),
+         CDR= round(CDR, 2),
+         ICER= round(ICER, 1),
          g= round(g, 0),
          h= round(h, 2))
+
+xx <-all_settings%>%select(dalys_dstb,noBCG_dalys_dstb, dalys_tbm,noBCG_dalys_tbm, 
+                         bcg_averted_dalys_tb,noBCG_bcg_averted_dalys_tb)
+
+lms <- lm(ENB ~ GDP +Inc +CDR+BCG+ ucvax+uctb, all_settings)
+summary(lms)
+summary(lms)$coefficients[, c("Estimate", "Pr(>|t|)")]%>%
+  as.data.frame()%>%
+  transmute(Coefficients= round(Estimate, 3),
+            `P values`=round(`Pr(>|t|)`, 5))%>%
+  kableExtra::kbl(caption= "Standardized inputs and outputs")%>%
+  kableExtra::kable_classic(full_width = F, html_font = "Cambria")
+
+  
+
+tmp <- all_settings %>%
+  mutate(across(c(`Net benefit`, GDP, Inc,CDR,BCG, ucvax, uctb), ~ as.numeric(scale(.))))
+
+lms <- lm(`Net benefit` ~ GDP +Inc +CDR+BCG+ ucvax+uctb, tmp)
+
+summary(lms)
+summary(lms)$coefficients[, c("Estimate", "Pr(>|t|)")]
+
+summary(lms)$coefficients[, c("Estimate", "Pr(>|t|)")]%>%
+  as.data.frame()%>%
+  transmute(Coefficients= round(Estimate, 3),
+            `P values`=round(`Pr(>|t|)`, 5))%>%
+  kableExtra::kbl(caption= "Standardized inputs and outputs")%>%
+  kableExtra::kable_classic(full_width = F, html_font = "Cambria")
+
+
 
 ftall <- all_settings%>%
   #filter(ISO%in%high_tb_iso3)%>%
@@ -423,7 +501,8 @@ ftall <- all_settings%>%
   align(align = "left", part = "all") |>
   valign(valign = "top", j = c("Country", "GDP", "h")) |>
   fontsize(size = 7, part = "all") |>
-  autofit() 
+  autofit() %>%
+  bg(i = ~ ENB < 0, bg = "#FFCCCC") 
 
 # Save to word document
 doc <- read_docx() |> 
@@ -438,7 +517,8 @@ buffdata %>%
   select(Country,`WTP(%GDP)`,`CV=5%`,`CV=10%`, `CV=15%`) %>%
   pivot_longer(cols = c(`CV=5%`,`CV=10%`, `CV=15%`), names_to = "CV",values_to = "Buffer size")%>%
   mutate(`WTP(%GDP)` = factor(`WTP(%GDP)`, levels = c("30%GDP", "50%GDP", "100%GDP")),
-         CV = factor(CV, levels = c("CV=5%", "CV=10%", "CV=15%")))%>%
+         CV = factor(CV, levels = c("CV=5%", "CV=10%", "CV=15%"))) %>%
+  mutate(`Buffer size`= as.numeric(`Buffer size`))%>%
 
   ggplot(aes(x = reorder(Country,`Buffer size`), y = `Buffer size`, fill= Country)) +
   geom_text(aes(label = `Buffer size`), angle = 90, vjust = 0.5, hjust = 0.0, size = 3) +  # Add vertical alignment above bar
@@ -548,5 +628,16 @@ ggplot(dd, aes(GDP,uc_tot_vax_delv_ave, label = country) )+
 
 
 
+tmp <- data_wz_tbm%>%
+  mutate(CE=ifelse(NB>0,"Yes", "No"))%>%
+  filter(!is.na(NB))
+tmp%>%
+  ggplot(aes(1e5*incbest, col=CE, fill = CE))+geom_histogram()+facet_wrap(~CE)
 
+ggplot(tmp, aes(x = CE, y = 1e5*incbest, fill= CE)) +
+  geom_boxplot(fill = "lightblue", color = "darkblue") + facet_wrap(~CE, scales="free")+
+  theme_minimal() +
+  labs(title = "Cost effectiveness depends on background incidence",
+       x = "",
+       y = "Incidence per 100,000 under five children")
 
