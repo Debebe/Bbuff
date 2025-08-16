@@ -22,52 +22,62 @@ length(unique(full_data$country)) # 127 countries
 if (!("worldbank_inflation.RData" %in% list.files(here("data/cost/indata")))) {
   # download US inflation rates
   library(WDI)
-  
+
   # Set the indicator code for CPI
-  indicator <- c("FP.CPI.TOTL", "FP.CPI.TOTL.ZG", "PA.NUS.PPPC.RF", "NY.GDP.DEFL.ZS", "PA.NUS.FCRF")
-  
+  indicator <- c("FP.CPI.TOTL", "FP.CPI.TOTL.ZG", "PA.NUS.PPPC.RF",
+                 "NY.GDP.DEFL.ZS", "PA.NUS.FCRF")
+
   # Set the country code for the United States
   # country <- c("US", "ZWE", "ZAF")
-  
+
   # Download the data
   inflation <- WDI(indicator = indicator) |>
     filter(year >= 2018) |>
     pivot_longer(
-      cols = -c(iso2c, iso3c, country, year), 
-      names_to = "indicator", 
-      values_to = "value") |>
+      cols = -c(iso2c, iso3c, country, year),
+      names_to = "indicator",
+      values_to = "value"
+    ) |>
     mutate(indicator_label = case_when(
       indicator == "FP.CPI.TOTL" ~ "Consumer price index (2010 = 100)",
       indicator == "FP.CPI.TOTL.ZG" ~ "Inflation, consumer prices (annual %)",
-      indicator == "PA.NUS.PPPC.RF" ~ "Price level ratio of PPP conversion factor (GDP) to market exchange rate",
+      indicator == "PA.NUS.PPPC.RF" ~
+        "Price level ratio of PPP conversion factor (GDP) to market exchange rate",
       indicator == "NY.GDP.DEFL.ZS" ~ "GDP deflator",
-      indicator == "PA.NUS.FCRF" ~ "Official exchange rate (LCU per US$, period average)",
+      indicator == "PA.NUS.FCRF" ~
+        "Official exchange rate (LCU per US$, period average)",
       TRUE ~ indicator
     )) |>
     rename(iso2 = iso2c, iso3 = iso3c, year = year)
-  
+
   head(inflation)
-  
+
   save(inflation, file = here("data/cost/indata/worldbank_inflation.RData"))
-  
+
   # load saved data
 } else {
   load(here("data/cost/indata/worldbank_inflation.RData"))
 }
 
+
+
 # standardize country names
 cost_data <- full_data %>%
   rename(iso3 = Iso3) %>%
   mutate(country = countrycode::countrycode(country,
-                                            origin = "country.name",
-                                            destination = "country.name",
-                                            warn = FALSE))
+    origin = "country.name",
+    destination = "country.name",
+    warn = FALSE
+  ))
+
 
 inflation <- inflation %>%
   mutate(country = countrycode::countrycode(country,
-                                            origin = "country.name",
-                                            destination = "country.name",
-                                            warn = FALSE))
+    origin = "country.name",
+    destination = "country.name",
+    warn = FALSE
+  ))
+
 
 
 # quick cheks
@@ -102,9 +112,9 @@ inflation %>%
 #   # theme_minimal() +
 #   theme(legend.position = "none")
 
-# ggsave(filename = here('plots','CPI_series.png'), 
+# ggsave(filename = here('plots','CPI_series.png'),
 #        w=15,h=10, dpi = 600)
-# ggsave(filename = here('plots','CPI_series.pdf'), 
+# ggsave(filename = here('plots','CPI_series.pdf'),
 #        w=15,h=10,
 #        dpi = 600)
 # inflation %>%
@@ -125,11 +135,11 @@ inflation %>%
 #   ) +
 #   # theme_minimal() +
 #   theme(legend.position = "none")
-# 
-# 
-# ggsave(filename = here('plots','CPI_series_short.png'), 
+#
+#
+# ggsave(filename = here('plots','CPI_series_short.png'),
 #        w=15,h=10, dpi = 600)
-# ggsave(filename = here('plots','CPI_series_short.pdf'), 
+# ggsave(filename = here('plots','CPI_series_short.pdf'),
 #        w=15,h=10,
 #        dpi = 600)
 
@@ -151,9 +161,9 @@ inflation %>%
 #   # theme_minimal() +
 #   theme(legend.position = "none")
 
-# ggsave(filename = here('plots','inflation_rates_percent.png'), 
+# ggsave(filename = here('plots','inflation_rates_percent.png'),
 #        w=15,h=10, dpi = 600)
-# # ggsave(filename = here('plots','inflation_rates_by_country.pdf'), 
+# # ggsave(filename = here('plots','inflation_rates_by_country.pdf'),
 # #        w=10,h=10,
 # #        dpi = 600)
 
@@ -175,9 +185,9 @@ inflation %>%
 #   # theme_minimal() +
 #   theme(legend.position = "none")
 
-# ggsave(filename = here('plots','GDP_deflator.png'), 
+# ggsave(filename = here('plots','GDP_deflator.png'),
 #        w=15,h=10, dpi = 600)
-# ggsave(filename = here('plots','inflation_rates_by_country.pdf'), 
+# ggsave(filename = here('plots','inflation_rates_by_country.pdf'),
 #        w=10,h=10,
 #        dpi = 600)
 
@@ -188,15 +198,20 @@ cpi_inflation <- inflation %>%
   group_by(country, indicator) %>%
   fill(value, .direction = "downup") %>%
   ungroup() |>
-  filter(year %in% c(2018, 2023),
-         indicator_label == "Consumer price index (2010 = 100)") %>%
+  filter(
+    year %in% c(2018, 2023),
+    indicator_label == "Consumer price index (2010 = 100)"
+  ) %>%
   group_by(country) %>%
   distinct(country, year, .keep_all = TRUE) %>%
-  mutate(base_year = 2018,
-         base_cpi = value[year == base_year],
-         cpi_rate = value/base_cpi) %>% # value[year==2023]/value[year=2018]
+  mutate(
+    base_year = 2018,
+    base_cpi = value[year == base_year],
+    cpi_rate = value / base_cpi
+  ) %>% # value[year==2023]/value[year=2018]
   filter(year != base_year) %>%
   select(country, iso3, cpi_rate)
+
 
 gdpdeflator_inflation <- inflation %>%
   # filter(country %in% cost_data$country) |>
@@ -204,21 +219,27 @@ gdpdeflator_inflation <- inflation %>%
   group_by(country, indicator) %>%
   fill(value, .direction = "downup") %>%
   ungroup() |>
-  filter(year %in% c(2018, 2023),
-         indicator == "NY.GDP.DEFL.ZS") %>%
+  filter(
+    year %in% c(2018, 2023),
+    indicator == "NY.GDP.DEFL.ZS"
+  ) %>%
   group_by(country) %>%
   distinct(country, year, .keep_all = TRUE) %>%
-  mutate(base_year = min(year),
-         base_cpi = value[year == base_year],
-         gdp_rate = value/base_cpi) %>%
+  mutate(
+    base_year = min(year),
+    base_cpi = value[year == base_year],
+    gdp_rate = value / base_cpi
+  ) %>%
   filter(year != base_year) %>%
-  select(country, iso3, gdp_rate) 
+  select(country, iso3, gdp_rate)
+
+
 
 # plot inflation rates by country
 # cpi_inflation %>%
 #   ggplot(aes(x = cpi_rate, y = country)) +
 #   geom_point() +
-#   geom_text(aes(label = ifelse(cpi_rate > 10, country, '')), 
+#   geom_text(aes(label = ifelse(cpi_rate > 10, country, '')),
 #             hjust = 1.1, size = 3) +
 #   labs(
 #     title = "Inflation Rates by Country (CPI)",
@@ -227,11 +248,11 @@ gdpdeflator_inflation <- inflation %>%
 #   ) +
 #   theme_minimal() +
 #   theme(legend.position = "none")
-# 
+#
 # gdpdeflator_inflation %>%
 #   ggplot(aes(x = gdp_rate, y = country)) +
 #   geom_point() +
-#   geom_text(aes(label = ifelse(gdp_rate > 10, country, '')), 
+#   geom_text(aes(label = ifelse(gdp_rate > 10, country, '')),
 #             hjust = 1.1, size = 3) +
 #   labs(
 #     title = "Inflation Rates by Country (GDP Deflator)",
@@ -242,12 +263,12 @@ gdpdeflator_inflation <- inflation %>%
 #   theme(legend.position = "none")
 
 exchange_rates <- inflation |>
-  #filter(indicator == "PA.NUS.FCRF")
+  # filter(indicator == "PA.NUS.FCRF")
   # filter(country %in% cost_data$country) |>
   arrange(country, indicator, year) %>%
   group_by(country, indicator) %>%
   fill(value, .direction = "downup") %>%
-  ungroup() |> 
+  ungroup() |>
   filter(year %in% c(2018, 2023) & indicator == "PA.NUS.FCRF") |>
   pivot_wider(
     names_from = year,
@@ -256,27 +277,28 @@ exchange_rates <- inflation |>
   ) |>
   select(country, iso3, XR2018, XR2023)
 
+
 exchange_rates
 
 # merge the two inflation rates
 inflation_rates <- cpi_inflation |>
   left_join(gdpdeflator_inflation, by = c("country", "iso3"))
 
-inflation_rates |> 
-  filter(is.na(cpi_rate) | is.na(gdp_rate)) 
+inflation_rates |>
+  filter(is.na(cpi_rate) | is.na(gdp_rate))
 
-no_cpi <- inflation_rates |> 
+no_cpi <- inflation_rates |>
   filter(is.na(cpi_rate) & !is.na(gdp_rate)) |>
   distinct()
 no_gdp <- inflation_rates |>
   filter(!is.na(cpi_rate) & is.na(gdp_rate)) |>
   distinct()
 
-no_rates <- inflation_rates |> 
+no_rates <- inflation_rates |>
   filter(is.na(cpi_rate) & is.na(gdp_rate)) |>
   distinct()
 
-no_cpi 
+no_cpi
 no_gdp
 no_rates
 
@@ -288,17 +310,16 @@ no_rates
 #     # fill missing GDP deflator rates with cpi_rate
 #     gdp_rate = ifelse(!is.na(cpi_rate) & is.na(gdp_rate), cpi_rate, gdp_rate)  
 #   )
+inflation_rates |>
+  filter(is.na(cpi_rate) | is.na(gdp_rate))
 
-inflation_rates |> 
-  filter(is.na(cpi_rate) | is.na(gdp_rate)) 
-
-inflation_rates |> 
-  filter(iso3 == "USA") 
+inflation_rates |>
+  filter(iso3 == "USA")
 
 # just use the USA data for these
-usa_rates <- inflation_rates |> 
+usa_rates <- inflation_rates |>
   ungroup() |>
-  filter(iso3 == "USA") |> 
+  filter(iso3 == "USA") |>
   select(usa_cpi = cpi_rate, usa_gdp = gdp_rate)
 
 inflation_rates <- cbind(inflation_rates, usa_rates) |>
@@ -306,13 +327,13 @@ inflation_rates <- cbind(inflation_rates, usa_rates) |>
     cpi_rate = coalesce(cpi_rate, usa_cpi),
     gdp_rate = coalesce(gdp_rate, usa_gdp)
   ) #|>
-  #select(-usa_cpi, -usa_gdp)
+# select(-usa_cpi, -usa_gdp)
 
-inflation_rates |> 
-  filter(is.na(cpi_rate) | is.na(gdp_rate)) 
+inflation_rates |>
+  filter(is.na(cpi_rate) | is.na(gdp_rate))
 
 # do the same for the exchange rates
-exchange_rates |> 
+exchange_rates |>
   filter(is.na(XR2018) | is.na(XR2023))
 
 # fill missing exchange rates with 1
@@ -325,18 +346,21 @@ exchange_rates <- exchange_rates |>
 
 # a large difference for these countries
 large_diff <- inflation_rates %>%
-  mutate(diff = cpi_rate - gdp_rate,
-         perc_diff = abs(100*diff/cpi_rate)) %>%
+  mutate(
+    diff = cpi_rate - gdp_rate,
+    perc_diff = abs(100 * diff / cpi_rate)
+  ) %>%
   arrange(desc(perc_diff)) |>
   filter(perc_diff > 29)
 
 large_diff
-
 length(unique(inflation_rates$country)) # 218 countries
 # plot comparing the two inflation rates
 inflation_rates %>%
-  mutate(diff = cpi_rate - gdp_rate,
-         perc_diff = abs(100*diff/cpi_rate)) %>%
+  mutate(
+    diff = cpi_rate - gdp_rate,
+    perc_diff = abs(100 * diff / cpi_rate)
+  ) %>%
   arrange(desc(perc_diff)) |>
   filter(gdp_rate < 2) |> # drop the outliers
   ggplot(aes(x = cpi_rate, y = gdp_rate, label = country)) +
@@ -350,8 +374,11 @@ inflation_rates %>%
   ) +
   theme_bw()
 
-ggsave(filename = here('plots','inflation_rates_comparison.png'), 
-       w=10,h=10, dpi = 600)
+ggsave(
+  filename = here("plots", "inflation_rates_comparison.png"),
+  w = 10, h = 10, dpi = 600
+)
+
 
 # adjust the costs: could use either the CPI or GDP deflator inflation rates
 
@@ -363,8 +390,6 @@ ggsave(filename = here('plots','inflation_rates_comparison.png'),
 ##' 4. Convert to international dollars using the PPP conversion factor.
 ##' 
 # just using the CPI inflation rates for now
-
-
 setdiff(
   unique(cost_data$country),
   unique(inflation_rates$country)
@@ -381,17 +406,18 @@ cost_data <- cost_data %>%
   left_join(inflation_rates, by = c("country", "iso3"))
 
 length(unique(cost_data$country)) # 127 countries
-
 # check if there are any missing values in adjustment factors
 cost_data %>%
-  select(country, iso3, XR2018, XR2023, cpi_rate, gdp_rate) |> 
+  select(country, iso3, XR2018, XR2023, cpi_rate, gdp_rate) |>
   filter(is.na(XR2018) | is.na(XR2023) | is.na(cpi_rate) | is.na(gdp_rate))
 
-vax_del_cost_cat <- c("uc_tot_vax_delv_ave","uc_tot_vax_delv_med","uc_tot_vax_delv_lo",
-                      "uc_tot_vax_delv_hi","uc_labor_ave","uc_labor_med", "uc_labor_lo",
-                      "uc_labor_hi","uc_sc_ave","uc_sc_med","uc_su_lo", "uc_sc_hi","uc_servd_ave", 
-                      "uc_servd_med","uc_servd_lo","uc_servd_hi", "uc_capital_ave", 
-                      "uc_capital_med","uc_capital_lo","uc_capital_hi")
+vax_del_cost_cat <- c(
+  "uc_tot_vax_delv_ave", "uc_tot_vax_delv_med", "uc_tot_vax_delv_lo",
+  "uc_tot_vax_delv_hi", "uc_labor_ave", "uc_labor_med", "uc_labor_lo",
+  "uc_labor_hi", "uc_sc_ave", "uc_sc_med", "uc_su_lo", "uc_sc_hi", "uc_servd_ave",
+  "uc_servd_med", "uc_servd_lo", "uc_servd_hi", "uc_capital_ave",
+  "uc_capital_med", "uc_capital_lo", "uc_capital_hi"
+)
 
 # cost_data_adj <- cost_data %>%
 #   # Convert to Local currency in 2028 (base year)
@@ -400,17 +426,17 @@ vax_del_cost_cat <- c("uc_tot_vax_delv_ave","uc_tot_vax_delv_med","uc_tot_vax_de
 #   mutate(across(all_of(vax_del_cost_cat), function(x) x * cpi_rate))%>%
 #   # Convert to USD 2023
 #   mutate(across(all_of(vax_del_cost_cat), function(x) x / XR2023))%>%as.data.table()
-
-
 cost_data_adj <- cost_data %>%
   mutate(across(
     all_of(vax_del_cost_cat), ~ ifelse(
-      is.na(XR2018), .x * usa_cpi,             # LCU missing, then inflate using USA_cpi
+      is.na(XR2018), .x * usa_cpi, # LCU missing, then inflate using USA_cpi
       # LCUA available--->convert USD to LCU2018, then inflate to 2023 locally then convert back to USD
-      (.x * XR2018) * cpi_rate / XR2023))) %>% 
+      (.x * XR2018) * cpi_rate / XR2023
+    )
+  )) %>%
   as.data.table()
 
-saveRDS(cost_data_adj, file=here("data/gdp_inc_le_costs.rds"))
+saveRDS(cost_data_adj, file = here("data/gdp_inc_le_costs.rds"))
 
 # adjust to 2023 prices
 cost_datas <- cost_data %>%
@@ -419,7 +445,7 @@ cost_datas <- cost_data %>%
     uc_tot_vax_delv_ave_LCU2018 = uc_tot_vax_delv_ave * XR2018,
     uc_tot_vax_delv_lo_LCU2018 = uc_tot_vax_delv_lo * XR2018,
     uc_tot_vax_delv_hi_LCU2018 = uc_tot_vax_delv_hi * XR2018,
-    
+
     # adjust to 2023 LCU
     uc_tot_vax_delv_ave_LCU2023 = uc_tot_vax_delv_ave_LCU2018 * cpi_rate,
     uc_tot_vax_delv_lo_LCU2023 = uc_tot_vax_delv_lo_LCU2018 * cpi_rate,
@@ -438,42 +464,53 @@ cost_datas <- cost_datas %>%
 
 # check the results
 cost_datas %>%
-  select(country, iso3, uc_tot_vax_delv_ave, uc_tot_vax_delv_ave_LCU2018,
-         uc_tot_vax_delv_ave_LCU2023, uc_tot_vax_delv_ave_USD2023) %>%
+  select(
+    country, iso3, uc_tot_vax_delv_ave, uc_tot_vax_delv_ave_LCU2018,
+    uc_tot_vax_delv_ave_LCU2023, uc_tot_vax_delv_ave_USD2023
+  ) %>%
   arrange(desc(uc_tot_vax_delv_ave_USD2023)) %>%
   head(10)
 
 cost_datas %>%
-  select(country, iso3, uc_tot_vax_delv_ave, uc_tot_vax_delv_ave_LCU2018,
-         uc_tot_vax_delv_ave_LCU2023, uc_tot_vax_delv_ave_USD2023) %>%
+  select(
+    country, iso3, uc_tot_vax_delv_ave, uc_tot_vax_delv_ave_LCU2018,
+    uc_tot_vax_delv_ave_LCU2023, uc_tot_vax_delv_ave_USD2023
+  ) %>%
   arrange(desc(uc_tot_vax_delv_ave_USD2023)) %>%
   tail(10)
 
 cost_datas %>%
   filter(country %in% large_diff$country) %>%
-  select(country, iso3, uc_tot_vax_delv_ave, uc_tot_vax_delv_ave_LCU2018,
-         uc_tot_vax_delv_ave_LCU2023, uc_tot_vax_delv_ave_USD2023) |> 
+  select(
+    country, iso3, uc_tot_vax_delv_ave, uc_tot_vax_delv_ave_LCU2018,
+    uc_tot_vax_delv_ave_LCU2023, uc_tot_vax_delv_ave_USD2023
+  ) |>
   distinct()
 
 # alternatively just use the US inflation rate on the USD costs
-inflation_rates$country[grepl("United", inflation_rates$country)] 
+inflation_rates$country[grepl("United", inflation_rates$country)]
 us_inflation_rate <- inflation_rates %>%
-  filter(country == "United States") 
+  filter(country == "United States")
 us_inflation_rate
 
 # apply the US inflation rate to the costs
 # US inflation rate from 2018 to 2023
 cost_datas <- cost_datas %>%
+  # US inflation rate from 2018 to 2023
   mutate(
-    uc_tot_vax_delv_ave_USD2023_alt = uc_tot_vax_delv_ave * us_inflation_rate$cpi_rate, # US inflation rate from 2018 to 2023
+    uc_tot_vax_delv_ave_USD2023_alt = uc_tot_vax_delv_ave * us_inflation_rate$cpi_rate,
     uc_tot_vax_delv_lo_USD2023_alt = uc_tot_vax_delv_lo * us_inflation_rate$cpi_rate,
     uc_tot_vax_delv_hi_USD2023_alt = uc_tot_vax_delv_hi * us_inflation_rate$cpi_rate
   )
 
+
+
 # check the results
 cost_datas %>%
-  select(country, iso3, uc_tot_vax_delv_ave, uc_tot_vax_delv_ave_USD2023,
-         uc_tot_vax_delv_ave_USD2023_alt) %>%
+  select(
+    country, iso3, uc_tot_vax_delv_ave, uc_tot_vax_delv_ave_USD2023,
+    uc_tot_vax_delv_ave_USD2023_alt
+  ) %>%
   mutate(
     diff = uc_tot_vax_delv_ave_USD2023 - uc_tot_vax_delv_ave_USD2023_alt
   ) %>%
@@ -481,28 +518,38 @@ cost_datas %>%
   head(10)
 
 cost_datas %>%
-  select(country, iso3, uc_tot_vax_delv_ave, uc_tot_vax_delv_ave_USD2023,
-         uc_tot_vax_delv_ave_USD2023_alt) %>%
+  select(
+    country, iso3, uc_tot_vax_delv_ave, uc_tot_vax_delv_ave_USD2023,
+    uc_tot_vax_delv_ave_USD2023_alt
+  ) %>%
   mutate(
     diff = abs(uc_tot_vax_delv_ave_USD2023 - uc_tot_vax_delv_ave_USD2023_alt)
-  )  %>%
+  ) %>%
   arrange(desc(diff)) %>%
   head(10)
 
+
 cost_datas %>%
   filter(country %in% large_diff$country) %>%
-  select(country, iso3, uc_tot_vax_delv_ave_USD2023, 
-         uc_tot_vax_delv_ave_USD2023_alt) |> 
-  distinct() 
+  select(
+    country, iso3, uc_tot_vax_delv_ave_USD2023,
+    uc_tot_vax_delv_ave_USD2023_alt
+  ) |>
+  distinct()
+
 
 # plot the results: USD vs USD adjusted for US inflation
 cost_datas %>%
-  select(country, iso3, uc_tot_vax_delv_ave_USD2023, 
-         uc_tot_vax_delv_ave_USD2023_alt) %>%
+  select(
+    country, iso3, uc_tot_vax_delv_ave_USD2023,
+    uc_tot_vax_delv_ave_USD2023_alt
+  ) %>%
   # filter(uc_tot_vax_delv_ave_USD2023 < 20) %>%
-  ggplot(aes(x = uc_tot_vax_delv_ave_USD2023_alt, 
-             y = uc_tot_vax_delv_ave_USD2023, 
-             fill = country)) +
+  ggplot(aes(
+    x = uc_tot_vax_delv_ave_USD2023_alt,
+    y = uc_tot_vax_delv_ave_USD2023,
+    fill = country
+  )) +
   geom_point() +
   geom_text(aes(label = iso3), size = 3, hjust = 0.5, vjust = -0.5) +
   geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +
@@ -514,5 +561,9 @@ cost_datas %>%
   theme_minimal() +
   theme(legend.position = "none")
 
-ggsave(filename = here('plots','inflation_adjusted_costs_comparison.png'), 
-       w=10,h=10, dpi = 600)
+
+ggsave(
+  filename = here("plots", "inflation_adjusted_costs_comparison.png"),
+  w = 10, h = 10, dpi = 600
+)
+
