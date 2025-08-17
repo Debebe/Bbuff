@@ -10,30 +10,39 @@
 ## cfrm1 =  CFR TBM w/  tx
 ## L =  discounted LE
 ## Ltb =  discounted, QA post-(non-M)TB LE
-## Lmtb = discounted, QA post-TBM LE
-
-
-## all TB incidence as a function of BCG coverage/efficacy
-tb_incidence <- function(inc0, f, v) {
-  inc0 * (f * v + (1 - f))
-}
-
-
-## TBM incidence as a function of BCG coverage/efficacy
-tbm_incidence <- function(inc0, m0, f, v, vm) {
-  m0 * inc0 * (f * v * vm + (1 - f))
-}
+## Ltbm = discounted, QA post-TBM LE
 
 ## fraction of TB that is TBM as a function of BCG coverage/efficacy
 m_by_cov <- function(m0, f, v, vm) {
   m0 * (f * v * vm + (1 - f)) / (f * v + (1 - f))
 }
 
+## reverse engineer I0 from I
+inc0_from_inc <- function(inc, f, v) {
+  inc / (f * v + (1 - f))
+}
+
+## reverse engineer I0 from I
+m0_from_m <- function(m, f, v, vm) {
+  m * (f * v + (1 - f)) / (f * v * vm + (1 - f))
+}
+
+## all TB incidence as a function of BCG coverage/efficacy
+tb_incidence <- function(inc0, f, v) {
+  inc0 * (f * v + (1 - f))
+}
+
+## TBM incidence as a function of BCG coverage/efficacy
+tbm_incidence <- function(inc0, m0, f, v, vm) {
+  m0 * inc0 * (f * v * vm + (1 - f))
+}
+
+
 ## 'health' over tree
-qalys <- function(inc, m, cdr, cfr0, cfr1, cfrm0, cfrm1, L, Ltb, Lmtb) {
+qalys <- function(inc, m, cdr, cfr0, cfr1, cfrm0, cfrm1, L, Ltb, Ltbm) {
   (1 - inc) * L +
     inc * (1 - m) * (cdr * (1 - cfr1) + (1 - cdr) * (1 - cfr0)) * Ltb +
-    inc * (m) * (cdr * (1 - cfrm1) + (1 - cdr) * (1 - cfrm0)) * Lmtb
+    inc * (m) * (cdr * (1 - cfrm1) + (1 - cdr) * (1 - cfrm0)) * Ltbm
 }
 
 ## number of ATT courses (including TBM)
@@ -67,22 +76,28 @@ tbn_deaths <- function(inc, m, cdr, cfr0, cfr1) {
   inc * (1 - m) * (cdr * cfr1 + (1 - cdr) * cfr0)
 }
 
-## all TB discounted, qa LYL
-tb_lyl <- function(inc, m, cdr, cfr0, cfr1, cfrm0, cfrm1, L, Ltb, Lmtb) {
+## all TB discounted, qa LY
+tb_ly <- function(inc, m, cdr, cfr0, cfr1, cfrm0, cfrm1, Ltb, Ltbm) {
   inc * (1 - m) * (cdr * (1 - cfr1) + (1 - cdr) * (1 - cfr0)) * Ltb +
-    inc * (m) * (cdr * (1 - cfrm1) + (1 - cdr) * (1 - cfrm0)) * Lmtb
+    inc * (m) * (cdr * (1 - cfrm1) + (1 - cdr) * (1 - cfrm0)) * Ltbm
 }
 
 
-## TBM  discounted, qa LYL
-tbm_lyl <- function(inc, m, cdr, cfrm0, cfrm1, Lmtb) {
-  inc * (m) * (cdr * (1 - cfrm1) + (1 - cdr) * (1 - cfrm0)) * Lmtb
+## TBM  discounted, qa LY
+tbm_ly <- function(inc, m, cdr, cfrm0, cfrm1, Ltbm) {
+  inc * (m) * (cdr * (1 - cfrm1) + (1 - cdr) * (1 - cfrm0)) * Ltbm
 }
 
-## (non-M)TB discounted, qa LYL
-tbn_lyl <- function(inc, m, cdr, cfr0, cfr1, Ltb) {
+## (non-M)TB discounted, qa LY
+tbn_ly <- function(inc, m, cdr, cfr0, cfr1, Ltb) {
   inc * (1 - m) * (cdr * (1 - cfr1) + (1 - cdr) * (1 - cfr0)) * Ltb
 }
+
+## treatment costs
+att_cost <- function(attn, attm, ucostn, ucostm) {
+  attn * ucostn + attm * ucostm
+}
+
 
 
 
