@@ -2,6 +2,7 @@
 ## these functions have the following arguments in common:
 ##
 ## inc =  TB incidence
+## inc0 = TB incidence w/o any BCG
 ## m =  proportion TBM
 ## cdr =  CDR any TB
 ## cfr0 =  CFR (non-M)TB w/o tx
@@ -11,6 +12,9 @@
 ## L =  discounted LE
 ## Ltb =  discounted, QA post-(non-M)TB LE
 ## Ltbm = discounted, QA post-TBM LE
+## v = BCG HR for all TB
+## vm = BCG HR for TBM given TB
+## f = BCG vaccine coverage
 
 ## fraction of TB that is TBM as a function of BCG coverage/efficacy
 m_by_cov <- function(m0, f, v, vm) {
