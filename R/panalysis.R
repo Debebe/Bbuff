@@ -25,7 +25,7 @@ whokeyshort <- rbind(
 )
 
 ## === utility functions
-source("R/utilities.R")
+source("R/utilities/utilities.R")
 
 
 ## === expand data for PSA
@@ -42,11 +42,11 @@ D[iter == 1][iso3 == "AFG"] #check
 
 
 ## === functions for calculations
-source(here("R/modelfunctions.R"))
+source(here("R/utilities/modelfunctions.R"))
 
 
 ## === parameter values and samplers
-source(here("R/parameters.R"))
+source(here("R/utilities/parameters.R"))
 
 
 ## === calculations
@@ -54,7 +54,7 @@ source(here("R/parameters.R"))
 ## prepend rslt_ for results
 ## postpend _sq for status quo (current BCG coverage)
 ## postpend _cf for counterfactual (no BCG)
-source(here("R/calculations.R"))
+source(here("R/utilities/calculations.R"))
 
 
 ## === aggregations and outputs
@@ -110,7 +110,7 @@ ggsave(file = here("outputs/cea_ENB_iso3.png"), w = 9, h = 8)
 ## TODO buffers
 CEA[, summary(ENB30)]
 CEA[, summary(u)]
-CEA[, summary(ENB30/(ENB30+u))]
+CEA[, summary(ENB30 / (ENB30 + u))]
 CEA[, summary(qnorm(ENB30 / (ENB30 + u)))]
 
 
@@ -157,7 +157,6 @@ output_table <- dcast(output_table,
 )
 
 ## format numbers, add brackets
-##  TODO improve rounder in utilities.R
 output_table[
   ,
   c("sq_txt", "cf_txt", "av_txt") := .(
@@ -166,3 +165,6 @@ output_table[
     brkt(mid_av, lo_av, hi_av)
   )
 ]
+output_table
+
+fwrite(output_table, file = here("outputs/output_table.csv"))
