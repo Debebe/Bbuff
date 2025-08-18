@@ -18,7 +18,7 @@ rf <- function(x) {
 brkt0 <- function(x, y, z) paste0(x, " (", y, " to ", z, ")")
 brkt0(1, 2, 3)
 brkt <- function(x, y, z) {
-  ans <- brkt0(rf(x), rf(y), rf(z))
+  ans <- brkt0(x, y, z)
   ans <- gsub("\\([[:space:]]+", "\\(", ans)
   ans <- gsub("to[[:space:]]+", "to ", ans)
   ans
