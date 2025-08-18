@@ -7,14 +7,37 @@ library(ggplot2)
 
 ## === data
 ## read in pre-prepared data
-gdp_inc_le_costs <- readRDS(file = here("data/gdp_inc_le_costs.rds")) |>
-  filter(cov_cat == "WUENIC")
+gdp_inc_le_costs <- readRDS(file = here("data/gdp_inc_le_costs.rds"))
 load(here("data/whokey.Rdata"))
+whoz <- c("AFR", "AMR", "EMR", "EUR", "SEA", "WPR")
+whozt <- c(
+  "Africa", "The Americas",
+  "Eastern Mediterranean", "Europe", "South-East Asia",
+  "Western Pacific"
+)
+for (i in seq_along(whoz)) {
+  whokey[g_whoregion == whoz[i], region := whozt[i]]
+}
+whokeyshort <- unique(whokey[, .(g_whoregion, region)])
+whokeyshort <- rbind(
+  whokeyshort,
+  data.table(g_whoregion = "Global", region = "Global")
+)
 
-## expand data for PSA
+## === utility functions
+source("R/utilities.R")
+
+
+## === expand data for PSA
+set.seed(1234)
 Niter <- 50 # TODO increase ultimately
-D <- gdp_inc_le_costs[rep(seq_len(nrow(gdp_inc_le_costs)), each = Niter)]
-D[, iter := rep(seq_len(Niter), nrow(gdp_inc_le_costs))]
+D <- as.data.table(gdp_inc_le_costs)
+D <- D[cov_cat == "WUENIC"]
+N <- nrow(D)
+D <- D[rep(seq_len(N), each = Niter)]
+D[, iter := rep(seq_len(Niter), N)]
+D[iter == 1][iso3 == "AFG"] #check
+
 ## TODO sampling for parameters used
 
 
@@ -85,33 +108,61 @@ ggplot(CEA, aes(iso3, ENB30)) +
 ggsave(file = here("outputs/cea_ENB_iso3.png"), w = 9, h = 8)
 
 ## TODO buffers
-CEA[,summary(ENB30)]
+CEA[, summary(ENB30)]
 CEA[, summary(u)]
 CEA[, summary(ENB30/(ENB30+u))]
 CEA[, summary(qnorm(ENB30 / (ENB30 + u)))]
 
 
 ## TODO global and regional total outputs, e.g.:
-output_table <- D[
-  !is.na(rslt_tb_deaths_sq + rslt_tb_deaths_cf), #TODO
-  .(iso3, iter,
-    deaths_sq = rslt_tb_deaths_sq * Pop,
-    deaths_cf = rslt_tb_deaths_sq * Pop
-  )
+
+## extract results, compute differences, reformat
+keep <- grep("rslt", names(D), value = TRUE)
+keep <- c("iso3", "iter", "Pop", unique(keep))
+output_table <- D[, ..keep]
+output_table <- melt(output_table, id = c("iter", "iso3", "Pop"))
+output_table[, type := ifelse(grepl("cf", variable), "cf", "sq")]
+output_table[, variable := gsub("rlst_", "", variable)]
+output_table[, variable := gsub("_cf|_sq", "", variable)]
+output_table[, value := value * Pop]
+output_table <- dcast(output_table,
+  iter + iso3 + variable ~ type,
+  value.var = "value"
+)
+
+
+## averted
+output_table[, av := cf - sq]
+
+## global TODO NaNs?
+output_table <- output_table[is.finite(av), .(
+  cf = sum(cf), sq = sum(sq), av = sum(av)
+),
+by = .(iter, variable)
 ]
 
-output_table[, deaths_av := deaths_sq - deaths_cf] # TODO BUG!
-output_table <- output_table[, .(iso3, iter,
-  deaths_sq = sum(deaths_sq),
-  deaths_cf = sum(deaths_cf),
-  deaths_av = sum(deaths_av)
-  ), by = iter]
+## hi/lo & reshape
+eps <- 0.025
+output_table <- melt(output_table,
+  id = c("iter", "variable")
+) # TODO better var names
 
-## TODO mean,hi, lo quantiles
+output_table <- output_table[, .(
+  mid = mean(value), lo = quantile(value, eps), hi = quantile(value, 1 - eps)
+), by = .(variable, variable.1)]
 
+output_table <- dcast(output_table,
+  variable ~ variable.1,
+  value.var = c("mid", "lo", "hi")
+)
 
-
-
-
-
-
+## format numbers, add brackets
+##  TODO improve rounder in utilities.R
+output_table[
+  ,
+  c("sq_txt", "cf_txt", "av_txt") := .(
+    brkt(mid_sq, lo_sq, hi_sq),
+    brkt(mid_cf, lo_cf, hi_cf),
+    brkt(mid_av, lo_av, hi_av)
+  )
+]
