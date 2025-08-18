@@ -1,7 +1,7 @@
 ## this is just to house the results calculations
 ## conventions:
 ## prepend rslt_ for results
-## postpend _sq for status quo (current BCG coverage)
+## postpend _sq for status quo (current BCGcoverage)
 ## postpend _cf for counterfactual (no BCG)
 
 ## life-expectancies
@@ -15,11 +15,11 @@ D[, Ltbm := post_tb_hrqol *
 
 ## TBM fractions
 D[, m_sq := prop_tbm]
-D[, m_cf := m0_from_m(prop_tbm, bcg_coverage, bcg_haz_tb, bcg_haz_tbm)]
+D[, m_cf := m0_from_m(prop_tbm, bcg_coverage, bcg_hr, bcg_haz_tbm)]
 
 ## TB incidence
-D[, rslt_inc_sq := incbest]
-D[, rslt_inc_cf := inc0_from_inc(incbest, bcg_coverage, bcg_haz_tb)]
+D[, rslt_inc_sq := tbinc]
+D[, rslt_inc_cf := inc0_from_inc(tbinc, bcg_coverage, bcg_hr)]
 
 ## TBM incidence
 D[, rslt_tbminc_sq := rslt_inc_sq * m_sq]

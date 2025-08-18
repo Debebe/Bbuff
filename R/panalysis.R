@@ -27,6 +27,9 @@ whokeyshort <- rbind(
 ## === utility functions
 source("R/utilities/utilities.R")
 
+## === parameter values and samplers
+source(here("R/utilities/parameters.R"))
+
 
 ## === expand data for PSA
 set.seed(1234)
@@ -38,6 +41,13 @@ D <- D[rep(seq_len(N), each = Niter)]
 D[, iter := rep(seq_len(Niter), N)]
 D[iter == 1][iso3 == "AFG"] #check
 
+## TB incidence uncertainty
+D[, tbinc := incbest + rnorm(n = nrow(D), (inchi - inclo) / 3.92)]
+D[, tbinc := abs(incbest)] # for illustration
+D[, bcg_hr :=
+  bcg_haz_tb + rnorm(n = nrow(D), bcg_haz_tb / 20)] # uncorrelated by iso3
+
+
 ## TODO sampling for parameters used
 
 
@@ -45,11 +55,10 @@ D[iter == 1][iso3 == "AFG"] #check
 source(here("R/utilities/modelfunctions.R"))
 
 
-## === parameter values and samplers
-source(here("R/utilities/parameters.R"))
 
 
 ## === calculations
+## expect D in memory; carries out operations on D using modelfunctions
 ## conventions:
 ## prepend rslt_ for results
 ## postpend _sq for status quo (current BCG coverage)
@@ -64,11 +73,15 @@ CEA <- D[, .(
     0.3 * GDP * (rslt_health_sq - rslt_health_cf) -
       (rslt_cost_sq - rslt_cost_cf)
   ),
+  g30 = mean(
+    0.3 * GDP * (rslt_health_sq - rslt_health_cf) / bcg_coverage -
+      (rslt_cost_sq - rslt_cost_cf) / bcg_coverage
+  ),
   GDP = mean(GDP),
   ## ICER
   ICER = mean(rslt_cost_sq - rslt_cost_cf) /
     mean(rslt_health_sq - rslt_health_cf),
-  ## downslope for exceeding demand
+  ## downslope for exceeding demand TODO
   u = mean(uc_tot_vax_delv_ave)
 ),
 by = iso3
@@ -109,9 +122,10 @@ ggsave(file = here("outputs/cea_ENB_iso3.png"), w = 9, h = 8)
 
 ## TODO buffers
 CEA[, summary(ENB30)]
+CEA[, summary(g30)]
 CEA[, summary(u)]
-CEA[, summary(ENB30 / (ENB30 + u))]
-CEA[, summary(qnorm(ENB30 / (ENB30 + u)))]
+CEA[, summary(g30 / (g30 + u))]
+CEA[, summary(qnorm(g30 / (g30 + u)))]
 
 
 ## TODO global and regional total outputs, e.g.:
@@ -134,7 +148,7 @@ output_table <- dcast(output_table,
 ## averted
 output_table[, av := cf - sq]
 
-## global TODO NaNs?
+## global TODO NaNs? <- merge with WHO regions to do local version
 output_table <- output_table[is.finite(av), .(
   cf = sum(cf), sq = sum(sq), av = sum(av)
 ),
@@ -168,3 +182,19 @@ output_table[
 output_table
 
 fwrite(output_table, file = here("outputs/output_table.csv"))
+
+
+## NOTE ======== TODO
+## in calculating total sq ATT: should really use notifications
+## may be true for sq TB incidence
+## need noise in parameters:
+## - TB incidence
+## - BCG efficacy
+## - costs
+## some parms correlated across countries? -> data.table(iter,parmsample)
+## placeholder Ltbm to be updated
+## update parameter names in calculations.R to use 'noisy' ones
+## CDR defined by notification and incidence
+## ICER graph - color points by which threshold they are below
+## figure out what's going on in RWA or other ICER<0
+## regional versions of output table
