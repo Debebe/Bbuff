@@ -1,10 +1,19 @@
 ## work to generate the parameters distributions & samplers
 # some parameters
-bcg_eff_tb <- 0.50
+bcg_eff_tb <- 0.62
 bcg_eff_tbm <- 0.73 # 0.73 (0.67 - 0.79), 0.69(0.60- 0.76 in Asia see Trunz
 
-bcg_haz_tb <- 1 - bcg_eff_tb
-bcg_haz_tbm <- 1 - bcg_eff_tbm
+bcg_eff_tb.m  <- 0.62
+bcg_eff_tb.lo <- 0.48
+bcg_eff_tb.hi <- 0.72
+
+bcg_eff_tbm.m  <- 0.73
+bcg_eff_tbm.lo <- 0.67
+bcg_eff_tbm.hi <- 0.79
+
+
+# bcg_haz_tb <- 1 - bcg_eff_tb
+# bcg_haz_tbm <- 1 - bcg_eff_tbm
 
 cfr_treat <- 0.019 # 1·9 (0·5–7·1) tb-mortality treated
 cfr_utreat <- 0.436 # 43·6 (36·8–50·6) tb-mort untreated
@@ -23,6 +32,9 @@ cfr_untreat_tbm <- 1 # 19·3% (95% CI 14·0–26·1)
 
 # additional inputs
 prop_tbm <- 0.034
+prop_tbm.lo <-0.0187
+prop_tbm.hi <- 0.06
+
 prop_sev_seq <- 0.56 # 0.56[0.47-0. 63] meta-analysis
 prop_nsev_seq <- 0.44 # 0.44 [0.37, 0.53]
 prop_mild_seq <- 0.70 * prop_nsev_seq
