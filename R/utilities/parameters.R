@@ -12,8 +12,8 @@ bcg_eff_tbm.lo <- 0.67
 bcg_eff_tbm.hi <- 0.79
 
 
-# bcg_haz_tb <- 1 - bcg_eff_tb
-# bcg_haz_tbm <- 1 - bcg_eff_tbm
+bcg_haz_tb <- 1 - bcg_eff_tb
+bcg_haz_tbm <- 1 - bcg_eff_tbm
 
 cfr_treat <- 0.019 # 1·9 (0·5–7·1) tb-mortality treated
 cfr_utreat <- 0.436 # 43·6 (36·8–50·6) tb-mort untreated

@@ -86,11 +86,14 @@ ggplot(CEA[ICER > 0], aes(iso3, ICER)) +
   geom_point(aes(iso3, GDP * 0.3), shape = 3, col = 2) +
   geom_point(aes(iso3, GDP * 0.5), shape = 3, col = 4) +
   geom_point(aes(iso3, GDP * 1.0), shape = 3, col = 5) +
-  geom_point() +
-  scale_y_continuous(labels = scales::comma) +
+  geom_point(aes(shape = (ICER < 0.3 * GDP))) +
+  scale_shape_manual(values = c(1, 19), guide = "none") +
+  scale_y_log10(labels = scales::comma) +
   coord_flip() +
-  facet_wrap(~g_whoregion, scales = "free") +
-  theme_linedraw()
+  facet_wrap(~region, scales = "free") +
+  theme_linedraw() +
+  xlab("Country ISO3 code") +
+  ylab("Incremental cost-effectiveness ratio (USD/DALY)")
 
 ggsave(file = here("outputs/cea_ICER_iso3.png"), w = 9, h = 8)
 
@@ -102,8 +105,10 @@ ggplot(CEA, aes(iso3, ENB30)) +
   geom_hline(yintercept = 0, col = 2) +
   geom_point() +
   coord_flip() +
-  facet_wrap(~g_whoregion, scales = "free") +
-  theme_linedraw()
+  facet_wrap(~region, scales = "free") +
+  theme_linedraw() +
+  xlab("Country ISO3 code") +
+  ylab("Expected net benefit (USD)")
 
 ggsave(file = here("outputs/cea_ENB_iso3.png"), w = 9, h = 8)
 

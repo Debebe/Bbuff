@@ -13,13 +13,26 @@ D[, Ltb := post_tb_hrqol *
 # D[, Ltbm := post_tb_hrqol *
 #   (1 - exp(-disc_rate * LE / post_tb_mort_hz)) /
 #     disc_rate] #placeholder
-D[,Ltbm_mil:= prop_mild_seq*tbm_hrqol_mil_seq*(1-exp(-disc_rate*LE/tbm_mort_hz))/disc_rate ]
-D[,Ltbm_mod:= prop_mod_seq*tbm_hrqol_mod_seq*(1-exp(-disc_rate*LE/tbm_mort_hz))/disc_rate ]
-D[,Ltbm_sev:= prop_sev_seq*tbm_hrqol_sev_seq*(1-exp(-disc_rate*LE/tbm_mort_hz))/disc_rate]
-D[,Ltbm:=Ltbm_mil+Ltbm_mod+Ltbm_sev]
-
-D[, (c("Ltbm_mil", "Ltbm_mod", "Ltbm_sev")) := NULL]
-
+D[
+  ,
+  Ltbm_mil :=
+    prop_mild_seq * tbm_hrqol_mil_seq *
+      (1 - exp(-disc_rate * LE / tbm_mort_hz)) / disc_rate
+]
+D[
+  ,
+  Ltbm_mod :=
+    prop_mod_seq * tbm_hrqol_mod_seq *
+    (1 - exp(-disc_rate * LE / tbm_mort_hz)) / disc_rate
+]
+D[
+  ,
+  Ltbm_sev :=
+    prop_sev_seq * tbm_hrqol_sev_seq *
+      (1 - exp(-disc_rate * LE / tbm_mort_hz)) / disc_rate
+]
+D[, Ltbm := Ltbm_mil + Ltbm_mod + Ltbm_sev]
+D[, c("Ltbm_mil", "Ltbm_mod", "Ltbm_sev") := NULL]
 
 
 ## TBM fractions
