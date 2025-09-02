@@ -76,7 +76,22 @@ sample_beta <- function(mean, lo, hi, n = 1) {
 #sample_beta(mean = 0.034, lo = 0.0187, hi = 0.060)
 
 
-
+make_flextable <- function(data) {
+  ftall <- data %>%
+    #select(-ISO) %>%
+    flextable() |>
+    set_caption("Optimal buffer size under different demand uncertainties") |>
+    autofit() |>
+    merge_v(j = c("Region")) |>
+    align(align = "left", part = "all") |>
+    valign(valign = "top", j = c("Region")) |>
+    fontsize(size = 7, part = "all") |>
+    autofit() #|>
+    #bg(i = ~ ENB < 0, bg = "#FFCCCC"
+      # )
+  
+  return(ftall)
+}
 
 
 
