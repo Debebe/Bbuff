@@ -641,3 +641,32 @@ ggplot(tmp, aes(x = CE, y = 1e5*incbest, fill= CE)) +
        x = "",
        y = "Incidence per 100,000 under five children")
 
+
+
+# D[, bcg_haz_tb:= 1 - sample_beta(bcg_eff_tb.m, bcg_eff_tb.lo, bcg_eff_tb.hi), by = .I]
+# D[, bcg_haz_tbm:= 1 - sample_beta(bcg_eff_tbm.m, bcg_eff_tbm.lo, bcg_eff_tbm.hi), by = .I]
+# D[, prop_tbm:= sample_beta(prop_tbm, prop_tbm.lo, prop_tbm.hi), by = .I]
+# 
+# D[, incbest:= sample_truncn(incbest, inclo, inchi), by = .I]
+# 
+# D[, ucost_dstb.m:= sample_gamma(mean=ucost_dstb.m, sd=ucost_dstb.sd), by = .I]
+# D[, ucost_tbm.m:= sample_gamma(mean=ucost_tbm.m, sd=ucost_tbm.sd), by = .I]
+# 
+# D[, uc_tot_vax_delv_ave:= sample_gamma(mean=uc_tot_vax_delv_ave,
+#                                        lo= uc_tot_vax_delv_lo,
+#                                        hi=uc_tot_vax_delv_hi), by = .I]
+# 
+# D[, uc_labor_ave:= sample_gamma(mean=uc_labor_ave,
+#                                 lo= uc_labor_lo,
+#                                 hi= uc_labor_hi), by = .I]
+# D[, uc_sc_ave:= sample_gamma(mean=uc_sc_ave,
+#                              lo= uc_su_lo,
+#                              hi= uc_sc_hi), by = .I]
+# 
+# D[, uc_servd_ave:= sample_gamma(mean=uc_servd_lo,
+#                                 lo= uc_servd_lo,
+#                                 hi= uc_servd_hi), by = .I]
+# D[, uc_capital_ave:= sample_gamma(mean=uc_capital_ave,
+#                                   lo= uc_capital_lo,
+#                                   hi= uc_capital_hi), by = .I]
+
