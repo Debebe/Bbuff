@@ -8,6 +8,8 @@ library(data.table)
 library(ggplot2)
 library(truncnorm)
 library(dplyr)
+library(flextable)
+library(officer)
 
 ## === data
 ## read in pre-prepared data

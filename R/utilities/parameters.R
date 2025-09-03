@@ -31,7 +31,8 @@ cfr_treat_tbm <- 0.193 # 19·3% (95% CI 14·0–26·1)
 cfr_untreat_tbm <- 1 # 19·3% (95% CI 14·0–26·1)
 
 # additional inputs
-prop_tbm <- 0.034
+#prop_tbm <- 0.034
+prop_tbm.ave <- 0.034
 prop_tbm.lo <-0.0187
 prop_tbm.hi <- 0.06
 
