@@ -9,6 +9,7 @@ library(truncnorm)
 library(dplyr)
 library(flextable)
 library(officer)
+library(forcats)
 
 source(here("R/utilities/modelfunctions.R"))
 
@@ -127,23 +128,46 @@ gen_outs <- function(TBMincl=0,posttbincl=0){
                         value.var = c("mid", "lo", "hi")
   )
   
+  CEA <- D%>%
+    summarise(ENB30 = mean(0.3 * GDP * (rslt_health_sq - rslt_health_cf) -
+        (rslt_cost_sq - rslt_cost_cf), na.rm=TRUE),
+    ICER = mean(rslt_cost_sq - rslt_cost_cf, na.rm=TRUE) /
+      mean(rslt_health_sq - rslt_health_cf, na.rm=TRUE))
+  
+  
 
   output_table <-output_table[,.(variable,mid_sq, lo_sq, hi_sq, mid_cf, lo_cf, hi_cf)]
-  return(output_table)
+  return(list(outs=output_table, CEA=CEA))
 }
 
-reslts_notbm <- gen_outs(TBMincl=0, posttbincl = 0)
-reslts_wztbm <- gen_outs(TBMincl=1, posttbincl = 1)
+reslts_notbm_nptb <- gen_outs(TBMincl=0, posttbincl = 0)
+reslts_wztbm_ptb <- gen_outs(TBMincl=1, posttbincl = 1)
 reslts_tbm_nptb <- gen_outs(TBMincl=1, posttbincl = 0)
 reslts_ntbm_ptb <- gen_outs(TBMincl=0, posttbincl = 0)
 
-reslts_wztbm$model    <- "Basecase"
-reslts_ntbm_ptb$model <- "Basecase - TBM"
-reslts_tbm_nptb$model <- "Basecase - PostTB"
-reslts_notbm$model    <- "Basecase - both"
+outs_notbm_nptb <- reslts_notbm_nptb$outs
+CEA_notbm_nptb <- reslts_notbm_nptb$CEA
+outs_tbm_ptb <- reslts_wztbm_ptb$outs
+CEA_tbm_ptb <- reslts_wztbm_ptb$CEA
+outs_tbm_nptb <- reslts_tbm_nptb$outs
+CEA_tbm_nptb <- reslts_tbm_nptb$CEA
+outs_ntbm_ptb <- reslts_ntbm_ptb$outs
+CEA_ntbm_ptb <- reslts_ntbm_ptb$CEA
 
-all <- bind_rows(reslts_notbm,reslts_wztbm, 
-                 reslts_tbm_nptb,reslts_ntbm_ptb) %>%
+outs_tbm_ptb$model  <- "Basecase"
+outs_ntbm_ptb$model <- "Basecase - TBM"
+outs_tbm_nptb$model <- "Basecase - PostTB"
+outs_notbm_nptb$model <- "Basecase - both"
+
+CEA_tbm_ptb$model  <- "Basecase"
+CEA_ntbm_ptb$model <- "Basecase - TBM"
+CEA_tbm_nptb$model <- "Basecase - PostTB"
+CEA_notbm_nptb$model <- "Basecase - both"
+
+
+
+all_outs <- bind_rows(outs_tbm_ptb,outs_ntbm_ptb, 
+                 outs_tbm_nptb,outs_notbm_nptb) %>%
   filter(variable%in% c("rslt_att","rslt_cost","rslt_health","rslt_inc","rslt_ly_tb",  
                         "rslt_tb_deaths")) %>%
   mutate(variable = recode(variable,
@@ -159,6 +183,16 @@ all <- bind_rows(reslts_notbm,reslts_wztbm,
                              "Basecase - PostTB", 
                              "Basecase - TBM", 
                              "Basecase - both"))
+all_CEA <- bind_rows(CEA_tbm_ptb,CEA_ntbm_ptb, 
+                      CEA_tbm_nptb,CEA_notbm_nptb) %>%
+  pivot_longer(cols = c("ENB30","ICER"))%>%
+  rename(variable="name") %>%
+  mutate(model = forcats::fct_relevel(model,
+                                      "Basecase", 
+                                      "Basecase - PostTB", 
+                                      "Basecase - TBM", 
+                                      "Basecase - both"))
+
 
 pdiff <- ggplot(all, aes(model, mid_sq,col=model))+ geom_point()+
   geom_pointrange(aes(ymin = lo_sq, ymax = hi_sq)) + 
@@ -173,6 +207,19 @@ pdiff <- ggplot(all, aes(model, mid_sq,col=model))+ geom_point()+
  ggsave(pdiff,file = here("outputs/TBMpostTBeffect.png"), w = 6, h = 3.5)
 
 
+ pcea <- ggplot(all_CEA, aes(model, value,col=model))+ geom_point()+
+   facet_wrap(~variable, scales="free")+ylab("Estimates")+
+   theme_bw()+
+   theme(legend.position="bottom",legend.title =element_blank(),  
+         axis.title.x = element_blank(), 
+         axis.text.x = element_blank())+
+   ggtitle("Impact of inclusion of TBM and postTB in BCG cost effectiveness modelling")+
+   theme(plot.title = element_text(size = 10))
+ 
+ ggsave(pcea,file = here("outputs/TBMpostTB_role_BCG_CE.png"), w = 5.5, h = 3.0)
+ 
+ 
+ 
 # 
 # percentage_change_df <- all %>%
 #   rename(mid=mid_sq,lo=lo_sq,hi=hi_sq) %>%
@@ -202,6 +249,6 @@ pdiff <- ggplot(all, aes(model, mid_sq,col=model))+ geom_point()+
 #   theme_minimal()+
 #   theme(plot.title = element_text(size = 10))
 
-ggsave(pchange,file = here("outputs/TBMpostTBeffect.png"), w = 4.0, h = 4.5)
+#ggsave(pchange,file = here("outputs/TBMpostTBeffect.png"), w = 4.0, h = 4.5)
 
 
