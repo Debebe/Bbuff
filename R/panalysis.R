@@ -314,16 +314,19 @@ output_table <- dcast(output_table,
   value.var = c("mid", "lo", "hi")
   )
 
-## change units to millions for cost and health
+## change units to millions for cost and health, BCG dosese
 fac <- 1e6
 output_table[
-  variable %in% c("rslt_att_cost", "rslt_health"),
+  variable %in% c("rslt_att_cost", "rslt_cost",
+                  "rslt_bcg_doses", "rslt_health"),
   `:=`(
     mid_sq = mid_sq / fac, lo_sq = lo_sq / fac, hi_sq = hi_sq / fac,
     mid_cf = mid_cf / fac, lo_cf = lo_cf / fac, hi_cf = hi_cf / fac,
     mid_av = mid_av / fac, lo_av = lo_av / fac, hi_av = hi_av / fac
   )
 ]
+
+
 
 
 
