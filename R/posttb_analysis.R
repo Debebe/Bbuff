@@ -128,18 +128,24 @@ gen_outs <- function(TBMincl=0,posttbincl=0){
   )
   
 
-  output_table <-output_table[,.(variable,mid_sq, lo_sq, hi_sq)]
+  output_table <-output_table[,.(variable,mid_sq, lo_sq, hi_sq, mid_cf, lo_cf, hi_cf)]
   return(output_table)
 }
 
 reslts_notbm <- gen_outs(TBMincl=0, posttbincl = 0)
-reslts_notbm$model <- "Without TBM and PostTB"
 reslts_wztbm <- gen_outs(TBMincl=1, posttbincl = 1)
-reslts_wztbm$model <- "With TBM and PostTB"
+reslts_tbm_nptb <- gen_outs(TBMincl=1, posttbincl = 0)
+reslts_ntbm_ptb <- gen_outs(TBMincl=0, posttbincl = 0)
 
-both <- rbind(reslts_notbm,reslts_wztbm)%>%
+reslts_wztbm$model    <- "Basecase"
+reslts_ntbm_ptb$model <- "Basecase - TBM"
+reslts_tbm_nptb$model <- "Basecase - PostTB"
+reslts_notbm$model    <- "Basecase - both"
+
+all <- bind_rows(reslts_notbm,reslts_wztbm, 
+                 reslts_tbm_nptb,reslts_ntbm_ptb) %>%
   filter(variable%in% c("rslt_att","rslt_cost","rslt_health","rslt_inc","rslt_ly_tb",  
-                       "rslt_tb_deaths")) %>%
+                        "rslt_tb_deaths")) %>%
   mutate(variable = recode(variable,
                            rslt_att = "ATT",
                            rslt_cost = "Cost",
@@ -147,46 +153,54 @@ both <- rbind(reslts_notbm,reslts_wztbm)%>%
                            rslt_inc = "Incidence",
                            rslt_ly_tb = "LY",
                            rslt_tb_deaths = "TB deaths")) %>%
-  filter(variable%in% c("Cost","Health","LY","TB deaths"))
+  filter(variable%in% c("Cost","Health","LY","TB deaths"))%>%
+  mutate(model = forcats::fct_relevel(model,
+                             "Basecase", 
+                             "Basecase - PostTB", 
+                             "Basecase - TBM", 
+                             "Basecase - both"))
 
-pdiff <- ggplot(both, aes(variable, mid_sq,col=model))+ geom_point()+
+pdiff <- ggplot(all, aes(model, mid_sq,col=model))+ geom_point()+
   geom_pointrange(aes(ymin = lo_sq, ymax = hi_sq)) + 
   facet_wrap(~variable, scales="free")+ylab("Estimates")+
   theme_bw()+
   theme(legend.position="bottom",legend.title =element_blank(),  
         axis.title.x = element_blank(), 
         axis.text.x = element_blank())+
-  ggtitle("Inclusion of TBM and postTB reveals increased dea")
-
-
-
-
-percentage_change_df <- both %>%
-  pivot_wider(
-    names_from = model,
-    values_from = c(mid_sq, lo_sq, hi_sq)
-  ) %>%
-  mutate(
-    mid_pct_change = 100*(`mid_sq_With TBM and PostTB` - `mid_sq_Without TBM and PostTB`) / `mid_sq_Without TBM and PostTB`,
-    lo_pct_change = 100*(`lo_sq_With TBM and PostTB` - `lo_sq_Without TBM and PostTB`) / `lo_sq_Without TBM and PostTB`,
-    hi_pct_change = 100*(`hi_sq_With TBM and PostTB` - `hi_sq_Without TBM and PostTB`) / `hi_sq_Without TBM and PostTB`
-  ) %>%
-  select(variable, mid_pct_change, lo_pct_change, hi_pct_change)
-
-pchange <- ggplot(percentage_change_df, aes(x = variable, y = mid_pct_change)) +
-  geom_bar(stat = "identity", aes(fill = mid_pct_change > 0)) +
-  geom_text(aes(label = paste0(round(mid_pct_change, 2), "%")),
-            vjust = ifelse(percentage_change_df$mid_pct_change > 0, -0.5, 1.5),
-            color = "black", size=3) +
-  geom_hline(yintercept = 0, color = "black", linetype = "dashed") +
-  scale_fill_manual(values = c("TRUE" = "green", "FALSE" = "red"), guide = "none") +
-  labs(
-    title = "Percentage change from inclusion of TBM and Post TB",
-    x = "Variable",
-    y = "Percentage Change (%)"
-  ) + xlab("")+
-  theme_minimal()+
+  ggtitle("Health and cost consequences of inclusion of TBM and postTB in BCG modelling")+
   theme(plot.title = element_text(size = 10))
+
+ ggsave(pdiff,file = here("outputs/TBMpostTBeffect.png"), w = 6, h = 3.5)
+
+
+# 
+# percentage_change_df <- all %>%
+#   rename(mid=mid_sq,lo=lo_sq,hi=hi_sq) %>%
+#   pivot_wider(
+#     names_from = model,
+#     values_from = c(mid, lo, hi)
+#   ) %>%
+#   mutate(
+#     mid_pct_change = 100*(`mid_sq_With TBM and PostTB` - `mid_sq_Without TBM and PostTB`) / `mid_sq_Without TBM and PostTB`,
+#     lo_pct_change = 100*(`lo_sq_With TBM and PostTB` - `lo_sq_Without TBM and PostTB`) / `lo_sq_Without TBM and PostTB`,
+#     hi_pct_change = 100*(`hi_sq_With TBM and PostTB` - `hi_sq_Without TBM and PostTB`) / `hi_sq_Without TBM and PostTB`
+#   ) %>%
+#   select(variable, mid_pct_change, lo_pct_change, hi_pct_change)
+# 
+# pchange <- ggplot(percentage_change_df, aes(x = variable, y = mid_pct_change)) +
+#   geom_bar(stat = "identity", aes(fill = mid_pct_change > 0)) +
+#   geom_text(aes(label = paste0(round(mid_pct_change, 2), "%")),
+#             vjust = ifelse(percentage_change_df$mid_pct_change > 0, -0.5, 1.5),
+#             color = "black", size=3) +
+#   geom_hline(yintercept = 0, color = "black", linetype = "dashed") +
+#   scale_fill_manual(values = c("TRUE" = "green", "FALSE" = "red"), guide = "none") +
+#   labs(
+#     title = "Percentage change from inclusion of TBM and Post TB",
+#     x = "Variable",
+#     y = "Percentage Change (%)"
+#   ) + xlab("")+
+#   theme_minimal()+
+#   theme(plot.title = element_text(size = 10))
 
 ggsave(pchange,file = here("outputs/TBMpostTBeffect.png"), w = 4.0, h = 4.5)
 
