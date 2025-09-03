@@ -47,6 +47,10 @@ D[, rslt_inc_cf := inc0_from_inc(incbest, bcg_coverage, bcg_haz_tb)]
 D[, rslt_tbminc_sq := rslt_inc_sq * m_sq]
 D[, rslt_tbminc_cf := rslt_inc_cf * m_cf]
 
+## BCG vaccine doses (population applied in analysis)
+D[, rslt_bcg_doses_sq := bcg_coverage]
+D[, rslt_bcg_doses_cf := 0.0]
+
 ## ATT courses
 D[, rslt_att_sq := att_courses(rslt_inc_sq, cdr)] #TODO this should be just notes to reduce unc?
 D[, rslt_att_cf := att_courses(rslt_inc_cf, cdr)]

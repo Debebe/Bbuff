@@ -312,7 +312,20 @@ output_table <- output_table[, .(
 output_table <- dcast(output_table,
   variable ~ variable.1,
   value.var = c("mid", "lo", "hi")
-)
+  )
+
+## change units to millions for cost and health
+fac <- 1e6
+output_table[
+  variable %in% c("rslt_att_cost", "rslt_health"),
+  `:=`(
+    mid_sq = mid_sq / fac, lo_sq = lo_sq / fac, hi_sq = hi_sq / fac,
+    mid_cf = mid_cf / fac, lo_cf = lo_cf / fac, hi_cf = hi_cf / fac,
+    mid_av = mid_av / fac, lo_av = lo_av / fac, hi_av = hi_av / fac
+  )
+]
+
+
 
 ## format numbers, add brackets
 output_table[
