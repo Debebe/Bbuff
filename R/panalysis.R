@@ -7,7 +7,7 @@ library(here)
 library(data.table)
 library(ggplot2)
 library(truncnorm)
-
+library(dplyr)
 
 ## === data
 ## read in pre-prepared data
@@ -51,22 +51,60 @@ D <- D %>%
   rowwise() %>%
   mutate(
     # vax efficacy
-    bcg_haz_tb   = 1 - sample_beta(bcg_eff_tb.m,  bcg_eff_tb.lo,  bcg_eff_tb.hi),
-    bcg_haz_tbm  = 1 - sample_beta(bcg_eff_tbm.m, bcg_eff_tbm.lo, bcg_eff_tbm.hi),
-    #tbm_prop
-    prop_tbm     = sample_beta(prop_tbm, prop_tbm.lo, prop_tbm.hi),
-    #inc
-    incbest      = sample_truncn(incbest, inclo, inchi),
+    bcg_haz_tb = 1 - sample_beta(
+      bcg_eff_tb.m,
+      bcg_eff_tb.lo,
+      bcg_eff_tb.hi
+    ),
+    bcg_haz_tbm = 1 - sample_beta(
+      bcg_eff_tbm.m,
+      bcg_eff_tbm.lo,
+      bcg_eff_tbm.hi
+    ),
+    # tbm_prop
+    prop_tbm = sample_beta(
+      prop_tbm,
+      prop_tbm.lo,
+      prop_tbm.hi
+    ),
+    # inc
+    incbest = sample_truncn(incbest, inclo, inchi),
     # costs
-    ucost_dstb.m = sample_gamma(mean = ucost_dstb.m, sd = ucost_dstb.sd),
-    ucost_tbm.m  = sample_gamma(mean = ucost_tbm.m, sd = ucost_tbm.sd),
-    uc_tot_vax_delv_ave = sample_gamma(mean = uc_tot_vax_delv_ave, lo = uc_tot_vax_delv_lo, hi= uc_tot_vax_delv_hi),
-    uc_labor_ave = sample_gamma(mean = uc_labor_ave,lo = uc_labor_lo,hi = uc_labor_hi),
-    uc_sc_ave    = sample_gamma(mean = uc_sc_ave, lo = uc_su_lo, hi = uc_sc_hi),
-    uc_servd_ave = sample_gamma(mean = uc_servd_lo,lo = uc_servd_lo, hi = uc_servd_hi),
-    uc_capital_ave = sample_gamma(mean = uc_capital_ave, lo = uc_capital_lo, hi = uc_capital_hi)
+    ucost_dstb.m = sample_gamma(
+      mean = ucost_dstb.m,
+      sd = ucost_dstb.sd
+    ),
+    ucost_tbm.m = sample_gamma(mean = ucost_tbm.m, sd = ucost_tbm.sd),
+    uc_tot_vax_delv_ave = sample_gamma(
+      mean = uc_tot_vax_delv_ave,
+      lo = uc_tot_vax_delv_lo,
+      hi = uc_tot_vax_delv_hi
+    ),
+    uc_labor_ave = sample_gamma(
+      mean = uc_labor_ave,
+      lo = uc_labor_lo,
+      hi = uc_labor_hi
+    ),
+    uc_sc_ave = sample_gamma(
+      mean = uc_sc_ave,
+      lo = uc_su_lo,
+      hi = uc_sc_hi
+    ),
+    uc_servd_ave = sample_gamma(
+      mean = uc_servd_lo,
+      lo = uc_servd_lo,
+      hi = uc_servd_hi
+    ),
+    uc_capital_ave = sample_gamma(
+      mean = uc_capital_ave,
+      lo = uc_capital_lo,
+      hi = uc_capital_hi
+    )
   ) %>%
-  ungroup()%>%as.data.table()
+  ungroup() %>%
+  as.data.table()
+
+
 
 # D$prop_tbm <-0
 
@@ -89,20 +127,26 @@ source(here("R/utilities/calculations.R"))
 ## === aggregations and outputs
 CEA <- D[, .(
   ## expected net benefit at WTP=30%GDP
-  ENB30 = mean(0.3 * GDP * (rslt_health_sq - rslt_health_cf) -
-      (rslt_cost_sq - rslt_cost_cf)),
+  ENB30 = mean(
+    0.3 * GDP * (rslt_health_sq - rslt_health_cf) -
+      (rslt_cost_sq - rslt_cost_cf)
+  ),
   GDP = mean(GDP),
-  ##g
-  bcg_cov =unique(bcg_coverage),
+  ## g
+  bcg_cov = unique(bcg_coverage),
   # g = ENB30 / bcg_cov,
   ## ICER
   ICER = mean(rslt_cost_sq - rslt_cost_cf) /
     mean(rslt_health_sq - rslt_health_cf),
   ## downslope for exceeding demand
-  u = mean(0.75*uc_labor_ave + uc_sc_ave+uc_capital_ave+ucost_proc_bcg) #TODO vax prep and inject is 25% of all labour cost?
+  u = mean(0.75 * uc_labor_ave +
+    uc_sc_ave +
+    uc_capital_ave +
+    ucost_proc_bcg) # TODO vax prep and inject is 25% of all labour cost?
 ),
 by = iso3
 ]
+
 
 CEA[, g := ENB30 / bcg_cov]
 CEA[, bcg_cov := NULL]
@@ -186,30 +230,46 @@ CEA[, summary(ENB30 / (ENB30 + u))]
 CEA[, summary(qnorm(ENB30 / (ENB30 + u)))]
 
 
-CEAA <- CEA%>%
-  inner_join(gdp_inc_le_costs%>%select(Country=country, iso3)%>%
-               distinct(iso3,.keep_all = TRUE), by="iso3")%>%
-  #filter(ENB30>0)%>%
-  mutate(CV1=0.05,CV2=0.1,CV3=0.15,
-         z_score= qnorm(g/(g + u), mean = 0, sd = 1))%>%
-  mutate(Bf1= round(100*z_score*CV1,1),
-         Bf2= round(100*z_score*CV2,1),
-         Bf3= round(100*z_score*CV3,1))
+CEAA <- CEA %>%
+  inner_join(
+    gdp_inc_le_costs %>%
+      select(Country = country, iso3) %>%
+      distinct(iso3, .keep_all = TRUE),
+    by = "iso3"
+  ) %>%
+  # filter(ENB30>0)%>%
+  mutate(
+    CV1 = 0.05, CV2 = 0.1, CV3 = 0.15,
+    z_score = qnorm(g / (g + u), mean = 0, sd = 1)
+  ) %>%
+  mutate(
+    Bf1 = round(100 * z_score * CV1, 1),
+    Bf2 = round(100 * z_score * CV2, 1),
+    Bf3 = round(100 * z_score * CV3, 1)
+  )
 
-ft <- CEAA%>%
-   filter(Bf1>0,!is.na(Bf1),ENB30>0)%>%
-  select(Region=g_whoregion,
-             Country,ENB=ENB30,ICER,`Buffer 1`= Bf1,
-         `Buffer 2`=Bf2, `Buffer 3`=Bf3)%>%
-   mutate(ENB=round(ENB,1),
-          ICER=round(ICER,0))%>%
-  as.data.frame()%>%
+ft <- CEAA %>%
+  filter(Bf1 > 0, !is.na(Bf1), ENB30 > 0) %>%
+  select(
+    Region = g_whoregion,
+    Country, ENB = ENB30, ICER, `Buffer 1` = Bf1,
+    `Buffer 2` = Bf2, `Buffer 3` = Bf3
+  ) %>%
+  mutate(
+    ENB = round(ENB, 1),
+    ICER = round(ICER, 0)
+  ) %>%
+  as.data.frame() %>%
   make_flextable()
-# Save to word document
-doc <- read_docx() |> 
-  body_add_flextable(value = ft) |> 
+
+
+## Save to word document TODO missing package:: 
+doc <- read_docx() |>
+  body_add_flextable(value = ft) |>
   body_add_par(" ", style = "Normal") # optional spacing
+
 print(doc, target = "outputs/buffer_sz.docx")
+
 
 ## TODO global and regional total outputs, e.g.:
 

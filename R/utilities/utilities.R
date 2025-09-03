@@ -65,33 +65,31 @@ sample_truncn <- function(mu, lo, hi, n = 1) {
 sample_beta <- function(mean, lo, hi, n = 1) {
   sd <- (hi - lo) / 3.92
   var <- sd^2
-  
   tmp <- mean * (1 - mean) / var - 1
   alpha <- mean * tmp
   beta  <- (1 - mean) * tmp
-  
   rbeta(n, shape1 = alpha, shape2 = beta)
 }
 
-#sample_beta(mean = 0.034, lo = 0.0187, hi = 0.060)
+# sample_beta(mean = 0.034, lo = 0.0187, hi = 0.060)
 
 
 make_flextable <- function(data) {
   ftall <- data %>%
-    #select(-ISO) %>%
-    flextable() |>
-    set_caption("Optimal buffer size under different demand uncertainties") |>
-    autofit() |>
-    merge_v(j = c("Region")) |>
-    align(align = "left", part = "all") |>
-    valign(valign = "top", j = c("Region")) |>
-    fontsize(size = 7, part = "all") |>
-    autofit() #|>
-    #bg(i = ~ ENB < 0, bg = "#FFCCCC"
-      # )
-  
+    # select(-ISO) %>%
+    flextable::flextable() |>
+    flextable::set_caption("Optimal buffer size under different demand uncertainties") |>
+    flextable::autofit() |>
+    flextable::merge_v(j = c("Region")) |>
+    flextable::align(align = "left", part = "all") |>
+    flextable::valign(valign = "top", j = c("Region")) |>
+    flextable::fontsize(size = 7, part = "all") |>
+    flextable::autofit() #|>
+  # bg(i = ~ ENB < 0, bg = "#FFCCCC"
+  # )
   return(ftall)
 }
+
 
 
 
