@@ -270,6 +270,33 @@ doc <- read_docx() |>
 
 print(doc, target = "outputs/buffer_sz.docx")
 
+## buffer plot
+tmp <- CEAA[ENB30 > 0 & z_score > 0]
+summary(tmp)
+tmpm <- melt(tmp[, .(iso3, region, GDP, Bf1, Bf2, Bf3)],
+  id = c("iso3", "region", "GDP")
+)
+tmpm[, var := fcase(
+  variable == "Bf1", "CV = 5%",
+  variable == "Bf2", "CV = 10%",
+  variable == "Bf3", "CV = 15%"
+  )]
+tmpm$var <- factor(tmpm$var,
+  levels = c("CV = 5%", "CV = 10%", "CV = 15%"),
+  ordered = TRUE
+)
+
+
+ggplot(tmpm, aes(iso3, value,color=var)) +
+  geom_point() +
+  coord_flip() +
+  facet_wrap(~region, scales = "free") +
+  theme_linedraw() +
+  xlab("Country ISO3 code") +
+  ylab("Optimal buffer as proportion of expected demand (%)")+
+  theme(legend.position = 'top',legend.title = element_blank())
+
+ggsave(file = here("outputs/buffer_by_country.png"), w = 9, h = 8)
 
 ## TODO global and regional total outputs, e.g.:
 
