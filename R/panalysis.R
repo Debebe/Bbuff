@@ -36,7 +36,7 @@ source("R/utilities/utilities.R")
 
 ## === expand data for PSA
 set.seed(1234)
-Niter <- 500 # TODO increase ultimately
+Niter <- 10000 # TODO increase ultimately
 D <- as.data.table(gdp_inc_le_costs)
 D <- D[cov_cat == "WUENIC"]
 N <- nrow(D)
@@ -65,7 +65,7 @@ D <- D %>%
     ),
     # tbm_prop
     prop_tbm = sample_beta(
-      prop_tbm,
+      prop_tbm.ave,
       prop_tbm.lo,
       prop_tbm.hi
     ),
