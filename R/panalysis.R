@@ -10,6 +10,7 @@ library(truncnorm)
 library(dplyr)
 library(flextable)
 library(officer)
+library(stringr)
 
 ## === data
 ## read in pre-prepared data
@@ -164,57 +165,61 @@ CEA$iso3 <- factor(CEA$iso3, levels = CEA[order(ICER)]$iso3, ordered = TRUE)
 #   geom_point(aes(iso3, GDP * 0.3), shape = 3, col = 2) +
 #   geom_point(aes(iso3, GDP * 0.5), shape = 3, col = 4) +
 #   geom_point(aes(iso3, GDP * 1.0), shape = 3, col = 5) +
-#   geom_point() +
-#   scale_y_continuous(labels = scales::comma) +
+#   geom_point(aes(shape = (ICER < 0.3 * GDP))) +
+#   scale_shape_manual(values = c(1, 19), guide = "none") +
+#   scale_y_log10(labels = scales::comma) +
 #   coord_flip() +
-#   facet_wrap(~g_whoregion, scales = "free") +
-#   theme_linedraw()
+#   facet_wrap(~region, scales = "free") +
+#   theme_linedraw() +
+#   xlab("Country ISO3 code") +
+#   ylab("Incremental cost-effectiveness ratio (USD/DALY)")
+
+
+thresholds <- c(0.3, 0.5, 1.0)  
+all_labels <- c("ICER < 0.3 GDP","ICER >= 0.3 GDP", 
+                "0.3 GDP", "0.5 GDP","1 GDP")
+all_shapes <- c(19, 1, 3, 3, 3) # shape types
+all_colors <- c("black", "black", 2, 4, 5) # colors
+
+
+CEA <- CEA%>%
+  #distinct(iso3, GDP, region, .keep_all = TRUE) |> 
+  crossing(threshold = thresholds)%>%
+  mutate(legend_label = paste0(threshold," GDP"))%>% 
+  mutate(legend_label= factor(legend_label,
+                              levels = c("0.3 GDP", "0.5 GDP", "1 GDP")))|>
+  dplyr::mutate(ICER_val = GDP * threshold,
+                ICER_Label= ifelse(ICER < 0.3 * GDP,"ICER < 0.3 GDP", "ICER >= 0.3 GDP" ))%>%
+  as.data.table()
 
 ggplot(CEA[ICER > 0], aes(iso3, ICER)) +
-  geom_point(aes(iso3, GDP * 0.3), shape = 3, col = 2) +
-  geom_point(aes(iso3, GDP * 0.5), shape = 3, col = 4) +
-  geom_point(aes(iso3, GDP * 1.0), shape = 3, col = 5) +
-  geom_point(aes(shape = (ICER < 0.3 * GDP))) +
-  scale_shape_manual(values = c(1, 19), guide = "none") +
+  geom_point(aes(shape = ICER_Label, col = ICER_Label), 
+             size = 1.5) +
+  geom_point(aes(y = ICER_val,shape = legend_label,
+                 col =legend_label),size = 1.5) +
+  scale_shape_manual(name = "Threshold",
+                     values = setNames(all_shapes, all_labels)) +
+  scale_color_manual(name = "Threshold",
+                     values = setNames(all_colors, all_labels)) +
   scale_y_log10(labels = scales::comma) +
   coord_flip() +
   facet_wrap(~region, scales = "free") +
-  theme_linedraw() +
+  theme_linedraw()+
+  theme(legend.position = "top",
+        legend.box.spacing = unit(0, "pt"),   # no gap between legend and plot
+        legend.margin = margin(0, 0, 0, 0),   # no internal padding in legend
+        plot.margin = margin(0, 5, 5, 5))+
   xlab("Country ISO3 code") +
   ylab("Incremental cost-effectiveness ratio (USD/DALY)")
-
-  # geom_point(aes(y = GDP * 0.3, shape = "30% GDP", color = "30% GDP")) +
-  # geom_point(aes(y = GDP * 0.5, shape = "50% GDP", color = "50% GDP")) +
-  # geom_point(aes(y = GDP * 1.0, shape = "100% GDP", color = "100% GDP")) +
-  # geom_point() +
-  # scale_shape_manual(
-  #   name = "WTP",
-  #   values = c("30% GDP" = 3, "50% GDP" = 3, "100% GDP" = 3),
-  #   breaks = c("30% GDP", "50% GDP", "100% GDP")
-  # ) +
-  # scale_color_manual(
-  #   name = "WTP",
-  #   values = c("30% GDP" = 2, "50% GDP" = 4, "100% GDP" = 5),
-  #   breaks = c("30% GDP", "50% GDP", "100% GDP")
-  # ) +
-  # scale_y_continuous(labels = scales::comma) + 
-  # coord_flip() +
-  # facet_wrap(~g_whoregion, scales = "free") +
-  # theme_linedraw() +
-  # theme(legend.position = "top",
-  #       legend.box.spacing = unit(0, "pt"),   # no gap between legend and plot
-  #       legend.margin = margin(0, 0, 0, 0),   # no internal padding in legend
-  #       plot.margin = margin(0, 5, 5, 5)
-  # )
 
 
 ggsave(file = here("outputs/cea_ICER_iso3.png"), w = 9, h = 8)
 
 
 ## ENB plot
-CEA$iso3 <- factor(CEA$iso3, levels = CEA[order(ENB30)]$iso3, ordered = TRUE)
+#CEA$iso3 <- factor(CEA$iso3, levels = CEA[order(ENB30)]$iso3, ordered = TRUE)
 
-ggplot(CEA, aes(iso3, ENB30)) +
+ggplot(CEA, aes(reorder(iso3, ENB30), ENB30)) +
   geom_hline(yintercept = 0, col = 2) +
   geom_point() +
   coord_flip() +
@@ -289,11 +294,16 @@ tmpm$var <- factor(tmpm$var,
 )
 
 
-ggplot(tmpm, aes(iso3, value,color=var)) +
+ggplot(tmpm, aes(reorder(iso3, value), value,color=var)) + # ordering values
   geom_point() +
   coord_flip() +
   facet_wrap(~region, scales = "free") +
   theme_linedraw() +
+  scale_color_brewer(palette = "Dark2") +
+  theme(legend.position = "top",
+        legend.box.spacing = unit(0, "pt"),   # no gap between legend and plot
+        legend.margin = margin(0, 0, 0, 0),   # no internal padding in legend
+        plot.margin = margin(0, 5, 5, 5))+
   xlab("Country ISO3 code") +
   ylab("Optimal buffer as proportion of expected demand (%)")+
   theme(legend.position = 'top',legend.title = element_blank())
@@ -357,8 +367,6 @@ output_table[
 
 
 
-
-
 ## format numbers, add brackets
 output_table[
   ,
@@ -371,3 +379,7 @@ output_table[
 output_table
 
 fwrite(output_table, file = here("outputs/output_table.csv"))
+
+# Regional - this should come after the output_table 
+source("R/create_outs4who_regi.R") # replicates the global analysis for who_regions
+
