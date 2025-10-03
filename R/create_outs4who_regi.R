@@ -21,6 +21,8 @@ ceac_input <-avrt_table%>%filter(variable%in%c("rslt_health","rslt_cost"))%>%
 
 save(ceac_input, file = here("outputs/ceac_input.RData"))
 
+load(here("outputs/ceac_input.RData"))
+
 
 avrt_table <- avrt_table%>%
   filter(variable%in% c("rslt_att","rslt_bcg_doses","rslt_inc",
@@ -158,7 +160,7 @@ ggplot(CEAAs, aes(GDP,ICER, label = iso3) )+
   labs(title = "Relation between GDP and ICER") + 
   xlab("GDP (USD)") + ylab("ICER") +theme_linedraw()
 
-ggsave(file = here("outputs/fgdp_icer.png"), w = 9, h = 8)
+ggsave(file = here("outputs/f_gdp_icer.png"), w = 9, h = 8)
 
 
 
@@ -180,7 +182,7 @@ ggplot(CEAAs, aes(incbest,ICER, label = iso3) )+
   labs(title = "Relationship between TB incidence and ICER") +
   xlab("Per capita TB incidence") + ylab("ICER")+ theme_linedraw()
 
-ggsave(file = here("outputs/finc_icer.png"), w = 9, h = 8)
+ggsave(file = here("outputs/f_inc_icer.png"), w = 9, h = 8)
 
 
 ggplot(CEAAs, aes(GDP,Bf2, label = iso3) )+
@@ -201,7 +203,7 @@ ggplot(CEAAs, aes(GDP,Bf2, label = iso3) )+
   labs(title = "Relationship between GDP and Buffer size") +
   xlab("GDP (USD)") + ylab("Buffer size (10% CV)")+ theme_linedraw()
 
-ggsave(file = here("outputs/fgdp_buffsz.png"), w = 9, h = 8)
+ggsave(file = here("outputs/f_gdp_buffsz.png"), w = 9, h = 8)
 
 
 ggplot(CEAAs, aes(incbest,Bf2, label = iso3) )+
@@ -222,7 +224,7 @@ ggplot(CEAAs, aes(incbest,Bf2, label = iso3) )+
   labs(title = "Relationship between TB incidence and Buffer size") +
   xlab("Per capita TB incidence") + ylab("Buffer size (10% CV)")+ theme_linedraw()
 
-ggsave(file = here("outputs/finc_buffsz.png"), w = 9, h = 8)
+ggsave(file = here("outputs/f_inc_buffsz.png"), w = 9, h = 8)
 
 
 
