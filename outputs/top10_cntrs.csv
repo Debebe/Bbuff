@@ -1,0 +1,61 @@
+Country,BCG effect,Estimates
+IND,Averted ATT,43388 ( 16386 to 80061 )
+IND,BCG doses,102051544
+IND,Averted TB incidence,163642 ( 61801 to 301958 )
+IND,Averted DALYs,2211995 ( 832645 to 4146327 )
+IND,Averted deaths,61397 ( 23265 to 111078 )
+IND,Averted TBM incidence,17676 ( 5415 to 36900 )
+IDN,Averted ATT,96332 ( 48290 to 162474 )
+IDN,BCG doses,19666834
+IDN,Averted TB incidence,154784 ( 77591 to 261059 )
+IDN,Averted DALYs,2599007 ( 1275950 to 4430995 )
+IDN,Averted deaths,32540 ( 16709 to 53890 )
+IDN,Averted TBM incidence,16262 ( 6409 to 31421 )
+CHN,Averted ATT,549 ( 245 to 1023 )
+CHN,BCG doses,57462030
+CHN,Averted TB incidence,23201 ( 10352 to 43279 )
+CHN,Averted DALYs,251208 ( 104966 to 476217 )
+CHN,Averted deaths,12064 ( 5441 to 21963 )
+CHN,Averted TBM incidence,3924 ( 1392 to 8307 )
+PAK,Averted ATT,45454 ( 5314 to 105423 )
+PAK,BCG doses,30517836
+PAK,Averted TB incidence,64314 ( 7519 to 149167 )
+PAK,Averted DALYs,1094009 ( 127506 to 2557271 )
+PAK,Averted deaths,11712 ( 1383 to 26779 )
+PAK,Averted TBM incidence,9106 ( 1004 to 23449 )
+BGD,Averted ATT,3774 ( 515 to 8889 )
+BGD,BCG doses,16340018
+BGD,Averted TB incidence,24376 ( 3325 to 57416 )
+BGD,Averted DALYs,291635 ( 38602 to 696482 )
+BGD,Averted deaths,11136 ( 1511 to 25758 )
+BGD,Averted TBM incidence,4135 ( 497 to 10554 )
+MMR,Averted ATT,11650 ( 1123 to 26828 )
+MMR,BCG doses,3545520
+MMR,Averted TB incidence,23668 ( 2282 to 54504 )
+MMR,Averted DALYs,363345 ( 34508 to 839116 )
+MMR,Averted deaths,6225 ( 608 to 14215 )
+MMR,Averted TBM incidence,2053 ( 191 to 5219 )
+NGA,Averted ATT,8214 ( 981 to 18049 )
+NGA,BCG doses,24809702
+NGA,Averted TB incidence,19795 ( 2364 to 43495 )
+NGA,Averted DALYs,264138 ( 31337 to 582298 )
+NGA,Averted deaths,5827 ( 682 to 12733 )
+NGA,Averted TBM incidence,1547 ( 170 to 3814 )
+PHL,Averted ATT,32933 ( 2554 to 82248 )
+PHL,BCG doses,8737995
+PHL,Averted TB incidence,40403 ( 3134 to 100903 )
+PHL,Averted DALYs,741720 ( 57415 to 1862184 )
+PHL,Averted deaths,5023 ( 393 to 12362 )
+PHL,Averted TBM incidence,4635 ( 336 to 12306 )
+AGO,Averted ATT,2228 ( 207 to 5169 )
+AGO,BCG doses,4540057
+AGO,Averted TB incidence,8308 ( 772 to 19279 )
+AGO,Averted DALYs,110234 ( 10332 to 257308 )
+AGO,Averted deaths,2989 ( 280 to 6885 )
+AGO,Averted TBM incidence,643 ( 57 to 1632 )
+TZA,Averted ATT,15161 ( 974 to 39166 )
+TZA,BCG doses,10269880
+TZA,Averted TB incidence,19690 ( 1265 to 50866 )
+TZA,Averted DALYs,342808 ( 21782 to 893278 )
+TZA,Averted deaths,2966 ( 195 to 7516 )
+TZA,Averted TBM incidence,2668 ( 159 to 7553 )
