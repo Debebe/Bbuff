@@ -99,6 +99,28 @@ att_cost <- function(attn, attm, ucostn, ucostm) {
 }
 
 
+## number of hosp (excluding TBM)
+tbn_hosp <- function(inc, m, cdr, phosp) {
+  inc * (1 - m) * cdr*phosp
+}
+
+## number of TBM  hospitalized - all TBM are hosp
+tbm_hosp <- function(inc, m, cdr) {
+  inc * m * cdr
+}
+
+
+## number of hosp (excluding TBM)
+tbn_hosp_cost <- function(inc, m, cdr, phosp,ucostn_h) {
+  inc * (1 - m) * cdr*phosp*ucostn_h
+}
+
+## number of TBM  hospitalized - all TBM are hosp
+tbm_hosp_cost <- function(inc, m, cdr, ucostm_h) {
+  inc * m * cdr*ucostm_h
+}
+
+
 
 
 
