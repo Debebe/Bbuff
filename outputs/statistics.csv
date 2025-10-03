@@ -1,0 +1,23 @@
+variable,value,Description
+Number of countries,110,number of countries
+Africa,42,number of countries
+Eastern Mediterranean,12,number of countries
+Europe,16,number of countries
+South-East Asia,9,number of countries
+The Americas,19,number of countries
+Western Pacific,12,number of countries
+ICER-median,220(IQR =1171.75),Median global ICER with IQR
+ICER-mean,2699.54545454546( sd=6864.00891719599),Mean global ICER with sd
+Africa,112(IQR=152.25),Median regional ICER with IQR
+Eastern Mediterranean,1066(IQR=4269.75),Median regional ICER with IQR
+Europe,1131(IQR=1619),Median regional ICER with IQR
+South-East Asia,83(IQR=154),Median regional ICER with IQR
+The Americas,1118(IQR=4677.5),Median regional ICER with IQR
+Western Pacific,97(IQR=911.5),Median regional ICER with IQR
+Buffer,10.75(IQR=11.45),Median global Buffer with IQR
+Africa,11.5(IQR=7.8),Median regional Buffer size with IQR
+Eastern Mediterranean,3.1(IQR=12),Median regional Buffer size with IQR
+Europe,3.9(IQR=5.45),Median regional Buffer size with IQR
+South-East Asia,15.4(IQR=5.8),Median regional Buffer size with IQR
+The Americas,6.1(IQR=7.225),Median regional Buffer size with IQR
+Western Pacific,17(IQR=2.6),Median regional Buffer size with IQR
