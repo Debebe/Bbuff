@@ -21,7 +21,76 @@ ceac_input <-avrt_table%>%filter(variable%in%c("rslt_health","rslt_cost"))%>%
 
 save(ceac_input, file = here("outputs/ceac_input.RData"))
 
+load(here("data/whokey.Rdata"))
 load(here("outputs/ceac_input.RData"))
+
+## === box-and-whiskers CEAC plot
+## assuming results are negative
+lamz <- exp(seq(from = log(1), to = log(50e3), len = 100)) # log sequence of CET
+lamzd <- expand.grid(iter = seq_len(ceac_input[, max(iter)]), lam = lamz)
+lamzd <- as.data.table(lamzd) #grid of iter x threshold values
+ceac <- merge(ceac_input, lamzd, by = "iter", allow.cartesian = TRUE)
+ceac <- ceac[, .(p = mean(-lam * rslt_health > -rslt_cost)), by = .(iso3, lam)]
+
+## check
+ggplot(ceac[iso3 == "AFG"], aes(lam, p)) +
+  geom_line() +
+  scale_x_log10()
+
+## calculate 2.5, 25, 50, 75, 97.5 percentiles
+pcnts <- c(2.5, 25, 50, 75, 97.5)
+
+## calculate quantiles of CEAC looped over countries
+ceacq <- ceac[,
+  {
+    print(iso3)
+    af <- approxfun(x = lam, y = p)
+    ans <- rep(0, 5)
+    for (i in 1:5) {
+      if (min(p) > pcnts[i] / 100) {
+        ans[i] <- min(lam)
+      } else if(max(p) < pcnts[i] / 100){
+        ans[i] <- max(lam)
+      } else {
+        tgt <- function(x) pcnts[i] / 100 - af(x)
+        ans[i] <- uniroot(tgt, lower = min(lamz), upper = max(lamz))$root
+      }
+    }
+    names(ans) <- paste0("q", pcnts)
+    as.list(ans)
+  },
+  by = iso3
+]
+
+ceacq <- merge(ceacq, whokey, by = "iso3") #WHO region
+
+## order by median
+ceacq$iso3 <- factor(
+  ceacq$iso3,
+  levels = ceacq[order(q50), iso3],
+  ordered = TRUE
+)
+
+## plot
+ggplot(ceacq, aes(iso3,
+  ymin = q2.5, lower = q25,
+  middle = q50, upper = q75, ymax = q97.5
+)) +
+  geom_boxplot(stat = "identity") +
+  scale_y_log10(labels = scales::comma) +
+  coord_flip() +
+  facet_wrap(~g_whoregion, scales = "free") +
+  theme_linedraw() +
+  theme(
+    legend.position = "top",
+    legend.box.spacing = unit(0, "pt"), # no gap between legend and plot
+    legend.margin = margin(0, 0, 0, 0), # no internal padding in legend
+    plot.margin = margin(0, 5, 5, 5)
+  ) +
+  xlab("Country ISO3 code") +
+  ylab("CEAC quantiles (USD/DALY)")
+
+ggsave(file = here("outputs/ceac_iso3.png"), w = 9, h = 8)
 
 
 avrt_table <- avrt_table%>%
