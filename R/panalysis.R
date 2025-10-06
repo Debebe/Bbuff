@@ -295,20 +295,20 @@ tmpm$var <- factor(tmpm$var,
 
 
 ggplot(tmpm, aes(reorder(iso3, value), value,color=var)) + # ordering values
-  geom_point() +
+  geom_point() + ylim(0, NA) +
   coord_flip() +
   facet_wrap(~region, scales = "free") +
   theme_linedraw() +
-  scale_color_brewer(palette = "Dark2") +
+  scale_color_brewer(palette = "Dark2") + 
   theme(legend.position = "top",
         legend.box.spacing = unit(0, "pt"),   # no gap between legend and plot
         legend.margin = margin(0, 0, 0, 0),   # no internal padding in legend
         plot.margin = margin(0, 5, 5, 5))+
   xlab("Country ISO3 code") +
   ylab("Optimal buffer as proportion of expected demand (%)")+
-  theme(legend.position = 'top',legend.title = element_blank())
+  theme(legend.position = 'top',legend.title = element_blank()) 
 
-ggsave(file = here("outputs/buffer_by_country.png"), w = 9, h = 8)
+ggsave(file = here("outputs/f_buffer_sz_cntrs.png"), w = 9, h = 8)
 
 ## TODO global and regional total outputs, e.g.:
 

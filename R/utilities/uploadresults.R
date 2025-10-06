@@ -28,7 +28,7 @@ upload.to.sheets("output_table_who.csv", shid)
 upload.to.sheets("top10_cntrs.csv", shid)
 upload.to.sheets("regression_ENB.csv", shid)
 upload.to.sheets("regression_icer.csv", shid)
-
+upload.to.sheets("statistics.csv", shid)
 
 
 

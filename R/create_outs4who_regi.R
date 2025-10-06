@@ -24,6 +24,7 @@ save(ceac_input, file = here("outputs/ceac_input.RData"))
 load(here("data/whokey.Rdata"))
 load(here("outputs/ceac_input.RData"))
 
+<<<<<<< Updated upstream
 ## === box-and-whiskers CEAC plot
 ## assuming results are negative
 lamz <- exp(seq(from = log(1), to = log(50e3), len = 100)) # log sequence of CET
@@ -91,6 +92,11 @@ ggplot(ceacq, aes(iso3,
   ylab("CEAC quantiles (USD/DALY)")
 
 ggsave(file = here("outputs/ceac_iso3.png"), w = 9, h = 8)
+=======
+avert_deaths <- avrt_table%>%
+  filter(variable=="rslt_tb_deaths")%>%
+  na.omit()
+>>>>>>> Stashed changes
 
 
 avrt_table <- avrt_table%>%
@@ -125,8 +131,9 @@ top10_cntrs <-avrt_table %>%
     by = "iso3"
   ) %>%
   arrange(desc(death_value))%>%
-  mutate(across(where(is.numeric), ~ round(.x, 0)))%>%
-  mutate(Estimates= paste(av.m,"(",av.l ,"to",av.h, ")"))%>%
+  mutate(across(where(is.numeric), ~ round(.x, 0))) %>%
+  mutate(Estimates= brkt(av.m,av.l, av.h)) %>%          #TODO brkt function is not giving exact values, rounds
+ # mutate(Estimates= paste(av.m,"(",av.l ,"to",av.h, ")"))%>%
   mutate(Estimates= ifelse(variable=="BCG doses",av.m, Estimates))%>%
   select(Country=iso3, `BCG effect`= variable, Estimates)
 
@@ -152,6 +159,8 @@ output_table <- dcast(output_table,
 
 ## averted
 output_table[, av := cf - sq]
+
+out_tab_tmp <- output_table
 
 ## global TODO NaNs?
 output_table <- output_table[is.finite(av), .(
@@ -254,7 +263,7 @@ ggplot(CEAAs, aes(incbest,ICER, label = iso3) )+
 ggsave(file = here("outputs/f_inc_icer.png"), w = 9, h = 8)
 
 
-ggplot(CEAAs, aes(GDP,Bf2, label = iso3) )+
+ggplot(CEAAs%>%filter(z_score>0), aes(GDP,Bf2, label = iso3) )+
   geom_point(colour="red") +facet_wrap(~region, scales="free", ncol=2)+ 
   geom_text_repel(size = 2.8, 
                   min.segment.length = 0, 
@@ -275,7 +284,7 @@ ggplot(CEAAs, aes(GDP,Bf2, label = iso3) )+
 ggsave(file = here("outputs/f_gdp_buffsz.png"), w = 9, h = 8)
 
 
-ggplot(CEAAs, aes(incbest,Bf2, label = iso3) )+
+ggplot(CEAAs%>%filter(z_score>0), aes(incbest,Bf2, label = iso3) )+
   geom_point(colour="red") +facet_wrap(~region, scales="free", ncol=2)+ 
   geom_text_repel(size = 2.8, 
                   min.segment.length = 0, 
@@ -291,7 +300,8 @@ ggplot(CEAAs, aes(incbest,Bf2, label = iso3) )+
                   segment.ncp = 3,
                   segment.angle = 20) +
   labs(title = "Relationship between TB incidence and Buffer size") +
-  xlab("Per capita TB incidence") + ylab("Buffer size (10% CV)")+ theme_linedraw()
+  xlab("Per capita TB incidence") + ylab("Buffer size (10% CV)")+ 
+  theme_linedraw()
 
 ggsave(file = here("outputs/f_inc_buffsz.png"), w = 9, h = 8)
 
@@ -320,7 +330,7 @@ reg_ENB30 <- cbind(coefs, cis)%>%
 fwrite(reg_ENB30, file = here("outputs/regression_ENB.csv"))
 
 #predictors of icer
-lms <- lm(ICER ~ GDP +incbest +CDR+BCG+ ucvax+uctb, tmp)
+lms <- lm(ICER ~ GDP +incbest+CDR+BCG+ ucvax+uctb, tmp)
 coefs <- summary(lms)$coefficients[, c("Estimate", "Pr(>|t|)")]
 cis <- confint(lms)
 
@@ -336,7 +346,7 @@ reg_icer <- cbind(coefs, cis)%>%
 fwrite(reg_icer, file = here("outputs/regression_icer.csv"))
 
 
-# ==summary statistics===
+# ======summary statistics====
 
 
 summary_tab <- data.frame(variable= "Number of countries",
@@ -346,25 +356,24 @@ summary_tab <- data.frame(variable= "Number of countries",
               group_by(variable=region)%>%
               summarise(value= length(unique(iso3)))%>%
               mutate(Description = "number of countries"))%>%
-  mutate(value= as.character(value))%>%
+  mutate(value= as.character(value)) %>%
   bind_rows(CEAAs%>%
               mutate(variable= "ICER-median")%>%
               group_by(variable)%>%
               mutate(ICER=round(ICER, 0))%>%
               summarise(value= paste0(median(ICER), "(IQR =", IQR(ICER), ")")) %>%
-              mutate(Description = "Median global ICER with IQR")) %>%
+              mutate(Description = "ICER with IQR - median global")) %>%
   bind_rows(CEAAs%>%
               mutate(variable= "ICER-mean")%>%
-              mutate(ICER=round(ICER, 0))%>%
               group_by(variable)%>%
-              summarise(value= paste0(mean(ICER), "( sd=", sd(ICER), ")")) %>%
-              mutate(Description = "Mean global ICER with sd")) %>%
+              summarise(value= paste0(round(mean(ICER),1), "( sd=", round(sd(ICER), 1), ")")) %>%
+              mutate(Description = "ICER with sd - mean global")) %>%
 
   bind_rows(CEAAs%>%
               group_by(variable=region)%>%
               mutate(ICER= round(ICER, 0))%>%
               summarise(value= paste0(median(ICER),"(IQR=", IQR(ICER),")"))%>%
-              mutate(Description = "Median regional ICER with IQR")) %>%
+              mutate(Description = "ICER - Median with IQR (Regional)")) %>%
  #mutate(value= as.character(value))%>%
   bind_rows(
   CEAAs%>%
@@ -372,7 +381,7 @@ summary_tab <- data.frame(variable= "Number of countries",
   group_by(variable)%>%
   summarise(value= paste0(median(Bf2, na.rm = TRUE),
                           "(IQR=", IQR(Bf2, na.rm = TRUE), ")")) %>%
-  mutate(Description = "Median global Buffer with IQR")
+  mutate(Description = "Buffer size- Median with IQR (Global)")
   )%>%
   bind_rows(
   
@@ -381,8 +390,168 @@ CEAAs%>%
   group_by(variable)%>%
   summarise(value= paste0(median(Bf2, na.rm = TRUE),
                           "(IQR=", IQR(Bf2, na.rm = TRUE), ")")) %>%
-  mutate(Description = "Median regional Buffer size with IQR"))
+  mutate(Description = "Buffer size- Median wz IQR (Regional)"))%>%
+  bind_rows(
+    CEAAs%>%
+      mutate(variable= "ICER/GDP")%>%
+      mutate(value=ICER/GDP)%>%
+      group_by(variable)%>%
+      summarise(value= paste0(round(mean(value),1), "(sd=", round(sd(value), 1), ")")) %>%
+      mutate(Description = "ICER to GDP ratio - mean wz sd (Global)")
+)%>%
+  bind_rows(
+    CEAAs%>%
+      mutate(variable= "ICER/GDP")%>%
+      mutate(value=ICER/GDP)%>%
+      group_by(variable)%>%
+      summarise(value= paste0(round(median(value),1), "(IQR=", round(IQR(value), 1), ")")) %>%
+      mutate(Description = "ICER to GDP ratio - median with IQR (Global)")
+  )%>%
+  
+  bind_rows(
+    CEAAs%>%
+      mutate(variable= region)%>%
+      mutate(value=ICER/GDP)%>%
+      group_by(variable)%>%
+      summarise(value= paste0(round(median(value),2), "(IQR=", round(IQR(value), 2), ")")) %>%
+      mutate(Description = "ICER to GDP ratio - median with IQR (Regional)")
+  )%>%
+  # prop cntrs cost effective
+  bind_rows(CEAAs %>%
+              mutate(ICER_is_cost_effective = ICER < (GDP / 2)) %>%
+              mutate(variable="prop_cost_effect")%>%
+              group_by(variable)%>%
+              summarise(value = round(mean(ICER_is_cost_effective, na.rm = TRUE),2)
+              ) %>% 
+              mutate(value= as.character(value),
+                     Description = "Proportion of countries with ICER <GDP/2"),
+  CEAAs %>%
+              mutate(ICER_is_cost_effective = ICER < (GDP / 3)) %>%
+              mutate(variable="prop_cost_effect")%>%
+              group_by(variable)%>%
+              summarise(value = round(mean(ICER_is_cost_effective, na.rm = TRUE),2)
+              ) %>% 
+              mutate(value= as.character(value),
+                     Description = "Proportion of countries with ICER <GDP/3"), 
+  
+    CEAAs %>%
+      mutate(ICER_is_cost_effective = ICER < (GDP / 2)) %>%
+      mutate(variable=region)%>%
+      group_by(variable)%>%
+      summarise(value = round(mean(ICER_is_cost_effective, na.rm = TRUE),2)) %>% 
+      mutate(value= as.character(value),
+             Description = "Proportion of countries with ICER <GDP/2 (Regional)"),
 
+    CEAAs %>%
+      mutate(ICER_is_cost_effective = ICER < (GDP / 3)) %>%
+      mutate(variable=region)%>%
+      group_by(variable)%>%
+      summarise(value = round(mean(ICER_is_cost_effective, na.rm = TRUE),2)) %>% 
+      mutate(value= as.character(value),
+             Description = "Proportion of countries with ICER <GDP/3 (Regional)"), 
+
+    # prop averted deaths in top cntrs
+    avert_deaths%>% 
+      filter(av>0)%>%
+      group_by(iso3)%>%
+      summarise(av=mean(av, na.rm = TRUE))%>%
+      arrange(desc(av))%>%
+      group_by(variable="Prop death averted")%>%
+      summarise(value = sum(av[1:10]) / sum(av))%>%
+      mutate(value= as.character(round(value, 2)),
+             Description = "Prop avert deaths in top 10 cntrs by death aversion"), 
+    
+    avert_deaths%>% 
+      filter(av>0)%>%
+      group_by(iso3)%>%
+      summarise(av=mean(av, na.rm = TRUE))%>%
+      arrange(desc(av))%>%
+      group_by(variable="Prop death averted")%>%
+      summarise(value = sum(av[1:3]) / sum(av))%>%
+      mutate(value= as.character(round(value, 2)),
+             Description = "Prop avert deaths in top 3 cntrs by death aversion")
+    )|>
+
+  bind_rows(
+    CEAAs%>%
+      mutate(variable= "Unit cost")%>%
+      group_by(variable)%>%
+      summarise(value= paste0(round(median(ucvax),2), "(IQR=", round(IQR(ucvax), 2), ")")) %>%
+      mutate(Description = "Unit cost for vaccine delivery - median with IQR (Global)"),
+    CEAAs%>%
+      mutate(variable= "Unit cost")%>%
+      group_by(variable)%>%
+      summarise(value= paste0(round(median(uctb),2), "(IQR=", round(IQR(uctb), 2), ")")) %>%
+      mutate(Description = "Unit cost for TB treatment - median with IQR (Global)"), 
+    
+    CEAAs%>%
+      mutate(variable= "Unit cost")%>%
+      group_by(variable)%>%
+      summarise(value= paste0(round(median(uctbm),2), "(IQR=", round(IQR(uctbm), 2), ")")) %>%
+      mutate(Description = "Unit cost for TBM treatment - median with IQR (Global)")
+    )%>%
+  
+      
+  bind_rows(
+    CEAAs%>%
+      mutate(variable= region)%>%
+      group_by(variable)%>%
+      summarise(value= paste0(round(median(ucvax),2), "(IQR=", round(IQR(ucvax), 2), ")")) %>%
+      mutate(Description = "Unit cost for vaccine delivery - median with IQR (Global)"),
+    CEAAs%>%
+      mutate(variable= region)%>%
+      group_by(variable)%>%
+      summarise(value= paste0(round(median(uctb),2), "(IQR=", round(IQR(uctb), 2), ")")) %>%
+      mutate(Description = "Unit cost for TB treatment - median with IQR (Global)"),
+    CEAAs%>%
+      mutate(variable= region)%>%
+      group_by(variable)%>%
+      summarise(value= paste0(round(median(uctbm),2), "(IQR=", round(IQR(uctbm), 2), ")")) %>%
+      mutate(Description = "Unit cost for TBM treatment - median with IQR (Global)")
+  )%>%
+  # BCG doses
+  bind_rows(
+    out_tab_tmp%>%
+      filter(variable%in% c("rslt_bcg_doses"))%>%
+      group_by(variable="BCG doses")|>
+      summarise(value= as.character(round(mean(sq)), 0))|>
+      mutate(Description = "BCG doses - Number of doses (Global)"), 
+    
+    out_tab_tmp%>%
+      filter(variable%in% c("rslt_bcg_doses"))%>%
+      group_by(variable=who_region)|>
+      summarise(value= as.character(round(mean(sq)), 0))|>
+      mutate(Description = "BCG doses - Number of doses (Regional)")
+  )%>%
+  # Averted ATT
+  bind_rows(
+    out_tab_tmp%>%
+      filter(variable%in% c("rslt_att"))%>%
+      group_by(variable="Averted ATT")|>
+      summarise(value= as.character(round(mean(av, na.rm=TRUE)), 0))|>
+      mutate(Description = "Averted ATT -  Number (Global)"), 
+    
+    out_tab_tmp%>%
+      filter(variable%in% c("rslt_att"))%>%
+      group_by(variable=who_region)|>
+      summarise(value= as.character(round(mean(av, na.rm=TRUE)), 0))|>
+      mutate(Description = "Averted ATT- Number (Regional)")
+  )%>%
+  # averted deaths
+  bind_rows(
+    out_tab_tmp%>%
+      filter(variable%in% c("rslt_tbn_deaths","rslt_tbm_deaths","rslt_tb_deaths")) %>%
+      group_by(variable)|>
+      summarise(value= as.character(round(mean(av, na.rm=TRUE)), 0))|>
+      mutate(Description = "Averted ATT -  Number (Global)"),
+    
+    out_tab_tmp%>%
+      filter(variable%in% c("rslt_tbn_deaths","rslt_tbm_deaths","rslt_tb_deaths")) %>%
+      group_by(who_region,Description= variable)|>
+      summarise(value= as.character(round(mean(av, na.rm=TRUE)), 0))|>
+      rename(variable=who_region)
+    
+  )
 
 
 
@@ -391,3 +560,4 @@ fwrite(summary_tab, file = here("outputs/statistics.csv"))
 
 
 
+  
