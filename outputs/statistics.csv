@@ -6,9 +6,9 @@ Europe,16,number of countries
 South-East Asia,9,number of countries
 The Americas,19,number of countries
 Western Pacific,12,number of countries
-ICER-median,220(IQR =1171.75),ICER with IQR - median global
-ICER-mean,2699.6( sd=6864),ICER with sd - mean global
-Africa,112(IQR=152.25),ICER - Median with IQR (Regional)
+ICER-median,250.5(IQR =1324.75),ICER with IQR - median global
+ICER-mean,2725.6( sd=6798.4),ICER with sd - mean global
+Africa,113(IQR=225.25),ICER - Median with IQR (Regional)
 Eastern Mediterranean,1066(IQR=4269.75),ICER - Median with IQR (Regional)
 Europe,1131(IQR=1619),ICER - Median with IQR (Regional)
 South-East Asia,83(IQR=154),ICER - Median with IQR (Regional)
@@ -21,23 +21,23 @@ Europe,3.9(IQR=5.45),Buffer size- Median wz IQR (Regional)
 South-East Asia,15.4(IQR=5.8),Buffer size- Median wz IQR (Regional)
 The Americas,6.1(IQR=7.225),Buffer size- Median wz IQR (Regional)
 Western Pacific,17(IQR=2.6),Buffer size- Median wz IQR (Regional)
-ICER/GDP,0.5(sd=1.3),ICER to GDP ratio - mean wz sd (Global)
+ICER/GDP,0.6(sd=1.3),ICER to GDP ratio - mean wz sd (Global)
 ICER/GDP,0.1(IQR=0.5),ICER to GDP ratio - median with IQR (Global)
-Africa,0.07(IQR=0.18),ICER to GDP ratio - median with IQR (Regional)
+Africa,0.08(IQR=0.3),ICER to GDP ratio - median with IQR (Regional)
 Eastern Mediterranean,0.41(IQR=1.58),ICER to GDP ratio - median with IQR (Regional)
 Europe,0.15(IQR=0.24),ICER to GDP ratio - median with IQR (Regional)
 South-East Asia,0.03(IQR=0.04),ICER to GDP ratio - median with IQR (Regional)
 The Americas,0.15(IQR=0.49),ICER to GDP ratio - median with IQR (Regional)
 Western Pacific,0.02(IQR=0.23),ICER to GDP ratio - median with IQR (Regional)
 prop_cost_effect,0.75,Proportion of countries with ICER <GDP/2
-prop_cost_effect,0.72,Proportion of countries with ICER <GDP/3
-Africa,0.79,Proportion of countries with ICER <GDP/2 (Regional)
+prop_cost_effect,0.71,Proportion of countries with ICER <GDP/3
+Africa,0.76,Proportion of countries with ICER <GDP/2 (Regional)
 Eastern Mediterranean,0.67,Proportion of countries with ICER <GDP/2 (Regional)
 Europe,0.81,Proportion of countries with ICER <GDP/2 (Regional)
 South-East Asia,0.89,Proportion of countries with ICER <GDP/2 (Regional)
 The Americas,0.63,Proportion of countries with ICER <GDP/2 (Regional)
 Western Pacific,0.75,Proportion of countries with ICER <GDP/2 (Regional)
-Africa,0.76,Proportion of countries with ICER <GDP/3 (Regional)
+Africa,0.74,Proportion of countries with ICER <GDP/3 (Regional)
 Eastern Mediterranean,0.5,Proportion of countries with ICER <GDP/3 (Regional)
 Europe,0.75,Proportion of countries with ICER <GDP/3 (Regional)
 South-East Asia,0.89,Proportion of countries with ICER <GDP/3 (Regional)
@@ -73,19 +73,19 @@ EMR,5243379,BCG doses - Number of doses (Regional)
 EUR,1084788,BCG doses - Number of doses (Regional)
 SEA,14922069,BCG doses - Number of doses (Regional)
 WPR,5204328,BCG doses - Number of doses (Regional)
-Averted ATT,3077,Averted ATT -  Number (Global)
-AFR,1921,Averted ATT- Number (Regional)
+Averted ATT,3074,Averted ATT -  Number (Global)
+AFR,1911,Averted ATT- Number (Regional)
 AMR,227,Averted ATT- Number (Regional)
 EMR,4338,Averted ATT- Number (Regional)
 EUR,171,Averted ATT- Number (Regional)
 SEA,17625,Averted ATT- Number (Regional)
 WPR,3343,Averted ATT- Number (Regional)
-rslt_tb_deaths,1755,Averted ATT -  Number (Global)
-rslt_tbm_deaths,446,Averted ATT -  Number (Global)
-rslt_tbn_deaths,1308,Averted ATT -  Number (Global)
-AFR,894,rslt_tb_deaths
-AFR,210,rslt_tbm_deaths
-AFR,684,rslt_tbn_deaths
+rslt_tb_deaths,1757,Averted ATT -  Number (Global)
+rslt_tbm_deaths,447,Averted ATT -  Number (Global)
+rslt_tbn_deaths,1310,Averted ATT -  Number (Global)
+AFR,898,rslt_tb_deaths
+AFR,211,rslt_tbm_deaths
+AFR,687,rslt_tbn_deaths
 AMR,117,rslt_tb_deaths
 AMR,26,rslt_tbm_deaths
 AMR,91,rslt_tbn_deaths

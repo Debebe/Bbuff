@@ -1,3 +1,14 @@
+
+# load relevant packages
+pacman::p_load(here,data.table, dplyr, tidyr, stringr, 
+               flextable, officer,kableExtra,ggplot2, ggrepel)
+
+load(here("outputs/PSA.RData")) # full PSA data with results. 
+load(here("outputs/CEA_BUF.RData")) #CEA with data with buffersz
+load(here("outputs/CEA.RData")) # full PSA data with results
+
+source("R/utilities/utilities.R") # to use brkt function
+
 ##=====averted outcomes=====
 keep <- grep("rslt", names(D), value = TRUE)
 keep <- c("iso3", "iter", "Pop", unique(keep))
@@ -24,7 +35,7 @@ save(ceac_input, file = here("outputs/ceac_input.RData"))
 load(here("data/whokey.Rdata"))
 load(here("outputs/ceac_input.RData"))
 
-<<<<<<< Updated upstream
+
 ## === box-and-whiskers CEAC plot
 ## assuming results are negative
 lamz <- exp(seq(from = log(1), to = log(50e3), len = 100)) # log sequence of CET
@@ -92,11 +103,12 @@ ggplot(ceacq, aes(iso3,
   ylab("CEAC quantiles (USD/DALY)")
 
 ggsave(file = here("outputs/ceac_iso3.png"), w = 9, h = 8)
-=======
+
+
 avert_deaths <- avrt_table%>%
   filter(variable=="rslt_tb_deaths")%>%
   na.omit()
->>>>>>> Stashed changes
+
 
 
 avrt_table <- avrt_table%>%
@@ -159,7 +171,6 @@ output_table <- dcast(output_table,
 
 ## averted
 output_table[, av := cf - sq]
-
 out_tab_tmp <- output_table
 
 ## global TODO NaNs?
@@ -210,7 +221,7 @@ fwrite(output_table, file = here("outputs/output_table_who.csv"))
 
 ###====other scatter plots======
 
-CEAAs <- CEAA%>%
+CEAAs <- CEA_BUF%>%
   filter(threshold==0.3)%>%
   inner_join(gdp_inc_le_costs%>%filter(cov_cat=="WUENIC")%>%
                select(iso3, incbest,BCG=bcg_coverage,CDR=cdr,
@@ -219,7 +230,7 @@ CEAAs <- CEAA%>%
                       uctbm=ucost_tbm.m),
              by= "iso3")
 
-library(ggrepel)
+
 ggplot(CEAAs, aes(GDP,ICER, label = iso3) )+
   geom_point(colour="red") +facet_wrap(~region, scales="free", ncol=2)+ 
   geom_text_repel(size = 2.8, 
@@ -559,5 +570,7 @@ fwrite(summary_tab, file = here("outputs/statistics.csv"))
 
 
 
+# why negtives in averted mortality
 
+neg <-D%>%filter(rslt_tb_deaths_sq<0)
   

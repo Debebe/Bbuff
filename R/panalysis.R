@@ -126,6 +126,10 @@ source(here("R/utilities/modelfunctions.R"))
 ## postpend _cf for counterfactual (no BCG)
 source(here("R/utilities/calculations.R"))
 
+# save PSA samples
+save(D, file = here("outputs/PSA.RData"))
+
+load(here("outputs/PSA.RData"))
 
 ## === aggregations and outputs
 CEA <- D[, .(
@@ -161,18 +165,8 @@ CEA <- CEA[!is.na(ENB30)]
 ## ICER plot
 CEA$iso3 <- factor(CEA$iso3, levels = CEA[order(ICER)]$iso3, ordered = TRUE)
 
-# ggplot(CEA[ICER > 0], aes(iso3, ICER)) +
-#   geom_point(aes(iso3, GDP * 0.3), shape = 3, col = 2) +
-#   geom_point(aes(iso3, GDP * 0.5), shape = 3, col = 4) +
-#   geom_point(aes(iso3, GDP * 1.0), shape = 3, col = 5) +
-#   geom_point(aes(shape = (ICER < 0.3 * GDP))) +
-#   scale_shape_manual(values = c(1, 19), guide = "none") +
-#   scale_y_log10(labels = scales::comma) +
-#   coord_flip() +
-#   facet_wrap(~region, scales = "free") +
-#   theme_linedraw() +
-#   xlab("Country ISO3 code") +
-#   ylab("Incremental cost-effectiveness ratio (USD/DALY)")
+save(CEA, file = here("outputs/CEA.RData"))
+
 
 
 thresholds <- c(0.3, 0.5, 1.0)  
@@ -237,7 +231,7 @@ CEA[, summary(ENB30 / (ENB30 + u))]
 CEA[, summary(qnorm(ENB30 / (ENB30 + u)))]
 
 
-CEAA <- CEA %>%
+CEA_BUF <- CEA %>%
   inner_join(
     gdp_inc_le_costs %>%
       select(Country = country, iso3) %>%
@@ -255,7 +249,11 @@ CEAA <- CEA %>%
     Bf3 = round(100 * z_score * CV3, 1)
   )
 
-ft <- CEAA %>%
+save(CEA_BUF, file = here("outputs/CEA_BUF.RData"))
+
+load(here("outputs/CEA_BUF.RData")) #datawith buffersz
+
+ft <- CEA_BUF %>%
   filter(Bf1 > 0, !is.na(Bf1), ENB30 > 0) %>%
   select(
     Region = g_whoregion,
@@ -278,7 +276,7 @@ doc <- read_docx() |>
 print(doc, target = "outputs/buffer_sz.docx")
 
 ## buffer plot
-tmp <- CEAA[ENB30 > 0 & z_score > 0]
+tmp <- CEA_BUF[ENB30 > 0 & z_score > 0]
 summary(tmp)
 tmpm <- melt(tmp[, .(iso3, region, GDP, Bf1, Bf2, Bf3)],
   id = c("iso3", "region", "GDP")
