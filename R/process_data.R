@@ -57,8 +57,9 @@ who_incidence <- inner_join(unpop, inc, by = c("country", "Iso2", "Iso3", "Year"
     inchi = hi / Pop,
     notif = notif / Pop
   ) %>%
-  mutate(cdr = notif / incbest)
-
+  mutate(cdr = ifelse(notif < incbest, notif/incbest, 1))
+  
+  
 
 BCG <- read_excel("data/Bacillus Calmette–Guérin (BCG) vaccination coverage 2025-04-03 10-35 UTC.xlsx") %>%
   filter(YEAR %in% c(2023)) %>%
@@ -172,5 +173,7 @@ U5POP_sum[, `:=`(M = TBM_M / pop, L = TBM_L / pop, U = TBM_U / pop)]
 
 head(U5POP_sum)
 
-saveRDS(LE, file = "data/LE.rds")
-saveRDS(gdp_inc_le, file = "data/gdp_inc_le.rds")
+saveRDS(LE, file = here("data/LE.rds"))
+saveRDS(gdp_inc_le, file = here("data/gdp_inc_le.rds"))
+
+source(here("R/inflation_adjustment.R")) # to get inflation incorporated data
