@@ -342,12 +342,12 @@ output_table <- dcast(output_table,
 output_table[, av := cf - sq]
 
 # deaths pop level
-death_pop <-output_table[is.finite(av), .(av = sum(av, na.rm = TRUE)),by = .(iso3, variable)]%>%
+death_absolute <-output_table[is.finite(av), .(av = sum(av, na.rm = TRUE)),by = .(iso3, variable)]%>%
   select(iso3,variable, av)%>%filter(grepl("deaths", variable))%>%
-  mutate(type= "population")%>%
+  mutate(type= "absolute")%>%
   inner_join(whokey, by = "iso3")%>%as.data.table()
 
-deaths <- rbind(deaths_per_cap, death_pop)
+deaths <- rbind(deaths_per_cap, death_absolute)
 save(deaths, file=here("outputs/deaths.RData"))
 
 load(here("outputs/deaths.RData"))
