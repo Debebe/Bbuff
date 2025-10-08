@@ -2,15 +2,10 @@
 
 rm(list = ls())
 
+
 ## === packages
-library(here)
-library(data.table)
-library(ggplot2)
-library(truncnorm)
-library(dplyr)
-library(flextable)
-library(officer)
-library(stringr)
+pacman::p_load(here,data.table, dplyr, tidyr, stringr, truncnorm,
+               flextable, officer,kableExtra,ggplot2, ggrepel)
 
 ## === data
 ## read in pre-prepared data
@@ -131,6 +126,22 @@ save(D, file = here("outputs/PSA.RData"))
 
 load(here("outputs/PSA.RData"))
 
+per_cap_deaths <- D%>%select(iso3, iter,matches("rslt_tb_deaths|rslt_tbn_deaths|rslt_tbm_deaths"))%>%
+  pivot_longer(cols=-c("iter", "iso3"), names_to = "variable")%>%as.data.table()
+per_cap_deaths[, type:= ifelse(str_detect(variable, "cf"), "cf", "sq")]
+per_cap_deaths[, variable:= gsub("rlst_", "", variable)]
+per_cap_deaths[, variable:= gsub("_cf|_sq", "", variable)]
+per_cap_deaths <- dcast(per_cap_deaths,
+                        iter + iso3 + variable ~ type,value.var = "value")%>%
+  mutate(av=cf-sq)%>% select(-c("sq", "cf"))%>%as.data.table()
+
+deaths_per_cap <- merge(per_cap_deaths, whokey, by = "iso3")%>%
+  group_by(g_whoregion, region,iso3,variable)%>%
+  summarise(av= mean(av, na.rm=TRUE))%>%mutate(type="percapita")%>%
+  as.data.table()
+
+
+
 ## === aggregations and outputs
 CEA <- D[, .(
   ## expected net benefit at WTP=30%GDP
@@ -166,6 +177,7 @@ CEA <- CEA[!is.na(ENB30)]
 CEA$iso3 <- factor(CEA$iso3, levels = CEA[order(ICER)]$iso3, ordered = TRUE)
 
 save(CEA, file = here("outputs/CEA.RData"))
+
 
 
 
@@ -328,6 +340,18 @@ output_table <- dcast(output_table,
 
 ## averted
 output_table[, av := cf - sq]
+
+# deaths pop level
+death_pop <-output_table[is.finite(av), .(av = sum(av, na.rm = TRUE)),by = .(iso3, variable)]%>%
+  select(iso3,variable, av)%>%filter(grepl("deaths", variable))%>%
+  mutate(type= "population")%>%
+  inner_join(whokey, by = "iso3")%>%as.data.table()
+
+deaths <- rbind(deaths_per_cap, death_pop)
+save(deaths, file=here("outputs/deaths.RData"))
+
+load(here("outputs/deaths.RData"))
+load(here("outputs/CEA.RData"))
 
 ## global TODO NaNs?
 output_table <- output_table[is.finite(av), .(
