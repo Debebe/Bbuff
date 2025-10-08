@@ -80,24 +80,24 @@ EMR,4338,Averted ATT- Number (Regional)
 EUR,171,Averted ATT- Number (Regional)
 SEA,17625,Averted ATT- Number (Regional)
 WPR,3343,Averted ATT- Number (Regional)
-rslt_tb_deaths,1757,Averted ATT -  Number (Global)
-rslt_tbm_deaths,447,Averted ATT -  Number (Global)
-rslt_tbn_deaths,1310,Averted ATT -  Number (Global)
-AFR,898,rslt_tb_deaths
-AFR,211,rslt_tbm_deaths
-AFR,687,rslt_tbn_deaths
-AMR,117,rslt_tb_deaths
-AMR,26,rslt_tbm_deaths
-AMR,91,rslt_tbn_deaths
-EMR,1175,rslt_tb_deaths
-EMR,364,rslt_tbm_deaths
-EMR,810,rslt_tbn_deaths
-EUR,115,rslt_tb_deaths
-EUR,34,rslt_tbm_deaths
-EUR,81,rslt_tbn_deaths
-SEA,12707,rslt_tb_deaths
-SEA,3091,rslt_tbm_deaths
-SEA,9616,rslt_tbn_deaths
-WPR,1913,rslt_tb_deaths
-WPR,588,rslt_tbm_deaths
-WPR,1326,rslt_tbn_deaths
+Averted deaths,7.8e-05,Mean averted TBMdeaths per dose- Global
+Averted deaths,0.000289,Mean averted TBdeaths per dose- Global
+Averted deaths,0.000211,Mean averted TBndeaths per dose- Global
+AFR,7.7e-05,Mean averted TBMdeaths per dose- Regional
+AFR,0.000331,Mean averted TBdeaths per dose- Regional
+AFR,0.000255,Mean averted TBndeaths per dose- Regional
+AMR,1.5e-05,Mean averted TBMdeaths per dose- Regional
+AMR,5.9e-05,Mean averted TBdeaths per dose- Regional
+AMR,4.4e-05,Mean averted TBndeaths per dose- Regional
+EMR,1.8e-05,Mean averted TBMdeaths per dose- Regional
+EMR,7.1e-05,Mean averted TBdeaths per dose- Regional
+EMR,5.3e-05,Mean averted TBndeaths per dose- Regional
+EUR,2.7e-05,Mean averted TBMdeaths per dose- Regional
+EUR,9.6e-05,Mean averted TBdeaths per dose- Regional
+EUR,6.9e-05,Mean averted TBndeaths per dose- Regional
+SEA,0.000177,Mean averted TBMdeaths per dose- Regional
+SEA,0.000694,Mean averted TBdeaths per dose- Regional
+SEA,0.000517,Mean averted TBndeaths per dose- Regional
+WPR,0.000232,Mean averted TBMdeaths per dose- Regional
+WPR,0.000673,Mean averted TBdeaths per dose- Regional
+WPR,0.000442,Mean averted TBndeaths per dose- Regional
