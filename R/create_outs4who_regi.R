@@ -579,27 +579,3 @@ fwrite(summary_tab, file = here("outputs/statistics.csv"))
 
 
 
-# why negtives in averted mortality
-
-neg <-D%>%filter(rslt_tb_deaths_sq<0)
-
-xx <-D%>%
-  mutate(TBdeaths=rslt_tb_deaths_cf- rslt_tb_deaths_sq,
-         TBndeaths=rslt_tbn_deaths_cf- rslt_tbn_deaths_sq,
-         TBMdeaths=rslt_tbm_deaths_cf- rslt_tbm_deaths_sq)%>%
-  select(iso3, who_region,TBdeaths, TBndeaths, TBMdeaths)%>%
-  pivot_longer(cols = -c(iso3,who_region), names_to = "Description") %>%
-  group_by(variable=who_region, Description)%>%
-  summarise(value= as.character(round(mean(value, na.rm=TRUE), 6)))%>%
-  mutate(Description=paste0("Averted ", Description, " per dose"))
-
-xx <-D%>%
-  mutate(TBdeaths=rslt_tb_deaths_cf- rslt_tb_deaths_sq,
-         TBndeaths=rslt_tbn_deaths_cf- rslt_tbn_deaths_sq,
-         TBMdeaths=rslt_tbm_deaths_cf- rslt_tbm_deaths_sq)%>%
-  select(iso3, who_region,TBdeaths, TBndeaths, TBMdeaths)%>%
-  pivot_longer(cols = -c(iso3,who_region), names_to = "Description") %>%
-  group_by(variable="Averted deaths", Description)%>%
-  summarise(value= as.character(round(mean(value, na.rm=TRUE), 6))) %>% 
-  mutate(Description=paste0("Averted ", Description, " per dose"))
-
