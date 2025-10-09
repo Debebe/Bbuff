@@ -100,7 +100,7 @@ ggplot(ceacq, aes(iso3,
     plot.margin = margin(0, 5, 5, 5)
   ) +
   xlab("Country ISO3 code") +
-  ylab("CEAC quantiles (USD/DALY)")
+  ylab("Cost-effectiveness threshold (USD/DALY)")
 
 ggsave(file = here("outputs/ceac_iso3.png"), w = 9, h = 8)
 
