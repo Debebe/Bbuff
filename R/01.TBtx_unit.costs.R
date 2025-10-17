@@ -6,6 +6,8 @@ library(ggthemes)
 ## source other file:  NTP, inpatient, outpatient costs
 source(here("R/00.TB_care_costs.R"))
 
+# Define the base year of the analysis (costs are inflated/deflated to this year)
+base_yr <- 2023
 
 ## Other unit costs from relevant public sources:
 unit_costs <- fread(here(
@@ -275,7 +277,8 @@ year_of_cost <- unit_costs$Year[unit_costs$`cost parameter` == "c.contact.tracin
 hhcm_costs$cost.m[hhcm_costs$unit_cost == "c_hh_visit"] <-
   (unit_costs$`unit cost`[unit_costs$`cost parameter` == "c.contact.tracing" & unit_costs$setting == "Peru"] * # unit cost
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Peru"] * # convert back to the local currency
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Peru"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Peru"]) / # inflate from 2016 to 2020 using local GDP price deflators
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Peru"] / 
+     defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Peru"]) / # inflate from 2016 to the base year using local GDP price deflators
     exch$exch[exch$`Country Name` == "Peru" & exch$year == max(exch$year)] * # convert to I$
     # hhcm_costs$exch[hhcm_costs$country=='Peru'][1] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c_hh_visit"] / hhcm_costs$ppp[hhcm_costs$country == "Peru"][1]) # Transfer to other countries
@@ -290,7 +293,7 @@ hhcm_costs$cost.sd[hhcm_costs$unit_cost == "c_hh_visit"] <-
         unit_costs$setting == "Peru"] * 50 / 100
   ) / 4 *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Peru"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Peru"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Peru"] /
     defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Peru"] /
     exch$exch[exch$`Country Name` == "Peru" & exch$year == max(exch$year)] *
     hhcm_costs$ppp[hhcm_costs$unit_cost == "c_hh_visit"] / hhcm_costs$ppp[hhcm_costs$country == "Peru"][1]
@@ -305,13 +308,13 @@ hhcm_costs$cost.m[hhcm_costs$unit_cost == "c_hiv_test"] <-
     (
       unit_costs$`unit cost`[unit_costs$`cost parameter` == "c.hiv" &
         unit_costs$setting == "hic"] *
-        defl$defl[defl$year == "2020" &
+        defl$defl[defl$year == base_yr &
           defl$`Country Code` == "USA"] / defl$defl[defl$year == year_of_cost & defl$`Country Code` == "USA"]
     ) *
       hhcm_costs$ppp[hhcm_costs$unit_cost == "c_hiv_test"] / hhcm_costs$ppp[hhcm_costs$iso3 == "USA"][1],
     (
       unit_costs$`unit cost`[unit_costs$`cost parameter` == "c.hiv" & unit_costs$setting == "lmic"][1] *
-        defl$defl[defl$year == "2020" & defl$`Country Code` == "USA"] / defl$defl[defl$year == year_of_cost & defl$`Country Code` == "USA"]
+        defl$defl[defl$year == base_yr & defl$`Country Code` == "USA"] / defl$defl[defl$year == year_of_cost & defl$`Country Code` == "USA"]
     ) *
       hhcm_costs$ppp[hhcm_costs$unit_cost == "c_hiv_test"] / hhcm_costs$ppp[hhcm_costs$iso3 == "USA"][1]
   )
@@ -324,7 +327,7 @@ hhcm_costs$cost.sd[hhcm_costs$unit_cost == "c_hiv_test"] <-
         unit_costs$setting == "hic"] -
         unit_costs$parm1[unit_costs$`cost parameter` == "c.hiv" & unit_costs$setting == "hic"]
     ) / 4 *
-      defl$defl[defl$year == "2020" & defl$`Country Code` == "USA"] /
+      defl$defl[defl$year == base_yr & defl$`Country Code` == "USA"] /
       defl$defl[defl$year == year_of_cost & defl$`Country Code` == "USA"] *
       hhcm_costs$ppp[hhcm_costs$unit_cost == "c_hiv_test"] /
       hhcm_costs$ppp[hhcm_costs$iso3 == "USA"][1],
@@ -332,7 +335,7 @@ hhcm_costs$cost.sd[hhcm_costs$unit_cost == "c_hiv_test"] <-
       unit_costs$parm2[unit_costs$`cost parameter` == "c.hiv" & unit_costs$setting == "lmic"][1] -
         unit_costs$parm1[unit_costs$`cost parameter` == "c.hiv" & unit_costs$setting == "lmic"][1]
     ) / 4 *
-      defl$defl[defl$year == "2020" & defl$`Country Code` == "USA"] /
+      defl$defl[defl$year == base_yr & defl$`Country Code` == "USA"] /
       defl$defl[defl$year == year_of_cost & defl$`Country Code` == "USA"] *
       hhcm_costs$ppp[hhcm_costs$unit_cost == "c_hiv_test"] / hhcm_costs$ppp[hhcm_costs$iso3 == "USA"][1]
   )
@@ -346,7 +349,7 @@ year_of_cost <- unit_costs$Year[unit_costs$`cost parameter` == "c.tst" & unit_co
 hhcm_costs$cost.m[hhcm_costs$unit_cost == "c_tst_test"] <-
   (unit_costs$`unit cost`[unit_costs$`cost parameter` == "c.tst" & unit_costs$setting == "Brazil"]) *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Brazil"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Peru"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Peru"] /
     exch$exch[exch$`Country Name` == "Brazil" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c_tst_test"] / hhcm_costs$ppp[hhcm_costs$country == "Brazil"][1])
 
@@ -354,7 +357,7 @@ hhcm_costs$cost.m[hhcm_costs$unit_cost == "c_tst_test"] <-
 hhcm_costs$cost.sd[hhcm_costs$unit_cost == "c_tst_test"] <-
   (unit_costs$parm2[unit_costs$`cost parameter` == "c.tst" & unit_costs$setting == "Brazil"] - unit_costs$parm1[unit_costs$`cost parameter` == "c.tst" & unit_costs$setting == "Brazil"]) / 4 *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Brazil"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
     exch$exch[exch$`Country Name` == "Brazil" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c_tst_test"] / hhcm_costs$ppp[hhcm_costs$country == "Brazil"][1])
 
@@ -364,14 +367,14 @@ year_of_cost <- unit_costs$Year[unit_costs$`cost parameter` == "c.qft.plus" & un
 hhcm_costs$cost.m[hhcm_costs$unit_cost == "c.qft.plus"] <-
   (unit_costs$`unit cost`[unit_costs$`cost parameter` == "c.qft.plus" & unit_costs$setting == "Brazil"]) *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Brazil"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
     exch$exch[exch$`Country Name` == "Brazil" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.qft.plus"] / hhcm_costs$ppp[hhcm_costs$country == "Brazil"][1])
 
 hhcm_costs$cost.sd[hhcm_costs$unit_cost == "c.qft.plus"] <-
   (unit_costs$parm2[unit_costs$`cost parameter` == "c.qft.plus" & unit_costs$setting == "Brazil"] - unit_costs$parm1[unit_costs$`cost parameter` == "c.qft.plus" & unit_costs$setting == "Brazil"]) / 4 *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Brazil"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
     exch$exch[exch$`Country Name` == "Brazil" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.qft.plus"] / hhcm_costs$ppp[hhcm_costs$country == "Brazil"][1])
 
@@ -384,13 +387,13 @@ year_of_cost <- unit_costs$Year[unit_costs$`cost parameter` == "c.xray" & unit_c
 hhcm_costs$cost.m[hhcm_costs$unit_cost == "c_cxr_exam"] <-
   (unit_costs$`unit cost`[unit_costs$`cost parameter` == "c.xray" & unit_costs$setting == "Brazil"]) *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Brazil"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
     exch$exch[exch$`Country Name` == "Brazil" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.qft.plus"] / hhcm_costs$ppp[hhcm_costs$country == "Brazil"][1])
 hhcm_costs$cost.sd[hhcm_costs$unit_cost == "c_cxr_exam"] <-
   (unit_costs$parm2[unit_costs$`cost parameter` == "c.xray" & unit_costs$setting == "Brazil"] - unit_costs$parm1[unit_costs$`cost parameter` == "c.xray" & unit_costs$setting == "Brazil"]) / 4 *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Brazil"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
     exch$exch[exch$`Country Name` == "Brazil" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.qft.plus"] / hhcm_costs$ppp[hhcm_costs$country == "Brazil"][1])
 
@@ -399,14 +402,14 @@ year_of_cost <- unit_costs$Year[unit_costs$`cost parameter` == "c.ess.collection
 hhcm_costs$cost.m[hhcm_costs$unit_cost == "c.ess.collection"] <-
   (unit_costs$`unit cost`[unit_costs$`cost parameter` == "c.ess.collection" & unit_costs$setting == "Uganda"]) *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Uganda"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Uganda"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Uganda"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Uganda"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Uganda"] /
     exch$exch[exch$`Country Name` == "Uganda" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.ess.collection"] / hhcm_costs$ppp[hhcm_costs$country == "Uganda"][1])
 
 hhcm_costs$cost.sd[hhcm_costs$unit_cost == "c.ess.collection"] <-
   (unit_costs$parm2[unit_costs$`cost parameter` == "c.ess.collection" & unit_costs$setting == "Uganda"] - unit_costs$parm1[unit_costs$`cost parameter` == "c.ess.collection" & unit_costs$setting == "Uganda"]) / 4 *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Uganda"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Uganda"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Uganda"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Uganda"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Uganda"] /
     exch$exch[exch$`Country Name` == "Uganda" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.ess.collection"] / hhcm_costs$ppp[hhcm_costs$country == "Uganda"][1])
 
@@ -415,13 +418,13 @@ year_of_cost <- unit_costs$Year[unit_costs$`cost parameter` == "c.iss.collection
 hhcm_costs$cost.m[hhcm_costs$unit_cost == "c.iss.collection"] <-
   unit_costs$`unit cost`[unit_costs$`cost parameter` == "c.iss.collection" & unit_costs$setting == "World"] *
     exch$exch[exch$year == year_of_cost & exch$`Country Code` == "USA"] *
-    defl$defl[defl$year == "2020" & defl$`Country Code` == "USA"] / defl$defl[defl$year == year_of_cost & defl$`Country Code` == "USA"] /
+    defl$defl[defl$year == base_yr & defl$`Country Code` == "USA"] / defl$defl[defl$year == year_of_cost & defl$`Country Code` == "USA"] /
     exch$exch[exch$`Country Name` == "United States" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.iss.collection"] / hhcm_costs$ppp[hhcm_costs$iso3 == "USA"][1])
 hhcm_costs$cost.sd[hhcm_costs$unit_cost == "c.iss.collection"] <-
   (unit_costs$`unit cost`[unit_costs$`cost parameter` == "c.iss.collection" & unit_costs$setting == "World"] * 150 / 100 - unit_costs$`unit cost`[unit_costs$`cost parameter` == "c.iss.collection" & unit_costs$setting == "World"] * 50 / 100) / 4 *
     exch$exch[exch$year == year_of_cost & exch$`Country Code` == "USA"] *
-    defl$defl[defl$year == "2020" & defl$`Country Code` == "USA"] / defl$defl[defl$year == year_of_cost & defl$`Country Code` == "USA"] /
+    defl$defl[defl$year == base_yr & defl$`Country Code` == "USA"] / defl$defl[defl$year == year_of_cost & defl$`Country Code` == "USA"] /
     exch$exch[exch$`Country Name` == "United States" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.iss.collection"] / hhcm_costs$ppp[hhcm_costs$iso3 == "USA"][1])
 
@@ -430,13 +433,13 @@ year_of_cost <- unit_costs$Year[unit_costs$`cost parameter` == "c.sample.transpo
 hhcm_costs$cost.m[hhcm_costs$unit_cost == "c.sample.transport.shared"] <-
   (unit_costs$`unit cost`[unit_costs$`cost parameter` == "c.sample.transport.shared" & unit_costs$setting == "Uganda"]) *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Uganda"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Uganda"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Uganda"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Uganda"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Uganda"] /
     exch$exch[exch$`Country Name` == "Uganda" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.sample.transport.shared"] / hhcm_costs$ppp[hhcm_costs$country == "Uganda"][1])
 hhcm_costs$cost.sd[hhcm_costs$unit_cost == "c.sample.transport.shared"] <-
   unit_costs$parm1[unit_costs$`cost parameter` == "c.sample.transport.shared" & unit_costs$setting == "Uganda"] *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Uganda"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Uganda"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Uganda"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Uganda"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Uganda"] /
     exch$exch[exch$`Country Name` == "Uganda" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.sample.transport.shared"] / hhcm_costs$ppp[hhcm_costs$country == "Uganda"][1])
 
@@ -445,13 +448,13 @@ year_of_cost <- unit_costs$Year[unit_costs$`cost parameter` == "c.sample.transpo
 hhcm_costs$cost.m[hhcm_costs$unit_cost == "c.sample.transport.exclusive"] <-
   (unit_costs$`unit cost`[unit_costs$`cost parameter` == "c.sample.transport.exclusive" & unit_costs$setting == "Uganda"]) *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Uganda"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Uganda"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Uganda"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Uganda"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Uganda"] /
     exch$exch[exch$`Country Name` == "Uganda" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.sample.transport.exclusive"] / hhcm_costs$ppp[hhcm_costs$country == "Uganda"][1])
 hhcm_costs$cost.sd[hhcm_costs$unit_cost == "c.sample.transport.exclusive"] <-
   unit_costs$parm1[unit_costs$`cost parameter` == "c.sample.transport.exclusive" & unit_costs$setting == "Uganda"] *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Uganda"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Uganda"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Uganda"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Uganda"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Uganda"] /
     exch$exch[exch$`Country Name` == "Uganda" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.sample.transport.exclusive"] / hhcm_costs$ppp[hhcm_costs$country == "Uganda"][1])
 
@@ -461,13 +464,13 @@ year_of_cost <- max(year_of_cost)
 hhcm_costs$cost.m[hhcm_costs$unit_cost == "c.xpert"] <-
   (unit_costs$`unit cost`[unit_costs$`cost parameter` == "c.xpert" & unit_costs$setting == "India"])[1] *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "India"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "India"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "India"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "India"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "India"] /
     exch$exch[exch$`Country Name` == "India" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.xpert"] / hhcm_costs$ppp[hhcm_costs$country == "India"][1])
 hhcm_costs$cost.sd[hhcm_costs$unit_cost == "c.xpert"] <-
   (unit_costs$parm2[unit_costs$`cost parameter` == "c.xpert" & unit_costs$setting == "India"][1] - unit_costs$parm1[unit_costs$`cost parameter` == "c.xpert" & unit_costs$setting == "India"][1]) / 4 *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "India"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "India"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "India"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "India"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "India"] /
     exch$exch[exch$`Country Name` == "India" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.xpert"] / hhcm_costs$ppp[hhcm_costs$country == "India"][1])
 
@@ -490,13 +493,13 @@ year_of_cost <- unit_costs$Year[unit_costs$`cost parameter` == "c.lft" & unit_co
 hhcm_costs$cost.m[hhcm_costs$unit_cost == "c.lft"] <-
   (unit_costs$`unit cost`[unit_costs$`cost parameter` == "c.lft" & unit_costs$setting == "Brazil"]) *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Brazil"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
     exch$exch[exch$`Country Name` == "Brazil" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.lft"] / hhcm_costs$ppp[hhcm_costs$country == "Brazil"][1])
 hhcm_costs$cost.sd[hhcm_costs$unit_cost == "c.lft"] <-
   (unit_costs$parm2[unit_costs$`cost parameter` == "c.lft" & unit_costs$setting == "Brazil"] - unit_costs$parm1[unit_costs$`cost parameter` == "c.lft" & unit_costs$setting == "Brazil"]) / 4 *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Brazil"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
     exch$exch[exch$`Country Name` == "Brazil" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.lft"] / hhcm_costs$ppp[hhcm_costs$country == "Brazil"][1])
 
@@ -505,14 +508,14 @@ year_of_cost <- unit_costs$Year[unit_costs$`cost parameter` == "c.cbc" & unit_co
 hhcm_costs$cost.m[hhcm_costs$unit_cost == "c.cbc"] <-
   (unit_costs$`unit cost`[unit_costs$`cost parameter` == "c.cbc" & unit_costs$setting == "Brazil"]) *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Brazil"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
     exch$exch[exch$`Country Name` == "Brazil" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.cbc"] / hhcm_costs$ppp[hhcm_costs$country == "Brazil"][1])
 
 hhcm_costs$cost.sd[hhcm_costs$unit_cost == "c.cbc"] <-
   (unit_costs$parm2[unit_costs$`cost parameter` == "c.cbc" & unit_costs$setting == "Brazil"] - unit_costs$parm1[unit_costs$`cost parameter` == "c.cbc" & unit_costs$setting == "Brazil"]) / 4 *
     exch$exch[exch$year == year_of_cost & exch$`Country Name` == "Brazil"] *
-    defl$defl[defl$year == "2020" & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
+    defl$defl[defl$year == base_yr & defl$`Country Name` == "Brazil"] / defl$defl[defl$year == year_of_cost & defl$`Country Name` == "Brazil"] /
     exch$exch[exch$`Country Name` == "Brazil" & exch$year == max(exch$year)] *
     (hhcm_costs$ppp[hhcm_costs$unit_cost == "c.cbc"] / hhcm_costs$ppp[hhcm_costs$country == "Brazil"][1])
 
