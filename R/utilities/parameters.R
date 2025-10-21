@@ -3,13 +3,18 @@
 bcg_eff_tb <- 0.62
 bcg_eff_tbm <- 0.73 # 0.73 (0.67 - 0.79), 0.69(0.60- 0.76 in Asia see Trunz
 
-bcg_eff_tb.m  <- 0.62
-bcg_eff_tb.lo <- 0.48
-bcg_eff_tb.hi <- 0.72
+bcg_eff_tb.m  <- 0.63
+bcg_eff_tb.lo <- 0.49
+bcg_eff_tb.hi <- 0.81
 
-bcg_eff_tbm.m  <- 0.73
-bcg_eff_tbm.lo <- 0.67
-bcg_eff_tbm.hi <- 0.79
+# bcg_eff_tbm.m  <- 0.73
+# bcg_eff_tbm.lo <- 0.67
+# bcg_eff_tbm.hi <- 0.79
+
+
+bcg_eff_tbm.m  <- 0.58
+bcg_eff_tbm.lo <- 0.20
+bcg_eff_tbm.hi <- 1.74
 
 
 bcg_haz_tb <- 1 - bcg_eff_tb
@@ -21,8 +26,8 @@ ucost_proc_bcg <- 0.1205 # for serum institute India- 2023
 disc_rate <- 0.03
 
 
-post_tb_dis_wt <- 0.04
-post_tb_hrqol <- 0.93 # 0.88- 0.98 from https://pmc.ncbi.nlm.nih.gov/articles/PMC8080025/
+#post_tb_dis_wt <- 0.04
+post_tb_hrqol <- 0.91 # 0.87- 0.95 based on from https://pmc.ncbi.nlm.nih.gov/articles/PMC8080025/
 post_tb_mort_hz <- 1.78
 
 tbm_mort_hz <- 1.79 # TODO guess

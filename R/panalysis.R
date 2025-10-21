@@ -54,11 +54,18 @@ D <- D %>%
       bcg_eff_tb.lo,
       bcg_eff_tb.hi
     ),
-    bcg_haz_tbm = 1 - sample_beta(
+    # bcg_haz_tbm = 1 - sample_beta(
+    #   bcg_eff_tbm.m,
+    #   bcg_eff_tbm.lo,
+    #   bcg_eff_tbm.hi
+    # ),
+    # 
+    bcg_haz_tbm = sample_gamma(
       bcg_eff_tbm.m,
       bcg_eff_tbm.lo,
       bcg_eff_tbm.hi
     ),
+    
     # tbm_prop
     prop_tbm = sample_beta(
       prop_tbm.ave,
@@ -103,7 +110,6 @@ D <- D %>%
   as.data.table()
 
 
-
 # D$prop_tbm <-0
 
 ## === functions for calculations
@@ -126,6 +132,7 @@ save(D, file = here("outputs/PSA.RData"))
 
 load(here("outputs/PSA.RData"))
 
+# data for percapita deaths
 per_cap_deaths <- D%>%select(iso3, iter,matches("rslt_tb_deaths|rslt_tbn_deaths|rslt_tbm_deaths"))%>%
   pivot_longer(cols=-c("iter", "iso3"), names_to = "variable")%>%as.data.table()
 per_cap_deaths[, type:= ifelse(str_detect(variable, "cf"), "cf", "sq")]
@@ -177,6 +184,7 @@ CEA <- CEA[!is.na(ENB30)]
 CEA$iso3 <- factor(CEA$iso3, levels = CEA[order(ICER)]$iso3, ordered = TRUE)
 
 save(CEA, file = here("outputs/CEA.RData"))
+load(here("outputs/CEA.RData"))
 
 
 
