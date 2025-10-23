@@ -47,7 +47,7 @@ forest(m,
 dev.off()
 
 
-##Meta RR of TBM
+##======Meta RR of TBM========
 bcg_TBM<- read_excel("data/bcg_tb_meningitis.xlsx") %>%
   dplyr::select(study, vac=vaccine, TB, MTB)%>%
   pivot_wider(names_from = vac, 
@@ -75,107 +75,56 @@ summary(m1)
 forest(m1)
 
 png(
-  filename = here("outputs/forest_TBM_RR.png"),
-  width = 20, height = 7.5,
+  filename = here("plots/f_forest_TBM_RR.png"),
+  width = 17, height = 7.0,
   units = "cm", pointsize = 12,
   bg = "white", res = 250
 )
-forest(
-  m1,
-  fontsize = 7, 
-  common= FALSE,
-  xlab = "RR of TBM in BCG vaccinated vs unvaccinated, 95% CI",
-  leftcols = c("study", "n.e", "event.e", "n.c", "event.c"),
-  leftlabs = c("Study", "TB", "BCG\n TBM","TB", "Unvacc\nTBM"),
- 
-  # label.e = "BCG",
-  # label.c = "No BCG",
-  label.e = "Vaccinated",
-  label.c = "",
-  
-
-  
-  smlab = "Risk Ratio (RR)",
-  print.tau2 = TRUE,
-  print.I2 = TRUE
-)
-
-dev.off()
-
 
 forest(
   m1,
-  common= FALSE,      # don't show fixed-effect summary
-  text.random = "Random-effects RR",
-  xlab = "Risk Ratio (RR)",
-  # Add custom column headers
-  lab.e = "BCG group",  # header above experimental events/total
-  lab.c = "Control group",       # header above control events/total
-  leftcols = c("studlab", "event.e", "n.e", "event.c", "n.c"), # left columns to show study names
-  leftlabs = c("Study", "TB", "TBM", "TB", "TBM"),
-  #rightcols = c("event.e", "n.e", "event.c", "n.c"), # show counts
-  digits = 2               # round RR estimates
-)
-
-
-library(meta)
-
-# Random-effects RR meta-analysis example
-m1 <- metabin(
-  event.e = MTB_vac1, n.e = TB_vac1,
-  event.c = MTB_vac0, n.c = TB_vac0,
-  studlab = study,
-  data = bcg_TBM,
-  sm = "RR",
-  method = "MH",
-  random = TRUE
-)
-
-# Base forest plot without column headers
-forest(
-  m1,
+  font=8,
   common = FALSE,
   comb.random = TRUE,
   text.random = "Random-effects RR",
   xlab = "Risk Ratio (RR)",
   leftcols = c("studlab", "event.e", "n.e", "event.c", "n.c"),
+  leftlabs = c("Study", "TBM", "TB", "TBM", "TB"),
+  label.e= "Vaccinated",
+  label.c= "Unvaccinated",
   digits = 2,
-  colgap.left = "0.5cm"
+  colgap.left = "0.5cm",
+  fontsize = 8,        
+  fontfamily = "serif"   # Font family ("Arial", "Times", "Helvetica")
 )
+dev.off()
 
-forest(
-m1,
-common = FALSE,
-comb.random = TRUE,
-text.random = "Random-effects RR",
-xlab = "Risk Ratio (RR)",
 
-# Define the columns to appear on the left side
-leftcols = c("studlab", "event.e", "n.e", "event.c", "n.c"),
+metabin(10, 20, 15, 20, sm = "OR") 
+metabin(10, 20, 15, 20, sm = "RR") 
 
-# Use leftlabs to define the custom headers for ALL left columns
-leftlabs = c(
-  # Column 1: Study name
-  "Study",
-  
-  # Columns 2 & 3: Vaccinated Group (Event and Total)
-  "Vaccinated","", # Keep blank for the second column under 'Vaccinated'
-  
-  # Columns 4 & 5: Unvaccinated Group (Event and Total)
-  "Unvaccinated",
-  ""  # Keep blank for the second column under 'Unvaccinated'
-),
 
-# Use col.lab to control the sub-headers/labels for each column
-col.lab = c(
-  "Study", # Keep Study
-  "Events", "Total",  # Sub-headers for Vaccinated group
-  "Events", "Total"   # Sub-headers for Unvaccinated group
-),
+# default for metabin is RR
+# By default, the Mantel–Haenszel method is used to combine the results 
+# default method = “MH”
 
-digits = 2,
-colgap.left = "0.5cm"
-)
+#======Compare meta and metafor TBM========
+dat_rr <- escalc(measure = "RR", 
+                 ai = MTB_vac1, n1i = TB_vac1,
+                 ci = MTB_vac0, n2i = TB_vac0, 
+                 data = bcg_TBM, 
+                 slab = study)
+
+model_rr <- rma(yi, vi, data = dat_rr)
+summary(model_rr)
+
+exp(c(-0.5496,-1.6436,0.5445))
+
+# compare with metabin
+
+summary(m1)
+
+
 #=====Post TB HRQL=======
 
 # data extracted from https://pmc-ncbi-nlm-nih-gov.sheffield.idm.oclc.org/articles/PMC8080025/
@@ -239,103 +188,10 @@ meta::forest(meta_res, sortvar = TE,
              smlab = "Mean(utility)",
              xlab = "Post-TB utility score based on EQ-5D scores")
 
-datt <- bcg_TBM
 
 
 
-dat <- escalc(measure="RR", ai=tpos, bi=tneg, ci=cpos, di=cneg, data=dat.bcg,
-              slab=paste(author, year, sep=", ")) # also add study labels
-dat
 
-res <- rma(yi, vi, data=dat, test="knha")
-res
-predict(res, transf=exp, digits=2)
-forest(res, atransf=exp, at=log(c(.05, .25, 1, 4)), xlim=c(-16,6),
-       ilab=cbind(tpos, tneg, cpos, cneg), ilab.xpos=c(-9.5,-8,-6,-4.5),
-       header="Author(s) and Year", shade="zebra")
-text(c(-9.5,-8,-6,-4.5), 15,   c("TB+", "TB-", "TB+", "TB-"), font=2)
-text(c(-8.75,-5.25),     15.8, c("Vaccinated", "Control"),    font=2)
-
-
-datt <- escalc(measure="RR", ai=MTB_vac1, bi=TB_vac1-MTB_vac1, ci=MTB_vac0, di=TB_vac0-MTB_vac0, data=datt,
-              slab=study) # also add 
-
-res <- rma(yi, vi, data=datt, test="knha")
-
-predict(res, transf=exp, digits=2)
-forest(res, atransf=exp, at=log(c(.25, .25, 1, 4)), xlim=c(-16,6),
-       ilab=cbind(MTB_vac1, TB_vac1, MTB_vac0, TB_vac0), ilab.xpos=c(-9.5,-8,-6,-4.5),
-       header="Author(s) and Year", shade="zebra")
-text(c(-9.5,-8,-6,-4.5), 15,   c("TB+", "TB-", "TB+", "TB-"), font=2)
-text(c(-8.75,-5.25),     15.8, c("Vaccinated", "Control"),    font=2)
-
-
-metabin(10, 20, 15, 20, sm = "OR") 
-
-metabin(10, 20, 15, 20, sm = "RR") 
-data(Fleiss93)
-str(Fleiss93)
-
-
-m.ex1 <- metabin(event.e, n.e, event.c, n.c, data = Fleiss93,
-                 studlab = paste(study, year), sm = "OR")
-# default for metabin is RR
-# By default, the Mantel–Haenszel method is used to combine the results 
-# default method = “MH”
-m.ex0 <- metabin(event.e, n.e, event.c, n.c, data = Fleiss93,
-                 studlab = paste(study, year), sm= "RR")
-summary(m.ex0)
-
-forest(m.ex1, comb.random = FALSE,
-       lab.e ="Vaccinated", lab.c = "Unvaccinated",
-       label.left = "Favors Aspirin",
-       label.right = "Favors Placebo")
-
-update(m.ex0, method = "Peto")
-update(m.ex0, method = "Inverse")
-
-##metafor
-
-m4.ex1 <- rma.mh(event.e, n.e - event.e,
-                 event.c, n.c - event.c, 
-                 model="UM.RS", #random effects
-                 measure = "IRR",
-                 data = Fleiss93, slab = paste(study, year))
-
-forest(m4.ex1, transf = exp, showweights = TRUE)
-dat_rr <- escalc(measure = "RR", 
-                 ai = event.e, n1i = n.e, 
-                 ci = event.c, n2i = n.c, 
-                 data = Fleiss93, 
-                 slab = paste(study, year))
-
-model_rr <- rma(yi, vi, data = dat_rr)
-summary(model_rr)
-
-#======Compare meta and metafor TBM========
-dat_rr <- escalc(measure = "RR", 
-                 ai = MTB_vac1, n1i = TB_vac1,
-                 ci = MTB_vac0, n2i = TB_vac0, 
-                 data = bcg_TBM, 
-                 slab = study)
-
-model_rr <- rma(yi, vi, data = dat_rr)
-summary(model_rr)
-               
-exp(c(-0.5496,-1.6436,0.5445))
-
-# compare with metabin
-
-m1 <- metabin(
-  event.e = MTB_vac1, n.e = TB_vac1,
-  event.c = MTB_vac0, n.c = TB_vac0,
-  studlab = study,
-  data = bcg_TBM,
-  sm = "RR",
-  method = "MH",
-  random = TRUE
-)
-summary(m1)
 
 
 
