@@ -9,7 +9,7 @@ pacman::p_load(here,data.table, dplyr, tidyr, stringr,
 
 load(here("outputs/ceacq.RData"))   # CEAC quantile by cntry
 load(here("outputs/CEAAs.RData"))   # ENB, ICER, buffer, predictors 
-
+load(here("outputs/CEA.RData"))
 ## for sensitivity analysis plots
 load(here("outputs/CEA_sens.RData"))
 load(here("outputs/cost_eff.RData"))

@@ -227,7 +227,7 @@ ggplot(CEA[ICER > 0], aes(iso3, ICER)) +
   ylab("Incremental cost-effectiveness ratio (USD/DALY)")
 
 
-ggsave(file = here("outputs/cea_ICER_iso3.png"), w = 9, h = 8)
+ggsave(file = here("plots/cea_ICER_iso3.png"), w = 9, h = 8)
 
 
 ## ENB plot
@@ -242,7 +242,7 @@ ggplot(CEA, aes(reorder(iso3, ENB30), ENB30)) +
   xlab("Country ISO3 code") +
   ylab("Expected net benefit (USD)")
 
-ggsave(file = here("outputs/cea_ENB_iso3.png"), w = 9, h = 8)
+ggsave(file = here("plots/cea_ENB_iso3.png"), w = 9, h = 8)
 
 ## TODO buffers
 CEA[, summary(ENB30)]
@@ -326,7 +326,7 @@ ggplot(tmpm, aes(reorder(iso3, value), value,color=var)) + # ordering values
   ylab("Optimal buffer as proportion of expected demand (%)")+
   theme(legend.position = 'top',legend.title = element_blank()) 
 
-ggsave(file = here("outputs/f_buffer_sz_cntrs.png"), w = 9, h = 8)
+ggsave(file = here("plots/f_buffer_sz_cntrs.png"), w = 9, h = 8)
 
 ## TODO global and regional total outputs, e.g.:
 

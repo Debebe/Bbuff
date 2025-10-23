@@ -230,4 +230,11 @@ sens <- inner_join(
 fwrite(sens, file = here("outputs/sens.csv"))
 
 
+inc <-gdp_inc_le_costs%>%distinct(iso3, .keep_all = TRUE)
 
+total_inc <- sum(inc$best)
+prop_tbm <-0.035
+death_risk <- 0.193
+survi_seq <- 0.539
+total_deaths <- total_inc*prop_tbm*death_risk
+surv_neur_seq <- total_inc*prop_tbm*survi_seq
