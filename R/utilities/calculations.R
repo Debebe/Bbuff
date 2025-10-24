@@ -25,9 +25,9 @@ D[
 #  Ltbm_mil :=
 #    prop_mild_seq * (
 #tbm_hrqol_mil_seq1 *
-#      (1 - exp(-disc_rate * 3/ tbm_mort_hz))+
+#      (1 - exp(-disc_rate * 3))+
 #tbm_hrqol_mil_seq2 *
-#      (exp(-disc_rate * 3/ tbm_mort_hz) - exp(-disc_rate * LE / tbm_mort_hz))
+#      (exp(-disc_rate * 3) - exp(-disc_rate * LE / tbm_mort_hz))
 #) / disc_rate
 #]
 
