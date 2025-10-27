@@ -260,7 +260,7 @@ ggsave(c,file = here("plots/f_inc_threshold.png"), w = 7, h = 3.2)
 
 
 
-##=====sensitivity analysis plots=====
+#=====sensitivity analysis plots=====
 
 bar_mean <- ggplot(CEA_sens %>% filter(who_region == "Global"),
                    # aes(x = reorder(model, mean), y = mean, fill = model)) +
@@ -316,6 +316,145 @@ bar_mid <- ggplot(CEA_sens %>% filter(!who_region =="Global", iso3=="XX"),
   )
 
 ggsave(bar_mid,file = here("outputs/f_sensitivity_r.png"), w = 6.5, h = 3.5)
+
+
+bar_mid_per <- ggplot(CEA_sens %>% filter(!who_region =="Global", iso3=="XX"),
+                  aes(x = model, y = mid, fill = model)) +
+  geom_col() +
+  facet_wrap(who_region~variable, scales = "free", 
+             labeller = labeller(.multi_line = FALSE)) +
+  ylab("Estimates (median)") +
+  theme_linedraw() +
+  theme(
+    strip.text = element_text(size = 7),
+    legend.key.size = unit(0.5, "lines"),
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    axis.title.x = element_blank(),
+    axis.text.x = element_blank(),
+    plot.title = element_text(size = 8)
+  )
+
+ggsave(bar_mid,file = here("plots/f_sensitivity_r.png"), w = 6.5, h = 3.5)
+
+
+ice_incr <-CEA_sens %>% filter(who_region =="Global", 
+                        iso3=="XX", variable=="ICER")%>%
+  mutate(p= 100+round(100*(mid-mid[model=="PostTB(Y),TBM(Y)"])/mid[model=="PostTB(Y),TBM(Y)"], 1))%>%
+  ggplot(aes(x = reorder(model,p), y = p, fill = model)) +
+  geom_col() +
+  # facet_wrap(who_region~variable, scales = "free", 
+  #            labeller = labeller(.multi_line = FALSE)) +
+  facet_wrap(~variable, scales = "free", 
+             labeller = labeller(.multi_line = FALSE)) +
+  # geom_text(aes(label = paste0(round(p-100,1),"%")), 
+  #           position = position_dodge(width = 0.8), 
+  #           vjust = -0.1, size = 3)+
+  
+  # exclude labels from first bar
+  geom_text(aes(label = ifelse(model == "PostTB(Y),TBM(Y)", NA, paste0(round(p-100, 1), "%"))),
+    position = position_dodge(width = 0.8),
+    vjust = -0.1,
+    size = 3, na.rm = TRUE)+
+  ylab("Percentage increase in median ICER") +
+  geom_hline(yintercept = 100, linetype="dashed",col="gray", lwd=0.5)+
+  theme_linedraw() +
+  scale_fill_manual(values =c("Maroon", "lightblue", "Sandy Brown", "pink"))+
+  theme(
+    strip.text = element_text(size = 7),
+    legend.key.size = unit(0.5, "lines"),
+    legend.position = "none",
+    
+    legend.title = element_blank(),
+    axis.title.x = element_blank(),
+    axis.text.x = element_text(size=7),
+    axis.title.y = element_text(size=7),
+    
+    plot.title = element_text(size = 8)
+  )
+
+ggsave(ice_incr,file = here("plots/f_perc_incr_icer.png"), w = 5, h = 3.5)
+
+
+yy=CEA_sens %>% filter(who_region =="Global", 
+                    iso3=="XX", variable=="ENB30")
+
+enb_decr <-CEA_sens %>% filter(who_region =="Global", 
+                               iso3=="XX", variable=="ENB30")%>%
+  mutate(p= 100*round((mid-mid[model=="PostTB(Y),TBM(Y)"])/mid[model=="PostTB(Y),TBM(Y)"], 3))%>%
+  ggplot(aes(x = reorder(model,p, decreasing=TRUE), y = p, fill = model)) +
+  #ggplot(aes(x = model, y = p, fill = model)) +
+  geom_col() +
+  # facet_wrap(who_region~variable, scales = "free", 
+  #            labeller = labeller(.multi_line = FALSE)) +
+  facet_wrap(~variable, scales = "free", 
+             labeller = labeller(.multi_line = FALSE)) +
+  # exclude labels from first bar
+  geom_text(aes(label = ifelse(model == "PostTB(Y),TBM(Y)", NA, paste0(round(p, 2), "%"))),
+            #label =paste0(round(p, 2), "%")),
+            position = position_dodge(width = 0.5),
+            vjust = -0.1,
+            size = 3, na.rm = TRUE)+
+  ylab("Percentage decrease in median ENB") +
+  geom_hline(yintercept = 0, linetype="dashed",col="gray", lwd=0.7)+
+  theme_linedraw() +
+  scale_fill_manual(values =c("Maroon", "lightblue", "Sandy Brown", "pink"))+
+  theme(
+    strip.text = element_text(size = 8),
+    legend.key.size = unit(0.5, "lines"),
+
+    legend.position = "none",
+    
+    legend.title = element_blank(),
+    axis.title.x = element_blank(),
+    axis.text.x = element_text(size=7),
+    axis.title.y = element_text(size=9),
+    
+    plot.title = element_text(size = 8)
+  ) 
+
+ggsave(enb_decr,file = here("plots/f_perc_dec_ENB.png"), w = 4.5, h = 3.5)
+
+
+
+ice_incr_r <-CEA_sens %>% filter(who_region!="Global", 
+                               iso3=="XX", variable=="ICER")%>%
+  mutate(p= 100+round(100*(mid-mid[model=="PostTB(Y),TBM(Y)"])/mid[model=="PostTB(Y),TBM(Y)"], 1))%>%
+  ggplot(aes(x = reorder(model,p), y = p, fill = model)) +
+  geom_col() +
+  # facet_wrap(who_region~variable, scales = "free",
+  #            labeller = labeller(.multi_line = FALSE)) +
+  facet_wrap(~who_region, scales = "free",
+             labeller = labeller(.multi_line = FALSE)) +
+
+  # exclude labels from first bar
+  geom_text(aes(label = ifelse(model == "PostTB(Y),TBM(Y)", NA, paste0(round(p-100, 1), "%"))),
+            position = position_dodge(width = 0.8),
+            vjust = -0.1,
+            size = 2.5, na.rm = TRUE)+
+  ylab("Percentage increase in median ICER") +
+  geom_hline(yintercept = 100, linetype="dashed",col="gray", lwd=0.5)+
+  theme_linedraw() +
+  scale_fill_manual(values =c("Maroon", "lightblue", "Sandy Brown", "pink"))+
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) + #add a little gap above max mar
+  theme(
+    strip.text = element_text(size = 7),
+    legend.key.size = unit(0.5, "lines"),
+    legend.position = "bottom",
+    
+    legend.title = element_blank(),
+    axis.title.x = element_blank(),
+    axis.text.x = element_blank(),
+    
+    #axis.text.x = element_text(size=7),
+    axis.title.y = element_text(size=9),
+    
+    plot.title = element_text(size = 10)
+    )
+  
+
+ggsave(ice_incr_r,file = here("plots/f_perc_incr_icer_reg.png"), w = 5.5, h = 4.3)
+
 
 
 
