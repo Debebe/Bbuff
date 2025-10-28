@@ -177,3 +177,23 @@ saveRDS(LE, file = here("data/LE.rds"))
 saveRDS(gdp_inc_le, file = here("data/gdp_inc_le.rds"))
 
 source(here("R/inflation_adjustment.R")) # to get inflation incorporated data
+
+
+##========Life expectancy========
+
+ref_life_tab <- fread("data/IHME_GBD_2019_TMRLT_Y2021M01D05.csv")
+u5N <- fread("data/UN_N_U5.csv")%>%
+  dplyr::select(Iso3,Age, N=Value)
+
+u5LE <- fread("data/UN_LE_U5.csv")%>%
+  dplyr::select(Iso3,Age, LE=Value)%>%
+  distinct(Iso3,Age, .keep_all = TRUE)
+
+LEu5 <- inner_join(u5N, u5LE, by= c("Iso3", "Age"))%>%
+  group_by(Iso3)%>%
+  mutate(wt=N/sum(N))%>%
+  as.data.table()
+
+save(LEu5, file = here("data/LEu5.rds"))
+
+

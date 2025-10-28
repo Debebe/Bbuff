@@ -28,6 +28,10 @@ disc_rate <- 0.03
 
 #post_tb_dis_wt <- 0.04
 post_tb_hrqol <- 0.91 # 0.87- 0.95 based on from https://pmc.ncbi.nlm.nih.gov/articles/PMC8080025/
+
+post_tb_hrqol_dur3 <- 1-0.041 #Tomeny
+post_tb_hrqol_post3 <- 1-0.025
+
 post_tb_mort_hz <- 1.78
 
 tbm_mort_hz <- 1.79 # TODO guess
@@ -49,3 +53,6 @@ prop_mod_seq <- 0.30 * prop_nsev_seq
 tbm_hrqol_mil_seq <- 1 - 0.031 # 0·031 (0·018–0·050) #Global burden of disease, 2013
 tbm_hrqol_mod_seq <- 1 - 0.203 # 0·203 (0·134–0·290)
 tbm_hrqol_sev_seq <- 1 - 0.542 # 0·542 (0·374–0·702)
+
+LEref <- 88.871895
+
