@@ -10,6 +10,10 @@ pacman::p_load(here,data.table, dplyr, tidyr, stringr, truncnorm,
 ## === data
 ## read in pre-prepared data
 gdp_inc_le_costs <- readRDS(file = here("data/gdp_inc_le_costs.rds"))
+tbinc <- fread("data/TB_burden_countries_2025-10-29.csv") %>%
+  dplyr::filter(year==2023) %>%
+  dplyr::select(iso3, year,inc_all=e_inc_100k,  e_inc_100k_lo, e_inc_100k_hi)%>%as.data.table()
+
 load(here("data/whokey.Rdata"))
 whoz <- c("AFR", "AMR", "EMR", "EUR", "SEA", "WPR")
 whozt <- c(
@@ -26,6 +30,7 @@ whokeyshort <- rbind(
   data.table(g_whoregion = "Global", region = "Global")
 )
 
+load(here("data/LEu5.Rdata")) # single year under five life expectancy
 ## === utility functions
 source("R/utilities/utilities.R")
 
@@ -109,11 +114,19 @@ D <- D %>%
   ungroup() %>%
   as.data.table()
 
+D[,LE:=NULL]
 
-# D$prop_tbm <-0
+samp <- D
+
+rm(D)
+save(samp, file= here("outputs/samp.RData"))
+
+load("outputs/samp.RData")
+load(here("data/LEu5.Rdata")) # single year under five life expectancy
 
 ## === functions for calculations
 source(here("R/utilities/modelfunctions.R"))
+source(here("R/utilities/parameters.R"))
 
 
 # ## === parameter values and samplers
@@ -129,6 +142,8 @@ source(here("R/utilities/calculations.R"))
 
 # save PSA samples
 save(D, file = here("outputs/PSA.RData"))
+
+
 
 load(here("outputs/PSA.RData"))
 
@@ -169,7 +184,7 @@ CEA <- D[, .(
     uc_capital_ave +
     ucost_proc_bcg) # TODO vax prep and inject is 25% of all labour cost?
 ),
-by = iso3
+by = c("iso3", "source")
 ]
 
 
@@ -181,10 +196,10 @@ CEA <- merge(CEA, whokey, by = "iso3")
 CEA <- CEA[!is.na(ENB30)]
 
 ## ICER plot
-CEA$iso3 <- factor(CEA$iso3, levels = CEA[order(ICER)]$iso3, ordered = TRUE)
+CEA$iso3 <- factor(CEA$iso3, levels = unique(CEA[order(ICER)]$iso3), ordered = TRUE)
 
-save(CEA, file = here("outputs/CEA.RData"))
-load(here("outputs/CEA.RData"))
+# save(CEA, file = here("outputs/CEA.RData"))
+# load(here("outputs/CEA.RData"))
 
 
 
@@ -204,7 +219,19 @@ CEA <- CEA%>%
                               levels = c("0.3 GDP", "0.5 GDP", "1 GDP")))|>
   dplyr::mutate(ICER_val = GDP * threshold,
                 ICER_Label= ifelse(ICER < 0.3 * GDP,"ICER < 0.3 GDP", "ICER >= 0.3 GDP" ))%>%
-  as.data.table()
+  left_join(gdp_inc_le_costs%>%
+               filter(cov_cat=="WUENIC")%>%
+                            dplyr::select(iso3, incbest,BCG=bcg_coverage,CDR=cdr,
+                                          ucvax=uc_tot_vax_delv_ave,
+                                          uctb=ucost_dstb.m, 
+                                          uctbm=ucost_tbm.m),
+                          by= "iso3")%>%
+  inner_join(tbinc, by="iso3")%>%as.data.table()
+  
+save(CEA, file = here("outputs/CEA.RData"))
+load(here("outputs/CEA.RData"))
+
+
 
 ggplot(CEA[ICER > 0], aes(iso3, ICER)) +
   geom_point(aes(shape = ICER_Label, col = ICER_Label), 
