@@ -1,9 +1,13 @@
-library(here)
-library(data.table)
-library(ggplot2)
-library(sf)
-library(wbmapdata) ## https://github.com/petedodd/wbmapdata
+# library(here)
+# library(data.table)
+# library(ggplot2)
+# library(sf)
+# library(wbmapdata) ## https://github.com/petedodd/wbmapdata
 
+pacman::p_load(here,data.table, dplyr, tidyr, stringr, 
+               ggplot2, sf, wbmapdata)
+
+world <- wbmapdata::world
 
 ## =============== deaths
 load(here("outputs/deaths.RData"))
@@ -40,7 +44,8 @@ p <- ggplot(data = dmap) +
   guides(
     fill = guide_colourbar(order = 1, position = "top"),
     size = guide_legend(order = 2, position = "bottom")
-  )
+  )+
+  coord_sf(default_crs = sf::st_crs(dmap), expand = FALSE)
 p
 
 ## version with points
@@ -57,15 +62,15 @@ p2 <- p +
   scale_size_continuous(name = sznm)
 p2
 
+ggsave(p2, file = here("plots/map_deaths.png"), w = 9, h = 5)
 
-ggsave(p2, file = here("outputs/map_deaths.png"), w = 12, h = 10)
 
 
 ## =========== ICER
 load(here("outputs/CEA.RData"))
 
 ## merge
-cmap <- sp::merge(CEA, world, by = "iso3", all.y = TRUE)
+cmap <- sp::merge(CEA[threshold==0.3,], world, by = "iso3", all.y = TRUE)
 cmap <- st_as_sf(cmap)
 
 ##  version without points
@@ -96,4 +101,4 @@ p <- ggplot(data = cmap) +
 p
 
 
-ggsave(p, file = here("outputs/map_ICERs.png"), w = 12, h = 10)
+ggsave(p, file = here("plots/map_ICERs.png"), w = 9, h = 5)
