@@ -78,13 +78,15 @@ make_flextable <- function(data) {
   ftall <- data %>%
     # select(-ISO) %>%
     flextable::flextable() |>
-    flextable::set_caption("Optimal buffer size under different demand uncertainties") |>
+    #flextable::set_caption("Optimal buffer size under different demand uncertainties") |>
     flextable::autofit() |>
-    flextable::merge_v(j = c("Region")) |>
+    flextable::merge_v(j = 1) |>
     flextable::align(align = "left", part = "all") |>
-    flextable::valign(valign = "top", j = c("Region")) |>
+    flextable::valign(valign = "top", j = 1) |>
     flextable::fontsize(size = 7, part = "all") |>
-    flextable::autofit() #|>
+    flextable::autofit() |>
+    theme_booktabs() %>%
+    hline_bottom(part = "body", border = fp_border(width = 1.5))
   # bg(i = ~ ENB < 0, bg = "#FFCCCC"
   # )
   return(ftall)
