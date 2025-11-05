@@ -231,4 +231,16 @@ D[, rslt_bcg_cost_cf := 0]
 D[, rslt_bcg_doses_sq := bcg_coverage]
 D[, rslt_bcg_doses_cf := 0]
 
+## Sequelae
+D[, rslt_tb_seq_sq := rslt_inc_sq - rslt_tb_deaths_sq]
+D[, rslt_tb_seq_cf := rslt_inc_cf - rslt_tb_deaths_cf]
+
+D[, rslt_tbmseq_sq := rslt_tbminc_sq - rslt_tbm_deaths_sq]
+D[, rslt_tbmseq_cf := rslt_tbminc_cf - rslt_tbm_deaths_cf]
+
+D[, rslt_tbmsev_seq_sq := prop_sev_seq*rslt_tbmseq_sq]
+D[, rslt_tbmsev_seq_cf := prop_sev_seq*rslt_tbmseq_cf]
+
+
+
 
