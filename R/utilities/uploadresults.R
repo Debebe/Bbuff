@@ -29,6 +29,10 @@ upload.to.sheets("top10_cntrs.csv", shid)
 upload.to.sheets("regression_ENB.csv", shid)
 upload.to.sheets("regression_icer.csv", shid)
 upload.to.sheets("statistics.csv", shid)
+upload.to.sheets("Rsq.csv", shid)
+upload.to.sheets("sens.csv", shid)
+upload.to.sheets("sumary_sen.csv", shid)
+
 
 
 
