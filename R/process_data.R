@@ -70,7 +70,7 @@ BCG <- read_excel("data/Bacillus Calmette–Guérin (BCG) vaccination coverage 
 
 
 inc_pop_bcg <- inner_join(who_incidence, BCG, by = c("Iso3", "Year"))
-#
+
 # GDP <- read_csv(here("data/03baa64d-3ff7-4719-a48a-5c7b5d1690f9_Data.csv")) %>%
 #   select(Iso3= "Country Code", GDP= "2023 [YR2023]") %>%
 #   mutate(GDP= as.numeric(GDP))
@@ -194,6 +194,30 @@ LEu5 <- inner_join(u5N, u5LE, by= c("Iso3", "Age"))%>%
   mutate(wt=N/sum(N))%>%
   as.data.table()
 
-save(LEu5, file = here("data/LEu5.rds"))
+save(LEu5, file = here("data/LEu5.RData"))
+
+
+
+## Data for background epidemiology
+
+background_epi <- fread(here("data/TB_burden_age_sex_2025-05-15.csv")) %>%
+  filter(sex %in% c("m", "f"), age_group %in% c("0-4")) %>%
+  dplyr::select(country, iso2, iso3, year, age_group, sex, inc=best) %>%
+  group_by(country, Iso2 = iso2, Iso3 = iso3, Year = year, Age = age_group) %>%
+  summarise(inc = sum(inc, na.rm = TRUE),.groups = "drop"
+  )%>%
+  inner_join(fread(here("data/unpopulation_dataportal_20250515175045.csv")) %>%
+               select(country = Location, Iso2, Iso3, Year = Time, Sex, Age, Pop = Value),
+             by = c("country", "Iso2", "Iso3", "Year", "Age"))%>%
+  inner_join(read_excel("data/Bacillus Calmette–Guérin (BCG) vaccination coverage 2025-04-03 10-35 UTC.xlsx") %>%
+               filter(YEAR %in% c(2023)) %>%
+               select(Iso3 = CODE, Year = YEAR, cat = COVERAGE_CATEGORY, bcg_coverage = COVERAGE) %>%
+               filter(!is.na(bcg_coverage)) %>%
+               mutate(bcg_coverage = round(bcg_coverage / 100, 3)) %>%  filter(cat=="WUENIC"),  
+             by = c("Iso3", "Year"))
+
+
+save(background_epi, file = here("data/background_epi.RData"))
+
 
 
