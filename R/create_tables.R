@@ -1,20 +1,22 @@
 
+rm(list = ls())
+
 pacman::p_load(here,data.table, dplyr, stringr, 
                flextable, officer)
 
 
-outa<- fread(here("outputs/output_table.csv"))%>%
+outa<- fread(here("outputs/output_table.csv")) %>%
   dplyr::select(variable,sq_txt, cf_txt, av_txt)|>
   filter(variable%in% c("rslt_bcg_doses","rslt_att", "rslt_hosp_tbm",
     
-    "rslt_att_cost", "rslt_attm_cost", "rslt_bcg_cost",
-    "rslt_health",
+    "rslt_att_cost", "rslt_attm_cost", "rslt_bcg_cost", "rslt_cost",
+    #"rslt_health",
     
     "rslt_tbminc", "rslt_inc",
     
-    "rslt_tb_deaths", "rslt_tbm_deaths",
+    "rslt_tb_deaths", "rslt_tbm_deaths", "rslt_tbmsev_seq",
     
-    "rslt_ly_tbm", "rslt_ly_tb", "rslt_tb_seq", "rslt_tbmseq"
+    "rslt_ly_tbm", "rslt_ly_tb" #"rslt_tb_seq", "rslt_tbmseq"
     
     ))%>%
   mutate(Type= case_when(variable%in% c("rslt_bcg_doses","rslt_att", "rslt_hosp_tbm") ~ "Resource",
@@ -30,23 +32,27 @@ outa<- fread(here("outputs/output_table.csv"))%>%
                          Item=="rslt_tbm_deaths" ~"TBM deaths",
                          Item=="rslt_att_cost" ~ "ATT cost for TB",
                          Item=="rslt_attm_cost" ~ "ATT cost for TBM",
-                         Item=="rslt_ly_tb" ~ "QALYs with TB(M)",
-                         Item=="rslt_ly_tbm" ~ "QALYs with TBM",
-                         Item=="rslt_health"~ "QALYs(M)",
+                         Item=="rslt_cost" ~ "All costs",
+                         Item=="rslt_ly_tb" ~ "DALYs from TB(M)",
+                         Item=="rslt_ly_tbm" ~ "DALYs from TBM",
+                         #Item=="rslt_health"~ "QALYs(M)",
                          Item=="rslt_hosp_tbm"~ "TBM hospitalizations",
                          Item=="rslt_bcg_cost"~ "BCG vaccination cost",
+                         Item=="rslt_tbmsev_seq" ~ "TBM severe sequelae"
                          
-                         Item=="rslt_tb_seq"~ "TB sequelae",
-                         Item=="rslt_tbmseq"~ "TBM sequelae"
+                         # Item=="rslt_tb_seq"~ "TB sequelae",
+                         # Item=="rslt_tbmseq"~ "TBM sequelae"
                          
                          ))%>%as.data.frame() %>%
   group_by(Type)%>%
   arrange(factor(Item,
                  levels = c("BCG doses(M)","ATT for TB","TBM hospitalizations",
                             "BCG vaccination cost","ATT cost for TB",
-                            "ATT cost for TBM","TB incidence", "TBM incidence",
-                            "TB deaths","TBM deaths","QALYs(M)","QALYs with TB(M)",
-                            "QALYs with TBM", "TB sequelae","TBM sequelae")))
+                            "ATT cost for TBM","All costs","TB incidence", "TBM incidence",
+                            "TB deaths","TBM deaths","TBM severe sequelae", #"QALYs(M)",
+                            "DALYs from TB(M)",
+                            "DALYs from TBM"#, "TB sequelae","TBM sequelae"
+                            )))
 
 ## this creates data with merged column for tabling
 outg <- as_grouped_data(x = outa, groups = c("Type"))
@@ -68,9 +74,10 @@ zz <- flextable::as_flextable(outg) %>%
   bold(i = ~ !is.na(get(first_col)), j = 1, bold = TRUE, part = "body") %>%
   bold(part = "header", bold = TRUE) %>%
   #font(part = "all", fontname = "Verdana")|>
-  autofit()|>
-  add_footer_lines(values = "M - Million")|>
+  autofit() |>
+  add_footer_lines(values ="BCG =Bacillus Calmette-Guérin, TB=Tuberculosis, TBM=Tuberculosis meningitis, ATT= Anti-TB treatment, DALYs= Disability Adjusted Life Years, M = Million")|>
   italic(part = "footer", italic = TRUE) %>%
+  bold(part = "footer", bold = FALSE) %>%
   fontsize(part = "footer", size = 6) %>%
   align(part = "footer", align = "left")
 
@@ -87,14 +94,14 @@ outr<- fread(here("outputs/output_table_who.csv")) %>%
   dplyr::select(Region=who_region,variable,sq_txt, cf_txt, av_txt)|>
   filter(variable%in% c("rslt_bcg_doses","rslt_att", "rslt_hosp_tbm",
                         
-                        "rslt_att_cost", "rslt_attm_cost", "rslt_bcg_cost",
-                        "rslt_health",
+                        "rslt_att_cost", "rslt_attm_cost", "rslt_bcg_cost", "rslt_cost",
+                        #"rslt_health",
                         
                         "rslt_tbminc", "rslt_inc",
                         
-                        "rslt_tb_deaths", "rslt_tbm_deaths",
+                        "rslt_tb_deaths", "rslt_tbm_deaths","rslt_tbmsev_seq",
                         
-                        "rslt_ly_tbm", "rslt_ly_tb"
+                        "rslt_ly_tbm", "rslt_ly_tb" #, "rslt_tb_seq", "rslt_tbmseq"
                         
   ))%>%
   mutate(Type= case_when(variable%in% c("rslt_bcg_doses","rslt_att", "rslt_hosp_tbm") ~ "Resource",
@@ -110,19 +117,29 @@ outr<- fread(here("outputs/output_table_who.csv")) %>%
                          Item=="rslt_tbm_deaths" ~"TBM deaths",
                          Item=="rslt_att_cost" ~ "ATT cost for TB",
                          Item=="rslt_attm_cost" ~ "ATT cost for TBM",
-                         Item=="rslt_ly_tb" ~ "QALYs with TB(M)",
-                         Item=="rslt_ly_tbm" ~ "QALYs with TBM",
-                         Item=="rslt_health"~ "QALYs(M)",
+                         Item=="rslt_cost" ~ "All costs",
+                         Item=="rslt_ly_tb" ~ "DALYs from TB(M)",
+                         Item=="rslt_ly_tbm" ~ "DALYs from TBM",
+                         #Item=="rslt_health"~ "QALYs(M)",
                          Item=="rslt_hosp_tbm"~ "TBM hospitalizations",
                          Item=="rslt_bcg_cost"~ "BCG vaccination cost",
+                         Item=="rslt_tbmsev_seq" ~ "TBM severe sequelae"
+                         # Item=="rslt_tb_seq"~ "TB sequelae",
+                         # Item=="rslt_tbmseq"~ "TBM sequelae"
   ))%>%as.data.frame() %>%
   group_by(Type)%>%
   arrange(factor(Item,
                  levels = c("BCG doses(M)","ATT for TB","TBM hospitalizations",
-                            "BCG vaccination cost","ATT cost for TB",
-                            "ATT cost for TBM","TB incidence", "TBM incidence",
-                            "TB deaths","TBM deaths","QALYs(M)","QALYs with TB(M)",
-                            "QALYs with TBM")))
+                            "BCG vaccination cost",
+                            "ATT cost for TB",
+                            "ATT cost for TBM", "All costs",
+                            "TB incidence", "TBM incidence",
+                            "TB deaths","TBM deaths","TBM severe sequelae", #"QALYs(M)","QALYs with TB(M)",
+                            #"QALYs with TBM", 
+                            "DALYs from TB(M)",
+                            "DALYs from TBM"
+                            #"TB sequelae","TBM sequelae"
+                            )))
 
 set_flextable_defaults(
   font.family = "Verdana",
@@ -152,19 +169,20 @@ Ltable <- outr %>%
   ungroup()%>%select(-Type,-`Status.quo` )
 
 num_regions <- length(unique(outr$Region))
-rows_per_region <- 16
-line_rows <- seq(rows_per_region, rows_per_region * num_regions, by = 16)
+rows_per_region <- Ltable%>% distinct(Item)%>%tally()%>%as.integer()
+line_rows <- seq(rows_per_region, rows_per_region * num_regions, by = rows_per_region)
 
 ft_r <- flextable(Ltable) %>%
   merge_v(j = "Region") %>%          
   bold(i = ~ is.na(Incremental), j = "Item", bold = TRUE, part = "body") %>% 
   bold(part = "header", bold = TRUE) %>%
   autofit() %>%
-  add_footer_lines(values = "M = Million") %>%
+  add_footer_lines(values ="BCG =Bacillus Calmette-Guérin, TB=Tuberculosis, TBM=Tuberculosis meningitis, ATT= Anti-TB treatment, DALYs= Disability Adjusted Life Years, M = Million")|>
   italic(part = "footer", italic = TRUE) %>%
   fontsize(part = "footer", size = 6) %>%
   align(part = "footer", align = "left")%>%
   hline(i = line_rows, border = fp_border(width = 1, color = "gray")) |>
+  line_spacing(space = 0.8) |>
   fix_border_issues()
 
 doc <- read_docx() |>
@@ -175,8 +193,25 @@ print(doc, target = "outputs/table2_r.docx")
 
 
 ##====effect in top ten countries=====
-top10_cntrs <- fread("outputs/top10_cntrs.csv")
-line_rows <- seq(6, 6 * 10, by = 6)
+top10_cntrs <- fread("outputs/top10_cntrs.csv")%>%
+  rename(Item="BCG effect")%>%
+  #group_by(Country)|>
+  mutate(Country = factor(Country, levels = unique(Country))) %>%
+  mutate(Item=factor(Item,
+                     levels = c("BCG doses","Averted TB incidence", "Averted TBM incidence",
+                                "Averted TB deaths",  "Averted DALYs from TB", "Averted ATT for TB")))|>
+  group_by(Country)|>
+  arrange(Country, factor(Item,
+                 levels = c("BCG doses","Averted TB incidence", "Averted TBM incidence",
+                            "Averted TB deaths",  "Averted DALYs from TB", "Averted ATT for TB")))
+
+n_cntrs <- length(unique(top10_cntrs$Country))
+n_items_per_cntry <- length(unique(top10_cntrs$Item))
+line_rows <- seq(n_items_per_cntry, n_items_per_cntry * n_cntrs, by = n_items_per_cntry)
+
+
+#out10 <- as_grouped_data(x = top10_cntrs, groups = c("Country"))
+
 
 ft_10 <- flextable(top10_cntrs) %>%
   merge_v(j = "Country") %>%          
@@ -187,6 +222,7 @@ ft_10 <- flextable(top10_cntrs) %>%
   fontsize(part = "footer", size = 6) %>%
   align(part = "footer", align = "left")%>%
   hline(i = line_rows, border = fp_border(width = 1, color = "gray")) |>
+  line_spacing(space = 1) |>
   fix_border_issues()
 
 doc <- read_docx() |>
@@ -194,4 +230,7 @@ doc <- read_docx() |>
   body_add_par(" ", style = "Normal") 
 
 print(doc, target = "outputs/table3_10cntrs.docx")
+
+
+
 
