@@ -4,9 +4,8 @@ pacman::p_load(here,data.table, dplyr, tidyr, stringr,
                flextable, officer,kableExtra,ggplot2, ggrepel, patchwork)
 
 load(here("outputs/PSA.RData"))     # full PSA data with results. 
-load(here("outputs/CEA_BUF.RData")) # CEA with data with buffersz
 load(here("outputs/CEA.RData"))     # full PSA data with results
-gdp_inc_le_costs <- readRDS(file = here("data/gdp_inc_le_costs.rds"))
+gdp_inc_le_costs <- readRDS(here("data/gdp_inc_le_costs.rds"))
 load(here("data/whokey.Rdata"))     # region and cntry iso codes
 
 
@@ -102,12 +101,12 @@ avrt_table <- avrt_table%>%
   summarise(av.m= mean(av,na.rm=TRUE),
             av.l=quantile(av,0.025, na.rm=TRUE),
             av.h=quantile(av,0.975, na.rm=TRUE))%>%
-  mutate(variable= case_when(variable=="rslt_att" ~"Averted ATT",
+  mutate(variable= case_when(variable=="rslt_att" ~"Averted ATT for TB",
                              variable=="rslt_bcg_doses" ~"BCG doses",
                              variable=="rslt_inc" ~"Averted TB incidence",
                              variable=="rslt_tbminc" ~"Averted TBM incidence",
-                             variable=="rslt_ly_tb" ~"Averted DALYs",
-                             variable=="rslt_tb_deaths" ~"Averted deaths"))
+                             variable=="rslt_ly_tb" ~"Averted DALYs from TB",
+                             variable=="rslt_tb_deaths" ~"Averted TB deaths"))
   
  save(avrt_table, file= here("outputs/avrt_table.RData"))
  save(avert_deaths, file= here("outputs/avert_deaths.RData"))
@@ -115,7 +114,7 @@ avrt_table <- avrt_table%>%
 
 # select top 10 cntrs by averted death 
 top10 <- avrt_table %>%
-  filter(variable == "Averted deaths") %>%
+  filter(variable == "Averted TB deaths") %>%
   arrange(desc(av.m)) %>%
   head(10) 
 
@@ -124,7 +123,7 @@ top10_cntrs <-avrt_table %>%
   filter(iso3%in%top10$iso3) %>%
   left_join(
     avrt_table %>%
-      filter(variable == "Averted deaths") %>%
+      filter(variable == "Averted TB deaths") %>%
       select(iso3, death_value = av.m),
     by = "iso3"
   ) %>%
@@ -140,101 +139,27 @@ fwrite(top10_cntrs, file = here("outputs/top10_cntrs.csv"))
 ##=========outputs by who regions==========
 
 
-keep <- grep("rslt", names(D), value = TRUE)
-keep <- c("who_region","iso3", "iter", "Pop", unique(keep))
 
-out_tab_r <- D[, ..keep]
-out_tab_r <- melt(out_tab_r, id = c("iter", "iso3","who_region", "Pop"))
-out_tab_r[, type := ifelse(grepl("cf", variable), "cf", "sq")]
-out_tab_r[, variable := gsub("rlst_", "", variable)]
-out_tab_r[, variable := gsub("_cf|_sq", "", variable)]
-out_tab_r[, value := value * Pop]
-out_tab_r <- dcast(out_tab_r,
-                      iter + iso3 + variable + who_region~ type,
-                      value.var = "value")
-
-
-## averted
-out_tab_r[, av := cf - sq]
-
-save(out_tab_r, file= here("outputs/out_tab_r.RData"))
-
-
-## global TODO NaNs?
-out_r_aggr <- out_tab_r[is.finite(av), .(
-  cf = sum(cf), sq = sum(sq), av = sum(av)),
-by = .(iter, variable, who_region)]
-
-## hi/lo & reshape
-eps <- 0.025
-out_r_aggr <- melt(out_r_aggr,
-                     id = c("iter","who_region", "variable")
-) # TODO better var names
-
-out_r_aggr <- out_r_aggr[, .(
-  mid = mean(value), lo = quantile(value, eps), hi = quantile(value, 1 - eps)
-), by = .(who_region,variable, variable.1)]
-
-output_table <- dcast(out_r_aggr,
-                      who_region+variable ~ variable.1,
-                      value.var = c("mid", "lo", "hi"))
-
-## change units to millions for cost and health, BCG dosese
-fac <- 1e6
-out_r_aggr[
-  variable %in% c("rslt_att_cost", "rslt_cost",
-                  "rslt_bcg_doses", "rslt_health"),
-  `:=`(
-    mid_sq = mid_sq / fac, lo_sq = lo_sq / fac, hi_sq = hi_sq / fac,
-    mid_cf = mid_cf / fac, lo_cf = lo_cf / fac, hi_cf = hi_cf / fac,
-    mid_av = mid_av / fac, lo_av = lo_av / fac, hi_av = hi_av / fac
-  )
-]
-
-
-## format numbers, add brackets
-out_r_aggr[
-  ,
-  c("sq_txt", "cf_txt", "av_txt") := .(
-    brkt(mid_sq, lo_sq, hi_sq),
-    brkt(mid_cf, lo_cf, hi_cf),
-    brkt(mid_av, lo_av, hi_av)
-  )
-]
-out_r_aggr
-
-fwrite(out_r_aggr, file = here("outputs/output_table_who.csv"))
 
 
 ##====other scatter plots======
 
-CEAAs <- CEA_BUF%>%
-  filter(threshold==0.3)%>%
-  inner_join(gdp_inc_le_costs%>%filter(cov_cat=="WUENIC")%>%
-               dplyr::select(iso3, incbest,BCG=bcg_coverage,CDR=cdr,
-                      ucvax=uc_tot_vax_delv_ave,
-                      uctb=ucost_dstb.m, 
-                      uctbm=ucost_tbm.m),
-             by= "iso3")
 
-save(CEAAs, file=here("outputs/CEAAs.RData"))
-
-
-sens <- inner_join(
-  cntrs_cost_eff%>%select(model,prop_ce),
-  CEA_sens%>%filter(who_region=="Global")%>%
-    select(model, variable, mean, mid, q25,q75), by="model")%>%
-  select(-who_region)%>%
-  mutate("mid(IQR)"= brkt(mid,q25, q75))
-
-fwrite(sens, file = here("outputs/sens.csv"))
+# sens <- inner_join(
+#   cntrs_cost_eff%>%select(model,prop_ce),
+#   CEA_sens%>%filter(who_region=="Global")%>%
+#     select(model, variable, mean, mid, q25,q75), by="model")%>%
+#   select(-who_region)%>%
+#   mutate("mid(IQR)"= brkt(mid,q25, q75))
+# 
+# fwrite(sens, file = here("outputs/sens.csv"))
 
 
-inc <-gdp_inc_le_costs%>%distinct(iso3, .keep_all = TRUE)
-
-total_inc <- sum(inc$best)
-prop_tbm <-0.035
-death_risk <- 0.193
-survi_seq <- 0.539
-total_deaths <- total_inc*prop_tbm*death_risk
-surv_neur_seq <- total_inc*prop_tbm*survi_seq
+# inc <-gdp_inc_le_costs%>%distinct(iso3, .keep_all = TRUE)
+# 
+# total_inc <- sum(inc$best)
+# prop_tbm <-0.035
+# death_risk <- 0.193
+# survi_seq <- 0.539
+# total_deaths <- total_inc*prop_tbm*death_risk
+# surv_neur_seq <- total_inc*prop_tbm*survi_seq
