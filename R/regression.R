@@ -7,6 +7,8 @@ library(dplyr)
 library(tidyverse)
 library(relaimpo) # for variance decomposition
 library(RColorBrewer)
+library(here)
+library(data.table)
 
 load(here("outputs/CEA.RData"))                 # output for regression analysis
 
@@ -17,7 +19,7 @@ tmp <- CEA %>%
 
 
 fit_lm <- function(data, response, dynamic_vars, 
-                   fixed_vars = c("GDP","CDR","BCG","ucvax","uctb")) {
+                   fixed_vars = c("GDP","CDR","ucvax","uctb")) {
  
   predictors <- c(dynamic_vars,fixed_vars)
   fml <- reformulate(predictors, response)
@@ -31,7 +33,7 @@ fit_lm <- function(data, response, dynamic_vars,
     rownames_to_column()%>%
     rename(Predictors=rowname,`P-value`= "Pr(>|t|)")%>%
     mutate(Predictors = case_when(Predictors%in%c("inc_u5","inc_all","notif_u5","notif_all")~"Incidence/Notifications",
-                                  Predictors=="BCG" ~ "BCG coverage",
+                                  #Predictors=="BCG" ~ "BCG coverage",
                                   Predictors=="CDR" ~ "Case detection rate",
                                   Predictors=="ucvax" ~"Vaccine delivery unit cost",
                                   Predictors=="uctb" ~"TB treatment unit cost", TRUE ~Predictors)) %>%
@@ -59,8 +61,8 @@ fit_lm <- function(data, response, dynamic_vars,
      #label = ifelse(prop == max(prop), paste0(round(100*prop, 1), "%"), "") 
      label = ifelse(prop >0.035, paste0(round(100*prop, 1), "%"), "") 
    )%>%
-   mutate(class= case_when(class %in%c("inc_u5","inc_all", "notif_u5","notif_all") ~ "Incidence/Notifications",
-                           class=="BCG" ~ "BCG coverage",
+   mutate(class= case_when(class %in%c("inc_u5","inc_all", "notif_u5","notif_all") ~ "Incidence",
+                           #class=="BCG" ~ "BCG coverage",
                            class=="CDR" ~ "Case detection rate",
                            class=="ucvax" ~"Vaccine delivery unit cost",
                            class=="uctb" ~"TB treatment unit cost", TRUE ~class
@@ -74,8 +76,8 @@ fit_lm <- function(data, response, dynamic_vars,
    mutate(
      lab.ypos = cumsum(prop) - 0.5 * prop,
      label = ifelse(prop > 0.04, paste0(round(100 * prop, 1), "%"), ""))%>%
-   mutate(class= case_when(class %in%c("inc_u5","inc_all", "notif_u5","notif_all") ~ "Incidence/Notifications",
-                           class=="BCG" ~ "BCG coverage",
+   mutate(class= case_when(class %in%c("inc_u5","inc_all", "notif_u5","notif_all") ~ "Incidence",
+                           #class=="BCG" ~ "BCG coverage",
                            class=="CDR" ~ "Case detection rate",
                            class=="ucvax" ~"Vaccine delivery unit cost",
                            class=="uctb" ~"TB treatment unit cost", TRUE ~class
@@ -86,16 +88,18 @@ fit_lm <- function(data, response, dynamic_vars,
    geom_bar(stat = "identity", color = "white"
    ) +
    coord_polar(theta = "y", start = 0) +
-   geom_text(aes(y = lab.ypos, label = label), color = "white", size = 2.5) +
+   geom_text(aes(y = lab.ypos, label = label), color = "white", size = 1.8) +
    scale_fill_manual(values = mycols) +
    ggplot2::theme_void() +
    xlim(0.5, 2.5) +
    #labs(title = "Decomposition of R-squared") +
    theme(legend.position = "bottom", 
          legend.title = element_blank(),
-         legend.text = element_text(size = 7),
+         legend.text = element_text(size = 6.7),
          legend.key.size = unit(0.5, "lines"),
-         plot.title = element_text(hjust = 0.5, face = "bold", size=10))
+         plot.title = element_text(hjust = 0.5, face = "bold", size=10)) +
+   guides(fill = guide_legend(nrow = 2), color = guide_legend(nrow = 2))
+ 
  
  
   # Return a list with all results
@@ -116,7 +120,7 @@ fwrite(Rsq, file = here("outputs/Rsq.csv"))
 ggsave(res_notif_all$fig, file= here("plots/f_pie_notif_all.png"), w = 4, h = 3)
 ggsave(res_notif_u5$fig, file= here("plots/f_pie_notif_u5.png"), w = 4, h = 3)
 ggsave(res_inc_all$fig, file= here("plots/f_pie_inc_all.png"), w = 4, h = 3)
-ggsave(res_inc_u5$fig, file= here("plots/f_pie_inc_u5.png"), w = 4, h = 3)
+ggsave(res_inc_u5$fig, file= here("plots/f_pie_inc_u5.png"), w = 3.7, h = 2.4)
 
 a <-res_notif_all$fig + ggtitle("Notifications (overall)")
 b <-res_notif_u5$fig + ggtitle("Notifications (U5)")
