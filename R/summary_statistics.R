@@ -135,6 +135,22 @@ summary_tab <- data.frame(variable= "Number of countries",
   )%>%
   # prop cntrs cost effective
   bind_rows(CEAAs %>%
+              mutate(ENB_is_cost_effective = ENB30 >0) %>%
+              mutate(variable="Prop cntrs cost effective")%>%
+              group_by(variable)%>%
+              summarise(value = round(mean(ENB_is_cost_effective, na.rm = TRUE),2)) %>% 
+              mutate(value= as.character(value),
+                     Description = "Proportion of countries with ENB30>0 (Global)"),
+            
+            CEAAs %>%
+              mutate(ENB_is_cost_effective = ENB30 >0) %>%
+              mutate(variable=region)%>%
+              group_by(variable)%>%
+              summarise(value = round(mean(ENB_is_cost_effective, na.rm = TRUE),2)) %>% 
+              mutate(value= as.character(value),
+                     Description = "Proportion of countries with ENB30>0 (Regional)"),
+            
+    CEAAs %>%
               mutate(ICER_is_cost_effective = ICER < (GDP / 2)) %>%
               mutate(variable="prop_cost_effect")%>%
               group_by(variable)%>%
@@ -423,7 +439,5 @@ summary_tab <- data.frame(variable= "Number of countries",
   
   )
     
-
-
 fwrite(summary_tab, file = here("outputs/statistics.csv"))
 
