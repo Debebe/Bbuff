@@ -212,9 +212,14 @@ D[, rslt_att_cost_cf := att_cost(
 
 
 ## total costs
-D[, rslt_cost_sq :=
-  rslt_att_cost_sq + bcg_coverage*(ucost_proc_bcg * uc_tot_vax_delv_ave)] # TODO cost PSA
-D[, rslt_cost_cf := rslt_att_cost_cf ] # TODO cost PSA
+
+# D[, rslt_cost_sq :=
+#     rslt_att_cost_sq + bcg_coverage*(uc_tot_vax_delv_ave)]
+
+# D[, rslt_cost_sq :=
+#     rslt_att_cost_sq + bcg_coverage*(ucost_proc_bcg+uc_tot_vax_delv_ave)]
+# 
+# D[, rslt_cost_cf := rslt_att_cost_cf ] # TODO cost PSA
 
 ##===attm cost====
 
@@ -222,8 +227,12 @@ D[, rslt_attm_cost_sq := attm_cost(rslt_attm_sq, ucost_tbm.m)] #TODO cost PSA
 D[, rslt_attm_cost_cf := attm_cost(rslt_attm_cf, ucost_tbm.m)]
  
 ## BCG cost
-D[, rslt_bcg_cost_sq := bcg_coverage *(ucost_proc_bcg + uc_tot_vax_delv_ave)] #TODO cost PSA
+D[, rslt_bcg_cost_sq := bcg_coverage *(ucost_proc_bcg + uc_tot_vax_delv_ave)] 
 D[, rslt_bcg_cost_cf := 0]
+
+## total cost
+D[, rslt_cost_sq := rslt_att_cost_sq +  rslt_bcg_cost_sq]
+D[, rslt_cost_cf := rslt_att_cost_cf +  rslt_bcg_cost_cf]
 
 
 ##=====BCG doses=======
