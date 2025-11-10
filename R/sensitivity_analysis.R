@@ -31,20 +31,21 @@ gen_outs <- function(TBMincl=0,posttbincl=0){
   
   ## === expand data for PSA
   set.seed(1234)
-  Niter <- 5000 # TODO increase ultimately
-  D <- as.data.table(gdp_inc_le_costs)
-  D <- D[cov_cat == "WUENIC"]
-  N <- nrow(D)
-  D <- D[rep(seq_len(N), each = Niter)]
-  D[, iter := rep(seq_len(Niter), N)]
-  D[iter == 1][iso3 == "AFG"] #check
+  Niter <- 10000 # TODO increase ultimately
+  samp <- as.data.table(gdp_inc_le_costs)
+  samp <- samp[cov_cat == "WUENIC"]
+  N <- nrow(samp)
+  samp <- samp[rep(seq_len(N), each = Niter)]
+  samp[, iter := rep(seq_len(Niter), N)]
+  samp[iter == 1][iso3 == "AFG"] #check
   
   ## === parameter values and samplers
   source(here("R/utilities/parameters.R"))
   
+  samp[, LE:=NULL]
   ## TODO sampling for parameters used = VE, prop_tbm, cost etc
   
-  D <- D %>%
+  samp <- samp %>%
     rowwise() %>%
     mutate(
       # vax efficacy
@@ -68,16 +69,20 @@ gen_outs <- function(TBMincl=0,posttbincl=0){
     ) %>%
     ungroup()%>%as.data.table()
   
-  D[, prop_tbm := ifelse(TBMincl== 0, 0, prop_tbm)]
+  samp[, prop_tbm := ifelse(TBMincl== 0, 0, prop_tbm)]
   
-  assign("D", D, envir = .GlobalEnv)
+  assign("samp", samp, envir = .GlobalEnv)
   
   if (posttbincl == 0) {
     post_tb_mort_hz <<- 1
     tbm_mort_hz <<- 1
   }
   
-  source(here("R/utilities/calculations.R"))
+  load(here("data/LEu5.Rdata")) # single year under five life expectancy
+  
+  assign("LEu5", LEu5, envir = .GlobalEnv)
+  #source(here("R/utilities/modelfunctions.R"))
+  source(here("R/utilities/calculations.R")) # creates D
   
   ## TODO global and regional total outputs, e.g.:
   
@@ -89,49 +94,43 @@ gen_outs <- function(TBMincl=0,posttbincl=0){
     group_by(who_region, iso3) %>%
     summarise(ICER = mean(rslt_cost_sq - rslt_cost_cf)/mean(rslt_health_sq - rslt_health_cf),
               ENB30= mean(0.3 * GDP * (rslt_health_sq - rslt_health_cf) -
-                (rslt_cost_sq - rslt_cost_cf)))%>%filter(!is.na(ENB30))
+                (rslt_cost_sq - rslt_cost_cf)), .groups = "drop")%>%filter(!is.na(ENB30))%>%as.data.table()
 
   CEA_r <- CEA_cntry%>%
-    group_by(who_region)%>%
-    summarise(mean_ENB30= round(mean(ENB30),0),
-              mean_ICER= round(mean(ICER),0),
+    group_by(who_region,iso3="XX")%>%
+    summarise(mid_ENB30= median(ENB30),
+              mid_ICER= median(ICER),
               
-              mid_ENB30= round(median(ENB30),0),
-              mid_ICER= round(median(ICER),0),
+              q25_ENB30= quantile(ENB30, 0.25),
+              q75_ENB30= quantile(ENB30, 0.75),
               
-              q25_ENB30= round(quantile(ENB30, 0.25),0),
-              q75_ENB30= round(quantile(ENB30, 0.75),0),
-              
-              q25_ICER= round(quantile(ICER, 0.25),0),
-              q75_ICER= round(quantile(ICER, 0.75),0), .groups = "drop")
+              q25_ICER= quantile(ICER, 0.25),
+              q75_ICER= quantile(ICER, 0.75), .groups = "drop")
   
   CEA_all <- CEA_cntry%>%
-    group_by(who_region="Global")%>%
-    summarise(mean_ENB30= round(mean(ENB30),0),
-              mean_ICER= round(mean(ICER),0),
+    group_by(who_region="Global", iso3="XX")%>%
+    summarise(mid_ENB30= median(ENB30),
+              mid_ICER= median(ICER),
               
-              mid_ENB30= round(median(ENB30),0),
-              mid_ICER= round(median(ICER),0),
+              q25_ENB30= quantile(ENB30, 0.25),
+              q75_ENB30= quantile(ENB30, 0.75),
               
-              q25_ENB30= round(quantile(ENB30, 0.25),0),
-              q75_ENB30= round(quantile(ENB30, 0.75),0),
-              
-              q25_ICER= round(quantile(ICER, 0.25),0),
-              q75_ICER= round(quantile(ICER, 0.75),0))
+              q25_ICER= quantile(ICER, 0.25),
+              q75_ICER= quantile(ICER, 0.75), .groups = "drop")
 
     
-  summary_tab <- data.table(n_cntrs_all= length(unique(CEA_cntry$iso3)),
-                        n_cntrs_ce= length(unique(CEA_cntry$iso3[CEA_cntry$ENB30>0])))%>%
-    mutate(prop=round(100*n_cntrs_ce/n_cntrs_all, 1), 
-           
-           ENB30_median= paste0(round(quantile(CEA_cntry$ENB30, 0.50),1),"(", "IQR:", 
-                         round(quantile(CEA_cntry$ENB30, 0.25),1), " to ", 
-                         round(quantile(CEA_cntry$ENB30, 0.75),1),")"),
-           ICER_median= paste0(round(quantile(CEA_cntry$ICER, 0.50),0),"(", "IQR:", 
-                               round(quantile(CEA_cntry$ICER, 0.25),0), " to ", 
-                               round(quantile(CEA_cntry$ICER, 0.75),0),")"),
-           ENB30_mean= round(mean(CEA_cntry$ENB30),0),
-           ICERmean= round(mean(CEA_cntry$ICER),0))
+  summary_tab <- CEA_cntry%>%
+    #group_by(source)%>%
+    summarise(ENB30_median= paste0(round(quantile(ENB30, 0.50),1),"(", "IQR:", 
+                                     round(quantile(ENB30, 0.25),1), " to ", 
+                                     round(quantile(ENB30, 0.75),1),")"), 
+              ICER= paste0(round(quantile(ICER, 0.50),1),"(", "IQR:", 
+                                   round(quantile(ICER, 0.25),1), " to ", 
+                                   round(quantile(ICER, 0.75),1),")"),
+              n_cntrs_all= length(unique(iso3)),
+              n_cntrs_ce= length(unique(iso3[ENB30>0])),
+              n_cntrs_ce_ICER= length(unique(iso3[ENB30>0])))%>%
+    mutate(prop=round(100*n_cntrs_ce/n_cntrs_all, 1))
   
   CEA <-rbind(CEA_all,CEA_r)%>%as.data.table()
 
@@ -143,101 +142,93 @@ reslts_ntbm_ptb <- gen_outs(TBMincl=0, posttbincl = 1)
 reslts_tbm_nptb <- gen_outs(TBMincl=1, posttbincl = 0)
 reslts_tbm_ptb <- gen_outs(TBMincl=1, posttbincl = 1)
 
-CEA_ntbm_nptb <- reslts_ntbm_nptb$CEA
-CEA_tbm_ptb <- reslts_tbm_ptb$CEA
-CEA_tbm_nptb <- reslts_tbm_nptb$CEA
-CEA_ntbm_ptb <- reslts_ntbm_ptb$CEA
+CEA_ntbm_nptb <- reslts_ntbm_nptb$CEA %>% mutate(model="PostTB(N),TBM(N)")
+CEA_ntbm_ptb <- reslts_ntbm_ptb$CEA %>%mutate(model="PostTB(Y),TBM(N)")
+CEA_tbm_nptb <- reslts_tbm_nptb$CEA %>%mutate(model="PostTB(N),TBM(Y)")
+CEA_tbm_ptb <- reslts_tbm_ptb$CEA %>%mutate(model="PostTB(Y),TBM(Y)")
+
+CEA_ntbm_nptb_sum <- reslts_ntbm_nptb$summary_tab %>% mutate(model="PostTB(N),TBM(N)")
+CEA_ntbm_ptb_sum <- reslts_ntbm_ptb$summary_tab %>%mutate(model="PostTB(Y),TBM(N)")
+CEA_tbm_nptb_sum <- reslts_tbm_nptb$summary_tab %>%mutate(model="PostTB(N),TBM(Y)")
+CEA_tbm_ptb_sum <- reslts_tbm_ptb$summary_tab %>%mutate(model="PostTB(Y),TBM(Y)")
+
+CEA_ntbm_nptb_cntr <- reslts_ntbm_nptb$CEA_cntry%>%mutate(model="PostTB(N),TBM(N)")
+CEA_ntbm_ptb_cntr <- reslts_ntbm_ptb$CEA_cntry%>%mutate(model="PostTB(Y),TBM(N)")
+CEA_tbm_nptb_cntr <- reslts_tbm_nptb$CEA_cntry%>%mutate(model="PostTB(N),TBM(Y)")
+CEA_tbm_ptb_cntr <- reslts_tbm_ptb$CEA_cntry%>%mutate(model="PostTB(Y),TBM(Y)")
 
 
-CEA_ntbm_nptb$model <-"PostTB(N),TBM(N)"
-CEA_ntbm_ptb$model <- "PostTB(Y),TBM(N)"
-CEA_tbm_nptb$model <- "PostTB(N),TBM(Y)"
-CEA_tbm_ptb$model  <- "PostTB(Y),TBM(Y)"
-
-CEA_ntbm_nptb_sum <- reslts_ntbm_nptb$summary_tab
-CEA_ntbm_ptb_sum <- reslts_ntbm_ptb$summary_tab
-CEA_tbm_nptb_sum <- reslts_tbm_nptb$summary_tab
-CEA_tbm_ptb_sum <- reslts_tbm_ptb$summary_tab
-
-
-CEA_ntbm_nptb_sum$model <-"PostTB(N),TBM(N)"
-CEA_ntbm_ptb_sum$model <- "PostTB(Y),TBM(N)"
-CEA_tbm_nptb_sum$model <- "PostTB(N),TBM(Y)"
-CEA_tbm_ptb_sum$model  <- "PostTB(Y),TBM(Y)"
 
 cost_eff <- bind_rows(CEA_ntbm_nptb_sum,CEA_ntbm_ptb_sum,
-                     CEA_tbm_nptb_sum,CEA_tbm_ptb_sum)
+                     CEA_tbm_nptb_sum,CEA_tbm_ptb_sum)%>%
+  select(model,n_cntrs_all, n_cntrs_ce,prop, ENB30_median, ICER )
+
 fwrite(cost_eff, file = here("outputs/sens.csv"))
 save(cost_eff, file = here("outputs/cost_eff.RData"))
 
 CEA_sens <- bind_rows(CEA_tbm_ptb,CEA_ntbm_ptb, 
-                     CEA_tbm_nptb,CEA_ntbm_nptb)%>%
-  pivot_longer(cols = -c(who_region,model))%>%
+                     CEA_tbm_nptb,CEA_ntbm_nptb) %>%
+  pivot_longer(cols = -c(who_region,model, iso3))%>%
   separate(name, into =c("measure", "metric"), sep = "_", remove = TRUE)%>%
-  pivot_wider(id_cols = c("who_region", "model", "metric"), names_from = "measure", values_from = "value")
+  pivot_wider(id_cols = c("who_region", "model", "metric", "iso3"), names_from = "measure", values_from = "value")
 
 save(CEA_sens, file = here("outputs/CEA_sens.RData"))
 
-##
-# load(file=here("outputs/CEA_sens.RData"))
-# load(file=here("outputs/cost_eff.RData"))
-# cost_eff <- fread(here("outputs/sens.csv"))
+CEA_cntr <- bind_rows(CEA_ntbm_nptb_cntr,
+                      CEA_ntbm_ptb_cntr,
+                      CEA_tbm_nptb_cntr,
+                      CEA_tbm_ptb_cntr)%>%
+  inner_join(D%>%select(iso3, GDP)%>%
+               distinct(iso3, .keep_all = TRUE), by="iso3")
+
+# CEA_cntr <-inner_join(CEA_cntr,D%>%select(iso3, GDP)%>%
+#              distinct(iso3, .keep_all = TRUE), by="iso3")
+
+save(CEA_cntr, file = here("outputs/CEA_cntr.RData"))
+
+sumary_sen <-CEA_cntr%>%
+  group_by(Region="Global",model)%>%
+  summarise(n_cntrs=length(unique(iso3)),
+            n_CEicer=length(unique(iso3[ICER<GDP/3])),
+            n_CEenb=length(unique(iso3[ENB30>0])),
+            p_CEenb=100*round(mean(ENB30>0),3),
+            p_CEicer=100*round(mean(ICER<GDP/3),3),
+            icer= paste0(round(median(ICER), 1),"(IQR:", 
+                         round(quantile(ICER, 0.25),1), " to ",
+                         round(quantile(ICER, 0.75),1), ")"), .groups = "drop")%>%
+  bind_rows(CEA_cntr%>%
+              group_by(Region=who_region,model)%>%
+              summarise(n_cntrs=length(unique(iso3)),
+                        n_CEicer=length(unique(iso3[ICER<GDP/3])),
+                        n_CEenb=length(unique(iso3[ENB30>0])),
+                        p_CEenb=100*round(mean(ENB30>0),3),
+                        p_CEicer=100*round(mean(ICER<GDP/3),3),
+                        icer= paste0(round(median(ICER), 1),"(IQR:", 
+                                     round(quantile(ICER, 0.25),1), " to ",
+                                     round(quantile(ICER, 0.75),1), ")"), .groups = "drop"))
+
+fwrite(sumary_sen, file = here("outputs/sumary_sen.csv"))
 
 
-# bar_mean <- ggplot(CEA_sens %>% filter(who_region == "Global"),
-#       # aes(x = reorder(model, mean), y = mean, fill = model)) +
-#        aes(x =model, y = mean, fill = model)) +
-#   geom_col() +
-#   facet_wrap(~variable, scales = "free") +
-#   ylab("Estimates (mean)") +
-#   theme_bw() +
-#   theme(
-#     #legend.position = "bottom",
-#     legend.position = "none",
-#     legend.title = element_blank(),
-#     axis.title.x = element_blank(),
-#     axis.text.x = element_blank(),
-#     plot.title = element_text(size = 10)
-#   )
-# 
-# bar_mid <- ggplot(CEA_sens %>% filter(who_region == "Global"),
-#                    aes(x = model, y = mid, fill = model)) +
-#   geom_col() +
-#   facet_wrap(~variable, scales = "free") +
-#   ylab("Estimates (median)") +
-#   theme_bw() +
-#   theme(
-#     legend.position = "bottom",
-#     legend.key.size = unit(0.5, "lines"),
-#     legend.title = element_blank(),
-#     axis.title.x = element_blank(),
-#     axis.text.x = element_blank(),
-#     plot.title = element_text(size = 10)
-#   )
-# 
-# pp <- bar_mean/bar_mid
-# 
-# ggsave(pp,file = here("outputs/f_sensitivity.png"), w = 6, h = 3.5)
-# 
-# 
-# bar_mid <- ggplot(CEA_sens %>% filter(!who_region =="Global", iso3=="XX"),
-#                   aes(x = model, y = mid, fill = model)) +
-#   geom_col() +
-#   facet_wrap(who_region~variable, scales = "free", 
-#              labeller = labeller(.multi_line = FALSE)) +
-#   ylab("Estimates (median)") +
-#   theme_linedraw() +
-#   theme(
-#     strip.text = element_text(size = 7),
-#     legend.key.size = unit(0.5, "lines"),
-#     legend.position = "bottom",
-#     legend.title = element_blank(),
-#     axis.title.x = element_blank(),
-#     axis.text.x = element_blank(),
-#     plot.title = element_text(size = 8)
-#   )
-# 
-# ggsave(bar_mid,file = here("outputs/f_sensitivity_r.png"), w = 6.5, h = 3.5)
-# 
 
-          
+
+# check the following should be the same
+xx1 <-CEA_cntr%>%filter(model=="PostTB(Y),TBM(Y)")
+xx2 <-CEA%>%filter(threshold==0.3)
+# 
+summary(xx1$ICER[xx1$ICER>0])
+summary(xx2$ICER)
+
+# enb1 <- CEA_cntr%>%filter(model=="PostTB(Y),TBM(Y)", ENB30>0)
+# enb2 <- CEA_cntr%>%filter(model=="PostTB(Y),TBM(N)", ENB30>0)
+# enb0 <- CEAAs%>%filter(ENB30>0)
+# 
+# summary(enb1$ICER)
+# summary(enb2$ICER)
+# summary(enb0$ICER)
+# 
+summary(enb0$ENB30)
+summary(enb1$ENB30)
+summary(enb2$ENB30)
+
+summary(CEAAs$ENB30)
