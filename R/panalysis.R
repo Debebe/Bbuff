@@ -175,6 +175,8 @@ CEA[, g := ENB30 / bcg_cov]
 CEA[, bcg_cov := NULL]
 summary(CEA)
 
+summary(CEA[, .(ENB30, ICER)])
+
 CEA <- merge(CEA, whokey, by = "iso3")
 CEA <- CEA[!is.na(ENB30)]
 
