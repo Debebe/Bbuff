@@ -1,4 +1,4 @@
-
+rm(list = ls())
 library(here)
 library(countrycode)  # to get Iso3 codes
 library(dplyr)
@@ -123,7 +123,8 @@ uc_vax_delv <- uc_vax_delv %>%
     "uc_sc_ave", "uc_sc_med", "uc_su_lo", "uc_sc_hi",
     "uc_servd_ave", "uc_servd_med", "uc_servd_lo", "uc_servd_hi",
     "uc_capital_ave", "uc_capital_med", "uc_capital_lo", "uc_capital_hi"
-  ))
+  ))%>%
+  mutate(ucost_proc_bcg=0.1205)
 
 
 
@@ -133,6 +134,7 @@ uc_vax_delv$Iso3 <- countrycode(uc_vax_delv$Country,
   destination = "iso3c"
 )
 uc_vax_delv <- setDT(uc_vax_delv)
+
 uc_vax_delv[grepl("Centeral African", Country), Iso3 := "CAF"]
 uc_vax_delv[grepl("Republic", Country), ]
 
@@ -209,7 +211,7 @@ background_epi <- fread(here("data/TB_burden_age_sex_2025-05-15.csv")) %>%
   inner_join(fread(here("data/unpopulation_dataportal_20250515175045.csv")) %>%
                select(country = Location, Iso2, Iso3, Year = Time, Sex, Age, Pop = Value),
              by = c("country", "Iso2", "Iso3", "Year", "Age"))%>%
-  inner_join(read_excel("data/Bacillus Calmette–Guérin (BCG) vaccination coverage 2025-04-03 10-35 UTC.xlsx") %>%
+  inner_join(readxl::read_excel("data/Bacillus Calmette–Guérin (BCG) vaccination coverage 2025-04-03 10-35 UTC.xlsx") %>%
                filter(YEAR %in% c(2023)) %>%
                select(Iso3 = CODE, Year = YEAR, cat = COVERAGE_CATEGORY, bcg_coverage = COVERAGE) %>%
                filter(!is.na(bcg_coverage)) %>%
