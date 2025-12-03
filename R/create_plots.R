@@ -430,128 +430,6 @@ CEA_sens%>%
 
   
 
-# IHME_LE <- fread(here("data/IHME_GBD_2019_TMRLT_Y2021M01D05.csv"))%>%
-#   select(Age,LE="Life Expectancy")%>%filter(Age<5)%>%
-#   mutate(source="IHME (standard)")
-#   
-# LEu5%>%
-#   group_by(Age)%>%
-#   summarise(LE= paste0(round(median(LE), 1), "( IQR:", round(quantile(LE, 0.25),1), " to ",
-#             round(quantile(LE, 1),0.75),")")) %>%
-#   mutate(source="UN - Median (IQR)")%>%
-#   bind_rows(IHME_LE%>%
-#               mutate(LE=as.character(round(LE, 1))))|>
-# 
-#   pivot_wider(id_cols = "Age", names_from = "source", values_from = "LE")%>%
-#   kableExtra::kbl(caption="Life expectancy (UN vs IHME)")%>%
-#   kable_classic(full_width = F, html_font = "Cambria")
-#   
-#   
-
-
-# NCE_min <- tempa%>%
-#   filter(CF=="Not cost-effective")%>%
-#   summarise(value=min(notif_all))%>% 
-#   pull(value)
-# 
-# NCE_max <-  tempa%>%
-#   filter(CF=="Not cost-effective")%>%
-#   summarise(value=max(notif_all))%>% 
-#   pull(value)
-# 
-# CE_min <- tempa%>%
-#   filter(CF=="Cost-effective")%>%
-#   summarise(value=min(notif_all))%>% 
-#   pull(value)
-# CE_max <-  tempa%>%
-#   filter(CF=="Cost-effective")%>%
-#   summarise(value=max(notif_all))%>% 
-#   pull(value)
-# 
-# overlap_min <- max(NCE_min,CE_min)
-# overlap_max <- min(NCE_max,CE_max)
-# 
-# inc_prop <- tempa%>%
-#   mutate(inc_cat=case_when(notif_all<overlap_min ~"low",
-#                            (notif_all>=overlap_min & notif_all<=overlap_max) ~"medium",
-#                            notif_all>overlap_max ~"higher"))%>%
-#   group_by(CF, inc_cat) %>%
-#   summarise(n_countries = n()) %>% ungroup()%>%
-#   mutate(prop_of_total = (n_countries / sum(n_countries)) * 100) %>%
-#   ungroup()%>%as.data.table()
-# 
-# sum(inc_prop$prop_of_total) # check
-# values_to_annotate <- paste0(round(inc_prop$prop_of_total,1), "%")
-# 
-# # --- find log scale centers ---
-# # Non-overlapping NCE bar (NCE_min to CE_min): x-center is the geometric mean
-# x_center_nce_only <- 10^((log10(NCE_min) + log10(CE_min)) / 2)
-# # Overlapping bar (CE_min to NCE_max): x-center is the geometric mean
-# x_center_overlap <- 10^((log10(CE_min) + log10(NCE_max)) / 2)
-# # non-overlapping CE bar (NCE_max to CE_max): x-center is the geometric mean
-# x_center_ce_only <- 10^((log10(NCE_max) + log10(CE_max)) / 2)
-# 
-# a <-ggplot() +
-#   # Not cost-effective range 
-#   geom_rect(aes(xmin = NCE_min, xmax = NCE_max, 
-#                 ymin = 0.5, ymax = 1.5), fill = "red", alpha = 0.5) +
-#   # Cost-effective range
-#   geom_rect(aes(xmin = CE_min, xmax = CE_max, ymin = 1.5, 
-#                 ymax = 2.5), fill = "green", alpha = 0.5) +
-#   # Overlapping region - CE_min to NCE_max
-#   geom_rect(aes(xmin = pmax(NCE_min, CE_min), xmax = pmin(NCE_max, CE_max), 
-#                 ymin = 0.5, ymax = 2.5),
-#             fill = "purple", alpha = 0.3) +
-#   
-#   #======annotate labels=====
-#   
-#   # 1. NCE bar (1)--red bar
-#   annotate("text", x = x_center_nce_only, y = 1.0, 
-#            label = values_to_annotate[3], color = "black", size = 3, fontface = "plain") + 
-#   # 2. NCE bar (2)
-#   annotate("text", x = x_center_overlap, y = 1.0, 
-#            label = values_to_annotate[4], color = "black", size = 3, fontface = "plain") + 
-#   # 3. CE bar(1)
-#   annotate("text", x = x_center_overlap, y = 2.0, 
-#            label = values_to_annotate[2], color = "black", size = 3, fontface = "plain") + 
-#   
-#   # 4. CE bar(2) 
-#   annotate("text", x = x_center_ce_only, y = 2.0, 
-#            label = values_to_annotate[1], color = "black", size = 3, fontface = "plain") + 
-#   
-#   scale_x_log10() + 
-#   scale_y_continuous(breaks = c(1, 2), labels = c("Not cost-effective", "Cost-effective")) +
-#   xlab("TB incidence per 100,000 population") +
-#   ylab("") + 
-#   
-#   geom_vline(xintercept = NCE_max, color = "black", linetype = "dashed", linewidth = 0.2) +
-#   annotate("text", x = NCE_max, y = 2.5, label = round(NCE_max, 1), 
-#            color = "black", angle = 90, vjust = -0.5, hjust = 0, size=2.8) +
-#   
-#   geom_vline(xintercept = CE_min, color = "navy", linetype = "dashed", linewidth = 0.2) +
-#   annotate("text", x = CE_min, y = 2.5, 
-#            label = round(CE_min, 1), 
-#            color = "black", angle = 90, vjust = -0.5, hjust = 0, size=2.8) +
-#   
-#   theme_linedraw() +
-#   coord_cartesian(ylim = c(0.5, 2.7), expand = FALSE)
-# 
-# 
-# b <-tempa %>%
-#   mutate(log_incbest = notif_all) %>%   # scale first
-#   ggplot(aes(x = CF, y = log_incbest, fill = CF)) +
-#   geom_boxplot(width = 0.6, alpha = 0.5, outlier.shape = 16, outlier.size = 2) +
-#   stat_summary(fun = median, geom = "point", size = 3, color = "black") +
-#   scale_y_continuous(trans = "log10") +   
-#   labs(x = "CF", y = "Incidence per 100,000") + theme_linedraw()+ 
-#   theme(legend.position = "none")+xlab("")
-# 
-# 
-# c <- a+b+plot_annotation(tag_levels = 'a')
-# 
-# ggsave(c,file = here("plots/f_inc_threshold.png"), w = 7, h = 3.2)
-# 
-
 
 #=====sensitivity analysis plots=====
 
@@ -870,4 +748,152 @@ epi <- CEA%>%
                                             axis.title.y = element_text(size=sz_ytitle))
   
 ggsave(epi,file = here("plots/f_inc_BCG.png"), w = 3.5, h = 3.5)
+
+
+bcg <- read_excel("data/Bacillus Calmette–Guérin (BCG) vaccination coverage 2025-04-03 10-35 UTC.xlsx")
+
+bcg_cov <- bcg%>%
+  filter(COVERAGE_CATEGORY=="WUENIC")%>%
+  select(iso3=CODE, year=YEAR, coverage=COVERAGE)%>%
+  inner_join(whokey, by= "iso3") %>%
+  filter(year>=2019)%>%
+  group_by(iso3, g_whoregion, region)%>%
+  mutate(cv= 100*sd(coverage)/mean(coverage))%>%
+  group_by(region)%>%
+  summarise(m=quantile(cv, 0.5, na.rm=TRUE), l=quantile(cv, 0.25, na.rm=TRUE), u=quantile(cv, 0.75, na.rm=TRUE))
+
+
+
+ggplot(bcg_cov, aes(region, m)) +
+  geom_point() +
+  geom_pointrange(aes(ymin=l, ymax=u))+
+  theme_classic() +
+    theme(legend.position = "none",
+          strip.text = element_text(size=sz_ytitle),
+          axis.title.y = element_text(size=sz_ytitle-2.5),
+          axis.title.x = element_text(size=sz_ytitle-2.5),
+          axis.text.x = element_text(size =sz_ytitle-1),
+          axis.text.y = element_text(size =sz_ytitle-2.5)
+  )+
+  ylab("Coefficient of variation in BCG coverage: median and interquartile range")+xlab("")+coord_flip()
+  
+
+ggsave(file = here("plots/fig_bcg_cov.png"), w = 5, h = 3)
+
+
+## ATT unit-cost plot
+
+uc <- readRDS(file = here("data/gdp_inc_le_costs.rds")) %>%
+  filter(cov_cat=="WUENIC", !is.na(notif), best>0) %>%
+  select(iso3,region=who_region,contains("cost"),
+         contains("uc"), contains("lo"), contains("hi"), contains("med"),
+         contains("sd"), bcg_cov=bcg_coverage )
+
+
+
+
+
+uc$iso3 <- factor(uc$iso3, levels = unique(uc[order(ucost_dstb.m)]$iso3), ordered = TRUE)
+
+ggplot(uc, aes(iso3, ucost_dstb.m)) +
+  geom_point() +
+  geom_pointrange(aes(ymin=ucost_dstb.m-ucost_dstb.sd, ymax=ucost_dstb.m+ucost_dstb.sd))+
+  scale_y_log10(labels = scales::comma) +
+  coord_flip() +
+  facet_wrap(~region, scales = "free") +
+  theme_linedraw()+
+  theme(legend.position = "top",
+        legend.box.spacing = unit(0, "pt"),   # no gap between legend and plot
+        legend.margin = margin(0, 0, 0, 0),   # no internal padding in legend
+        plot.margin = margin(0, 5, 5, 5))+
+  xlab("Country ISO3 code") +
+  ylab(expression("Unit cost of treating TB (" * Mean %+-% SD * ")"))
+
+ggsave(file = here("plots/unit_cost_att.png"), w = 9, h = 8)
+
+
+
+
+## Vaccine delivery unit-costs 
+
+uc$iso3 <- factor(uc$iso3, levels = unique(uc[order(uc_tot_vax_delv_ave)]$iso3), ordered = TRUE)
+
+ggplot(uc, aes(iso3, uc_tot_vax_delv_ave)) +
+  geom_point() +
+  geom_pointrange(aes(ymin=uc_tot_vax_delv_lo, ymax=uc_tot_vax_delv_hi))+
+  scale_y_log10(labels = scales::comma) +
+  coord_flip() +
+  facet_wrap(~region, scales = "free") +
+  theme_linedraw()+
+  theme(legend.position = "top",
+        legend.box.spacing = unit(0, "pt"),   # no gap between legend and plot
+        legend.margin = margin(0, 0, 0, 0),   # no internal padding in legend
+        plot.margin = margin(0, 5, 5, 5))+
+  xlab("Country ISO3 code") +
+  ylab("Vaccine delivery unit cost per BCG dose (Mean with 95% confidence interval)")
+
+ggsave(file = here("plots/unit_cost_vax.png"), w = 9, h = 8)
+
+
+# cost components
+load(here("data/cost_components.RData"))
+
+rx_costs <- inner_join(cost_components,whokey, by="iso3")%>%
+  filter(iso3%in% CEA$iso3)
+
+rx_costs%>%
+  pivot_longer(cols = starts_with("c_"))%>%
+  mutate(name=case_when(name=="c_dstb_opd_tx"~"OPD care",
+                        name=="c_dstb_ipd_tx"~"Inpatient care",
+                        name=="c_dstb_drugs_tx"~"ATT drugs", 
+                        TRUE~"National TB program"))%>%
+  group_by(region,iso3)%>%
+  mutate(p=value/sum(value))%>%
+  ggplot(aes(fill=name, y=p, x=iso3)) + 
+  geom_bar(position="fill", stat="identity")+ 
+  facet_wrap(~region, scales="free")+ 
+  scale_fill_manual(values =c( "lightblue", "Sandy Brown", "pink", "Maroon 2"))+
+  
+  theme_linedraw()+
+  theme(legend.position = "bottom", 
+        legend.title = element_blank(),
+        strip.text = element_text(size = 10),
+        legend.key.size = unit(0.5, "lines"))+ ylab("")+ xlab("Country ISO3 code")+
+  coord_flip()
+
+ggsave(file = here("plots/unit_cost_att_decomp.png"), w = 9, h = 8)
+
+
+vax_comps <-inner_join(uc%>%select(-region),whokey, by="iso3")%>%
+  filter(iso3%in% CEA$iso3) %>%
+  select(iso3, region, ucost_proc_bcg, contains("ave"), 
+         -uc_tot_vax_delv_ave) %>%
+  
+  pivot_longer(cols = starts_with("uc")) %>%
+  mutate(name=case_when(name=="ucost_proc_bcg"~"BCG price",
+                        name=="uc_labor_ave"~"Labour",
+                        name=="uc_sc_ave"~"Supply chain", 
+                        name=="uc_servd_ave"~"Service delivery",
+                        TRUE~"Capital")) %>%
+  group_by(region,iso3)%>%
+  mutate(p=value/sum(value))%>%
+  ggplot(aes(fill=name, y=p, x=iso3)) + 
+  geom_bar(position="fill", stat="identity")+ 
+  facet_wrap(~region, scales="free")+ 
+  scale_fill_manual(values =c( "lightblue", "Sandy Brown", "pink", "Maroon 2","lightgreen"))+
+  
+  theme_linedraw()+
+  theme(legend.position = "bottom", 
+        legend.title = element_blank(),
+        strip.text = element_text(size = 10),
+        legend.key.size = unit(0.5, "lines"))+ ylab("")+ xlab("Country ISO3 code")+
+  coord_flip()
+
+  
+ggsave(file = here("plots/unit_cost_vax_decomp.png"), w = 9, h = 8)
+
+
+
+
+
 
