@@ -993,12 +993,31 @@ TBM_unitcosts <- hhcm_costs |>
   as.data.table()
 
 
+
+
+
 saveRDS(TBM_unitcosts, file = here("data/cost/outdata/tbtx_unit_costs.Rds"))
 
 
 ## NOTE uncomment below to save data
 fwrite(country_costs, file = here("data/cost/outdata/country_unit_costs.csv"))
 fwrite(TBM_unitcosts, file = here("data/cost/outdata/tbtx_unit_costs.csv"))
+
+cost_components <- hhcm_costs |>
+  filter(unit_cost %in% c(
+    "c_ntp",
+    "c_dstb_opd_tx", "c_dstb_ipd_tx",
+    "c_dstb_drugs_tx"
+  )) |>
+  select(who.region, iso3, country, unit_cost, cost.m) |>
+  pivot_wider(
+    names_from = unit_cost,
+    values_from = c(cost.m)
+  )
+
+save(cost_components, file= here("data/cost_components.RData"))
+
+
 
 summary_costs <- hhcm_costs %>%
   filter(unit_cost %in% HHMDR_costnames) %>%
