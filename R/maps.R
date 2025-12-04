@@ -3,7 +3,7 @@
 # library(ggplot2)
 # library(sf)
 # library(wbmapdata) ## https://github.com/petedodd/wbmapdata
-
+rm(list = ls())
 pacman::p_load(here,data.table, dplyr, tidyr, stringr, 
                ggplot2, sf, wbmapdata)
 
@@ -26,7 +26,9 @@ dmap <- st_as_sf(dmap)
 
 ##  version without points
 p <- ggplot(data = dmap) +
-  geom_sf(aes(fill = 1e4 * rslt_tb_deaths_percapita)) +
+  #geom_sf(aes(fill = 1e4 * rslt_tb_deaths_percapita)) +
+  geom_sf(aes(fill = 1e4 * rslt_tb_deaths_percapita_death_averted)) +
+  
   scale_fill_distiller(
     name = "TB deaths averted per 10,000",
     na.value = "grey", trans = "sqrt",
