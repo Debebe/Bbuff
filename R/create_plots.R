@@ -4,7 +4,8 @@
 
 rm(list = ls())
 pacman::p_load(here,data.table, dplyr, tidyr, stringr, 
-               flextable, officer,kableExtra,ggplot2, ggrepel, patchwork)
+               flextable, officer,kableExtra,ggplot2, 
+               ggrepel, patchwork, readxl)
 
 #=====load data=====
 load(here("outputs/ceacq.RData"))   # CEAC quantile by cntry
@@ -16,8 +17,6 @@ load(here("outputs/CEA_cntr.RData"))
 load(here("data/whokey.RData"))
 source("R/utilities/utilities.R")
 
-
-#CEA <- inner_join(CEA, whokey, by=c("iso3","g_whoregion"))
 
 CEA$iso3 <- factor(CEA$iso3, levels = unique(CEA[order(ICER)]$iso3), ordered = TRUE)
 all_labels <- c("ICER < 0.3 GDP","ICER >= 0.3 GDP", 
@@ -84,9 +83,7 @@ ggplot(tmpm, aes(reorder(iso3, value), value,color=var)) + # ordering values
 ggsave(file = here("plots/f_buffer_sz_cntrs.png"), w = 9, h = 8)
 
 
-
 # table of buffer size
-
 
 ft <- CEA %>%
   filter(Bf1 > 0, !is.na(Bf1), ENB30 > 0) %>%
@@ -102,8 +99,6 @@ ft <- CEA %>%
   as.data.frame() %>%
   make_flextable()
 
-
-## Save to word document TODO missing package:: 
 doc <- read_docx() |>
   body_add_flextable(value = ft) |>
   body_add_par(" ", style = "Normal") # optional spacing
@@ -131,141 +126,12 @@ ggplot(ceacq, aes(iso3,
 
 ggsave(file = here("plots/ceac_iso3.png"), w = 9, h = 8)
 
-# ====== scatter plots=====
-
-
-CEA$iso3 <- factor(CEA$iso3, levels = unique(CEA[order(ICER)]$iso3), ordered = TRUE)
-
-
-ggplot(CEA[threshold==0.3], aes(GDP,ICER, label = iso3) )+
-  geom_point(colour="red") +facet_wrap(~region, scales="free", ncol=2)+ 
-  geom_text_repel(size = 2.8, 
-                  min.segment.length = 0, 
-                  seed = 42, 
-                  nudge_x = 0,
-                  nudge_y = 0,
-                  box.padding = 0.5,
-                  segment.curvature = -0.1,
-                  max.overlaps = Inf,
-                  segment.alpha	=0.5,
-                  segment.size  = 0.4,
-                  segment.color = "purple",
-                  segment.ncp = 3,
-                  segment.angle = 20) +
-  labs(title = "Relation between GDP and ICER") + 
-  xlab("GDP (USD)") + ylab("ICER") +theme_linedraw()
-
-ggsave(file = here("plots/f_gdp_icer.png"), w = 9, h = 8)
-
-
-ggplot(CEA[threshold==0.3], aes(GDP,ICER/GDP, label = iso3) )+
-  geom_point(colour="red") +facet_wrap(~region, scales="free", ncol=2)+ 
-  geom_text_repel(size = 2.8, 
-                  min.segment.length = 0, 
-                  seed = 42, 
-                  nudge_x = 0,
-                  nudge_y = 0,
-                  box.padding = 0.5,
-                  segment.curvature = -0.1,
-                  max.overlaps = Inf,
-                  segment.alpha	=0.5,
-                  segment.size  = 0.4,
-                  segment.color = "purple",
-                  segment.ncp = 3,
-                  segment.angle = 20) +
-  labs(title = "Relation between GDP and ICER/GDP ratio") + 
-  xlab("GDP (USD)") + ylab("ICER/GDP ratio") +theme_linedraw()
-
-ggsave(file = here("plots/f_gdp_vs_icer2gdp_ratio.png"), w = 9, h = 8)
-
-ggplot(CEA[threshold==0.3], aes(inc_u5,ICER, label = iso3) )+
-  geom_point(colour="red") +facet_wrap(~region, scales="free", ncol=2)+ 
-  geom_text_repel(size = 2.8, 
-                  min.segment.length = 0, 
-                  seed = 42, 
-                  nudge_x = 0,
-                  nudge_y = 0,
-                  box.padding = 0.5,
-                  segment.curvature = -0.1,
-                  max.overlaps = Inf,
-                  segment.alpha	=0.5,
-                  segment.size  = 0.4,
-                  segment.color = "purple",
-                  segment.ncp = 3,
-                  segment.angle = 20) +
-  labs(title = "Relationship between TB incidence and ICER") +
-  xlab("Per capita TB incidence") + ylab("ICER")+ theme_linedraw()
-
-ggsave(file = here("plots/f_inc_icer.png"), w = 9, h = 8)
-
-
-ggplot(CEA[threshold==0.3], aes(inc_u5,ICER/GDP, label = iso3) )+
-  geom_point(colour="red") +facet_wrap(~region, scales="free", ncol=2)+ 
-  geom_text_repel(size = 2.8, 
-                  min.segment.length = 0, 
-                  seed = 42, 
-                  nudge_x = 0,
-                  nudge_y = 0,
-                  box.padding = 0.5,
-                  segment.curvature = -0.1,
-                  max.overlaps = Inf,
-                  segment.alpha	=0.5,
-                  segment.size  = 0.4,
-                  segment.color = "purple",
-                  segment.ncp = 3,
-                  segment.angle = 20) +
-  labs(title = "Relation between TB incidence and ICER/GDP ratio") +
-  xlab("Per capita TB incidence") + ylab("ICER/GDP ratio")+ theme_linedraw()
-
-ggsave(file = here("plots/f_inc_vs_icer2gdp_ratio.png"), w = 9, h = 8)
-
-
-
-ggplot(CEA[threshold==0.3]%>%filter(z_score>0), aes(GDP,Bf2, label = iso3) )+
-  geom_point(colour="red") +facet_wrap(~region, scales="free", ncol=2)+ 
-  geom_text_repel(size = 2.8, 
-                  min.segment.length = 0, 
-                  seed = 42, 
-                  nudge_x = 0,
-                  nudge_y = 0,
-                  box.padding = 0.5,
-                  segment.curvature = -0.1,
-                  max.overlaps = Inf,
-                  segment.alpha	=0.5,
-                  segment.size  = 0.4,
-                  segment.color = "purple",
-                  segment.ncp = 3,
-                  segment.angle = 20) +
-  labs(title = "Relationship between GDP and Buffer size") +
-  xlab("GDP (USD)") + ylab("Buffer size (10% CV)")+ theme_linedraw()
-
-ggsave(file = here("plots/f_gdp_buffsz.png"), w = 9, h = 8)
-
-
-ggplot(CEA[threshold==0.3 & z_score>0], aes(inc_u5,Bf2, label = iso3) )+
-  geom_point(colour="red") +facet_wrap(~region, scales="free", ncol=2)+ 
-  geom_text_repel(size = 2.8, 
-                  min.segment.length = 0, 
-                  seed = 42, 
-                  nudge_x = 0,
-                  nudge_y = 0,
-                  box.padding = 0.5,
-                  segment.curvature = -0.1,
-                  max.overlaps = Inf,
-                  segment.alpha	=0.5,
-                  segment.size  = 0.4,
-                  segment.color = "purple",
-                  segment.ncp = 3,
-                  segment.angle = 20) +
-  labs(title = "Relationship between TB incidence and Buffer size") +
-  xlab("Per capita TB incidence") + ylab("Buffer size (10% CV)")+ 
-  theme_linedraw()
-
-ggsave(file = here("plots/f_inc_buffsz.png"), w = 9, h = 8)
-
 
 #====== threshold incidence==============
 
+#******************************************#
+#===== CE threshold incidence========
+#******************************************#
 
 plot_threshold <- function(indicator) {
   
@@ -427,11 +293,9 @@ CEA_sens%>%
                           legend.key.size = unit(0.5, "lines")) + 
   ylab("Estimates")
   
-
-  
-
-
-#=====sensitivity analysis plots=====
+#******************************************#
+#=====sensitivity analysis plots========
+#******************************************#
 
 
 sz_ytitle <- 10
@@ -604,52 +468,6 @@ ice_incr_r <-CEA_sens %>% filter(#who_region!="Global",
 
 ggsave(ice_incr_r,file = here("plots/f_bar_perc_incr_icer_reg.png"), w = 5.5, h = 4.2)
 
-
-
-
-
-ice_incr_r <-CEA_sens %>% filter(who_region!="Global", 
-                               iso3=="XX", metric=="ICER")%>%
-  mutate(p= 100+round(100*(mid-mid[model=="PostTB(Y),TBM(Y)"])/mid[model=="PostTB(Y),TBM(Y)"], 1))%>%
-  ggplot(aes(x = reorder(model,p), y = p, fill = model)) +
-  geom_col() +
-  # facet_wrap(who_region~variable, scales = "free",
-  #            labeller = labeller(.multi_line = FALSE)) +
-  facet_wrap(~who_region, scales = "free",
-             labeller = labeller(.multi_line = FALSE)) +
-
-  # exclude labels from first bar
-  geom_text(aes(label = ifelse(model == "PostTB(Y),TBM(Y)", NA, paste0(round(p-100, 1), "%"))),
-            position = position_dodge(width = 0.8),
-            vjust = -0.1,
-            size = 2.5, na.rm = TRUE)+
-  ylab("Percentage increase in median ICER") +
-  geom_hline(yintercept = 100, linetype="dashed",col="gray", lwd=0.5)+
-  theme_linedraw() +
-  scale_fill_manual(values =c("Maroon", "lightblue", "Sandy Brown", "pink"))+
-  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) + #add a little gap above max mar
-  theme(
-    strip.text = element_text(size = sz_facet),
-    legend.key.size = unit(0.5, "lines"),
-    legend.position = "bottom",
-    
-    legend.text=element_text(size=sz_legend),
-    
-    legend.title = element_blank(),
-    axis.title.x = element_blank(),
-    axis.text.x = element_blank(),
-    axis.title.y = element_text(size=sz_ytitle),
-    
-    plot.title = element_text(size = 10)
-    )
-  
-
-ggsave(ice_incr_r,file = here("plots/f_bar_perc_incr_icer_reg.png"), w = 5.5, h = 4.3)
-
-
-
-
-
 CEAp <- CEA_cntr%>%
   group_by(model)%>%
   summarise(across(c(ICER, ENB30),median))%>%
@@ -780,7 +598,9 @@ ggplot(bcg_cov, aes(region, m)) +
 
 ggsave(file = here("plots/fig_bcg_cov.png"), w = 5, h = 3)
 
-
+#******************************************#
+#=====Uncertainties in unit costs========
+#******************************************#
 ## ATT unit-cost plot
 
 uc <- readRDS(file = here("data/gdp_inc_le_costs.rds")) %>%
@@ -788,9 +608,6 @@ uc <- readRDS(file = here("data/gdp_inc_le_costs.rds")) %>%
   select(iso3,region=who_region,contains("cost"),
          contains("uc"), contains("lo"), contains("hi"), contains("med"),
          contains("sd"), bcg_cov=bcg_coverage )
-
-
-
 
 
 uc$iso3 <- factor(uc$iso3, levels = unique(uc[order(ucost_dstb.m)]$iso3), ordered = TRUE)
@@ -812,9 +629,7 @@ ggplot(uc, aes(iso3, ucost_dstb.m)) +
 ggsave(file = here("plots/unit_cost_att.png"), w = 9, h = 8)
 
 
-
-
-## Vaccine delivery unit-costs 
+## cost categories in vaccine delivery unit-costs 
 
 uc$iso3 <- factor(uc$iso3, levels = unique(uc[order(uc_tot_vax_delv_ave)]$iso3), ordered = TRUE)
 
@@ -835,7 +650,9 @@ ggplot(uc, aes(iso3, uc_tot_vax_delv_ave)) +
 ggsave(file = here("plots/unit_cost_vax.png"), w = 9, h = 8)
 
 
-# cost components
+#******************************************#
+#=====Cost components========
+#******************************************#
 load(here("data/cost_components.RData"))
 
 rx_costs <- inner_join(cost_components,whokey, by="iso3")%>%

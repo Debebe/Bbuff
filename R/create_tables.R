@@ -25,7 +25,7 @@ outa<- fread(here("outputs/output_table.csv")) %>%
   mutate(Type= factor(Type, levels= c("Resource", "Cost($M)", "Health")))%>%
   arrange(factor(Type, levels = c("Resource", "Cost($M)", "Health")))%>%
   mutate(Item= case_when(Item=="rslt_att" ~"ATT for TB",
-                         Item=="rslt_bcg_doses" ~"BCG doses(M)",
+                         Item=="rslt_bcg_doses" ~"BCG doses",
                          Item=="rslt_inc" ~"TB incidence",
                          Item=="rslt_tbminc" ~"TBM incidence",
                          Item=="rslt_tb_deaths" ~"TB deaths",
@@ -33,7 +33,7 @@ outa<- fread(here("outputs/output_table.csv")) %>%
                          Item=="rslt_att_cost" ~ "ATT cost for TB",
                          Item=="rslt_attm_cost" ~ "ATT cost for TBM",
                          Item=="rslt_cost" ~ "All costs",
-                         Item=="rslt_ly_tb" ~ "DALYs from TB(M)",
+                         Item=="rslt_ly_tb" ~ "DALYs from TB",
                          Item=="rslt_ly_tbm" ~ "DALYs from TBM",
                          #Item=="rslt_health"~ "QALYs(M)",
                          Item=="rslt_hosp_tbm"~ "TBM hospitalizations",
@@ -46,13 +46,30 @@ outa<- fread(here("outputs/output_table.csv")) %>%
                          ))%>%as.data.frame() %>%
   group_by(Type)%>%
   arrange(factor(Item,
-                 levels = c("BCG doses(M)","ATT for TB","TBM hospitalizations",
+                 levels = c("BCG doses","ATT for TB","TBM hospitalizations",
                             "BCG vaccination cost","ATT cost for TB",
                             "ATT cost for TBM","All costs","TB incidence", "TBM incidence",
                             "TB deaths","TBM deaths","TBM severe sequelae", #"QALYs(M)",
-                            "DALYs from TB(M)",
+                            "DALYs from TB",
                             "DALYs from TBM"#, "TB sequelae","TBM sequelae"
-                            )))
+                            )))%>%
+  
+  # paste M into values
+  mutate(`Status quo`=case_when(Item%in%c("BCG doses","DALYs from TB","DALYs from TBM") ~ paste0(`Status quo`, " M"),
+                                TRUE ~`Status quo`),
+         Counterfactual=case_when(Item%in%c("BCG doses","DALYs from TB","DALYs from TBM") ~ paste0(Counterfactual, " M"),
+                                TRUE ~Counterfactual),
+         Incremental=case_when(Item%in%c("BCG doses","DALYs from TB","DALYs from TBM") ~ paste0(Incremental, " M"),
+                                  TRUE ~Incremental))%>%
+  ## adding astrics
+  mutate(Item = ifelse(grepl("TB(\\s|$)", Item),
+                       sub("TB(\\s|$)", "TB* ", Item),
+                       Item))%>%
+  as.data.table()
+
+setnames(outa, old = "Counterfactual", new = "Counterfactual(no BCG)")
+setnames(outa, old = "Incremental", new = "Counterfactual(no BCG) - Status quo")
+
 
 ## this creates data with merged column for tabling
 outg <- as_grouped_data(x = outa, groups = c("Type"))
@@ -64,7 +81,7 @@ set_flextable_defaults(
   line_spacing = 1.0
 )
 
-outg <- as_grouped_data(x = outa, groups = c("Type"))
+#outg <- as_grouped_data(x = outa, groups = c("Type"))
 first_col <- names(outg)[1] # dynamically detect column to be merged
 zz <- flextable::as_flextable(outg) %>%
   compose(
@@ -82,13 +99,23 @@ zz <- flextable::as_flextable(outg) %>%
   align(part = "footer", align = "left")
 
 
+# convert asterisk into superscript
+tb_rows <- which(grepl("\\*", outg$Item))
+for (i in tb_rows) {
+  parts <- strsplit(outg$Item[i], "\\*")[[1]]
+  zz <- compose(zz, part = "body", i = i, j = "Item",
+                value = as_paragraph(parts[1], as_sup("*"), if(length(parts) > 1) parts[2] else NULL))
+}
+
+zz
+
 doc <- read_docx() |>
   body_add_flextable(value = zz) |>
   body_add_par(" ", style = "Normal") 
 
 print(doc, target = "outputs/table1.docx")
 
-##### region====
+#####===== region====
 
 outr<- fread(here("outputs/output_table_who.csv")) %>%
   dplyr::select(Region=who_region,variable,sq_txt, cf_txt, av_txt)|>
@@ -110,7 +137,7 @@ outr<- fread(here("outputs/output_table_who.csv")) %>%
   mutate(Type= factor(Type, levels= c("Resource", "Cost($M)", "Health")))%>%
   arrange(factor(Type, levels = c("Resource", "Cost($M)", "Health")))%>%
   mutate(Item= case_when(Item=="rslt_att" ~"ATT for TB",
-                         Item=="rslt_bcg_doses" ~"BCG doses(M)",
+                         Item=="rslt_bcg_doses" ~"BCG doses",
                          Item=="rslt_inc" ~"TB incidence",
                          Item=="rslt_tbminc" ~"TBM incidence",
                          Item=="rslt_tb_deaths" ~"TB deaths",
@@ -118,7 +145,7 @@ outr<- fread(here("outputs/output_table_who.csv")) %>%
                          Item=="rslt_att_cost" ~ "ATT cost for TB",
                          Item=="rslt_attm_cost" ~ "ATT cost for TBM",
                          Item=="rslt_cost" ~ "All costs",
-                         Item=="rslt_ly_tb" ~ "DALYs from TB(M)",
+                         Item=="rslt_ly_tb" ~ "DALYs from TB",
                          Item=="rslt_ly_tbm" ~ "DALYs from TBM",
                          #Item=="rslt_health"~ "QALYs(M)",
                          Item=="rslt_hosp_tbm"~ "TBM hospitalizations",
@@ -129,17 +156,36 @@ outr<- fread(here("outputs/output_table_who.csv")) %>%
   ))%>%as.data.frame() %>%
   group_by(Type)%>%
   arrange(factor(Item,
-                 levels = c("BCG doses(M)","ATT for TB","TBM hospitalizations",
+                 levels = c("BCG doses","ATT for TB","TBM hospitalizations",
                             "BCG vaccination cost",
                             "ATT cost for TB",
                             "ATT cost for TBM", "All costs",
                             "TB incidence", "TBM incidence",
                             "TB deaths","TBM deaths","TBM severe sequelae", #"QALYs(M)","QALYs with TB(M)",
                             #"QALYs with TBM", 
-                            "DALYs from TB(M)",
+                            "DALYs from TB",
                             "DALYs from TBM"
                             #"TB sequelae","TBM sequelae"
-                            )))
+                            ))) %>%
+  
+  # paste M into values
+  mutate(`Status quo`=case_when(Item%in%c("BCG doses","DALYs from TB","DALYs from TBM") ~ paste0(`Status quo`, " M"),
+                                TRUE ~`Status quo`),
+         Counterfactual=case_when(Item%in%c("BCG doses","DALYs from TB","DALYs from TBM") ~ paste0(Counterfactual, " M"),
+                                  TRUE ~Counterfactual),
+         Incremental=case_when(Item%in%c("BCG doses","DALYs from TB","DALYs from TBM") ~ paste0(Incremental, " M"),
+                               TRUE ~Incremental))%>%
+  ## adding astrics
+  mutate(Item = ifelse(grepl("TB(\\s|$)", Item),
+                       sub("TB(\\s|$)", "TB* ", Item),
+                       Item))%>%
+  as.data.table()
+
+setnames(outr, old = "Counterfactual", new = "Counterfactual(no BCG)")
+setnames(outr, old = "Incremental", new = "Counterfactual(no BCG) - Status quo")
+
+
+
 
 set_flextable_defaults(
   font.family = "Verdana",
@@ -147,6 +193,9 @@ set_flextable_defaults(
   border.color = "#CCCCCC",
   line_spacing = 1.0
 )
+
+outrg <- as_grouped_data(x = outr, groups = c("Type"))
+
 
 Ltable <- outr %>%
   arrange(Region, Type, Item) %>%
@@ -174,7 +223,7 @@ line_rows <- seq(rows_per_region, rows_per_region * num_regions, by = rows_per_r
 
 ft_r <- flextable(Ltable) %>%
   merge_v(j = "Region") %>%          
-  bold(i = ~ is.na(Incremental), j = "Item", bold = TRUE, part = "body") %>% 
+  bold(i = ~ is.na(`Counterfactual(no BCG)`), j = "Item", bold = TRUE, part = "body") %>% 
   bold(part = "header", bold = TRUE) %>%
   autofit() %>%
   add_footer_lines(values ="BCG =Bacillus Calmette-Guérin, TB=Tuberculosis, TBM=Tuberculosis meningitis, ATT= Anti-TB treatment, DALYs= Disability Adjusted Life Years, M = Million")|>
@@ -189,7 +238,7 @@ doc <- read_docx() |>
   body_add_flextable(value = ft_r) |>
   body_add_par(" ", style = "Normal") 
 
-print(doc, target = "outputs/table2_r.docx")
+#print(doc, target = "outputs/table2_r.docx")
 
 
 ##====effect in top ten countries=====
@@ -234,3 +283,41 @@ print(doc, target = "outputs/table3_10cntrs.docx")
 
 
 
+# Desired orders
+region_order <- c("AFR","AMR","EMR","EUR","SEA","WPR")
+type_order <- c("Resource","Cost($M)","Health")
+item_order <- unique(na.omit(outrg$Item))
+
+# Fill down Type to data rows
+library(dplyr)
+library(forcats)
+library(flextable)
+library(tidyr)
+
+outrg_filled <- outrg %>%
+  fill(Type, .direction = "down") %>%
+  mutate(
+    Region_f = factor(Region, levels = region_order),
+    Type_f   = factor(Type, levels = type_order),
+    Item_f   = factor(Item, levels = item_order)
+  ) %>%
+  arrange(Region_f, Type_f, Item_f) %>%   # region first!
+  select(-Region_f, -Type_f, -Item_f)%>%
+  select(Region, Type, Item,`Status quo`, `Counterfactual(no BCG)`, `Counterfactual(no BCG) - Status quo`)%>%
+  filter(!is.na(Region))
+
+
+
+# Create flextable
+ft <- flextable(outrg_filled) %>%
+  merge_v(j = "Region") %>%   # merge Region column vertically
+  merge_v(j = "Type") %>%     # merge Type column vertically
+  autofit() %>%
+  bold(i = ~ !is.na(Type) & is.na(Region) & is.na(Item), bold = TRUE) %>%
+  theme_vanilla()
+
+doc <- read_docx() |>
+  body_add_flextable(value = ft) |>
+  body_add_par(" ", style = "Normal") 
+
+print(doc, target = "outputs/table2_r.docx")
