@@ -7,16 +7,22 @@ rm(list = ls())
 pacman::p_load(here,data.table, dplyr, tidyr, stringr, 
                flextable, officer,kableExtra,ggplot2, ggrepel, patchwork)
 
-load(here("outputs/PSA.RData"))                   # full PSA data with results. 
-load(here("outputs/CEA.RData"))                   # CEA data without buffer
-load(here("outputs/CEA_sens.RData"))              # cntry level CEA wz orwzout posttb, TBM etc
-load(here("outputs/ceacq.RData"))                 # CEAC quantile
-load(here("outputs/out_tab_r.RData"))             # output table - regional
-load(here("outputs/avert_deaths.RData"))          # averted deaths
-load(here("outputs/avrt_table.RData"))            # averetd outputs
-load(here("outputs/ceacq.RData"))                 # averetd outputs
-load(here("data/background_epi.RData"))
-load(here("outputs/per_cap_ave.RData"))
+load(here("tmpdata/PSA.RData"))                   # full PSA data with results. 
+load(here("outdata/CEA.RData"))                   # CEA data without buffer
+load(here("outdata/CEA_sens.RData"))              # cntry level CEA wz orwzout posttb, TBM etc
+load(here("outdata/ceacq.RData"))                 # CEAC quantile
+load(here("outdata/out_tab_r.RData"))             # output table - regional
+load(here("outdata/avert_deaths.RData"))          # averted deaths
+load(here("outdata/avrt_table.RData"))            # averetd outputs
+load(here("outdata/ceacq.RData"))                 # averetd outputs
+load(here("outdata/background_epi.RData"))
+load(here("outdata/per_cap_ave.RData"))
+
+## to detect countries with notifications >1000
+nn <- fread("indata/TB_notifications_2025-05-21.csv")
+nn <- nn[, notif:=newrel_f014+newrel_m014+newrel_m15plus+newrel_f15plus]
+nn <- nn[year==2023 & !is.na(notif) & notif>=1000, ]
+nn <- nn[, .(iso3, notif)]
 
 
 CEAAs <- CEA[threshold==0.3]
@@ -37,12 +43,6 @@ summary_tab <- data.frame(variable= "Number of countries",
               mutate(ICER=round(ICER, 0))%>%
               summarise(value= paste0(median(ICER), "(IQR =", quantile(ICER, 0.25)," to ",quantile(ICER, 0.75), ")")) %>%
               mutate(Description = "ICER with IQR - median global")) %>%
-  
-  bind_rows(CEAAs%>%
-              mutate(variable= "Global")%>%
-              group_by(variable)%>%
-              summarise(value= paste0(round(mean(ICER),1), "( sd=", round(sd(ICER), 1), ")")) %>%
-              mutate(Description = "ICER with sd - mean global")) %>%
   
   bind_rows(CEAAs%>%
               group_by(variable=region)%>%
@@ -206,41 +206,60 @@ summary_tab <- data.frame(variable= "Number of countries",
   )|>
   
   bind_rows(
-    CEAAs%>%
-      mutate(variable= "Unit cost")%>%
-      group_by(variable)%>%
-      summarise(value= paste0(round(median(ucvax),2), "(IQR=", round(IQR(ucvax), 2), ")")) %>%
-      mutate(Description = "Unit cost for vaccine delivery - median with IQR (Global)"),
-    CEAAs%>%
-      mutate(variable= "Unit cost")%>%
-      group_by(variable)%>%
-      summarise(value= paste0(round(median(uctb),2), "(IQR=", round(IQR(uctb), 2), ")")) %>%
-      mutate(Description = "Unit cost for TB treatment - median with IQR (Global)"), 
     
     CEAAs%>%
-      mutate(variable= "Unit cost")%>%
+      mutate(variable= "Global")%>%
       group_by(variable)%>%
-      summarise(value= paste0(round(median(uctbm),2), "(IQR=", round(IQR(uctbm), 2), ")")) %>%
-      mutate(Description = "Unit cost for TBM treatment - median with IQR (Global)")
-  )%>%
-  
-  
-  bind_rows(
-    CEAAs%>%
-      mutate(variable= region)%>%
-      group_by(variable)%>%
-      summarise(value= paste0(round(median(ucvax),2), "(IQR=", round(IQR(ucvax), 2), ")")) %>%
+      summarise(value= paste0(round(median(ucvax),2), 
+                              "(IQR =", round(quantile(ucvax, 0.25),3), " to ", 
+                              round(quantile(ucvax, 0.75),3),")"), .groups="drop") %>%
       mutate(Description = "Unit cost for vaccine delivery - median with IQR (Global)"),
+    
+    CEAAs%>%
+      mutate(variable= "Global")%>%
+      group_by(variable)%>%
+      summarise(value= paste0(round(median(uctb),2), 
+                              "(IQR =", round(quantile(uctb, 0.25),3), " to ", 
+                              round(quantile(uctb, 0.75),3),")"), .groups="drop") %>%
+      mutate(Description = "Unit cost for ATT for TB IQR (Global)"),
+    
+    
+    CEAAs%>%
+      mutate(variable= "Global")%>%
+      group_by(variable)%>%
+      summarise(value= paste0(round(median(uctbm),2), 
+                              "(IQR =", round(quantile(uctbm, 0.25),3), " to ", 
+                              round(quantile(uctbm, 0.75),3),")"), .groups="drop") %>%
+      mutate(Description = "Unit cost for ATT for TBM IQR (Global)"), 
+    
     CEAAs%>%
       mutate(variable= region)%>%
       group_by(variable)%>%
-      summarise(value= paste0(round(median(uctb),2), "(IQR=", round(IQR(uctb), 2), ")")) %>%
-      mutate(Description = "Unit cost for TB treatment - median with IQR (Global)"),
+      summarise(value= paste0(round(median(ucvax),2), 
+                              "(IQR =", round(quantile(ucvax, 0.25),3), " to ", 
+                              round(quantile(ucvax, 0.75),3),")"), .groups="drop") %>%
+      mutate(Description = "Unit cost for vaccine delivery - median with IQR (Regional)"),
+    
+    
+
     CEAAs%>%
       mutate(variable= region)%>%
       group_by(variable)%>%
-      summarise(value= paste0(round(median(uctbm),2), "(IQR=", round(IQR(uctbm), 2), ")")) %>%
-      mutate(Description = "Unit cost for TBM treatment - median with IQR (Global)")
+      # summarise(value= paste0(round(median(uctb),2), "(IQR=", round(IQR(uctb), 2), ")")) %>%
+      summarise(value= paste0(round(median(uctb),2), 
+                              "(IQR =", round(quantile(uctb, 0.25),3), " to ", 
+                              round(quantile(uctb, 0.75),3),")"), .groups="drop") %>%
+      
+      mutate(Description = "Unit cost for TB treatment - median with IQR (Regional)"),
+    CEAAs%>%
+      mutate(variable= region)%>%
+      group_by(variable)%>%
+      #summarise(value= paste0(round(median(uctbm),2), "(IQR=", round(IQR(uctbm), 2), ")")) %>%
+      summarise(value= paste0(round(median(uctbm),2), 
+                              "(IQR =", round(quantile(uctbm, 0.25),3), " to ", 
+                              round(quantile(uctbm, 0.75),3),")"), .groups="drop") %>%
+      
+      mutate(Description = "Unit cost for TBM treatment - median with IQR (Regional)")
   )%>%
   # BCG doses
   bind_rows(
@@ -417,27 +436,30 @@ summary_tab <- data.frame(variable= "Number of countries",
       bind_rows(
         
         per_cap_ave %>%
+          filter(iso3%in% nn$iso3)|> # TODO do for cnts where notif>1000
+          
           group_by(variable) %>%
           slice_max(av, n = 1, with_ties = FALSE) %>%
           mutate(Description=paste0("Max avertion is in ",iso3),
                  variable= gsub("rslt_", "", variable))%>%
           mutate(variable= paste0("Percapita avertion in ", variable),
                  value=as.character(round(av, 4)))%>%
-          select(-iso3, -type, -av),
+          dplyr::select(-iso3, -type, -av),
         
         
         per_cap_ave %>%
+          filter(iso3%in% nn$iso3)|> # TODO do for cnts where notif>1000
           group_by(variable) %>%
           slice_min(av, n = 1, with_ties = FALSE) %>%
           mutate(Description=paste0("Min avertion is in ",iso3),
                  variable= gsub("rslt_", "", variable)) %>%
           mutate(variable= paste0("Percapita avertion in ", variable),
                  value=as.character(round(av, 7)))%>%
-          select(-iso3, -type,-av)
+          dplyr::select(-iso3, -type,-av)
       )
     
   
   )
     
-fwrite(summary_tab, file = here("outputs/statistics.csv"))
+fwrite(summary_tab, file = here("outdata/statistics.csv"))
 
