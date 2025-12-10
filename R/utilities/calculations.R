@@ -17,7 +17,7 @@
 #   ,
 #   Ltbm_mil :=
 #     prop_mild_seq * tbm_hrqol_mil_seq *
-#       (1 - exp(-disc_rate * LE / tbm_mort_hz)) / disc_rate
+#       (1 - exp(-disc_rate * LE / post_tbm_mort_hz)) / disc_rate
 # ]
 # 
 # #D[
@@ -27,7 +27,7 @@
 # #tbm_hrqol_mil_seq1 *
 # #      (1 - exp(-disc_rate * 3))+
 # #tbm_hrqol_mil_seq2 *
-# #      (exp(-disc_rate * 3) - exp(-disc_rate * LE / tbm_mort_hz))
+# #      (exp(-disc_rate * 3) - exp(-disc_rate * LE / post_tbm_mort_hz))
 # #) / disc_rate
 # #]
 # 
@@ -35,75 +35,45 @@
 #   ,
 #   Ltbm_mod :=
 #     prop_mod_seq * tbm_hrqol_mod_seq *
-#     (1 - exp(-disc_rate * LE / tbm_mort_hz)) / disc_rate
+#     (1 - exp(-disc_rate * LE / post_tbm_mort_hz)) / disc_rate
 # ]
 # D[
 #   ,
 #   Ltbm_sev :=
 #     prop_sev_seq * tbm_hrqol_sev_seq *
-#       (1 - exp(-disc_rate * LE / tbm_mort_hz)) / disc_rate
+#       (1 - exp(-disc_rate * LE / post_tbm_mort_hz)) / disc_rate
 # ]
 # D[, Ltbm := Ltbm_mil + Ltbm_mod + Ltbm_sev]
 # D[, c("Ltbm_mil", "Ltbm_mod", "Ltbm_sev") := NULL]
 
 
-
-
-## Calculate LE in a separate file
-
-#====assumptions: TB disease occurs at age 0 
-        #  also first 3 years postTB have different HRQL
-
-# LEu5[, LE_disc0 := (1 - exp(-disc_rate * LEref)) / disc_rate] # discounted LE at birth
-# LEu5[, Ltb0 := post_tb_hrqol_dur3 * (exp(-disc_rate * 0)  - exp(-disc_rate * 3)) / disc_rate +
-#       post_tb_hrqol_post3 * (exp(-disc_rate * 3) - exp(-disc_rate * LEref/post_tb_mort_hz)) / disc_rate]
-# 
-# LEu5[, Ltbm0 := 
-#        prop_mild_seq*(tbm_hrqol_mil_seq * (exp(-disc_rate * 0)  - exp(-disc_rate * 3)) / disc_rate +
-#                                 tbm_hrqol_mil_seq * (exp(-disc_rate * 3) - exp(-disc_rate * LEref/tbm_mort_hz)) / disc_rate) + 
-#       # moderate seqaele
-#       prop_mod_seq*(tbm_hrqol_mod_seq * (exp(-disc_rate * 0)  - exp(-disc_rate * 3)) / disc_rate +
-#                       tbm_hrqol_mod_seq * (exp(-disc_rate * 3) - exp(-disc_rate * LEref/tbm_mort_hz)) / disc_rate) + 
-#        # severe seqaele
-#       prop_sev_seq*(tbm_hrqol_sev_seq * (exp(-disc_rate * 0)  - exp(-disc_rate * 3)) / disc_rate +
-#                       tbm_hrqol_sev_seq * (exp(-disc_rate * 3) - exp(-disc_rate * LEref/tbm_mort_hz)) / disc_rate)]
-
-
 # Assuming infection occurs at each age (0, 1, 2, 3, 4)
-# 
-LEu5[, LE_disc := (exp(-disc_rate * Age) - exp(-disc_rate * LE)) / disc_rate] # discounted LE at each age
-LEu5[, Ltb := post_tb_hrqol_dur3 * (exp(-disc_rate * Age) - exp(-disc_rate * (Age + 3))) +
-      post_tb_hrqol_post3 * (exp(-disc_rate * (Age + 3)) - exp(-disc_rate * (Age + LE / post_tb_mort_hz))) / disc_rate ]
-LEu5[, Ltbm :=
-      prop_mild_seq*(tbm_hrqol_mil_seq * (exp(-disc_rate * Age) - exp(-disc_rate * (Age + 3))) +
-                       tbm_hrqol_mil_seq * (exp(-disc_rate * (Age + 3)) - exp(-disc_rate * (Age + LE / tbm_mort_hz))) / disc_rate) + 
-      
-      prop_mod_seq*(tbm_hrqol_mod_seq * (exp(-disc_rate * Age) - exp(-disc_rate * (Age + 3))) +
-                      tbm_hrqol_mod_seq * (exp(-disc_rate * (Age + 3)) - exp(-disc_rate * (Age + LE / tbm_mort_hz))) / disc_rate) +
-      prop_sev_seq*(tbm_hrqol_sev_seq * (exp(-disc_rate * Age) - exp(-disc_rate * (Age + 3))) +
-                      tbm_hrqol_sev_seq * (exp(-disc_rate * (Age + 3)) - exp(-disc_rate * (Age + LE / tbm_mort_hz))) / disc_rate)]
 
-LED <- LEu5%>%
-  group_by(Iso3)%>%
-  summarise(LE_disc= weighted.mean(LE_disc, w = wt),
-         Ltb=weighted.mean(Ltb, w = wt), # weighted LE
-         Ltbm= weighted.mean(Ltbm, w = wt) # weighted LE
-        
-  ) %>%
-  dplyr::select(iso3=Iso3,LE_disc, Ltb, Ltbm) %>%
-  as.data.table()
+setnames(samp, "Age", "age_cat")
 
-D <- merge(samp, LED,by="iso3", allow.cartesian = TRUE)
+D <- merge(samp, LEu5,by.x= "iso3", by.y ="Iso3", allow.cartesian = TRUE)
 
-#D[, c("LE", "Ltb", "Ltbm"):=NULL]
+D[, LE_disc := (exp(-disc_rate * Age) - exp(-disc_rate * LE)) / disc_rate] # discounted LE at each age
+D[, Ltb := post_tb_hrqol_dur3 * (exp(-disc_rate * Age) - exp(-disc_rate * (Age + 3))) +
+       post_tb_hrqol_post3 * (exp(-disc_rate * (Age + 3)) - exp(-disc_rate * (Age + LE / post_tb_mort_hz))) / disc_rate ]
+D[, Ltbm :=
+       prop_mild_seq*(tbm_hrqol_mil_seq * (exp(-disc_rate * Age) - exp(-disc_rate * (Age + 3))) +
+                        tbm_hrqol_mil_seq * (exp(-disc_rate * (Age + 3)) - exp(-disc_rate * (Age + LE / post_tbm_mort_hz))) / disc_rate) + 
+       
+       prop_mod_seq*(tbm_hrqol_mod_seq * (exp(-disc_rate * Age) - exp(-disc_rate * (Age + 3))) +
+                       tbm_hrqol_mod_seq * (exp(-disc_rate * (Age + 3)) - exp(-disc_rate * (Age + LE / post_tbm_mort_hz))) / disc_rate) +
+       prop_sev_seq*(tbm_hrqol_sev_seq * (exp(-disc_rate * Age) - exp(-disc_rate * (Age + 3))) +
+                       tbm_hrqol_sev_seq * (exp(-disc_rate * (Age + 3)) - exp(-disc_rate * (Age + LE / post_tbm_mort_hz))) / disc_rate)]
 
-# TODO selecting required LE
-# LEDs <- LED%>%select(iso3,
-#                      LE_disc=LE_disc_ihme,
-#                      Ltb=Ltb_ihme, #TODO if UN LE required  Ltb=Ltb_un
-#                      Ltbm=Ltbm_ihme) #TODO if UN LE required  Ltbm=Ltbm_un
-# 
-# D <- merge(D,LEDs, by = "iso3")
+
+D[, `:=`(
+  LE_disc = weighted.mean(LE_disc, wt),
+  Ltb     = weighted.mean(Ltb, wt),
+  Ltbm    = weighted.mean(Ltbm, wt)
+), by = iso3]
+
+D <- D[Age==0,]
+
 
 
 ## TBM fractions
