@@ -4,6 +4,11 @@
 .Ruserdata
 ~*
 .DS_Store
-outputs/PSA.RData
-outputs/PSA.RData
-outputs/samp.RData
+tmpdata/PSA.RData 
+tmpdata/samp.RData
+outdata/out_tab_r.RData
+
+plots/forest_a.png
+plots/forest_b.png
+
+README.html
