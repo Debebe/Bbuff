@@ -1,0 +1,61 @@
+Country,BCG effect,Estimates
+IND,Averted ATT for TB,"     46,000 (15,900 to 91,600)"
+IND,BCG doses,102051544
+IND,Averted TB incidence,"    174,000 (60,100 to 345,000)"
+IND,Averted DALYs from TB,"  2,100,000 (715,000 to 4,240,000)"
+IND,Averted TB deaths,"     61,500 (21,000 to 123,000)"
+IND,Averted TBM incidence,"     11,200 (2,640 to 27,700)"
+IDN,Averted ATT for TB,"   102,000 (45,000 to 192,000)"
+IDN,BCG doses,19666834
+IDN,Averted TB incidence,"   164,000 (72,200 to 308,000)"
+IDN,Averted DALYs from TB," 2,430,000 (1,050,000 to 4,560,000)"
+IDN,Averted TB deaths,"    32,700 (14,100 to 61,400)"
+IDN,Averted TBM incidence,"    10,400 (2,950 to 23,900)"
+CHN,Averted ATT for TB,"       597 (223 to 1,260)"
+CHN,BCG doses,57462030
+CHN,Averted TB incidence,"    25,200 (9,440 to 53,100)"
+CHN,Averted DALYs from TB,"   260,000 (94,300 to 558,000)"
+CHN,Averted TB deaths,"    11,800 (4,420 to 24,800)"
+CHN,Averted TBM incidence,"     2,040 (434 to 5,680)"
+PAK,Averted ATT for TB,"    48,600 (5,000 to 125,000)"
+PAK,BCG doses,30517836
+PAK,Averted TB incidence,"    68,800 (7,070 to 176,000)"
+PAK,Averted DALYs from TB," 1,040,000 (107,000 to 2,680,000)"
+PAK,Averted TB deaths,"    11,400 (1,150 to 29,200)"
+PAK,Averted TBM incidence,"     5,110 (398 to 15,800)"
+BGD,Averted ATT for TB,"     4,100 (486 to 10,400)"
+BGD,BCG doses,16340018
+BGD,Averted TB incidence,"    26,500 (3,140 to 66,900)"
+BGD,Averted DALYs from TB,"   299,000 (35,000 to 770,000)"
+BGD,Averted TB deaths,"    10,900 (1,280 to 27,600)"
+BGD,Averted TBM incidence,"     2,140 (195 to 7,010)"
+MMR,Averted ATT for TB,"   12,200 (1,060 to 29,300)"
+MMR,BCG doses,3545520
+MMR,Averted TB incidence,"   24,700 (2,160 to 59,600)"
+MMR,Averted DALYs from TB,"  331,000 (28,800 to 800,000)"
+MMR,Averted TB deaths,"    6,270 (559 to 15,100)"
+MMR,Averted TBM incidence,"    1,420 (107 to 3,960)"
+NGA,Averted ATT for TB,"     8,600 (915 to 19,900)"
+NGA,BCG doses,24809702
+NGA,Averted TB incidence,"    20,700 (2,210 to 47,900)"
+NGA,Averted DALYs from TB,"   238,000 (25,000 to 553,000)"
+NGA,Averted TB deaths,"     5,900 (628 to 13,700)"
+NGA,Averted TBM incidence,"     1,120 (106 to 3,010)"
+PHL,Averted ATT for TB,"   34,700 (2,480 to 93,200)"
+PHL,BCG doses,8737995
+PHL,Averted TB incidence,"   42,600 (3,050 to 114,000)"
+PHL,Averted DALYs from TB,"  684,000 (49,100 to 1,840,000)"
+PHL,Averted TB deaths,"    4,920 (348 to 13,200)"
+PHL,Averted TBM incidence,"    2,820 (171 to 8,810)"
+AGO,Averted ATT for TB,"    2,340 (211 to 5,520)"
+AGO,BCG doses,4540057
+AGO,Averted TB incidence,"    8,720 (786 to 20,600)"
+AGO,Averted DALYs from TB,"  101,000 (9,140 to 241,000)"
+AGO,Averted TB deaths,"    3,030 (276 to 7,240)"
+AGO,Averted TBM incidence,"      471 (39 to 1,290)"
+TZA,Averted ATT for TB,"    16,400 (996 to 46,300)"
+TZA,BCG doses,10269880
+TZA,Averted TB incidence,"    21,300 (1,290 to 60,100)"
+TZA,Averted DALYs from TB,"   328,000 (19,700 to 928,000)"
+TZA,Averted TB deaths,"     2,910 (179 to 8,370)"
+TZA,Averted TBM incidence,"     1,540 (75 to 5,180)"

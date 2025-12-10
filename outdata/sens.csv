@@ -1,0 +1,5 @@
+model,n_cntrs_all,n_cntrs_ce,prop,ENB30_median,ICER
+"PostTB(N),TBM(N)",110,70,63.6,1.3(IQR:-1.7 to 7.7),449(IQR:122.8 to 2536.3)
+"PostTB(Y),TBM(N)",110,75,68.2,2.6(IQR:-1.2 to 12.6),292(IQR:86.7 to 1594.1)
+"PostTB(N),TBM(Y)",110,71,64.5,1.5(IQR:-1.7 to 8.7),392.5(IQR:114.3 to 2210.7)
+"PostTB(Y),TBM(Y)",110,75,68.2,2.8(IQR:-1 to 13.2),276.3(IQR:83.5 to 1514.4)

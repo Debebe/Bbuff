@@ -1,0 +1,175 @@
+variable,value,Description
+Number of countries,110,Number of countries
+Africa,42,Number of countries
+Eastern Mediterranean,12,Number of countries
+Europe,16,Number of countries
+South-East Asia,9,Number of countries
+The Americas,19,Number of countries
+Western Pacific,12,Number of countries
+Global,259.5(IQR =79 to 1423),ICER with IQR - median global
+Africa,118.5(IQR =69.25 to 302.5),ICER - Median with IQR (Regional)
+Eastern Mediterranean,1043(IQR =92 to 4243.5),ICER - Median with IQR (Regional)
+Europe,1122.5(IQR =689.25 to 2230),ICER - Median with IQR (Regional)
+South-East Asia,83(IQR =43 to 197),ICER - Median with IQR (Regional)
+The Americas,1117(IQR =455.5 to 4882),ICER - Median with IQR (Regional)
+Western Pacific,103.5(IQR =27.75 to 903.25),ICER - Median with IQR (Regional)
+Global,11.4(IQR =6.7 to 16.9),Buffer size- Median with IQR (Global)-10%
+Africa,11.45(IQR =8.15 to 16.4),Buffer size- Median wz IQR (Regional)-10%
+Eastern Mediterranean,10.8(IQR =7.15 to 13.5),Buffer size- Median wz IQR (Regional)-10%
+Europe,5.7(IQR =2.75 to 7.375),Buffer size- Median wz IQR (Regional)-10%
+South-East Asia,15.35(IQR =12.05 to 17.75),Buffer size- Median wz IQR (Regional)-10%
+The Americas,6.8(IQR =4.55 to 12.5),Buffer size- Median wz IQR (Regional)-10%
+Western Pacific,16.9(IQR =16.8 to 19.7),Buffer size- Median wz IQR (Regional)-10%
+Global,5.7(IQR =3.35 to 8.5),Buffer size- Median with IQR (Global)-5%
+Africa,5.75(IQR =4.05 to 8.225),Buffer size- Median wz IQR (Regional)-5%
+Eastern Mediterranean,5.4(IQR =3.55 to 6.75),Buffer size- Median wz IQR (Regional)-5%
+Europe,2.85(IQR =1.425 to 3.7),Buffer size- Median wz IQR (Regional)-5%
+South-East Asia,7.7(IQR =6.025 to 8.9),Buffer size- Median wz IQR (Regional)-5%
+The Americas,3.4(IQR =2.25 to 6.25),Buffer size- Median wz IQR (Regional)-5%
+Western Pacific,8.5(IQR =8.4 to 9.8),Buffer size- Median wz IQR (Regional)-5%
+Global,17.1(IQR =10 to 25.4),Buffer size- Median with IQR (Global)-15%
+Africa,17.2(IQR =12.2 to 24.625),Buffer size- Median wz IQR (Regional)-15%
+Eastern Mediterranean,16.3(IQR =10.75 to 20.3),Buffer size- Median wz IQR (Regional)-15%
+Europe,8.5(IQR =4.175 to 11.075),Buffer size- Median wz IQR (Regional)-15%
+South-East Asia,23.05(IQR =17.975 to 26.65),Buffer size- Median wz IQR (Regional)-15%
+The Americas,10.2(IQR =6.8 to 18.75),Buffer size- Median wz IQR (Regional)-15%
+Western Pacific,25.4(IQR =25.3 to 29.5),Buffer size- Median wz IQR (Regional)-15%
+ICER/GDP,0.6(sd=1.2),ICER to GDP ratio - mean wz sd (Global)- 10%
+ICER/GDP,0.1(IQR=0.5),ICER to GDP ratio - median with IQR (Global)
+Africa,0.08(IQR=0.3),ICER to GDP ratio - median with IQR (Regional)
+Eastern Mediterranean,0.4(IQR=1.49),ICER to GDP ratio - median with IQR (Regional)
+Europe,0.15(IQR=0.24),ICER to GDP ratio - median with IQR (Regional)
+South-East Asia,0.03(IQR=0.04),ICER to GDP ratio - median with IQR (Regional)
+The Americas,0.15(IQR=0.45),ICER to GDP ratio - median with IQR (Regional)
+Western Pacific,0.02(IQR=0.22),ICER to GDP ratio - median with IQR (Regional)
+Prop cntrs cost effective,0.69,Proportion of countries with ENB30>0 (Global)
+Africa,0.74,Proportion of countries with ENB30>0 (Regional)
+Eastern Mediterranean,0.5,Proportion of countries with ENB30>0 (Regional)
+Europe,0.69,Proportion of countries with ENB30>0 (Regional)
+South-East Asia,0.89,Proportion of countries with ENB30>0 (Regional)
+The Americas,0.58,Proportion of countries with ENB30>0 (Regional)
+Western Pacific,0.75,Proportion of countries with ENB30>0 (Regional)
+prop_cost_effect,0.74,Proportion of countries with ICER <GDP/2
+prop_cost_effect,0.71,Proportion of countries with ICER <GDP/3
+Africa,0.76,Proportion of countries with ICER <GDP/2 (Regional)
+Eastern Mediterranean,0.58,Proportion of countries with ICER <GDP/2 (Regional)
+Europe,0.81,Proportion of countries with ICER <GDP/2 (Regional)
+South-East Asia,0.89,Proportion of countries with ICER <GDP/2 (Regional)
+The Americas,0.63,Proportion of countries with ICER <GDP/2 (Regional)
+Western Pacific,0.75,Proportion of countries with ICER <GDP/2 (Regional)
+Africa,0.74,Proportion of countries with ICER <GDP/3 (Regional)
+Eastern Mediterranean,0.5,Proportion of countries with ICER <GDP/3 (Regional)
+Europe,0.75,Proportion of countries with ICER <GDP/3 (Regional)
+South-East Asia,0.89,Proportion of countries with ICER <GDP/3 (Regional)
+The Americas,0.63,Proportion of countries with ICER <GDP/3 (Regional)
+Western Pacific,0.75,Proportion of countries with ICER <GDP/3 (Regional)
+Prop death averted,0.79,Prop avert deaths in top 10 cntrs by death aversion
+Prop death averted,0.55,Prop avert deaths in top 3 cntrs by death aversion
+Global,3.1(IQR =1.769 to 4.916),Unit cost for vaccine delivery - median with IQR (Global)
+Global,575.84(IQR =318.793 to 1454.818),Unit cost for ATT for TB IQR (Global)
+Global,618.1(IQR =344.083 to 1677.694),Unit cost for ATT for TBM IQR (Global)
+Africa,2.2(IQR =1.44 to 3.429),Unit cost for vaccine delivery - median with IQR (Regional)
+Eastern Mediterranean,2.48(IQR =0.757 to 4.046),Unit cost for vaccine delivery - median with IQR (Regional)
+Europe,6.03(IQR =3.718 to 6.646),Unit cost for vaccine delivery - median with IQR (Regional)
+South-East Asia,2.24(IQR =2.083 to 4.133),Unit cost for vaccine delivery - median with IQR (Regional)
+The Americas,3.42(IQR =2.822 to 5.718),Unit cost for vaccine delivery - median with IQR (Regional)
+Western Pacific,4.92(IQR =2.013 to 7.749),Unit cost for vaccine delivery - median with IQR (Regional)
+Africa,338.65(IQR =232.387 to 574.637),Unit cost for TB treatment - median with IQR (Regional)
+Eastern Mediterranean,477.56(IQR =236.575 to 651.464),Unit cost for TB treatment - median with IQR (Regional)
+Europe,2149.73(IQR =1393.517 to 3396.364),Unit cost for TB treatment - median with IQR (Regional)
+South-East Asia,285.41(IQR =176.52 to 461.739),Unit cost for TB treatment - median with IQR (Regional)
+The Americas,1845.4(IQR =1061.222 to 2582.196),Unit cost for TB treatment - median with IQR (Regional)
+Western Pacific,595.46(IQR =464.779 to 1245.94),Unit cost for TB treatment - median with IQR (Regional)
+Africa,374.12(IQR =257.908 to 605.09),Unit cost for TBM treatment - median with IQR (Regional)
+Eastern Mediterranean,521.69(IQR =260.853 to 820.973),Unit cost for TBM treatment - median with IQR (Regional)
+Europe,2670(IQR =1804.922 to 4340.285),Unit cost for TBM treatment - median with IQR (Regional)
+South-East Asia,337.73(IQR =200.551 to 530.004),Unit cost for TBM treatment - median with IQR (Regional)
+The Americas,1943.62(IQR =1101.043 to 2679.978),Unit cost for TBM treatment - median with IQR (Regional)
+Western Pacific,657.81(IQR =531.245 to 1468.945),Unit cost for TBM treatment - median with IQR (Regional)
+BCG doses,3906902,BCG doses - Number of doses (Global)
+AFR,3046099,BCG doses - Number of doses (Regional)
+AMR,1574925,BCG doses - Number of doses (Regional)
+EMR,5243379,BCG doses - Number of doses (Regional)
+EUR,1084788,BCG doses - Number of doses (Regional)
+SEA,14922069,BCG doses - Number of doses (Regional)
+WPR,5204328,BCG doses - Number of doses (Regional)
+Averted ATT,3267,Averted ATT -  Number (Global)
+AFR,2038,Averted ATT- Number (Regional)
+AMR,238,Averted ATT- Number (Regional)
+EMR,4629,Averted ATT- Number (Regional)
+EUR,183,Averted ATT- Number (Regional)
+SEA,18712,Averted ATT- Number (Regional)
+WPR,3530,Averted ATT- Number (Regional)
+Averted deaths,4.6e-05,Mean averted TBMdeaths per dose- Global
+Averted deaths,0.000286,Mean averted TBdeaths per dose- Global
+Averted deaths,0.000239,Mean averted TBndeaths per dose- Global
+AFR,4.9e-05,Mean averted TBMdeaths per dose- Regional
+AFR,0.000331,Mean averted TBdeaths per dose- Regional
+AFR,0.000283,Mean averted TBndeaths per dose- Regional
+AMR,9e-06,Mean averted TBMdeaths per dose- Regional
+AMR,5.9e-05,Mean averted TBdeaths per dose- Regional
+AMR,5e-05,Mean averted TBndeaths per dose- Regional
+EMR,1.1e-05,Mean averted TBMdeaths per dose- Regional
+EMR,7.1e-05,Mean averted TBdeaths per dose- Regional
+EMR,5.9e-05,Mean averted TBndeaths per dose- Regional
+EUR,1.6e-05,Mean averted TBMdeaths per dose- Regional
+EUR,9.5e-05,Mean averted TBdeaths per dose- Regional
+EUR,7.9e-05,Mean averted TBndeaths per dose- Regional
+SEA,0.000107,Mean averted TBMdeaths per dose- Regional
+SEA,0.000691,Mean averted TBdeaths per dose- Regional
+SEA,0.000584,Mean averted TBndeaths per dose- Regional
+WPR,0.000126,Mean averted TBMdeaths per dose- Regional
+WPR,0.00065,Mean averted TBdeaths per dose- Regional
+WPR,0.000524,Mean averted TBndeaths per dose- Regional
+Global,0.11(IQR =0.031 to 0.542),ICER/GDP ratio - Median(IQR) global
+Africa,0.08(IQR =0.037 to 0.341),ICER/GDP ratio - Median(IQR) Regional
+Eastern Mediterranean,0.396(IQR =0.217 to 1.71),ICER/GDP ratio - Median(IQR) Regional
+Europe,0.154(IQR =0.108 to 0.348),ICER/GDP ratio - Median(IQR) Regional
+South-East Asia,0.034(IQR =0.017 to 0.06),ICER/GDP ratio - Median(IQR) Regional
+The Americas,0.148(IQR =0.099 to 0.552),ICER/GDP ratio - Median(IQR) Regional
+Western Pacific,0.021(IQR =0.011 to 0.235),ICER/GDP ratio - Median(IQR) Regional
+Global,1.26,Median of the ratio of IQR of ICER to Median ICER 
+AFR,1.34,Median of the ratio of IQR of ICER to Median ICER 
+AMR,1.17,Median of the ratio of IQR of ICER to Median ICER 
+EMR,1.05,Median of the ratio of IQR of ICER to Median ICER 
+EUR,1.11,Median of the ratio of IQR of ICER to Median ICER 
+SEA,1.27,Median of the ratio of IQR of ICER to Median ICER 
+WPR,1.39,Median of the ratio of IQR of ICER to Median ICER 
+Incidence threshold,"41.2 per 100,000",Inc threshold above which BCG is cost-effective always
+Incidence threshold,"7.6 per 100,000",Inc threshold below which BCG is not cost-effective always
+Total number of U5 children,586 Million,Number of U5 children in the WHO report
+Total number of U5 children analysed,558 Million,Number of U5 children in the modelled countries
+Proportion of U5 children,0.95,Proportion of U5 children in the modelled countries
+Proportion of U5 TB inc,0.998,Proportion of U5 TB incidence in modelled countries
+BCG coverage,0.87(Range: 0.37 to 0.99),Mean BCG cov with min and max coverage across cntrs
+TBDALYs,0.01653,Averted TBDALYs per BCG dose- Global
+TBMDALYs,0.000445,Averted TBMDALYs per BCG dose- Global
+TBMdeaths,4.6e-05,Averted TBMdeaths per BCG dose- Global
+TBMinc,8.2e-05,Averted TBMinc per BCG dose- Global
+TBdeaths,0.000286,Averted TBdeaths per BCG dose- Global
+TBinc,0.001189,Averted TBinc per BCG dose- Global
+TBndeaths,0.000239,Averted TBndeaths per BCG dose- Global
+TBDALYs,16.53,Averted TBDALYs per 1000 BCG dose- Global
+TBMDALYs,0.445,Averted TBMDALYs per 1000 BCG dose- Global
+TBMdeaths,0.046,Averted TBMdeaths per 1000 BCG dose- Global
+TBMinc,0.082,Averted TBMinc per 1000 BCG dose- Global
+TBdeaths,0.286,Averted TBdeaths per 1000 BCG dose- Global
+TBinc,1.189,Averted TBinc per 1000 BCG dose- Global
+TBndeaths,0.239,Averted TBndeaths per 1000 BCG dose- Global
+TBDALYs,60,Required BCG vaccinations to avert one TBDALYs
+TBMDALYs,2249,Required BCG vaccinations to avert one TBMDALYs
+TBMdeaths,21650,Required BCG vaccinations to avert one TBMdeaths
+TBMinc,12268,Required BCG vaccinations to avert one TBMinc
+TBdeaths,3501,Required BCG vaccinations to avert one TBdeaths
+TBinc,841,Required BCG vaccinations to avert one TBinc
+TBndeaths,4176,Required BCG vaccinations to avert one TBndeaths
+Percapita avertion in inc,0.0074,Max avertion is in IDN
+Percapita avertion in tb_deaths,0.0015,Max avertion is in MNG
+Percapita avertion in tbm_deaths,3e-04,Max avertion is in MNG
+Percapita avertion in tbminc,5e-04,Max avertion is in IDN
+Percapita avertion in tbn_deaths,0.0013,Max avertion is in MNG
+Percapita avertion in inc,2.08e-05,Min avertion is in EGY
+Percapita avertion in tb_deaths,1.8e-06,Min avertion is in EGY
+Percapita avertion in tbm_deaths,4e-07,Min avertion is in SYR
+Percapita avertion in tbminc,1.4e-06,Min avertion is in SYR
+Percapita avertion in tbn_deaths,1.3e-06,Min avertion is in SRB
