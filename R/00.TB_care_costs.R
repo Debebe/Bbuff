@@ -11,56 +11,56 @@ library(httr)
 # Download relevant data from https://www.who.int/teams/global-tuberculosis-programme/data
 
 # Expenditure and utilization of health services for TB since fiscal year 2023 
-if(!file.exists(here::here('data/cost/indata/df_exp.Rdata'))){
+if(!file.exists(here::here('costdata/indata/df_exp.Rdata'))){
   df_exp<- fread("https://extranet.who.int/tme/generateCSV.asp?ds=expenditure_utilisation", header = T)
-  save(df_exp,file=here::here('data/cost/indata/df_exp.Rdata'))
+  save(df_exp,file=here::here('costdata/indata/df_exp.Rdata'))
 } else {
-  load(here::here('data/cost/indata/df_exp.Rdata'))
+  load(here::here('costdata/indata/df_exp.Rdata'))
 }
 
 print(paste("Most recent year of data is:", max(unique(df_exp$year))))
 
 # # Budgets for TB since fiscal year 2024 - currently not being used much 
-if(!file.exists(here::here('data/cost/indata/df_bdg.Rdata'))){
+if(!file.exists(here::here('costdata/indata/df_bdg.Rdata'))){
   df_bdg<- fread("https://extranet.who.int/tme/generateCSV.asp?ds=budget", header = T)
-  save(df_bdg,file=here::here('data/cost/indata/df_bdg.Rdata'))
+  save(df_bdg,file=here::here('costdata/indata/df_bdg.Rdata'))
 } else {
-  load(here::here('data/cost/indata/df_bdg.Rdata'))
+  load(here::here('costdata/indata/df_bdg.Rdata'))
 }
 
 print(paste("Most recent year of data is:", max(unique(df_bdg$year))))
 
 # Estimated number of incident cases (all forms) 
-if(!file.exists(here::here('data/cost/indata/df.Rdata'))){
+if(!file.exists(here::here('costdata/indata/df.Rdata'))){
   df<- fread("https://extranet.who.int/tme/generateCSV.asp?ds=estimates", header = T)
-  save(df,file=here::here('data/cost/indata/df.Rdata'))
+  save(df,file=here::here('costdata/indata/df.Rdata'))
 } else {
-  load(here::here('data/cost/indata/df.Rdata'))
+  load(here::here('costdata/indata/df.Rdata'))
 }
 
 print(paste("Most recent year of data is:", max(unique(df$year))))
 
 # Estimated number of incident cases (MDR TB) 
-if(!file.exists(here::here('data/cost/indata/df_mdr.Rdata'))){
+if(!file.exists(here::here('costdata/indata/df_mdr.Rdata'))){
   df_mdr<- fread("https://extranet.who.int/tme/generateCSV.asp?ds=mdr_rr_estimates", header = T)
-  save(df_mdr,file=here::here('data/cost/indata/df_mdr.Rdata'))
+  save(df_mdr,file=here::here('costdata/indata/df_mdr.Rdata'))
 } else {
-  load(here::here('data/cost/indata/df_mdr.Rdata'))
+  load(here::here('costdata/indata/df_mdr.Rdata'))
 }
 
 print(paste("Most recent year of data is:", max(unique(df_mdr$year))))
 
 # TB Data dictionary
-if(!file.exists(here::here('data/cost/indata/df_dic.Rdata'))){
+if(!file.exists(here::here('costdata/indata/df_dic.Rdata'))){
   df_dic<-fread("https://extranet.who.int/tme/generateCSV.asp?ds=dictionary")  
-  save(df_dic,file=here::here('data/cost/indata/df_dic.Rdata'))
+  save(df_dic,file=here::here('costdata/indata/df_dic.Rdata'))
 } else {
-  load(here::here('data/cost/indata/df_dic.Rdata'))
+  load(here::here('costdata/indata/df_dic.Rdata'))
 }
 
 # load ISO country codes - for cleaning up 
-load(here::here('data/cost/indata/isodict.Rdata'))
-code <- read_csv(here::here("data/cost/indata", "all.csv")) # has more details on codes
+load(here::here('costdata/indata/isodict.Rdata'))
+code <- read_csv(here::here("costdata/indata", "all.csv")) # has more details on codes
 code <- code %>% dplyr::rename(country=name, iso3=`alpha-3`) %>% select(country, `country-code`, iso3, region, `sub-region`)
 
 # country names differ from those in WHO data
@@ -88,13 +88,13 @@ df_bdg <- df_ISO %>% left_join(df_bdg, by=c("country", "iso3", "g_whoregion"))
 # Other relevant data - some are used later in the MDRHHCM unit costs code
 
 # World Bank GDP data & Country and Lending Groups
-if(!file.exists(here::here('data/cost/indata/r.gdp.Rdata'))){
+if(!file.exists(here::here('costdata/indata/r.gdp.Rdata'))){
 url <- 'https://api.worldbank.org/v2/en/indicator/NY.GDP.MKTP.CD?downloadformat=excel'
 GET(url, write_disk(tf <- tempfile(fileext = ".xls")))
 r.gdp <- setDT(readxl::read_excel(tf, sheet = 'Data', skip=3)) # GDP (current US$)
-save(r.gdp,file=here::here('data/cost/indata/r.gdp.Rdata'))
+save(r.gdp,file=here::here('costdata/indata/r.gdp.Rdata'))
 } else {
-  load(here::here('data/cost/indata/r.gdp.Rdata'))
+  load(here::here('costdata/indata/r.gdp.Rdata'))
 }
 
 tail(names(r.gdp), 1)
@@ -103,16 +103,16 @@ indicators <- c('Country Name', 'Country Code', '2016', '2017', '2018', '2019', 
 r.gdp <- r.gdp %>% select(indicators)
 
 # World Bank GDP per capita data & Country and Lending Groups
-if(!file.exists(here::here('data/cost/indata/gdp.Rdata'))){
+if(!file.exists(here::here('costdata/indata/gdp.Rdata'))){
 url <- 'https://api.worldbank.org/v2/en/indicator/NY.GDP.PCAP.CD?downloadformat=excel'
 GET(url, write_disk(tf <- tempfile(fileext = ".xls")))
 gdp <- setDT(readxl::read_excel(tf, sheet = 'Data', skip=3))
 # income_group <- fread(here('data', 'income.csv'), blank.lines.skip=TRUE) 
 # world_bank <- data.table(read_csv(here('data', 'gdppc_current.csv')))
 income_group <- setDT(readxl::read_excel(tf, sheet = 'Metadata - Countries', skip=0)) 
-save(gdp,income_group,file=here::here('data/cost/indata/gdp.Rdata'))
+save(gdp,income_group,file=here::here('costdata/indata/gdp.Rdata'))
 } else {
-  load(here::here('data/cost/indata/gdp.Rdata'))
+  load(here::here('costdata/indata/gdp.Rdata'))
 }
 
 tail(names(gdp), 1)
@@ -120,55 +120,55 @@ gdp <- gdp %>% select(all_of(indicators))
 
 
 # World Bank Exchange rates 
-if(!file.exists(here::here('data/cost/indata/exch.Rdata'))){
+if(!file.exists(here::here('costdata/indata/exch.Rdata'))){
 url <- 'https://api.worldbank.org/v2/en/indicator/PA.NUS.FCRF?downloadformat=excel'
 GET(url, write_disk(tf <- tempfile(fileext = ".xls")))
 exch <- setDT(readxl::read_excel(tf, sheet = 'Data', skip=3)) # Official exchange rate (LCU per US$, period average) 
-save(exch,file=here::here('data/cost/indata/exch.Rdata'))
+save(exch,file=here::here('costdata/indata/exch.Rdata'))
 } else {
-  load(here::here('data/cost/indata/exch.Rdata'))
+  load(here::here('costdata/indata/exch.Rdata'))
 }
 
 tail(names(exch), 1)
 exch <- exch %>% select(indicators)
 
 # World Bank Price level ratio of PPP conversion factor (GDP) to market exchange rate
-if(!file.exists(here::here('data/cost/indata/exch_ppp.Rdata'))){
+if(!file.exists(here::here('costdata/indata/exch_ppp.Rdata'))){
 url <- 'https://api.worldbank.org/v2/en/indicator/PA.NUS.PPP?downloadformat=excel'
 GET(url, write_disk(tf <- tempfile(fileext = ".xls")))
 exch_ppp <- setDT(readxl::read_excel(tf, sheet = 'Data', skip=3)) # PPP conversion factor, GDP (LCU per international $)
 # ppp <- setDT(read_csv(here('data','ppp.csv')))
-save(exch_ppp,file=here::here('data/cost/indata/exch_ppp.Rdata'))
+save(exch_ppp,file=here::here('costdata/indata/exch_ppp.Rdata'))
 } else {
-  load(here::here('data/cost/indata/exch_ppp.Rdata'))
+  load(here::here('costdata/indata/exch_ppp.Rdata'))
 }
 
 names(exch_ppp)
 exch_ppp <- exch_ppp %>% select(indicators)
 
 # World Bank Purchasing power parity conversion factors 
-if(!file.exists(here::here('data/cost/indata/ppp.Rdata'))){
+if(!file.exists(here::here('costdata/indata/ppp.Rdata'))){
 url <- 'https://api.worldbank.org/v2/en/indicator/PA.NUS.PPPC.RF?downloadformat=excel'
 GET(url, write_disk(tf <- tempfile(fileext = ".xls")))
 ppp <- setDT(readxl::read_excel(tf, sheet = 'Data', skip=3)) # Price level ratio of PPP conversion factor (GDP) to market exchange rate
 # ppp <- setDT(read_csv(here('data','ppp.csv')))
-save(ppp,file=here::here('data/cost/indata/ppp.Rdata'))
+save(ppp,file=here::here('costdata/indata/ppp.Rdata'))
 } else {
-  load(here::here('data/cost/indata/ppp.Rdata'))
+  load(here::here('costdata/indata/ppp.Rdata'))
 }
 
 names(ppp)
 ppp <- ppp %>% select(indicators)
 
 # World Bank GDP deflators
-if(!file.exists(here::here('data/cost/indata/defl.Rdata'))){
+if(!file.exists(here::here('costdata/indata/defl.Rdata'))){
 url <- 'https://api.worldbank.org/v2/en/indicator/NY.GDP.DEFL.ZS?downloadformat=excel'
 GET(url, write_disk(tf <- tempfile(fileext = ".xls")))
 defl <- setDT(readxl::read_excel(tf, sheet = 'Data', skip=3)) # GDP deflator (base year varies by country)
 # ppp <- setDT(read_csv(here('data','ppp.csv')))
-save(defl,file=here::here('data/cost/indata/defl.Rdata'))
+save(defl,file=here::here('costdata/indata/defl.Rdata'))
 } else {
-  load(here::here('data/cost/indata/defl.Rdata'))
+  load(here::here('costdata/indata/defl.Rdata'))
 }
 
 tail(names(defl), 1)
@@ -176,7 +176,7 @@ defl <- defl %>%
   select(`Country Name`, `Country Code`, `2010`, `2011`, `2012`, `2013`, 
          `2014`, `2015`, `2016`, `2017`, `2018`, `2019`, `2020`,`2021`,`2022`,`2023`, `2024`)
 
-un_gdp <- setDT(read_csv(here('data/cost/indata', 'ungdppc.csv')))
+un_gdp <- setDT(read_csv(here('costdata/indata', 'ungdppc.csv')))
 # un_gdppp <- setDT(read_csv(here('data', 'ungdppcpp.csv')))
 tb_budget <- setDT(df_bdg)
 df_exp <- setDT(df_exp)
@@ -334,8 +334,8 @@ GDP <- gdp |>
   select(iso3 = `Country Code`, gdp) |> 
   distinct()
 
-save(GDP, file = here("data/cost/outdata/GDP1.RData"))
-saveRDS(GDP, file = here("data/cost/outdata/GDP1.Rds"))
+save(GDP, file = here("costdata/outdata/GDP1.RData"))
+saveRDS(GDP, file = here("costdata/outdata/GDP1.Rds"))
 
 names(tb_budget)
 # budget data currently not being used in this analysis

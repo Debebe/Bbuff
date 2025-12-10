@@ -10,7 +10,7 @@ library(RColorBrewer)
 library(here)
 library(data.table)
 
-load(here("outputs/CEA.RData"))                 # output for regression analysis
+load(here("outdata/CEA.RData"))                 # output for regression analysis
 
 tmp <- CEA %>%
   filter(threshold==0.3)|>
@@ -95,7 +95,7 @@ fit_lm <- function(data, response, dynamic_vars,
    #labs(title = "Decomposition of R-squared") +
    theme(legend.position = "bottom", 
          legend.title = element_blank(),
-         legend.text = element_text(size = 6.7),
+         legend.text = element_text(size = 5),
          legend.key.size = unit(0.5, "lines"),
          plot.title = element_text(hjust = 0.5, face = "bold", size=10)) +
    guides(fill = guide_legend(nrow = 2), color = guide_legend(nrow = 2))
@@ -113,31 +113,31 @@ res_notif_all <- fit_lm(tmp, response = "ENB30", dynamic_vars = "notif_all") # C
 
 Rsq <-bind_rows(res_inc_u5$Rsq,res_notif_u5$Rsq, res_inc_all$Rsq,res_notif_all$Rsq)
 
-fwrite(Rsq, file = here("outputs/Rsq.csv"))
+fwrite(Rsq, file = here("outdata/Rsq.csv"))
 
 
 
-ggsave(res_notif_all$fig, file= here("plots/f_pie_notif_all.png"), w = 4, h = 3)
-ggsave(res_notif_u5$fig, file= here("plots/f_pie_notif_u5.png"), w = 4, h = 3)
-ggsave(res_inc_all$fig, file= here("plots/f_pie_inc_all.png"), w = 4, h = 3)
-ggsave(res_inc_u5$fig, file= here("plots/f_pie_inc_u5.png"), w = 3.7, h = 2.4)
+# ggsave(res_notif_all$fig, file= here("plots/f_pie_notif_all.png"), w = 4, h = 3)
+# ggsave(res_notif_u5$fig, file= here("plots/f_pie_notif_u5.png"), w = 4, h = 3)
+# ggsave(res_inc_all$fig, file= here("plots/f_pie_inc_all.png"), w = 4, h = 3)
+ggsave(res_inc_u5$fig, file= here("plots/F13_pie.png"), w = 3.7, h = 2.4)
 
-a <-res_notif_all$fig + ggtitle("Notifications (overall)")
-b <-res_notif_u5$fig + ggtitle("Notifications (U5)")
-c <-res_inc_all$fig + ggtitle("Incidence (overall)")
+# a <-res_notif_all$fig + ggtitle("Notifications (overall)")
+# b <-res_notif_u5$fig + ggtitle("Notifications (U5)")
+# c <-res_inc_all$fig + ggtitle("Incidence (overall)")
 d <-res_inc_u5$fig + ggtitle("Incidence (U5)")
 
-
-combined <- (a + b)/(c + d) +
-  plot_layout(guides = "collect") +
-  patchwork::plot_annotation(
-    title = "Decomposition of R-squared") & 
-  theme(legend.position = "bottom",
-    plot.title = element_text(hjust = 0.5) #center the title
-  )
-
-combined
-ggsave(combined, file= here("plots/f_pie_comb.png"), w = 4, h = 5)
+# 
+# combined <- (a + b)/(c + d) +
+#   plot_layout(guides = "collect") +
+#   patchwork::plot_annotation(
+#     title = "Decomposition of R-squared") & 
+#   theme(legend.position = "bottom",
+#     plot.title = element_text(hjust = 0.5) #center the title
+#   )
+# 
+# combined
+# ggsave(combined, file= here("plots/f_pie_comb.png"), w = 4, h = 5)
 
 ft_lm <- res_inc_u5$reg_tab%>%
   flextable()|>
@@ -148,7 +148,9 @@ doc <- read_docx() |>
   body_add_flextable(value = ft_lm) |>
   body_add_par(" ", style = "Normal") 
 
-print(doc, target = "outputs/table4_lm.docx")
+print(doc, target = "outdata/table4_lm.docx")
+
+fwrite(res_inc_u5$reg_tab, file = here("outdata/regression_ENB.csv"))
 
 
 # 

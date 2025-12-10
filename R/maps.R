@@ -10,7 +10,9 @@ pacman::p_load(here,data.table, dplyr, tidyr, stringr,
 world <- wbmapdata::world
 
 ## =============== deaths
-load(here("outputs/deaths.RData"))
+load(here("outdata/deaths.RData"))
+load(here("outdata/CEA.RData"))
+
 deaths <- dcast(
   deaths[, .(
     iso3, variable, type, av
@@ -64,12 +66,12 @@ p2 <- p +
   scale_size_continuous(name = sznm)
 p2
 
-ggsave(p2, file = here("plots/map_deaths.png"), w = 9, h = 5)
+ggsave(p2, file = here("plots/FS8_map_deaths.png"), w = 9, h = 5)
 
 
 
 ## =========== ICER
-load(here("outputs/CEA.RData"))
+
 
 ## merge
 cmap <- sp::merge(CEA[threshold==0.3,], world, by = "iso3", all.y = TRUE)

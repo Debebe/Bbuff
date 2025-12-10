@@ -1,11 +1,11 @@
 
 rm(list = ls())
 
-pacman::p_load(here,data.table, dplyr, stringr, 
+pacman::p_load(here,data.table, dplyr, stringr, forcats,tidyr,
                flextable, officer)
 
 
-outa<- fread(here("outputs/output_table.csv")) %>%
+outa<- fread(here("outdata/output_table.csv")) %>%
   dplyr::select(variable,sq_txt, cf_txt, av_txt)|>
   filter(variable%in% c("rslt_bcg_doses","rslt_att", "rslt_hosp_tbm",
     
@@ -113,11 +113,11 @@ doc <- read_docx() |>
   body_add_flextable(value = zz) |>
   body_add_par(" ", style = "Normal") 
 
-print(doc, target = "outputs/table1.docx")
+print(doc, target = "outdata/table1.docx")
 
 #####===== region====
 
-outr<- fread(here("outputs/output_table_who.csv")) %>%
+outr<- fread(here("outdata/output_table_who.csv")) %>%
   dplyr::select(Region=who_region,variable,sq_txt, cf_txt, av_txt)|>
   filter(variable%in% c("rslt_bcg_doses","rslt_att", "rslt_hosp_tbm",
                         
@@ -242,7 +242,7 @@ doc <- read_docx() |>
 
 
 ##====effect in top ten countries=====
-top10_cntrs <- fread("outputs/top10_cntrs.csv")%>%
+top10_cntrs <- fread("outdata/top10_cntrs.csv")%>%
   rename(Item="BCG effect")%>%
   #group_by(Country)|>
   mutate(Country = factor(Country, levels = unique(Country))) %>%
@@ -266,7 +266,7 @@ ft_10 <- flextable(top10_cntrs) %>%
   merge_v(j = "Country") %>%          
   bold(part = "header", bold = TRUE) %>%
   autofit() %>%
-  #add_footer_lines(values = "M = Million") %>%
+  add_footer_lines(values ="BCG =Bacillus Calmette-Guérin, TB=Tuberculosis, TBM=Tuberculosis meningitis, ATT= Anti-TB treatment, DALYs= Disability Adjusted Life Years, M = Million")|>
   italic(part = "footer", italic = TRUE) %>%
   fontsize(part = "footer", size = 6) %>%
   align(part = "footer", align = "left")%>%
@@ -278,7 +278,7 @@ doc <- read_docx() |>
   body_add_flextable(value = ft_10) |>
   body_add_par(" ", style = "Normal") 
 
-print(doc, target = "outputs/table3_10cntrs.docx")
+print(doc, target = "outdata/table3_10cntrs.docx")
 
 
 
@@ -289,10 +289,7 @@ type_order <- c("Resource","Cost($M)","Health")
 item_order <- unique(na.omit(outrg$Item))
 
 # Fill down Type to data rows
-library(dplyr)
-library(forcats)
-library(flextable)
-library(tidyr)
+
 
 outrg_filled <- outrg %>%
   fill(Type, .direction = "down") %>%
@@ -313,6 +310,7 @@ ft <- flextable(outrg_filled) %>%
   merge_v(j = "Region") %>%   # merge Region column vertically
   merge_v(j = "Type") %>%     # merge Type column vertically
   autofit() %>%
+  add_footer_lines(values ="BCG =Bacillus Calmette-Guérin, TB=Tuberculosis, TBM=Tuberculosis meningitis, ATT= Anti-TB treatment, DALYs= Disability Adjusted Life Years, M = Million")|>
   bold(i = ~ !is.na(Type) & is.na(Region) & is.na(Item), bold = TRUE) %>%
   theme_vanilla()
 
@@ -320,4 +318,4 @@ doc <- read_docx() |>
   body_add_flextable(value = ft) |>
   body_add_par(" ", style = "Normal") 
 
-print(doc, target = "outputs/table2_r.docx")
+print(doc, target = "outdata/table2_r.docx")

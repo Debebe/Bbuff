@@ -8,23 +8,8 @@ source(here("R/utilities/modelfunctions.R"))
 gen_outs <- function(TBMincl=0,posttbincl=0){
   ## === data
   ## read in pre-prepared data
-  gdp_inc_le_costs <- readRDS(file = here("data/gdp_inc_le_costs.rds"))
-  load(here("data/whokey.Rdata"))
-  whoz <- c("AFR", "AMR", "EMR", "EUR", "SEA", "WPR")
-  whozt <- c(
-    "Africa", "The Americas",
-    "Eastern Mediterranean", "Europe", "South-East Asia",
-    "Western Pacific"
-  )
-  for (i in seq_along(whoz)) {
-    whokey[g_whoregion == whoz[i], region := whozt[i]]
-  }
-  whokeyshort <- unique(whokey[, .(g_whoregion, region)])
-  whokeyshort <- rbind(
-    whokeyshort,
-    data.table(g_whoregion = "Global", region = "Global")
-  )
-  
+  gdp_inc_le_costs <- readRDS(file = here("outdata/gdp_inc_le_costs.rds"))
+  load(here("indata/whokey.Rdata"))
   ## === utility functions
   source("R/utilities/utilities.R")
   
@@ -49,36 +34,131 @@ gen_outs <- function(TBMincl=0,posttbincl=0){
     rowwise() %>%
     mutate(
       # vax efficacy
-      bcg_haz_tb   = 1 - sample_beta(bcg_eff_tb.m,  bcg_eff_tb.lo,  bcg_eff_tb.hi),
+      bcg_haz_tb = 1 - sample_beta(
+        bcg_eff_tb.m,
+        bcg_eff_tb.lo,
+        bcg_eff_tb.hi
+      ),
+      
       bcg_haz_tbm = sample_gamma(
-        bcg_eff_tbm.m,
-        bcg_eff_tbm.lo,
-        bcg_eff_tbm.hi),
-      #tbm_prop
-      prop_tbm     = sample_beta(prop_tbm.ave, prop_tbm.lo, prop_tbm.hi),
-      #inc
-      incbest      = sample_truncn(incbest, inclo, inchi),
+        bcg_haz_tbm.m,
+        bcg_haz_tbm.lo,
+        bcg_haz_tbm.hi
+      ),
+      
+      # tbm_prop
+      prop_tbm = sample_beta(
+        prop_tbm.ave,
+        prop_tbm.lo,
+        prop_tbm.hi
+      ),
+      
+      post_tb_mort_hz = sample_LN(
+        post_tb_mort_hz.m, 
+        post_tb_mort_hz.l, 
+        post_tb_mort_hz.h),
+      
+      post_tbm_mort_hz = sample_LN(
+        post_tbm_mort_hz.m, 
+        post_tbm_mort_hz.l, 
+        post_tbm_mort_hz.h),
+      
+      cfr_treat = sample_LN(
+        cfr_treat_tb.m, 
+        cfr_treat_tb.l, 
+        cfr_treat_tb.h),
+      
+      cfr_utreat = sample_LN(
+        cfr_utreat_tb.m, 
+        cfr_utreat_tb.l, 
+        cfr_utreat_tb.h),
+      
+      cfr_treat_tbm = sample_LN(
+        cfr_treat_tbm.m, 
+        cfr_treat_tbm.l, 
+        cfr_treat_tbm.h),
+      
+      prop_sev_seq = sample_beta(
+        prop_sev_seq.m,
+        prop_sev_seq.l,
+        prop_sev_seq.h
+      ),
+      
+      # utility= 1-dw
+      tbm_hrqol_mil_seq = 1- sample_beta(
+        tbm_dis_wt_mild.m,
+        tbm_dis_wt_mild.l,
+        tbm_dis_wt_mild.h
+      ),
+      
+      tbm_hrqol_mod_seq = 1- sample_beta(
+        tbm_dis_wt_mod.m,
+        tbm_dis_wt_mod.l,
+        tbm_dis_wt_mod.h
+      ),
+      
+      tbm_hrqol_sev_seq = 1- sample_beta(
+        tbm_dis_wt_sev.m,
+        tbm_dis_wt_sev.l,
+        tbm_dis_wt_sev.h
+      ),
+      
+      # inc
+      incbest = sample_truncn(incbest, inclo, inchi),
       # costs
-      ucost_dstb.m = sample_gamma(mean = ucost_dstb.m, sd = ucost_dstb.sd),
-      ucost_tbm.m  = sample_gamma(mean = ucost_tbm.m, sd = ucost_tbm.sd),
-      uc_tot_vax_delv_ave = sample_gamma(mean = uc_tot_vax_delv_ave, lo = uc_tot_vax_delv_lo, hi= uc_tot_vax_delv_hi),
-      uc_labor_ave = sample_gamma(mean = uc_labor_ave,lo = uc_labor_lo,hi = uc_labor_hi),
-      uc_sc_ave    = sample_gamma(mean = uc_sc_ave, lo = uc_su_lo, hi = uc_sc_hi),
-      uc_servd_ave = sample_gamma(mean = uc_servd_lo,lo = uc_servd_lo, hi = uc_servd_hi),
-      uc_capital_ave = sample_gamma(mean = uc_capital_ave, lo = uc_capital_lo, hi = uc_capital_hi)
+      ucost_dstb.m = sample_gamma(
+        mean = ucost_dstb.m,
+        sd = ucost_dstb.sd
+      ),
+      ucost_tbm.m = sample_gamma(
+        mean = ucost_tbm.m, 
+        sd = ucost_tbm.sd),
+      uc_tot_vax_delv_ave = sample_gamma(
+        mean = uc_tot_vax_delv_ave,
+        lo = uc_tot_vax_delv_lo,
+        hi = uc_tot_vax_delv_hi
+      ),
+      uc_labor_ave = sample_gamma(
+        mean = uc_labor_ave,
+        lo = uc_labor_lo,
+        hi = uc_labor_hi
+      ),
+      uc_sc_ave = sample_gamma(
+        mean = uc_sc_ave,
+        lo = uc_su_lo,
+        hi = uc_sc_hi
+      ),
+      uc_servd_ave = sample_gamma(
+        mean = uc_servd_lo,
+        lo = uc_servd_lo,
+        hi = uc_servd_hi
+      ),
+      uc_capital_ave = sample_gamma(
+        mean = uc_capital_ave,
+        lo = uc_capital_lo,
+        hi = uc_capital_hi
+      )
     ) %>%
-    ungroup()%>%as.data.table()
+    # generate propo with mild and moderate sequelae after sampling sev-sequelae 
+    mutate(prop_mild_seq= prop_mild_disab *(1-prop_sev_seq),
+           prop_mod_seq= (1-prop_mild_disab)*(1-prop_sev_seq))%>%
+    
+    ungroup() %>%
+    as.data.table()
+  
   
   samp[, prop_tbm := ifelse(TBMincl== 0, 0, prop_tbm)]
+  samp[, post_tb_mort_hz := ifelse(posttbincl == 0, 1, post_tb_mort_hz)]
+  samp[, post_tbm_mort_hz := ifelse(posttbincl == 0, 1, post_tbm_mort_hz)]
   
   assign("samp", samp, envir = .GlobalEnv)
   
-  if (posttbincl == 0) {
-    post_tb_mort_hz <<- 1
-    tbm_mort_hz <<- 1
-  }
+  # if (posttbincl == 0) {
+  #   post_tb_mort_hz <<- 1
+  #   post_tbm_mort_hz <<- 1
+  # }
   
-  load(here("data/LEu5.Rdata")) # single year under five life expectancy
+  load(here("indata/LEu5.Rdata")) # single year under five life expectancy
   
   assign("LEu5", LEu5, envir = .GlobalEnv)
   #source(here("R/utilities/modelfunctions.R"))
@@ -163,8 +243,9 @@ cost_eff <- bind_rows(CEA_ntbm_nptb_sum,CEA_ntbm_ptb_sum,
                      CEA_tbm_nptb_sum,CEA_tbm_ptb_sum)%>%
   select(model,n_cntrs_all, n_cntrs_ce,prop, ENB30_median, ICER )
 
-fwrite(cost_eff, file = here("outputs/sens.csv"))
-save(cost_eff, file = here("outputs/cost_eff.RData"))
+fwrite(cost_eff, file = here("outdata/sens.csv"))
+save(cost_eff, file = here("outdata/cost_eff.RData"))
+
 
 CEA_sens <- bind_rows(CEA_tbm_ptb,CEA_ntbm_ptb, 
                      CEA_tbm_nptb,CEA_ntbm_nptb) %>%
@@ -172,7 +253,7 @@ CEA_sens <- bind_rows(CEA_tbm_ptb,CEA_ntbm_ptb,
   separate(name, into =c("measure", "metric"), sep = "_", remove = TRUE)%>%
   pivot_wider(id_cols = c("who_region", "model", "metric", "iso3"), names_from = "measure", values_from = "value")
 
-save(CEA_sens, file = here("outputs/CEA_sens.RData"))
+save(CEA_sens, file = here("outdata/CEA_sens.RData"))
 
 CEA_cntr <- bind_rows(CEA_ntbm_nptb_cntr,
                       CEA_ntbm_ptb_cntr,
@@ -184,7 +265,7 @@ CEA_cntr <- bind_rows(CEA_ntbm_nptb_cntr,
 # CEA_cntr <-inner_join(CEA_cntr,D%>%select(iso3, GDP)%>%
 #              distinct(iso3, .keep_all = TRUE), by="iso3")
 
-save(CEA_cntr, file = here("outputs/CEA_cntr.RData"))
+save(CEA_cntr, file = here("outdata/CEA_cntr.RData"))
 
 sumary_sen <-CEA_cntr%>%
   group_by(Region="Global",model)%>%
@@ -207,9 +288,7 @@ sumary_sen <-CEA_cntr%>%
                                      round(quantile(ICER, 0.25),1), " to ",
                                      round(quantile(ICER, 0.75),1), ")"), .groups = "drop"))
 
-fwrite(sumary_sen, file = here("outputs/sumary_sen.csv"))
-
-
+fwrite(sumary_sen, file = here("outdata/sumary_sen.csv"))
 
 
 # check the following should be the same

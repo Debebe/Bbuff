@@ -15,7 +15,7 @@ shid <- as.character(as_sheets_id(yourl))
 
 ## utility function
 upload.to.sheets <- function(filename, sheetid) {
-  fn <- glue(here("outputs/{filename}"))
+  fn <- glue(here("outdata/{filename}"))
   tmp <- fread(file = fn)
   sht <- gsub("\\.csv", "", filename)
   write_sheet(tmp, sheetid, sheet = sht)
@@ -27,7 +27,6 @@ upload.to.sheets("output_table.csv", shid)
 upload.to.sheets("output_table_who.csv", shid)
 upload.to.sheets("top10_cntrs.csv", shid)
 upload.to.sheets("regression_ENB.csv", shid)
-upload.to.sheets("regression_icer.csv", shid)
 upload.to.sheets("statistics.csv", shid)
 upload.to.sheets("Rsq.csv", shid)
 upload.to.sheets("sens.csv", shid)

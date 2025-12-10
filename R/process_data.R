@@ -1,17 +1,12 @@
 rm(list = ls())
-library(here)
-library(countrycode)  # to get Iso3 codes
-library(dplyr)
-library(data.table)
-library(readr)
-library(tidyr)
-library(readxl)
+pacman::p_load(here,countrycode,# to get Iso3 codes
+               data.table, dplyr, 
+               stringr, flextable, officer, readr, tidyr,readxl)
 
 ## This script reads data from different sources -
-# - GDP, LE, TB-burden, UN-population, BCG coverage,
+# GDP, LE, TB-burden, UN-population, BCG coverage
 
-
-inc <- read_csv(here("data/TB_burden_age_sex_2025-05-15.csv")) %>%
+inc <- read_csv(here("indata/TB_burden_age_sex_2025-05-15.csv")) %>%
   filter(sex %in% c("m", "f"), age_group %in% c("0-4", "0-14")) %>%
   select(country, iso2, iso3, year, age_group, sex, best, lo, hi) %>%
   group_by(country, Iso2 = iso2, Iso3 = iso3, Year = year, Age = age_group) %>%
@@ -23,11 +18,11 @@ inc <- read_csv(here("data/TB_burden_age_sex_2025-05-15.csv")) %>%
   ) %>%
   as.data.table()
 
-unpop <- read_csv(here("data/unpopulation_dataportal_20250515175045.csv")) %>%
+unpop <- read_csv(here("indata/unpopulation_dataportal_20250515175045.csv")) %>%
   select(country = Location, Iso2, Iso3, Year = Time, Sex, Age, Pop = Value)
 
 
-notif <- read_csv("data/TB_notifications_2025-05-21.csv") %>%
+notif <- read_csv("indata/TB_notifications_2025-05-21.csv") %>%
   filter(year %in% c(2023)) %>%
   # filter(year%in%c(2022:2023)) %>%
   select(
@@ -47,8 +42,6 @@ notif <- read_csv("data/TB_notifications_2025-05-21.csv") %>%
   mutate(Age = ifelse(Age == "notif04", "0-4", "0-14"))
 
 
-
-
 who_incidence <- inner_join(unpop, inc, by = c("country", "Iso2", "Iso3", "Year", "Age")) %>%
   inner_join(notif, by = c("Iso3", "Age")) %>%
   mutate(
@@ -61,7 +54,7 @@ who_incidence <- inner_join(unpop, inc, by = c("country", "Iso2", "Iso3", "Year"
   
   
 
-BCG <- read_excel("data/Bacillus Calmette–Guérin (BCG) vaccination coverage 2025-04-03 10-35 UTC.xlsx") %>%
+BCG <- read_excel("indata/Bacillus Calmette–Guérin (BCG) vaccination coverage 2025-04-03 10-35 UTC.xlsx") %>%
   filter(YEAR %in% c(2023)) %>%
   select(Iso3 = CODE, Year = YEAR, cat = COVERAGE_CATEGORY, bcg_coverage = COVERAGE) %>%
   filter(!is.na(bcg_coverage)) %>%
@@ -75,13 +68,13 @@ inc_pop_bcg <- inner_join(who_incidence, BCG, by = c("Iso3", "Year"))
 #   select(Iso3= "Country Code", GDP= "2023 [YR2023]") %>%
 #   mutate(GDP= as.numeric(GDP))
 
-GDP <- readRDS(here("data/cost/outdata/GDP1.Rds")) %>%
+GDP <- readRDS(here("costdata/outdata/GDP1.Rds")) %>%
   select(Iso3 = iso3, GDP = gdp) %>%
   mutate(GDP = as.numeric(GDP))
 
 
 
-LE <- read_csv(here("data/unpopulation_dataportal_20250515195649.csv")) %>%
+LE <- read_csv(here("indata/unpopulation_dataportal_20250515195649.csv")) %>%
   select(country = Location, Year = Time, Iso3, Age, L = Value) %>%
   # taking weighted mean of LE between 0 and 1-4 years
   mutate(
@@ -101,16 +94,15 @@ LE <- read_csv(here("data/unpopulation_dataportal_20250515195649.csv")) %>%
   as.data.table()
 
 
-tbtx_unit_costs <- read_csv(here("data/tbtx_unit_costs.csv")) %>%
-  # filter(unit_cost=="c_dstb_txO15")%>%
-  select(Iso3 = iso3, unit_cost, ucost_tb_trt.m = cost.m, ucost_tb_trt.sd = cost.sd)
+# tbtx_unit_costs <- read_csv(here("costdata/outdata/tbtx_unit_costs.csv")) %>%
+#   # filter(unit_cost=="c_dstb_txO15")%>%
+#   dplyr::select(Iso3 = iso3, unit_cost, ucost_tb_trt.m = cost.m, ucost_tb_trt.sd = cost.sd)
 
 
-tbtx_unit_costs <- readRDS(here("data/cost/outdata/tbtx_unit_costs.Rds")) %>%
-  select(-country)
+tbtx_unit_costs <- readRDS(here("costdata/outdata/tbtx_unit_costs.Rds")) %>%
+  dplyr::select(-country)
 
-
-uc_vax_delv <- read_excel('/Users/debebeadewo/Library/CloudStorage/GoogleDrive-d.shaweno@sheffield.ac.uk/Shared drives/VAXHUB_WP2_HAR/papers/costing/StandardizedDeliveryUnitCosts4Dec2020-5.xlsx')
+uc_vax_delv <- read_excel(here('costdata/indata/StandardizedDeliveryUnitCosts4Dec2020.xlsx'))
 
 uc_vax_delv <- uc_vax_delv %>%
   slice(27:162) %>%
@@ -138,9 +130,6 @@ uc_vax_delv <- setDT(uc_vax_delv)
 uc_vax_delv[grepl("Centeral African", Country), Iso3 := "CAF"]
 uc_vax_delv[grepl("Republic", Country), ]
 
-# gdp_inc_le[grepl("Kor", country), ]
-
-
 
 gdp_inc_le <- inner_join(inc_pop_bcg, GDP, by = "Iso3") %>%
   inner_join(LE, by = c("Iso3", "country", "Age", "Year")) %>%
@@ -154,10 +143,8 @@ gdp_inc_le <- inner_join(inc_pop_bcg, GDP, by = "Iso3") %>%
 # =====Prop notif that is TBM=========
 
 # get data from Pete's TBMK package
-vec <- scan("~/Documents/TBMK-main/modelling/data/isoz.txt",
-  what = "", sep = "", quiet = TRUE
-)
-load("~/Documents/TBMK-main/modelling/data/POP.Rdata")
+vec <- scan(here("indata/isoz.txt"),what = "", sep = "", quiet = TRUE) # downloaded from TBMK package
+load(here("indata/POP.Rdata")) # downloaded from TBMK package
 
 U5POP <- POP[acat == "1-4" | acat == "<1", ]
 TBMUnd1 <- data.frame(M = 0.0446, L = 0.0243, U = 0.0803)
@@ -175,19 +162,19 @@ U5POP_sum[, `:=`(M = TBM_M / pop, L = TBM_L / pop, U = TBM_U / pop)]
 
 head(U5POP_sum)
 
-saveRDS(LE, file = here("data/LE.rds"))
-saveRDS(gdp_inc_le, file = here("data/gdp_inc_le.rds"))
+saveRDS(LE, file = here("outdata/LE.rds"))
+saveRDS(gdp_inc_le, file = here("outdata/gdp_inc_le.rds"))
 
 source(here("R/inflation_adjustment.R")) # to get inflation incorporated data
 
 
 ##========Life expectancy========
 
-ref_life_tab <- fread("data/IHME_GBD_2019_TMRLT_Y2021M01D05.csv")
-u5N <- fread("data/UN_N_U5.csv")%>%
+ref_life_tab <- fread("indata/IHME_GBD_2019_TMRLT_Y2021M01D05.csv")
+u5N <- fread("indata/UN_N_U5.csv")%>%
   dplyr::select(Iso3,Age, N=Value)
 
-u5LE <- fread("data/UN_LE_U5.csv")%>%
+u5LE <- fread("indata/UN_LE_U5.csv")%>%
   dplyr::select(Iso3,Age, LE=Value)%>%
   distinct(Iso3,Age, .keep_all = TRUE)
 
@@ -196,22 +183,22 @@ LEu5 <- inner_join(u5N, u5LE, by= c("Iso3", "Age"))%>%
   mutate(wt=N/sum(N))%>%
   as.data.table()
 
-save(LEu5, file = here("data/LEu5.RData"))
+save(LEu5, file = here("indata/LEu5.RData"))
 
 
 
 ## Data for background epidemiology
 
-background_epi <- fread(here("data/TB_burden_age_sex_2025-05-15.csv")) %>%
+background_epi <- fread(here("indata/TB_burden_age_sex_2025-05-15.csv")) %>%
   filter(sex %in% c("m", "f"), age_group %in% c("0-4")) %>%
   dplyr::select(country, iso2, iso3, year, age_group, sex, inc=best) %>%
   group_by(country, Iso2 = iso2, Iso3 = iso3, Year = year, Age = age_group) %>%
   summarise(inc = sum(inc, na.rm = TRUE),.groups = "drop"
   )%>%
-  inner_join(fread(here("data/unpopulation_dataportal_20250515175045.csv")) %>%
+  inner_join(fread(here("indata/unpopulation_dataportal_20250515175045.csv")) %>%
                select(country = Location, Iso2, Iso3, Year = Time, Sex, Age, Pop = Value),
              by = c("country", "Iso2", "Iso3", "Year", "Age"))%>%
-  inner_join(readxl::read_excel("data/Bacillus Calmette–Guérin (BCG) vaccination coverage 2025-04-03 10-35 UTC.xlsx") %>%
+  inner_join(readxl::read_excel("indata/Bacillus Calmette–Guérin (BCG) vaccination coverage 2025-04-03 10-35 UTC.xlsx") %>%
                filter(YEAR %in% c(2023)) %>%
                select(Iso3 = CODE, Year = YEAR, cat = COVERAGE_CATEGORY, bcg_coverage = COVERAGE) %>%
                filter(!is.na(bcg_coverage)) %>%
@@ -219,7 +206,33 @@ background_epi <- fread(here("data/TB_burden_age_sex_2025-05-15.csv")) %>%
              by = c("Iso3", "Year"))
 
 
-save(background_epi, file = here("data/background_epi.RData"))
+save(background_epi, file = here("outdata/background_epi.RData"))
 
 
-
+ 
+ nn <- fread("indata/TB_notifications_2025-05-21.csv")
+ nn <- nn[, notif:=newrel_f014+newrel_m014+newrel_m15plus+newrel_f15plus]
+ nn <- nn[year==2023 & !is.na(notif) & notif>=1000, ]
+ nn <- nn[, .(iso3, notif)]
+ 
+ 
+ load(here("indata/whokey.Rdata"))
+ 
+ whoz <- c("AFR", "AMR", "EMR", "EUR", "SEA", "WPR")
+ whozt <- c(
+   "Africa", "The Americas",
+   "Eastern Mediterranean", "Europe", "South-East Asia",
+   "Western Pacific"
+ )
+ for (i in seq_along(whoz)) {
+   whokey[g_whoregion == whoz[i], region := whozt[i]]
+ }
+ whokeyshort <- unique(whokey[, .(g_whoregion, region)])
+ whokeyshort <- rbind(
+   whokeyshort,
+   data.table(g_whoregion = "Global", region = "Global")
+ )
+ 
+ save(whokey,file=here("indata/whokey.RData"))
+ 
+ 

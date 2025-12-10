@@ -11,7 +11,7 @@ base_yr <- 2023
 
 ## Other unit costs from relevant public sources:
 unit_costs <- fread(here(
-  "data/cost/indata",
+  "costdata/indata",
   "other_public_unit_costs.csv"
 ))
 
@@ -996,12 +996,12 @@ TBM_unitcosts <- hhcm_costs |>
 
 
 
-saveRDS(TBM_unitcosts, file = here("data/cost/outdata/tbtx_unit_costs.Rds"))
+saveRDS(TBM_unitcosts, file = here("costdata/outdata/tbtx_unit_costs.Rds"))
 
 
 ## NOTE uncomment below to save data
-fwrite(country_costs, file = here("data/cost/outdata/country_unit_costs.csv"))
-fwrite(TBM_unitcosts, file = here("data/cost/outdata/tbtx_unit_costs.csv"))
+fwrite(country_costs, file = here("costdata/outdata/country_unit_costs.csv"))
+fwrite(TBM_unitcosts, file = here("costdata/outdata/tbtx_unit_costs.csv"))
 
 cost_components <- hhcm_costs |>
   filter(unit_cost %in% c(
@@ -1015,7 +1015,7 @@ cost_components <- hhcm_costs |>
     values_from = c(cost.m)
   )
 
-save(cost_components, file= here("data/cost_components.RData"))
+save(cost_components, file= here("costdata/outdata/cost_components.RData"))
 
 
 

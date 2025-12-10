@@ -7,6 +7,7 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 library(cowplot)  # for draw_label
+library(magick) # to stich images together
 
 
 ## copying data from google doc into here manually
@@ -38,7 +39,7 @@ m <- metaprop(
 summary(m)
 
 ## save
-save(m, file = here("data/m.Rdata"))
+save(m, file = here("indata/m.Rdata"))
 
 ## plot
 png(
@@ -58,7 +59,7 @@ dev.off()
 
 
 ##======Meta RR of TBM========
-bcg_TBM<- read_excel("data/bcg_tb_meningitis.xlsx") %>%
+bcg_TBM<- read_excel("indata/bcg_tb_meningitis.xlsx") %>%
   dplyr::select(study, vac=vaccine, TB, MTB)%>%
   pivot_wider(names_from = vac, 
               values_from = c(TB, MTB), names_prefix = "vac") %>%
@@ -109,14 +110,6 @@ forest(
 )
 
 
-
-
-library(cowplot)
-library(here)
-library(magick)
-
-
-
 png(here("plots/forest_a.png"), width = 18, height = 8, units = "cm", res = 250)
 forest(
   m1,
@@ -148,6 +141,10 @@ forest(m,font=8.5,
        xlab = "Severe sequelae (proportion)")
 dev.off()
 
+imgA <- image_read(here("plots/forest_a.png"))
+imgB <- image_read(here("plots/forest_b.png"))
+imgA_grob <- rasterGrob(imgA, interpolate = TRUE)
+imgB_grob <- rasterGrob(imgB, interpolate = TRUE)
 
 
 p1 <- ggplot() +
@@ -197,81 +194,7 @@ dat_rr <- escalc(measure = "RR",
 model_rr <- rma(yi, vi, data = dat_rr)
 summary(model_rr)
 
-exp(c(-0.5496,-1.6436,0.5445))
 
 # compare with metabin
-
 summary(m1)
-
-
-#=====Post TB HRQL=======
-
-# data extracted from https://pmc-ncbi-nlm-nih-gov.sheffield.idm.oclc.org/articles/PMC8080025/
-dat <- data.frame(
-  study = c("Awaisu, 2012", "Kastien-H, 2017", "Kittikraisak, 2012 (1)",
-            "Kittikraisak, 2012 (2)", "Saleem, 2018"),
-  mean  = c(0.91, 0.88, 0.98, 0.893, 0.88),
-  sd    = c(0.14, 0.17, 0.32, 0.203, 0.11),
-  n     = c(46, 32, 129, 129, 176)
-)
-
-# Compute variance of the mean
-dat <- dat %>%
-  mutate(vi = (sd^2)/n)
-
-#Compute 95% CI for each study
-dat <- dat %>%
-  mutate(
-    ci_lb = mean - 1.96 * sqrt(vi),
-    ci_ub = mean + 1.96 * sqrt(vi)
-  )
-
-# Step 3: Cap the upper CI of the 3rd study at 1
-dat$ci_ub[3] <- min(dat$ci_ub[3], 1)
-
-#adjust variance to match new CI (approximation)
-dat$vi[3] <- ((dat$ci_ub[3] - dat$mean[3]) / 1.96)^2
-
-# Step 4: Random-effects meta-analysis
-res <- rma(yi = mean, vi = vi, data = dat, method = "REML")
-
-summary(res)
-
-# Step 5: Forest plot
-forest(res, slab = dat$study, xlab = "Post-TB EQ-5D utility", alim = c(0.7, 1.0),)
-
-
-#=====to use meta
-dat$sd_adjusted <- dat$sd
-# recompute SD to match upper CI capped at 1
-dat$sd_adjusted[3] <- ((1 - dat$mean[3]) / 1.96) * sqrt(dat$n[3])
-
-# Run meta-analysis using adjusted SD
-
-meta_res <- metamean(
-  n = dat$n,
-  mean = dat$mean,
-  sd = dat$sd_adjusted,
-  studlab = dat$study,
-  data = dat,
-  #sm = "MLN",
-  sm ="MRAW",
-  method.tau = "REML"
-)
-
-meta::forest(meta_res, sortvar = TE,
-             fontsize = 8.5, 
-             leftcols = c("studlab"),
-             leftlabs = c("Study"),
-             rightlabs = c("Estimate", "95% CI", "Weight\nCommon", "Weight\nRandom"),
-             smlab = "Mean(utility)",
-             xlab = "Post-TB utility score based on EQ-5D scores")
-
-
-
-
-
-
-
-
 

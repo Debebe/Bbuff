@@ -8,13 +8,13 @@ pacman::p_load(here,data.table, dplyr, tidyr, stringr,
                ggrepel, patchwork, readxl)
 
 #=====load data=====
-load(here("outputs/ceacq.RData"))   # CEAC quantile by cntry
-load(here("outputs/CEA.RData"))
+load(here("outdata/ceacq.RData"))   # CEAC quantile by cntry
+load(here("outdata/CEA.RData"))
 ## for sensitivity analysis plots
-load(here("outputs/CEA_sens.RData"))
-load(here("outputs/cost_eff.RData"))
-load(here("outputs/CEA_cntr.RData"))
-load(here("data/whokey.RData"))
+load(here("outdata/CEA_sens.RData"))
+load(here("outdata/cost_eff.RData"))
+load(here("outdata/CEA_cntr.RData"))
+load(here("indata/whokey.RData"))
 source("R/utilities/utilities.R")
 
 
@@ -45,7 +45,7 @@ ggplot(CEA[ICER > 0 ], aes(iso3, ICER)) +
   ylab("Incremental cost-effectiveness ratio (USD/DALY)")
 
 
-ggsave(file = here("plots/cea_ICER_iso3.png"), w = 9, h = 8)
+ggsave(file = here("plots/F3.png"), w = 9, h = 8)
 
 
 ## buffer plot
@@ -80,14 +80,14 @@ ggplot(tmpm, aes(reorder(iso3, value), value,color=var)) + # ordering values
   ylab("Optimal buffer as proportion of expected demand (%)")+
   theme(legend.position = 'top',legend.title = element_blank()) 
 
-ggsave(file = here("plots/f_buffer_sz_cntrs.png"), w = 9, h = 8)
+ggsave(file = here("plots/F4.png"), w = 9, h = 8)
 
 
 # table of buffer size
 
 ft <- CEA %>%
   filter(Bf1 > 0, !is.na(Bf1), ENB30 > 0) %>%
-  select(
+  dplyr::select(
     Region = g_whoregion,
     iso3, ENB = ENB30, ICER, `Buffer 1` = Bf1,
     `Buffer 2` = Bf2, `Buffer 3` = Bf3
@@ -103,7 +103,7 @@ doc <- read_docx() |>
   body_add_flextable(value = ft) |>
   body_add_par(" ", style = "Normal") # optional spacing
 
-print(doc, target = "outputs/buffer_sz.docx")
+print(doc, target = "outdata/Tab_buf_sz.docx")
 
 
 # ====== box-and-whiskers CEAC plot=====
@@ -124,7 +124,7 @@ ggplot(ceacq, aes(iso3,
   xlab("Country ISO3 code") +
   ylab("CEAC quantiles (USD/DALY)")
 
-ggsave(file = here("plots/ceac_iso3.png"), w = 9, h = 8)
+ggsave(file = here("plots/FS10.png"), w = 9, h = 8)
 
 
 #====== threshold incidence==============
@@ -260,21 +260,20 @@ plot_threshold <- function(indicator) {
 tempa <- CEA%>%
   mutate(inc_u5=1e5*inc_u5,
          notif_u5=1e5*notif_u5)|>
-  #filter(!iso3%in% c("CHN", "BLR"))|>
   filter(threshold==0.3)|>
   mutate(CE=ifelse(ENB30>0,"Cost-effective", "Not cost-effective"))
 
-xx <- tempa %>%select(iso3, ENB30,CDR,inc_u5, notif_u5,inc_all, notif_all,CE)
+#xx <- tempa %>%select(iso3, ENB30,CDR,inc_u5, notif_u5,inc_all, notif_all,CE)
 
-p1<-plot_threshold(notif_all)
-p2<-plot_threshold(inc_all)
-p3<-plot_threshold(notif_u5)
+# p1<-plot_threshold(notif_all)
+# p2<-plot_threshold(inc_all)
+# p3<-plot_threshold(notif_u5)
 p4<-plot_threshold(inc_u5)
 
-ggsave(p1,file = here("plots/f_threshold_allnotif.png"), w = 7, h = 3.2)
-ggsave(p2,file = here("plots/f_threshold_allinc.png"), w = 7, h = 3.2)
-ggsave(p3,file = here("plots/f_threshold_u5notif.png"), w = 7, h = 3.2)
-ggsave(p4,file = here("plots/f_threshold_incu5.png"), w = 7, h = 3.2)
+# ggsave(p1,file = here("plots/f_threshold_allnotif.png"), w = 7, h = 3.2)
+# ggsave(p2,file = here("plots/f_threshold_allinc.png"), w = 7, h = 3.2)
+# ggsave(p3,file = here("plots/f_threshold_u5notif.png"), w = 7, h = 3.2)
+ggsave(p4,file = here("plots/FS11.png"), w = 7, h = 3.2) # incU5
 
 
  
@@ -325,7 +324,7 @@ bar_mid <- ggplot(CEA_sens %>%
   )
 
 
-ggsave(bar_mid,file = here("plots/f_bar_sensitivity.png"), w = 6, h = 3.5)
+#ggsave(bar_mid,file = here("plots/f_bar_sensitivity.png"), w = 6, h = 3.5)
 
 
 bar_mid_reg <- ggplot(CEA_sens %>% filter(!who_region =="Global", iso3=="XX",  
@@ -348,7 +347,7 @@ bar_mid_reg <- ggplot(CEA_sens %>% filter(!who_region =="Global", iso3=="XX",
     plot.title = element_text(size = 8)
   )
 
-ggsave(bar_mid_reg,file = here("plots/f_bar_sensitivity_r.png"), w = 6.5, h = 3.5)
+#ggsave(bar_mid_reg,file = here("plots/f_bar_sensitivity_r.png"), w = 6.5, h = 3.5)
 
 
 
@@ -384,7 +383,7 @@ ice_incr <-CEA_sens %>% filter(who_region =="Global",
     plot.title = element_text(size = 8)
   )
 
-ggsave(ice_incr,file = here("plots/f_bar_perc_incr_icer.png"), w = 5, h = 3.5)
+#ggsave(ice_incr,file = here("plots/f_bar_perc_incr_icer.png"), w = 5, h = 3.5)
 
 
 
@@ -426,7 +425,7 @@ enb_decr <-CEA_sens %>% filter(who_region =="Global",
     plot.title = element_text(size = 8)
   ) 
 
-ggsave(enb_decr,file = here("plots/f_bar_perc_dec_ENB.png"), w = 4.5, h = 3.5)
+#ggsave(enb_decr,file = here("plots/f_bar_perc_dec_ENB.png"), w = 4.5, h = 3.5)
 
 
 ice_incr_r <-CEA_sens %>% filter(#who_region!="Global", 
@@ -466,7 +465,7 @@ ice_incr_r <-CEA_sens %>% filter(#who_region!="Global",
     )
   
 
-ggsave(ice_incr_r,file = here("plots/f_bar_perc_incr_icer_reg.png"), w = 5.5, h = 4.2)
+ggsave(ice_incr_r,file = here("plots/FS12.png"), w = 5.5, h = 4.2)
 
 CEAp <- CEA_cntr%>%
   group_by(model)%>%
@@ -548,14 +547,14 @@ enb_decr <-CEAp %>% filter(Country =="Global",
     plot.title = element_text(size = 8)
   ) 
 
-ggsave(enb_decr,file = here("plots/f_perc_dec_ENB_comb.png"), w = 4.5, h = 3.5)
-ggsave(ice_incr,file = here("plots/f_perc_inc_ICER_comb.png"), w = 4.5, h = 3.5)
-
+# ggsave(enb_decr,file = here("plots/f_perc_dec_ENB_comb.png"), w = 4.5, h = 3.5)
+# ggsave(ice_incr,file = here("plots/f_perc_inc_ICER_comb.png"), w = 4.5, h = 3.5)
+# 
 
 
 epi <- CEA%>%
   distinct(iso3,.keep_all = TRUE)%>%
-  select(g_whoregion, region,iso3, inc_all, BCG)%>%
+  dplyr::select(g_whoregion, region,iso3, inc_all, BCG)%>%
   pivot_longer(cols = c("inc_all", "BCG")) %>%
   mutate(name=ifelse(name=="inc_all", "Incidence per 100,000"," Proportion BCG vaccinated"))%>%
   ggplot(aes(x=g_whoregion, y=value, fill=g_whoregion)) + 
@@ -565,14 +564,14 @@ epi <- CEA%>%
                                             axis.text.y = element_text(size=7.5),
                                             axis.title.y = element_text(size=sz_ytitle))
   
-ggsave(epi,file = here("plots/f_inc_BCG.png"), w = 3.5, h = 3.5)
+#ggsave(epi,file = here("plots/f_inc_BCG.png"), w = 3.5, h = 3.5)
 
 
-bcg <- read_excel("data/Bacillus Calmette–Guérin (BCG) vaccination coverage 2025-04-03 10-35 UTC.xlsx")
+bcg <- read_excel("indata/Bacillus Calmette–Guérin (BCG) vaccination coverage 2025-04-03 10-35 UTC.xlsx")
 
 bcg_cov <- bcg%>%
   filter(COVERAGE_CATEGORY=="WUENIC")%>%
-  select(iso3=CODE, year=YEAR, coverage=COVERAGE)%>%
+  dplyr::select(iso3=CODE, year=YEAR, coverage=COVERAGE)%>%
   inner_join(whokey, by= "iso3") %>%
   filter(year>=2019)%>%
   group_by(iso3, g_whoregion, region)%>%
@@ -596,16 +595,16 @@ ggplot(bcg_cov, aes(region, m)) +
   ylab("Coefficient of variation in BCG coverage: median and interquartile range")+xlab("")+coord_flip()
   
 
-ggsave(file = here("plots/fig_bcg_cov.png"), w = 5, h = 3)
+ggsave(file = here("plots/FS3.png"), w = 5, h = 3)
 
 #******************************************#
 #=====Uncertainties in unit costs========
 #******************************************#
 ## ATT unit-cost plot
 
-uc <- readRDS(file = here("data/gdp_inc_le_costs.rds")) %>%
+uc <- readRDS(file = here("outdata/gdp_inc_le_costs.rds")) %>%
   filter(cov_cat=="WUENIC", !is.na(notif), best>0) %>%
-  select(iso3,region=who_region,contains("cost"),
+  dplyr::select(iso3,region=who_region,contains("cost"),
          contains("uc"), contains("lo"), contains("hi"), contains("med"),
          contains("sd"), bcg_cov=bcg_coverage )
 
@@ -626,7 +625,7 @@ ggplot(uc, aes(iso3, ucost_dstb.m)) +
   xlab("Country ISO3 code") +
   ylab(expression("Unit cost of treating TB (" * Mean %+-% SD * ")"))
 
-ggsave(file = here("plots/unit_cost_att.png"), w = 9, h = 8)
+ggsave(file = here("plots/FS4.png"), w = 9, h = 8)
 
 
 ## cost categories in vaccine delivery unit-costs 
@@ -647,13 +646,13 @@ ggplot(uc, aes(iso3, uc_tot_vax_delv_ave)) +
   xlab("Country ISO3 code") +
   ylab("Vaccine delivery unit cost per BCG dose (Mean with 95% confidence interval)")
 
-ggsave(file = here("plots/unit_cost_vax.png"), w = 9, h = 8)
+ggsave(file = here("plots/FS5.png"), w = 9, h = 8)
 
 
 #******************************************#
 #=====Cost components========
 #******************************************#
-load(here("data/cost_components.RData"))
+load(here("costdata/outdata/cost_components.RData"))
 
 rx_costs <- inner_join(cost_components,whokey, by="iso3")%>%
   filter(iso3%in% CEA$iso3)
@@ -678,12 +677,12 @@ rx_costs%>%
         legend.key.size = unit(0.5, "lines"))+ ylab("")+ xlab("Country ISO3 code")+
   coord_flip()
 
-ggsave(file = here("plots/unit_cost_att_decomp.png"), w = 9, h = 8)
+ggsave(file = here("plots/FS6.png"), w = 9, h = 8)
 
 
-vax_comps <-inner_join(uc%>%select(-region),whokey, by="iso3")%>%
+vax_comps <-inner_join(uc%>%dplyr::select(-region),whokey, by="iso3")%>%
   filter(iso3%in% CEA$iso3) %>%
-  select(iso3, region, ucost_proc_bcg, contains("ave"), 
+  dplyr::select(iso3, region, ucost_proc_bcg, contains("ave"), 
          -uc_tot_vax_delv_ave) %>%
   
   pivot_longer(cols = starts_with("uc")) %>%
@@ -707,7 +706,7 @@ vax_comps <-inner_join(uc%>%select(-region),whokey, by="iso3")%>%
   coord_flip()
 
   
-ggsave(file = here("plots/unit_cost_vax_decomp.png"), w = 9, h = 8)
+ggsave(file = here("plots/FS7.png"), w = 9, h = 8)
 
 
 
