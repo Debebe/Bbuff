@@ -39,3 +39,43 @@ The meta-analysis and the forest plots can be executed by `meta_analysis.R` scri
 ### Plots and tables
 
 Tables and plots reported in the manuscript can be reproduced by running `create_tables.R` and `create_plots.R` scripts respectively
+
+
+## Software dependencies
+
+These analyses used R version 4.5.0 and the following packages:
+
+| Package | Version |
+|---------|---------|
+| countrycode	| 1.6.1 | 
+| cowplot	| 1.2.0 |
+| data.table	| 1.18.0 |
+| dplyr	| 1.1.4 |
+| flextable	| 0.9.9 |
+| forcats	| 1.0.1 |
+| ggplot2	| 4.0.1 |
+| ggrepel	| 0.9.6 |
+| ggthemes	| 5.1.0 |
+| glue	| 1.8.0 |
+| googlesheets4	| 1.1.1 |
+| here	| 1.0.1 |
+| httr	| 1.4.7 |
+| kableExtra	| 1.4.0 |
+| knitr	| 1.50 |
+| magick	| 2.9.0 |
+| meta	| 8.1-0 |
+| officer	| 0.6.10 |
+| pacman	| 0.5.1 |
+| patchwork	| 1.3.2 |
+| RColorBrewer | 	1.1-3 |
+| readr	| 2.1.5 |
+| readxl	| 1.4.5 |
+| rlang	| 1.1.7 |
+| scales	| 1.4.0 |
+| sf	| 1.0-21 |
+| sp	| 2.2-0 |
+| stringr	| 1.6.0 |
+| tidyr	| 1.3.2 |
+| truncnorm	| 1.0-9 |
+| viridis	| 0.6.5 |
+| wbmapdata	| 0.0.0.9000 |
