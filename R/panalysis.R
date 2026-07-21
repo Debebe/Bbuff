@@ -42,22 +42,22 @@ samp <- samp %>%
   mutate(
     # vax efficacy
     bcg_haz_tb = 1 - sample_beta(
-      bcg_eff_tb.m,
-      bcg_eff_tb.lo,
-      bcg_eff_tb.hi
+      mean=bcg_eff_tb.m,
+      l=bcg_eff_tb.l,
+      h=bcg_eff_tb.h
     ),
 
     bcg_haz_tbm = sample_gamma(
-      bcg_haz_tbm.m,
-      bcg_haz_tbm.lo,
-      bcg_haz_tbm.hi
+      mean=bcg_haz_tbm.m,
+      l=bcg_haz_tbm.l,
+      h=bcg_haz_tbm.h
     ),
     
     # tbm_prop
     prop_tbm = sample_beta(
-      prop_tbm.ave,
-      prop_tbm.lo,
-      prop_tbm.hi
+      mean= prop_tbm.ave,
+      l=prop_tbm.lo,
+      h=prop_tbm.hi
     ),
     
     post_tb_mort_hz = sample_LN(
@@ -86,29 +86,39 @@ samp <- samp %>%
       cfr_treat_tbm.h),
     
     prop_sev_seq = sample_beta(
-      prop_sev_seq.m,
-      prop_sev_seq.l,
-      prop_sev_seq.h
+      mean=prop_sev_seq.m,
+      l=prop_sev_seq.l,
+      h=prop_sev_seq.h
+    ),
+    
+    prop_mild_disab = sample_beta(
+      mean=prop_mild_disab.m,
+      l=prop_mild_disab.l,
+      h=prop_mild_disab.h
     ),
     
     # utility= 1-dw
     tbm_hrqol_mil_seq = 1- sample_beta(
-      tbm_dis_wt_mild.m,
-      tbm_dis_wt_mild.l,
-      tbm_dis_wt_mild.h
+      mean=tbm_dis_wt_mild.m,
+      l=tbm_dis_wt_mild.l,
+      h=tbm_dis_wt_mild.h
     ),
     
     tbm_hrqol_mod_seq = 1- sample_beta(
-      tbm_dis_wt_mod.m,
-      tbm_dis_wt_mod.l,
-      tbm_dis_wt_mod.h
+      mean=tbm_dis_wt_mod.m,
+      l=tbm_dis_wt_mod.l,
+      h=tbm_dis_wt_mod.h
     ),
     
     tbm_hrqol_sev_seq = 1- sample_beta(
-      tbm_dis_wt_sev.m,
-      tbm_dis_wt_sev.l,
-      tbm_dis_wt_sev.h
+      mean=tbm_dis_wt_sev.m,
+      l=tbm_dis_wt_sev.l,
+      h=tbm_dis_wt_sev.h
     ),
+    
+    ##based on Tomney
+    post_tb_hrqol_dur3= 1- sample_beta(mean=0.041, sd=0.054),
+    post_tb_hrqol_post3= 1- sample_beta(mean=0.025, sd=0.033),
     
     # inc
     incbest = sample_truncn(incbest, inclo, inchi),
