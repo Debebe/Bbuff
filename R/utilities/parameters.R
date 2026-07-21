@@ -2,8 +2,8 @@
 
 
 bcg_eff_tb.m  <- 0.63
-bcg_eff_tb.lo <- 0.49
-bcg_eff_tb.hi <- 0.81
+bcg_eff_tb.l <- 0.49
+bcg_eff_tb.h <- 0.81
 
 # bcg_eff_tbm.m  <- 0.73
 # bcg_eff_tbm.lo <- 0.67
@@ -11,8 +11,8 @@ bcg_eff_tb.hi <- 0.81
 
 
 bcg_haz_tbm.m  <- 0.58 #is hazard not efficacy
-bcg_haz_tbm.lo <- 0.20
-bcg_haz_tbm.hi <- 1.74
+bcg_haz_tbm.l <- 0.20
+bcg_haz_tbm.h <- 1.74
 
 # bcg_haz_tb <- 1 - bcg_eff_tb
 # bcg_haz_tbm <- 1 - bcg_eff_tbm
@@ -37,8 +37,8 @@ cfr_treat_tbm.h <- 0.261
 cfr_untreat_tbm <- 1 
 
 
-post_tb_hrqol_dur3 <- 1-0.041 #from Tommeny
-post_tb_hrqol_post3 <- 1-0.025
+# post_tb_hrqol_dur3 <- 1-0.041 #from Tommeny
+# post_tb_hrqol_post3 <- 1-0.025
 
 
 post_tb_mort_hz.m <- 1.78 # posttb morthaz 1.78, 1.61, 1.98
@@ -59,7 +59,10 @@ prop_sev_seq.l <- 0.47 # 0.56[0.47-0. 63] meta-analysis
 prop_sev_seq.h <- 0.63 # 0.56[0.47-0. 63] meta-analysis
 
 
-prop_mild_disab <- 0.70 #proportion of nonsever tbm that is mild
+#prop_mild_disab <- 0.70 #proportion of nonsever tbm that is mild
+prop_mild_disab.m <- 0.70 #proportion of nonsever tbm that is mild
+prop_mild_disab.l= 0.48
+prop_mild_disab.h <-0.87
 
 # prop_mild_seq <- prop_mild_disab * (1-prop_sev_seq)
 # prop_mod_seq   <-(1-prop_mild_disab) * (1-prop_sev_seq)
