@@ -79,11 +79,13 @@ gen_outs <- function(TBMincl=0,posttbincl=0){
         cfr_treat_tbm.h),
       
       
-      prop_sev_seq = sample_beta(
-        mean=prop_sev_seq.m,
-        l=prop_sev_seq.l,
-        h=prop_sev_seq.h
-      ),
+      # prop_sev_seq = sample_beta(
+      #   mean=prop_sev_seq.m,
+      #   l=prop_sev_seq.l,
+      #   h=prop_sev_seq.h
+      # ),
+      
+      prop_sev_seq= rbeta(n=1, shape1 = 4, shape2 = 8),
       
       prop_mild_disab = sample_beta(
         mean=prop_mild_disab.m,
@@ -115,7 +117,9 @@ gen_outs <- function(TBMincl=0,posttbincl=0){
       post_tb_hrqol_post3= 1- sample_beta(mean=0.025, sd=0.033),
       
       # scaled beta so that cfr TbBM is >0.95 always
-      cfr_untreat_tbm= sample_scaled_beta(l=0.95, h = 1),
+      #cfr_untreat_tbm= sample_scaled_beta(l=0.95, h = 1),
+      cfr_untreat_tbm= rbeta(n = 1, shape1 = 998, shape2 = 2),
+      
       
       # inc
       incbest = sample_truncn(incbest, inclo, inchi),
@@ -159,7 +163,6 @@ gen_outs <- function(TBMincl=0,posttbincl=0){
     
     ungroup() %>%
     as.data.table()
-  
   
   
   samp[, prop_tbm := ifelse(TBMincl== 0, 0, prop_tbm)]
@@ -326,3 +329,4 @@ summary(enb1$ENB30)
 summary(enb2$ENB30)
 
 summary(CEAAs$ENB30)
+

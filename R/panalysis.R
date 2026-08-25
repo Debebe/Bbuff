@@ -7,14 +7,17 @@ rm(list = ls())
 pacman::p_load(here,data.table, dplyr, tidyr, stringr, truncnorm,
                flextable, officer,kableExtra,ggplot2, ggrepel)
 
-## === data
+##======================data===================================
 ## read in pre-prepared data
 gdp_inc_le_costs <- readRDS(file = here("outdata/gdp_inc_le_costs.rds"))
+
 tbinc <- fread("indata/TB_burden_countries_2025-10-29.csv") %>%
   dplyr::filter(year==2023) %>%
-  dplyr::select(iso3, year,inc_all=e_inc_100k,  e_inc_100k_lo, e_inc_100k_hi,
+  dplyr::select(iso3, year,inc_all=e_inc_100k,
+                e_inc_100k_lo, e_inc_100k_hi,
                 notif_all=c_newinc_100k,
-                c_cdr, c_cdr_lo, c_cdr_hi)%>%as.data.table()
+                c_cdr, c_cdr_lo, c_cdr_hi)%>%
+  as.data.table()
 
 load(here("indata/whokey.Rdata"))
 load(here("indata/LEu5.Rdata")) # single year under five life expectancy
@@ -85,11 +88,14 @@ samp <- samp %>%
       cfr_treat_tbm.l, 
       cfr_treat_tbm.h),
     
-    prop_sev_seq = sample_beta(
-      mean=prop_sev_seq.m,
-      l=prop_sev_seq.l,
-      h=prop_sev_seq.h
-    ),
+    
+    # prop_sev_seq = sample_beta(
+    #   mean=prop_sev_seq.m,
+    #   l=prop_sev_seq.l,
+    #   h=prop_sev_seq.h
+    # ),
+    
+    prop_sev_seq= rbeta(n=1, shape1 = 4, shape2 = 8),
     
     prop_mild_disab = sample_beta(
       mean=prop_mild_disab.m,
@@ -119,6 +125,11 @@ samp <- samp %>%
     ##based on Tomney
     post_tb_hrqol_dur3= 1- sample_beta(mean=0.041, sd=0.054),
     post_tb_hrqol_post3= 1- sample_beta(mean=0.025, sd=0.033),
+    
+    # scaled beta so that cfr TbBM is >0.95 always
+    #cfr_untreat_tbm= sample_scaled_beta(l=0.95, h = 1),
+    cfr_untreat_tbm= rbeta(n = 1, shape1 = 998, shape2 = 2),
+    
     
     # inc
     incbest = sample_truncn(incbest, inclo, inchi),

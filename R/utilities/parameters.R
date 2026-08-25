@@ -34,7 +34,7 @@ cfr_treat_tbm.m <- 0.193 # 19·3% (95% CI 14·0–26·1) tbm-mortality treated
 cfr_treat_tbm.l <- 0.140 
 cfr_treat_tbm.h <- 0.261 
 
-cfr_untreat_tbm <- 1 
+#cfr_untreat_tbm <- 1 
 
 
 # post_tb_hrqol_dur3 <- 1-0.041 #from Tommeny
