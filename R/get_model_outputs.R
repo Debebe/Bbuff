@@ -9,7 +9,16 @@ pacman::p_load(here,data.table, dplyr, tidyr, stringr, truncnorm,
 load(here("tmpdata/PSA.RData"))     # full PSA data with results. 
 gdp_inc_le_costs <- readRDS(here("outdata/gdp_inc_le_costs.rds"))
 load(here("indata/whokey.Rdata"))     # region and cntry iso codes
+source("R/utilities/utilities.R")
 
+
+tbinc <- fread("indata/TB_burden_countries_2025-10-29.csv") %>%
+  dplyr::filter(year==2023) %>%
+  dplyr::select(iso3, year,inc_all=e_inc_100k,
+                e_inc_100k_lo, e_inc_100k_hi,
+                notif_all=c_newinc_100k,
+                c_cdr, c_cdr_lo, c_cdr_hi)%>%
+  as.data.table()
 
 ## === aggregations and outputs
 CEA <- D[, .(
