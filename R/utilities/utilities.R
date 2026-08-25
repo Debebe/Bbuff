@@ -103,6 +103,36 @@ sample_LN <- function(mean, lower, upper, n=1) {
 
 #sample_LN(0.019, 0.005, 0.071, 5)
 
+sample_beta <- function(mean,sd=NULL, lo=NULL, hi=NULL, n = 1) {
+  
+  
+  #sd <- (hi - lo) / 3.92
+  
+  if (is.null(sd)) {
+    if (is.null(lo) || is.null(hi)) {
+      stop("Either sd or both lo and hi must be provided")
+    }
+    sd <- (hi - lo) / 3.92
+  }
+  
+  
+  var <- sd^2
+  
+  tmp <- mean * (1 - mean) / var - 1
+  alpha <- mean * tmp
+  beta  <- (1 - mean) * tmp
+  rbeta(n, shape1 = alpha, shape2 = beta)
+}
+
+# sample_beta(mean = 0.034, lo = 0.0187, hi = 0.060)
+
+sample_unif <- function(lo, hi, n=1) {
+  runif(n, lo, hi)
+}
+
+sample_scaled_beta <- function(l,h, n=1){
+  l + (1-l) * rbeta(n, 5, 2)
+}
 
 
 
