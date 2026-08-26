@@ -1,7 +1,7 @@
 Predictors,Estimate (95% CI),P-value
-(Intercept),"0 (-0.103, 0.103)",1
-Incidence/Notifications,"0.843 (0.735, 0.952)",0
-GDP,"0.271 (0.133, 0.41)",0
-Case detection rate,"-0.112 (-0.222, -0.001)",0.047
-Vaccine delivery unit cost,"0.067 (-0.048, 0.181)",0.252
-TB treatment unit cost,"-0.03 (-0.171, 0.112)",0.678
+(Intercept),"0 (-0.103 , 0.103)",1
+GDP,"0.273 (0.134 , 0.412)",0
+inc_u5,"0.842 (0.733 , 0.951)",0
+Case detection rate,"-0.113 (-0.224 , -0.003)",0.045
+Vaccine delivery unit cost,"0.067 (-0.048 , 0.183)",0.248
+TB treatment unit cost,"-0.029 (-0.171 , 0.113)",0.684
