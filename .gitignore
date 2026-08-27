@@ -4,8 +4,7 @@
 .Ruserdata
 ~*
 .DS_Store
-tmpdata/PSA.RData 
-tmpdata/samp.RData
+tmpdata/
 outdata/out_tab_r.RData
 tmpdata/PSAreduct.RData 
 
