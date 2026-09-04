@@ -77,8 +77,12 @@ ggplot(df, aes(M, CV, label = iso3)) +
   theme_minimal()
 
 rm(list = ls())
-##======Latitude effect on BCG efficacy======
 
+
+#*********************************************
+##======Latitude effect on BCG efficacy======
+#**********************************************
+#
 ### latitude
 #p=palmer(0.41)
 
