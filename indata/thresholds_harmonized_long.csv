@@ -1,0 +1,368 @@
+source,country,iso3,low,mid,high,gdp_pc,pct_gdp,gdp_source,gdp_pc_latest_wb,gdp_pc_latest_wb_year,rank_order
+Ochalek 2018,Burundi,BDI,99,131,131,278,47.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),234,2025,1
+Ochalek 2026 (update),Burundi,BDI,104,104,104,216,48.1,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",234,2025,1
+Woods 2016,Burundi,BDI,3,20,137,235,8.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",234,2025,1
+Woods 2016,Central African Republic,CAF,3,23,171,364,6.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",556,2025,2
+Ochalek 2018,Malawi,MWI,124,164,164,373,43.9,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),672,2025,3
+Ochalek 2026 (update),Malawi,MWI,255,255,255,522,48.8,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",672,2025,3
+Woods 2016,Malawi,MWI,3,19,116,497,3.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",672,2025,3
+Ochalek 2018,Madagascar,MDG,66,87,87,407,21.4,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),599,2025,4
+Ochalek 2026 (update),Madagascar,MDG,107,107,107,550,19.4,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",599,2025,4
+Woods 2016,Madagascar,MDG,9,46,235,515,8.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",599,2025,4
+Ochalek 2018,Democratic Republic of the Congo,COD,54,69,69,454,15.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),807,2025,5
+Ochalek 2026 (update),Democratic Republic of the Congo,COD,111,111,111,693,16,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",807,2025,5
+Woods 2016,"Congo, Dem. Rep.",COD,5,34,230,460,7.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",807,2025,5
+Ochalek 2018,Eritrea,ERI,112,147,147,543,27.1,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),689,2011,6
+Ochalek 2026 (update),Eritrea,ERI,156,156,156,NA,NA,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",689,2011,6
+Woods 2016,Eritrea,ERI,9,50,280,NA,NA,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",689,2011,6
+Ochalek 2018,Niger,NER,88,118,118,358,32.9,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),775,2025,7
+Ochalek 2026 (update),Niger,NER,125,125,125,730,17.1,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",775,2025,7
+Woods 2016,Niger,NER,5,33,213,552,5.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",775,2025,7
+Ochalek 2018,Mozambique,MOZ,189,244,244,527,46.3,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),627,2025,8
+Ochalek 2026 (update),Mozambique,MOZ,342,342,342,657,52.1,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",627,2025,8
+Woods 2016,Mozambique,MOZ,8,48,294,687,7.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",627,2025,8
+Woods 2016,Afghanistan,AFG,19,81,349,637,12.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",417,2024,9
+Ochalek 2018,The Gambia,GMB,247,326,326,474,68.8,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),919,2025,10
+Ochalek 2026 (update),The Gambia,GMB,181,181,181,871,20.8,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",919,2025,10
+Woods 2016,"Gambia, The",GMB,12,55,252,654,8.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",919,2025,10
+Woods 2016,Liberia,LBR,6,37,234,711,5.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",915,2025,11
+Ochalek 2018,Guinea-Bissau,GNB,52,68,68,569,12,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1124,2025,12
+Ochalek 2026 (update),Guinea-Bissau,GNB,306,306,306,998,30.6,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1124,2025,12
+Woods 2016,Guinea-Bissau,GNB,9,48,256,654,7.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1124,2025,12
+Ochalek 2018,Ethiopia,ETH,167,221,221,621,35.6,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),933,2025,13
+Ochalek 2026 (update),Ethiopia,ETH,166,166,166,1134,14.6,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",933,2025,13
+Woods 2016,Ethiopia,ETH,10,50,255,484,10.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",933,2025,13
+Ochalek 2018,Burkina Faso,BFA,138,182,182,591,30.8,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1148,2025,14
+Ochalek 2026 (update),Burkina Faso,BFA,533,533,533,982,54.2,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1148,2025,14
+Woods 2016,Burkina Faso,BFA,17,80,379,760,10.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1148,2025,14
+Ochalek 2018,Rwanda,RWA,211,277,277,700,39.6,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1124,2025,15
+Ochalek 2026 (update),Rwanda,RWA,520,520,520,1060,49.1,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1124,2025,15
+Woods 2016,Rwanda,RWA,13,65,323,695,9.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1124,2025,15
+Ochalek 2018,Sierra Leone,SLE,105,137,137,647,21.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),846,2025,16
+Ochalek 2026 (update),Sierra Leone,SLE,78,78,78,807,9.7,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",846,2025,16
+Woods 2016,Sierra Leone,SLE,23,100,435,1117,9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",846,2025,16
+Ochalek 2018,Uganda,UGA,117,154,154,705,21.8,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1206,2025,17
+Ochalek 2026 (update),Uganda,UGA,259,259,259,1078,24,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1206,2025,17
+Woods 2016,Uganda,UGA,11,57,293,818,6.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1206,2025,17
+Ochalek 2018,Mali,MLI,69,93,93,704,13.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1193,2025,18
+Ochalek 2026 (update),Mali,MLI,228,228,228,1093,20.9,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1193,2025,18
+Woods 2016,Mali,MLI,17,79,368,902,8.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1193,2025,18
+Ochalek 2018,Togo,TGO,117,153,153,564,27.1,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1384,2025,19
+Ochalek 2026 (update),Togo,TGO,214,214,214,1266,16.9,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1384,2025,19
+Woods 2016,Togo,TGO,13,65,327,886,7.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1384,2025,19
+Ochalek 2018,Guinea,GIN,111,145,145,528,27.4,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1877,2025,20
+Ochalek 2026 (update),Guinea,GIN,274,274,274,1695,16.2,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1877,2025,20
+Woods 2016,Guinea,GIN,9,49,269,748,6.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1877,2025,20
+Ochalek 2018,Nepal,NPL,206,272,291,742,36.6,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1536,2025,21
+Ochalek 2026 (update),Nepal,NPL,439,439,439,1460,30.1,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1536,2025,21
+Woods 2016,Nepal,NPL,22,89,357,803,11,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1536,2025,21
+Ochalek 2018,Tanzania,TZA,231,305,305,879,34.7,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1319,2025,22
+Ochalek 2026 (update),Tanzania,TZA,312,312,312,1193,26.2,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1319,2025,22
+Woods 2016,Tanzania,TZA,18,80,357,963,8.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1319,2025,22
+Ochalek 2018,Chad,TCD,124,165,165,782,21.1,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1022,2025,23
+Ochalek 2026 (update),Chad,TCD,225,225,225,981,22.9,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1022,2025,23
+Woods 2016,Chad,TCD,31,129,540,1305,9.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1022,2025,23
+Ochalek 2018,Lesotho,LSO,556,718,718,1068,67.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1089,2025,24
+Ochalek 2026 (update),Lesotho,LSO,930,930,930,1023,90.9,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1089,2025,24
+Woods 2016,Lesotho,LSO,41,154,581,1151,13.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1089,2025,24
+Ochalek 2018,Tajikistan,TJK,323,432,449,926,46.6,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1637,2025,25
+Ochalek 2026 (update),Tajikistan,TJK,677,677,677,1362,49.7,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1637,2025,25
+Woods 2016,Tajikistan,TJK,37,140,533,1028,13.7,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1637,2025,25
+Ochalek 2018,Benin,BEN,171,223,223,773,28.8,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1658,2025,26
+Ochalek 2026 (update),Benin,BEN,339,339,339,1485,22.8,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1658,2025,26
+Woods 2016,Benin,BEN,20,91,414,1169,7.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1658,2025,26
+Ochalek 2018,Senegal,SEN,284,371,371,899,41.3,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1955,2025,27
+Ochalek 2026 (update),Senegal,SEN,485,485,485,1739,27.9,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1955,2025,27
+Woods 2016,Senegal,SEN,34,136,544,1380,9.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1955,2025,27
+Ochalek 2018,Pakistan,PAK,133,175,175,1431,12.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1596,2025,28
+Ochalek 2026 (update),Pakistan,PAK,197,197,197,1479,13.3,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1596,2025,28
+Woods 2016,Pakistan,PAK,87,241,669,1225,19.7,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1596,2025,28
+Woods 2016,Sao Tome and Principe,STP,68,237,827,1383,17.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",4084,2025,29
+Ochalek 2018,Yemen,YEM,202,267,267,1396,19.1,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),634,2018,30
+Ochalek 2026 (update),Yemen,YEM,84,84,84,NA,NA,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",634,2018,30
+Woods 2016,"Yemen, Rep.",YEM,83,251,757,1379,18.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",634,2018,30
+Ochalek 2018,Comoros,COM,233,311,311,718,43.3,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),2056,2025,31
+Ochalek 2026 (update),Comoros,COM,695,695,695,1858,37.4,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",2056,2025,31
+Woods 2016,Comoros,COM,19,93,452,1603,5.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",2056,2025,31
+Ochalek 2018,Zambia,ZMB,417,539,575,1307,41.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1318,2025,32
+Ochalek 2026 (update),Zambia,ZMB,881,881,881,1187,74.2,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1318,2025,32
+Woods 2016,Zambia,ZMB,68,229,768,1821,12.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1318,2025,32
+Ochalek 2018,Haiti,HTI,133,172,190,821,20.9,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),2694,2025,33
+Ochalek 2026 (update),Haiti,HTI,131,131,131,2060,6.4,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",2694,2025,33
+Woods 2016,Haiti,HTI,20,92,421,1458,6.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",2694,2025,33
+Ochalek 2018,Sudan,SDN,302,398,398,2465,16.1,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1165,2025,34
+Ochalek 2026 (update),Sudan,SDN,80,80,80,985,8.1,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1165,2025,34
+Woods 2016,Sudan,SDN,84,275,901,1139,24.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1165,2025,34
+Ochalek 2018,Cameroon,CMR,107,140,140,1208,11.6,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1972,2025,35
+Ochalek 2026 (update),Cameroon,CMR,272,272,272,1830,14.9,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1972,2025,35
+Woods 2016,Cameroon,CMR,49,179,654,1576,11.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1972,2025,35
+Ochalek 2018,Bangladesh,BGD,114,151,165,1226,12.3,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),2597,2025,36
+Ochalek 2026 (update),Bangladesh,BGD,145,145,145,2593,5.6,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",2597,2025,36
+Woods 2016,Bangladesh,BGD,30,113,427,958,11.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",2597,2025,36
+Ochalek 2018,Zimbabwe,ZWE,202,263,273,922,28.5,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),3021,2025,37
+Ochalek 2026 (update),Zimbabwe,ZWE,385,385,385,2496,15.4,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",3021,2025,37
+Woods 2016,Zimbabwe,ZWE,21,98,455,1363,7.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",3021,2025,37
+Ochalek 2018,Kenya,KEN,491,647,647,1379,46.9,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),2363,2025,38
+Ochalek 2026 (update),Kenya,KEN,764,764,764,2133,35.8,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",2363,2025,38
+Woods 2016,Kenya,KEN,32,129,519,1371,9.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",2363,2025,38
+Ochalek 2018,Kyrgyzstan,KGZ,644,847,973,1105,76.7,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),3081,2025,39
+Ochalek 2026 (update),Kyrgyzstan,KGZ,1190,1190,1190,2515,47.3,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",3081,2025,39
+Woods 2016,Kyrgyz Republic,KGZ,58,194,649,1270,15.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",3081,2025,39
+Woods 2016,South Sudan,SSD,40,157,617,1650,9.5,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1080,2015,40
+Ochalek 2018,Cambodia,KHM,189,248,276,1163,21.3,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),2872,2025,41
+Ochalek 2026 (update),Cambodia,KHM,628,628,628,2628,23.9,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",2872,2025,41
+Woods 2016,Cambodia,KHM,44,151,518,1306,11.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",2872,2025,41
+Woods 2016,Kiribati,KIR,43,191,848,1772,10.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",2559,2025,42
+Ochalek 2018,Mauritania,MRT,272,360,360,1377,26.1,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),2198,2025,43
+Ochalek 2026 (update),Mauritania,MRT,686,686,686,2105,32.6,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",2198,2025,43
+Woods 2016,Mauritania,MRT,46,159,550,1936,8.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",2198,2025,43
+Woods 2016,Lao PDR,LAO,113,310,852,1813,17.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",2325,2025,44
+Ochalek 2018,India,IND,264,349,363,1584,22,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),2702,2025,45
+Ochalek 2026 (update),India,IND,609,609,609,2592,23.5,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",2702,2025,45
+Woods 2016,India,IND,115,298,770,1433,20.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",2702,2025,45
+Ochalek 2018,Ghana,GHA,371,491,491,1365,36,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),3257,2025,46
+Ochalek 2026 (update),Ghana,GHA,719,719,719,2419,29.7,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",3257,2025,46
+Woods 2016,Ghana,GHA,104,314,951,2295,13.7,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",3257,2025,46
+Ochalek 2018,Cote d'Ivoire,CIV,205,268,268,1398,19.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),3050,2025,47
+Ochalek 2026 (update),Cote d'Ivoire,CIV,563,563,563,2728,20.6,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",3050,2025,47
+Woods 2016,Djibouti,DJI,71,247,857,2076,11.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",3906,2025,48
+Woods 2016,Solomon Islands,SLB,57,239,1004,2161,11.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",2086,2025,49
+Ochalek 2018,Nigeria,NGA,214,291,291,2662,10.9,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),1224,2025,50
+Ochalek 2026 (update),Nigeria,NGA,200,200,200,1084,18.4,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",1224,2025,50
+Woods 2016,Nigeria,NGA,239,608,1545,2873,21.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",1224,2025,50
+Ochalek 2018,Nicaragua,NIC,1830,2403,3674,2086,115.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),3173,2025,51
+Ochalek 2026 (update),Nicaragua,NIC,2560,2560,2560,2848,89.9,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",3173,2025,51
+Woods 2016,Nicaragua,NIC,118,333,937,1835,18.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",3173,2025,51
+Woods 2016,Papua New Guinea,PNG,75,284,1073,2561,11.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",3020,2025,52
+Ochalek 2018,Honduras,HND,1707,2282,2530,2524,90.4,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),3598,2025,53
+Ochalek 2026 (update),Honduras,HND,2275,2275,2275,3416,66.6,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",3598,2025,53
+Woods 2016,Honduras,HND,149,419,1177,2081,20.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",3598,2025,53
+Ochalek 2018,Congo,COG,1235,1613,1613,1849,87.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),2515,2025,54
+Ochalek 2026 (update),Congo,COG,515,515,515,2482,20.7,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",2515,2025,54
+Woods 2016,"Congo, Rep.",COG,264,656,1628,3697,17.7,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",2515,2025,54
+Woods 2016,Bhutan,BTN,267,580,1258,2680,21.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",4493,2025,55
+Ochalek 2018,Uzbekistan,UZB,985,1318,1426,2133,61.8,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),3968,2025,56
+Ochalek 2026 (update),Uzbekistan,UZB,1489,1489,1489,3337,44.6,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",3968,2025,56
+Woods 2016,Uzbekistan,UZB,138,365,965,2781,13.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",3968,2025,56
+Woods 2016,"Micronesia, Fed. Sts.",FSM,162,516,1646,2904,17.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",4414,2025,57
+Ochalek 2018,Vietnam,VNM,1198,1602,1813,2105,76.1,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),5066,2025,58
+Ochalek 2026 (update),Vietnam,VNM,1641,1641,1641,4717,34.8,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",5066,2025,58
+Woods 2016,Vietnam,VNM,144,376,982,2360,15.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",5066,2025,58
+Ochalek 2018,Philippines,PHL,672,898,987,2914,30.8,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),4171,2025,59
+Ochalek 2026 (update),Philippines,PHL,1703,1703,1703,3985,42.7,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",4171,2025,59
+Woods 2016,Philippines,PHL,256,603,1421,2781,21.7,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",4171,2025,59
+Ochalek 2018,Egypt,EGY,977,1301,1474,3611,36,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),3086,2025,60
+Ochalek 2026 (update),Egypt,EGY,1111,1111,1111,3338,33.3,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",3086,2025,60
+Woods 2016,"Egypt, Arab Rep.",EGY,522,1020,1993,3026,33.7,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",3086,2025,60
+Woods 2016,Vanuatu,VUT,139,484,1685,3393,14.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",4039,2025,61
+Ochalek 2018,Bolivia,BOL,2106,2799,3053,3087,90.7,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),5148,2025,62
+Ochalek 2026 (update),Bolivia,BOL,3382,3382,3382,4421,76.5,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",5148,2025,62
+Woods 2016,Bolivia,BOL,250,607,1474,2870,21.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",5148,2025,62
+Ochalek 2018,Morocco,MAR,927,1235,1484,2873,43,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),4672,2025,63
+Ochalek 2026 (update),Morocco,MAR,2469,2469,2469,4153,59.4,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",4672,2025,63
+Woods 2016,Morocco,MAR,316,709,1590,3380,21,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",4672,2025,63
+Woods 2016,Tuvalu,TUV,200,631,1991,3524,17.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",6041,2025,64
+Woods 2016,Marshall Islands,MHL,182,568,1774,3678,15.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",8489,2025,65
+Ochalek 2018,Swaziland,SWZ,1505,1923,2351,3213,59.9,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),4108,2025,66
+Ochalek 2026 (update),Swaziland,SWZ,1684,1684,1684,3910,43.1,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",4108,2025,66
+Woods 2016,Swaziland,SWZ,288,670,1559,3950,17,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",4108,2025,66
+Ochalek 2018,Ukraine,UKR,1059,1383,1626,2118,65.3,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),5866,2025,67
+Ochalek 2026 (update),Ukraine,UKR,2275,2275,2275,5392,42.2,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",5866,2025,67
+Woods 2016,Ukraine,UKR,487,988,2005,4130,23.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",5866,2025,67
+Ochalek 2018,Indonesia,IDN,535,714,778,3354,21.3,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),5060,2025,68
+Ochalek 2026 (update),Indonesia,IDN,1236,1236,1236,4925,25.1,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",5060,2025,68
+Woods 2016,Indonesia,IDN,472,918,1786,3567,25.7,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",5060,2025,68
+Woods 2016,Samoa,WSM,265,709,1897,4024,17.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",5873,2025,69
+Ochalek 2018,Sri Lanka,LKA,1281,1734,2090,3919,44.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),5002,2025,70
+Ochalek 2026 (update),Sri Lanka,LKA,1052,1052,1052,4545,23.1,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",5002,2025,70
+Woods 2016,Sri Lanka,LKA,453,874,1686,3739,23.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",5002,2025,70
+Ochalek 2018,Cape Verde,CPV,1938,2579,2843,3078,83.8,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),5796,2025,71
+Ochalek 2026 (update),Cape Verde,CPV,4412,4412,4412,5170,85.3,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",5796,2025,71
+Woods 2016,Cabo Verde,CPV,343,815,1935,3961,20.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",5796,2025,71
+Ochalek 2018,Tunisia,TUN,2763,3706,4730,3873,95.7,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),4657,2025,72
+Ochalek 2026 (update),Tunisia,TUN,3343,3343,3343,4188,79.8,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",4657,2025,72
+Woods 2016,Tunisia,TUN,678,1326,2592,4370,30.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",4657,2025,72
+Woods 2016,Tonga,TON,333,870,2275,4219,20.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",6547,2025,73
+Ochalek 2018,Moldova,MDA,1570,2084,2353,1849,112.7,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),8622,2025,74
+Ochalek 2026 (update),Moldova,MDA,4682,4682,4682,7579,61.8,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",8622,2025,74
+Woods 2016,Moldova,MDA,148,413,1151,3321,12.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",8622,2025,74
+Ochalek 2018,El Salvador,SLV,2573,3424,3832,4218,81.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),5767,2025,75
+Ochalek 2026 (update),El Salvador,SLV,5004,5004,5004,5503,90.9,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",5767,2025,75
+Woods 2016,El Salvador,SLV,422,911,1967,3582,25.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",5767,2025,75
+Ochalek 2018,Guatemala,GTM,1226,1638,1726,3913,41.9,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),6598,2025,76
+Ochalek 2026 (update),Guatemala,GTM,2618,2618,2618,6151,42.6,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",6598,2025,76
+Woods 2016,Guatemala,GTM,360,802,1788,3444,23.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",6598,2025,76
+Woods 2016,Fiji,FJI,507,1082,2307,4572,23.7,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",6642,2025,77
+Ochalek 2018,Guyana,GUY,1566,2067,2147,4120,50.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),32414,2025,78
+Woods 2016,Guyana,GUY,348,818,1924,5557,14.7,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",32414,2025,78
+Ochalek 2018,Namibia,NAM,3142,4061,5014,4686,86.7,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),4876,2025,79
+Ochalek 2026 (update),Namibia,NAM,2491,2491,2491,4502,55.3,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",4876,2025,79
+Woods 2016,Namibia,NAM,791,1530,2958,5347,28.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",4876,2025,79
+Ochalek 2018,Jordan,JOR,4917,6618,8771,4928,134.3,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),5348,2025,80
+Ochalek 2026 (update),Jordan,JOR,4058,4058,4058,5074,80,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",5348,2025,80
+Woods 2016,Jordan,JOR,872,1730,3432,4739,36.5,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",5348,2025,80
+Ochalek 2018,Mongolia,MNG,1394,1848,1949,3965,46.6,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),7108,2025,81
+Ochalek 2026 (update),Mongolia,MNG,3311,3311,3311,6751,49,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",7108,2025,81
+Woods 2016,Mongolia,MNG,543,1064,2085,4340,24.5,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",7108,2025,81
+Woods 2016,Bosnia and Herzegovina,BIH,644,1249,2421,5035,24.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",10382,2025,82
+Ochalek 2018,Armenia,ARM,954,1268,1422,3494,36.3,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),9474,2025,83
+Ochalek 2026 (update),Armenia,ARM,2143,2143,2143,8556,25,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",9474,2025,83
+Woods 2016,Armenia,ARM,387,835,1801,3680,22.7,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",9474,2025,83
+Ochalek 2018,Algeria,DZA,4086,5475,6485,4215,129.9,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),6051,2025,84
+Ochalek 2026 (update),Algeria,DZA,2440,2440,2440,5753,42.4,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",6051,2025,84
+Woods 2016,Algeria,DZA,1012,1946,3743,5980,32.5,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",6051,2025,84
+Ochalek 2018,Paraguay,PRY,3401,4467,5797,4093,109.1,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),7027,2025,85
+Ochalek 2026 (update),Paraguay,PRY,5139,5139,5139,6457,79.6,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",7027,2025,85
+Woods 2016,Paraguay,PRY,484,1027,2179,6436,16,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",7027,2025,85
+Woods 2016,Angola,AGO,603,1322,2897,5689,23.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",3129,2025,86
+Ochalek 2018,Georgia,GEO,743,981,1044,3794,25.9,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),9692,2025,87
+Ochalek 2026 (update),Georgia,GEO,2700,2700,2700,8968,30.1,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",9692,2025,87
+Woods 2016,Georgia,GEO,366,823,1850,4712,17.5,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",9692,2025,87
+Ochalek 2018,Jamaica,JAM,2137,2868,3270,5216,55,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),8003,2025,88
+Ochalek 2026 (update),Jamaica,JAM,6265,6265,6265,7754,80.8,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",8003,2025,88
+Woods 2016,Jamaica,JAM,668,1348,2719,5124,26.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",8003,2025,88
+Ochalek 2018,Belize,BLZ,2935,3879,4808,4865,79.7,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),7865,2025,89
+Ochalek 2026 (update),Belize,BLZ,3795,3795,3795,7681,49.4,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",7865,2025,89
+Woods 2016,Belize,BLZ,584,1209,2503,5957,20.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",7865,2025,89
+Woods 2016,"Iran, Islamic Rep.",IRN,1054,1828,3171,6223,29.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",3924,2025,90
+Ochalek 2018,Turkmenistan,TKM,1636,2181,2230,6620,32.9,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),6540,2025,91
+Ochalek 2026 (update),Turkmenistan,TKM,2209,2209,2209,5904,37.4,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",6540,2025,91
+Woods 2016,Turkmenistan,TKM,1588,2954,5495,6600,44.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",6540,2025,91
+Ochalek 2018,Ecuador,ECU,4479,5991,6965,6212,96.4,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),7125,2025,92
+Ochalek 2026 (update),Ecuador,ECU,6116,6116,6116,6827,89.6,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",7125,2025,92
+Woods 2016,Ecuador,ECU,858,1655,3191,6109,27.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",7125,2025,92
+Ochalek 2018,Thailand,THA,4069,5388,6507,5812,92.7,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),8057,2025,93
+Ochalek 2026 (update),Thailand,THA,3749,3749,3749,7387,50.8,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",8057,2025,93
+Woods 2016,Thailand,THA,1181,2158,3943,6018,35.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",8057,2025,93
+Ochalek 2018,South Africa,ZAF,2480,3224,3334,5755,56,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),6598,2025,94
+Ochalek 2026 (update),South Africa,ZAF,3527,3527,3527,6267,56.3,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",6598,2025,94
+Woods 2016,South Africa,ZAF,1175,2353,4714,7332,32.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",6598,2025,94
+Ochalek 2018,Macedonia,MKD,3373,4429,6335,4848,91.4,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),10490,2025,95
+Ochalek 2026 (update),Macedonia,MKD,5974,5974,5974,9292,64.3,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",10490,2025,95
+Woods 2016,"Macedonia, FYR",MKD,824,1635,3246,5626,29.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",10490,2025,95
+Ochalek 2018,Albania,ALB,2087,2761,3338,3934,70.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),12998,2025,96
+Ochalek 2026 (update),Albania,ALB,5169,5169,5169,11374,45.4,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",12998,2025,96
+Woods 2016,Albania,ALB,702,1354,2612,4543,29.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",12998,2025,96
+Woods 2016,Iraq,IRQ,1504,2653,4679,6650,39.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",5410,2025,97
+Ochalek 2018,Azerbaijan,AZE,1345,1794,1954,5496,32.6,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),7411,2025,98
+Ochalek 2026 (update),Azerbaijan,AZE,1728,1728,1728,7295,23.7,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",7411,2025,98
+Woods 2016,Azerbaijan,AZE,1901,3099,5051,7875,39.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",7411,2025,98
+Ochalek 2018,Botswana,BWA,2097,2702,3411,6379,42.4,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),7778,2025,99
+Ochalek 2026 (update),Botswana,BWA,5354,5354,5354,7650,70,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",7778,2025,99
+Woods 2016,Botswana,BWA,1621,2801,4839,6667,42,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",7778,2025,99
+Ochalek 2018,Lebanon,LBN,4704,6363,9105,8062,78.9,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),4473,2024,100
+Ochalek 2026 (update),Lebanon,LBN,1902,1902,1902,4473,42.5,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",4473,2024,100
+Woods 2016,Lebanon,LBN,2420,3940,6416,8162,48.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",4473,2024,100
+Woods 2016,Serbia,SRB,1061,2130,4275,7040,30.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",15262,2025,101
+Woods 2016,St. Vincent and the Grenadines,VCT,998,1934,3746,7072,27.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",12562,2025,102
+Ochalek 2018,Peru,PER,3836,5163,6531,6016,85.8,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),9684,2025,103
+Ochalek 2026 (update),Peru,PER,6081,6081,6081,8526,71.3,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",9684,2025,103
+Woods 2016,Peru,PER,1114,2210,4383,6747,32.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",9684,2025,103
+Woods 2016,Montenegro,MNE,1464,2684,4921,7103,37.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",14817,2025,104
+Ochalek 2018,Bulgaria,BGR,4067,5339,5952,7003,76.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),20328,2025,105
+Woods 2016,Bulgaria,BGR,1720,2940,5025,7796,37.7,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",20328,2025,105
+Woods 2016,Grenada,GRD,1272,2509,4948,7425,33.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",12107,2025,106
+Ochalek 2018,Colombia,COL,7067,9484,11459,6048,156.8,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),8562,2025,107
+Ochalek 2026 (update),Colombia,COL,8228,8228,8228,7951,103.5,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",8562,2025,107
+Woods 2016,Colombia,COL,1370,2749,5518,8279,33.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",8562,2025,107
+Ochalek 2018,Belarus,BLR,3113,4074,4967,5730,71.1,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),10279,2025,108
+Ochalek 2026 (update),Belarus,BLR,5334,5334,5334,8606,62,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",10279,2025,108
+Woods 2016,Belarus,BLR,1895,3034,4857,7998,37.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",10279,2025,108
+Ochalek 2018,Dominican Republic,DOM,2731,3594,4045,6450,55.7,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),11059,2025,109
+Ochalek 2026 (update),Dominican Republic,DOM,5859,5859,5859,10876,53.9,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",11059,2025,109
+Woods 2016,Dominican Republic,DOM,937,1856,3675,6137,30.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",11059,2025,109
+Woods 2016,Dominica,DMA,991,1892,3611,7822,24.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",10989,2025,110
+Woods 2016,Maldives,MDV,1103,2182,4318,8236,26.5,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",14615,2025,111
+Ochalek 2018,Venezuela,VEN,3618,4821,5540,12341,39.1,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),3495,2025,112
+Ochalek 2026 (update),Venezuela,VEN,860,860,860,4244,20.3,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",3495,2025,112
+Woods 2016,"Venezuela, RB",VEN,3724,5838,9151,8642,67.5,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",3495,2025,112
+Ochalek 2018,Gabon,GAB,2275,2955,3047,8230,35.9,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),8263,2025,113
+Ochalek 2026 (update),Gabon,GAB,2542,2542,2542,8230,30.9,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",8263,2025,113
+Woods 2016,Gabon,GAB,3164,4779,7218,9198,52,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",8263,2025,113
+Woods 2016,Suriname,SUR,2286,3862,6525,9043,42.7,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",7070,2025,114
+Ochalek 2018,Romania,ROU,5382,7104,7838,8979,79.1,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),22538,2025,115
+Woods 2016,Romania,ROU,2467,3807,5875,9498,40.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",22538,2025,115
+Ochalek 2018,China,CHN,3650,4896,5669,8045,60.9,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),13862,2025,116
+Ochalek 2026 (update),China,CHN,8229,8229,8229,13293,61.9,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",13862,2025,116
+Woods 2016,China,CHN,1151,2288,4550,7147,32,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",13862,2025,116
+Woods 2016,St. Lucia,LCA,1107,2139,4133,9577,22.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",14746,2025,117
+Ochalek 2018,Mauritius,MUS,3560,4776,5442,9271,51.5,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),12991,2025,118
+Ochalek 2026 (update),Mauritius,MUS,4627,4627,4627,11991,38.6,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",12991,2025,118
+Woods 2016,Mauritius,MUS,2248,3656,5945,9877,37,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",12991,2025,118
+Ochalek 2018,Brazil,BRA,6048,8047,9318,8549,94.1,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),10713,2025,119
+Ochalek 2026 (update),Brazil,BRA,7036,7036,7036,10311,68.2,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",10713,2025,119
+Woods 2016,Brazil,BRA,2393,4249,7544,12459,34.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",10713,2025,119
+Ochalek 2018,Malaysia,MYS,4396,5898,7314,9793,60.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),13125,2025,120
+Ochalek 2026 (update),Malaysia,MYS,4833,4833,4833,11874,40.7,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",13125,2025,120
+Woods 2016,Malaysia,MYS,3481,4643,6192,10714,43.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",13125,2025,120
+Ochalek 2018,Mexico,MEX,5723,7700,8730,8968,85.9,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),13889,2025,121
+Ochalek 2026 (update),Mexico,MEX,6181,6181,6181,13988,44.2,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",13889,2025,121
+Woods 2016,Mexico,MEX,2410,4033,6749,11217,36,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",13889,2025,121
+Woods 2016,Libya,LBY,3697,5212,7349,11952,43.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",6449,2025,122
+Ochalek 2018,Russia,RUS,4640,6031,7424,9090,66.3,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),17547,2025,123
+Woods 2016,Russian Federation,RUS,5007,6528,8511,15941,40.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",17547,2025,123
+Ochalek 2018,Turkey,TUR,7446,10028,13032,9104,110.2,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),18599,2025,124
+Ochalek 2026 (update),Turkey,TUR,7508,7508,7508,15893,47.2,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",18599,2025,124
+Woods 2016,Turkey,TUR,2950,4499,6861,12636,35.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",18599,2025,124
+Ochalek 2018,Kazakhstan,KAZ,3734,4917,5809,10455,47,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),14692,2025,125
+Ochalek 2026 (update),Kazakhstan,KAZ,6127,6127,6127,14155,43.3,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",14692,2025,125
+Woods 2016,Kazakhstan,KAZ,4485,5997,8018,13478,44.5,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",14692,2025,125
+Ochalek 2018,Panama,PAN,11003,14711,17101,13255,111,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),19790,2025,126
+Woods 2016,Panama,PAN,3042,4571,6869,12273,37.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",19790,2025,126
+Woods 2016,Palau,PLW,2531,4483,7940,12821,35,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",19532,2025,127
+Woods 2016,Poland,POL,4440,5925,7908,13622,43.5,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",28420,2025,128
+Ochalek 2018,Costa Rica,CRI,12473,16739,21327,11257,148.7,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),19970,2025,129
+Ochalek 2026 (update),Costa Rica,CRI,14974,14974,14974,18853,79.4,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",19970,2025,129
+Woods 2016,Costa Rica,CRI,2006,3754,7027,10803,34.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",19970,2025,129
+Ochalek 2018,Argentina,ARG,4936,6582,7469,13358,49.3,As published: backed out from the paper's own $ and % of GDP columns (Supplementary File 1),14898,2025,130
+Ochalek 2026 (update),Argentina,ARG,15789,15789,15789,13970,113,"World Bank, fresh pull (2026-08-28) of the 2024 series -- the preprint's own GDP vintage is not stated in the visible PDF text, so this is an approximation",14898,2025,130
+Woods 2016,Hungary,HUN,4268,5760,7773,13739,41.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",25907,2025,131
+Woods 2016,Croatia,HRV,3953,5659,8101,14135,40,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",27104,2025,132
+Woods 2016,Latvia,LVA,5133,6898,9270,14484,47.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",26312,2025,133
+Woods 2016,Seychelles,SYC,5470,7119,9265,14821,48,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",19449,2025,134
+Woods 2016,Antigua and Barbuda,ATG,3965,5664,8090,15052,37.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",24819,2025,135
+Woods 2016,Lithuania,LTU,5598,7053,8886,15637,45.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",32959,2025,136
+Woods 2016,Chile,CHL,4896,6797,9436,15684,43.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",17995,2025,137
+Woods 2016,Equatorial Guinea,GNQ,9843,10309,10798,16304,63.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",6615,2025,138
+Woods 2016,Slovak Republic,SVK,6561,8121,10053,18313,44.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",28544,2025,139
+Woods 2016,Uruguay,URY,4548,6793,10147,18335,37.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",25216,2025,140
+Woods 2016,St. Kitts and Nevis,KNA,4110,5879,8409,18580,31.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",25223,2025,141
+Woods 2016,Estonia,EST,6574,8362,10636,19310,43.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",34418,2025,142
+Woods 2016,Czech Republic,CZE,7325,8799,10569,20260,43.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",35917,2025,143
+Woods 2016,Trinidad and Tobago,TTO,7941,8893,9959,21305,41.7,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",18967,2025,144
+Woods 2016,Greece,GRC,7982,9997,12520,21573,46.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",26948,2025,145
+Woods 2016,Portugal,PRT,7738,9630,11985,21676,44.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",32082,2025,146
+Woods 2016,Slovenia,SVN,9135,10730,12603,23237,46.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",37376,2025,147
+Woods 2016,Malta,MLT,10138,11408,12838,25416,44.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",47907,2025,148
+Woods 2016,Bahrain,BHR,11962,13554,15358,26990,50.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",30597,2025,149
+Woods 2016,Cyprus,CYP,11020,12610,14430,27765,45.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",41783,2025,150
+Woods 2016,Saudi Arabia,SAU,11799,15283,19797,27865,54.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",34537,2025,151
+Woods 2016,Puerto Rico,PRI,14075,14457,14849,28212,51.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",40620,2025,152
+Woods 2016,"Korea, Rep.",KOR,12227,12953,13722,28449,45.5,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",36227,2025,153
+Woods 2016,Spain,ESP,13277,14360,15531,29229,49.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",38627,2025,154
+Woods 2016,Italy,ITA,16867,17470,18094,35702,48.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",43309,2025,155
+Woods 2016,Israel,ISR,16821,17954,19163,36981,48.5,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",60337,2025,156
+Woods 2016,"Hong Kong SAR, China",HKG,17409,22392,28801,38404,58.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",56983,2025,157
+Woods 2016,Japan,JPN,19769,19811,19854,41369,47.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",35951,2025,158
+Woods 2016,France,FRA,21168,21439,21713,42669,50.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",48986,2025,159
+Woods 2016,New Zealand,NZL,20555,21080,21619,42985,49,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",49591,2025,160
+Woods 2016,United Kingdom,GBR,20223,20223,20223,43608,46.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",57602,2025,161
+Woods 2016,Brunei Darussalam,BRN,16065,25125,39294,44003,57.1,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",32235,2025,162
+Woods 2016,Belgium,BEL,22570,24226,26003,46965,51.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",60750,2025,163
+Woods 2016,Germany,DEU,21933,24669,27747,47207,52.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",60496,2025,164
+Woods 2016,Finland,FIN,23867,24744,25653,49691,49.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",56149,2025,165
+Woods 2016,Iceland,ISL,22567,24088,25712,50173,48,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",98323,2025,166
+Woods 2016,Austria,AUT,23727,27015,30759,50305,53.7,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",62930,2025,167
+Woods 2016,Ireland,IRL,23063,25930,29153,52538,49.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",131592,2025,168
+Woods 2016,Netherlands,NLD,23153,26070,29354,52602,49.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",73684,2025,169
+Woods 2016,Canada,CAN,25292,28411,31915,52638,54,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",55698,2025,170
+Woods 2016,United States,USA,24283,31210,40112,53297,58.6,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",90027,2025,171
+Woods 2016,Singapore,SGP,22342,37128,61701,56967,65.2,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",98814,2025,172
+Woods 2016,Sweden,SWE,28306,31934,36028,60844,52.5,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",63133,2025,173
+Woods 2016,Denmark,DNK,28767,32078,35771,61378,52.3,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",76970,2025,174
+Woods 2016,Australia,AUS,32771,36981,41732,68477,54,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",65130,2025,175
+Woods 2016,"Macao SAR, China",MAC,30832,75520,184977,87108,86.7,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",75902,2025,176
+Woods 2016,Switzerland,CHE,36661,47424,61348,88851,53.4,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",114769,2025,177
+Woods 2016,Qatar,QAT,31105,72363,168345,103697,69.8,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",72525,2025,178
+Woods 2016,Norway,NOR,43211,63643,93736,106333,59.9,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",94594,2025,179
+Woods 2016,Luxembourg,LUX,43092,78593,143342,120000,65.5,"World Bank, fresh pull (2026-08-28) of the 2013 series -- NOT the authors' own 2013 download; the series has since been revised",147252,2025,180
