@@ -1,3 +1,6 @@
+
+rm(list = ls())
+
 ## ---------------------------------------------------------------------
 ## Uncertainty analysis of the PSA output
 ## ---------------------------------------------------------------------
@@ -6,17 +9,48 @@ library(data.table)
 library(ggplot2)
 library(mgcv)
 library(relaimpo)
+library(dplyr)
 
 ## ---------------------------------------------------------------------
 ## 0. Load PSA output and derive the outcome
 ## ---------------------------------------------------------------------
-load(here("tmpdata/PSAreduct.RData")) # loads data.table `CEA`
+#load(here("tmpdata/PSAreduct.RData")) # loads data.table `CEA`
+load(here("tmpdata/PSA.RData")) # loads data.table `D' with PSA inputs and outputs
+
+# select relevant variables
+CEA <- D%>%
+  dplyr::select(who_region, iso3,iter,
+         ## epi_inputs
+         incbest, notif, cdr,bcg_coverage,
+         ## cost inputs
+         GDP,
+         uc_tot_vax_delv_ave, ucost_proc_bcg,
+         ucost_dstb.m, ucost_dstb.sd,
+         ucost_tbm.m,ucost_tbm.sd, 
+         
+         ## other epi and consequence inputs
+         
+         bcg_haz_tb,bcg_haz_tbm,
+         # post tb
+         prop_tbm,       
+         post_tb_mort_hz, post_tbm_mort_hz, 
+         
+         cfr_treat, cfr_utreat,cfr_treat_tbm, prop_sev_seq,      
+         tbm_hrqol_mil_seq,tbm_hrqol_mod_seq,tbm_hrqol_sev_seq, 
+         prop_mild_seq, prop_mod_seq,
+         
+         ## cost and health outcomes
+         
+         rslt_health_sq,rslt_health_cf,
+         rslt_cost_sq,rslt_cost_cf )|>na.omit()|>as.data.table()
+
 
 CEA[, inc_health := rslt_health_sq - rslt_health_cf] # health gained by BCG
 CEA[, inc_cost := rslt_cost_sq - rslt_cost_cf] # extra cost of BCG
 CEA[, lambda := 0.3 * GDP] # CE threshold, 0.3 x GDP
 CEA[, NB := lambda * inc_health - inc_cost] # per-draw net benefit
 
+rm(D)
 ## Parameters that are redrawn every iteration,
 ## candidates for within-country Sobol
 param_cols <- c(
@@ -31,7 +65,9 @@ param_cols <- c(
 ## Structural covariates: fixed per country, candidates for the
 ## between-country regression.
 struct_cols <- c(
-  "notif", "cdr", "bcg_coverage", "GDP", "ucost_dstb.sd", "ucost_tbm.sd",
+  #"notif", 
+  "cdr", 
+  "bcg_coverage", "GDP", #"ucost_dstb.sd", "ucost_tbm.sd",
   "who_region"
 )
 
@@ -159,8 +195,43 @@ sobol_by_country[, parameter := factor(
   levels = rev(sobol_global_rank$parameter)
 )]
 
+## rename parameters for better display
+
+sobol_by_countryy <- sobol_by_country %>%
+  mutate(
+    parameter = case_when(
+      parameter == "incbest" ~ "Mean incidence",
+      parameter == "uc_tot_vax_delv_ave" ~ "Vaccine delivery unit cost",
+      parameter == "ucost_dstb.m" ~ "DS TB treatment unit cost",
+      parameter == "ucost_tbm.m" ~ "MDR TB treatment unit cost",
+      
+      parameter == "bcg_haz_tb" ~ "DS-TB risk in BCG vaccinated",
+      parameter == "bcg_haz_tbm" ~ "MDR TB risk in BCG vaccinated",
+      
+      parameter == "prop_tbm" ~ "Proportion of TB that is TBM",
+      parameter == "post_tb_mort_hz" ~ "RR of mortality post DS-TB",
+      parameter == "post_tbm_mort_hz" ~ "RR of mortality post TBM",
+      
+      
+      parameter == "cfr_treat" ~ "CFR of treated DS-TB",
+      parameter == "cfr_utreat" ~ "CFR of untreated DS-TB",
+      
+      parameter == "cfr_treat_tbm" ~ "CFR of treated TBM",
+      
+      parameter == "prop_sev_seq" ~ "Prop. TBM with severe disability",
+      parameter == "prop_mod_seq" ~ "Prop. TBM with moderate disability",
+      parameter == "prop_mild_seq" ~ "Prop. TBM with mild disability",
+      
+      parameter == "tbm_hrqol_sev_seq" ~ "Utility score: TBM severe disability",
+      parameter == "tbm_hrqol_mil_seq" ~ "Utility score: TBM moderate disability",
+      parameter == "tbm_hrqol_mod_seq" ~ "Utility score: TBM mild disability",
+      
+      TRUE ~ parameter
+    )
+  )
+
 p_sobol <- ggplot(
-  sobol_by_country,
+  sobol_by_countryy,
   aes(x = parameter, y = S_hat)
 ) +
   geom_boxplot(outlier.size = 0.5, fill = "grey") +
@@ -270,6 +341,43 @@ plot_df[, parameter := factor(
   levels = comparison_df[order(median_ST), parameter]
 )]
 
+##====rename parameters========
+
+
+plot_df <- plot_df %>%
+  mutate(
+    parameter = case_when(
+      parameter == "incbest" ~ "Mean incidence",
+      parameter == "uc_tot_vax_delv_ave" ~ "Vaccine delivery unit cost",
+      
+      parameter == "bcg_haz_tb" ~ "DS-TB risk in BCG vaccinated",
+      parameter == "bcg_haz_tbm" ~ "MDR TB risk in BCG vaccinated",
+    
+      
+      parameter == "cfr_utreat" ~ "CFR of untreated DS-TB",
+      
+      TRUE ~ parameter
+    )
+  )
+
+comparison_df <- comparison_df %>%
+  mutate(
+    parameter = case_when(
+      parameter == "incbest" ~ "Mean incidence",
+      parameter == "uc_tot_vax_delv_ave" ~ "Vaccine delivery unit cost",
+      
+      parameter == "bcg_haz_tb" ~ "DS-TB risk in BCG vaccinated",
+      parameter == "bcg_haz_tbm" ~ "MDR TB risk in BCG vaccinated",
+      
+      
+      parameter == "cfr_utreat" ~ "CFR of untreated DS-TB",
+      
+      TRUE ~ parameter
+    )
+  )
+
+
+
 p_total <- ggplot(plot_df, aes(x = parameter, y = S, colour = type)) +
   geom_segment(
     data = comparison_df,
@@ -344,6 +452,18 @@ sign_df <- rbind(sign_df, data.table(covariate = "who_region", sign = NA_real_))
 importance_df <- merge(lmg_df, sign_df, by = "covariate")[order(-lmg_share)]
 print(importance_df)
 print(direction_df[, .(covariate, std_estimate, ci_lo, ci_hi)])
+
+importance_df <- importance_df %>%
+  mutate(
+    covariate = case_when(
+      covariate == "mean_incidence" ~ "Mean incidence",
+      covariate == "who_region" ~ "WHO region",
+      covariate == "bcg_coverage" ~ "BCG coverage",
+      covariate == "cdr" ~ "CDR",
+      TRUE ~ covariate
+    )
+  )
+
 
 p_imp <- ggplot(
   importance_df,
