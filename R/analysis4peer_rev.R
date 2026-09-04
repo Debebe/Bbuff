@@ -83,24 +83,16 @@ rm(list = ls())
 ##======Latitude effect on BCG efficacy======
 #**********************************************
 #
-### latitude
+### Notes
 #p=palmer(0.41)
-
-# if lat_pos <- 90-latitude
-# if lat negative-->90+latitude
-
-#VE_martinez <- ((theta/90)*p + (1-theta/90))*VE_polar
-## 
 # VE_country=((1-abs(LAT)/90)*p + abs(LAT)/90 )*VE_polar
-# 
-# VE_polar = VE_leo / F
-# F = sum(w * ((1-abs(LAT)/90)*p + abs(LAT)/90)) #average lattitude effect in participants in Leos paper
-# #w = proportions of participants at each LAT
-# lat_mid <- c(5, 15, 25, 35, 65)
-# VE_polar <- 0.63/F
 
+# VE_polar = VE_martinez (meta_analysis) / F
+# F = sum(w * ((1-abs(LAT)/90)*p + abs(LAT)/90)) #average lattitude effect in participants in Leos paper
+# w = proportions of participants at each LAT
+
+## compile data from Leo Martinez to get average values
 df <- data.table::data.table(
-  # from martinez
   lat_mid= c(5, 15, 25, 35, 65),
   wt=0.01*c(6.3,69.8,20.4,3.3, 0.2), 
   palmer_value= 0.41)
@@ -109,9 +101,6 @@ df[, lat_effect:=wt*((1-abs(lat_mid)/90)*palmer_value + abs(lat_mid)/90)]
 
 ## average latitude effect
 F <-sum(df$lat_effect)
-
-
-
 
 
 ### let's work with actual data
@@ -135,9 +124,6 @@ palmer_value <- 0.41
 VE_pooled_m <- 0.63
 VE_pooled_l <- 0.49
 VE_pooled_h <- 0.81
-
-## calculate latitude effect
-#LAT[, lat_effect:=wt*((1-abs(LAT)/90)*palmer_value + abs(LAT)/90)]
 
 ## average latitude effect
 F <-sum(df$lat_effect)
@@ -424,8 +410,6 @@ samp <- samp %>%
   as.data.table()
 
 samp[,LE:=NULL]
-
-#if (!file.exists("tmpdata")) dir.create(here("tmpdata"))# To host bigdata
 
 save(samp, file= here("tmpdata/wzLAT/samp.RData"))
 
