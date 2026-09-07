@@ -76,7 +76,7 @@ ggplot(df, aes(M, CV, label = iso3)) +
   ) +
   theme_minimal()
 
-rm(list = ls())
+#rm(list = ls())
 
 
 #*********************************************
@@ -139,7 +139,20 @@ LAT[,VE_m:= ((1-abs(LAT)/90)*palmer_value + abs(LAT)/90 )*VE_polar_m]
 LAT[,VE_l:= ((1-abs(LAT)/90)*palmer_value + abs(LAT)/90 )*VE_polar_l]
 LAT[,VE_h:= ((1-abs(LAT)/90)*palmer_value + abs(LAT)/90 )*VE_polar_h]
 
+## reflect values exceeding one from mean and l
 
+# LAT[VE_h > 1, `:=`(
+#   VE_l = VE_l - (VE_h - 1),
+#   VE_m = VE_m - (VE_h - 1),
+#   VE_h = 1
+# )]
+
+##
+LAT[VE_h > 1, `:=`(
+  VE_l = VE_l / VE_h,
+  VE_m = VE_m / VE_h,
+  VE_h = VE_h/ VE_h
+)]
 
 ## check - VE all countries
 
@@ -155,7 +168,7 @@ ggplot(LAT, aes(x = reorder(iso3, LAT), y = VE_m)) +
     axis.text.x = element_text(size = 7, angle = 90, hjust = 1)
   )
 
-ggplot(LAT[iso3%in% unique(CEA$iso3),], aes(x = reorder(iso3, LAT), y = VE_m)) +
+ggplot(LAT[iso3%in% unique(avail_dt$iso3),], aes(x = reorder(iso3, LAT), y = VE_m)) +
   geom_errorbar(aes(ymin = VE_l, ymax = VE_h), width = 0.2) +
   geom_point() +
   labs(
@@ -223,11 +236,7 @@ ggplot(
 
 
 ## if Ve>1, penalise and make it one 
-lat_dt <-LAT[, `:=`(
-  VEc_m = pmin(VE_m, 1),
-  VEc_l = pmin(VE_l, 1),
-  VEc_h = pmin(VE_h, 1)
-)][, .(iso3,LAT,VEc_m, VEc_l,VEc_h)]
+lat_dt <-LAT[, .(iso3,LAT,VE_m, VE_l,VE_h)]
 
 
 #rm(list = ls())
@@ -266,8 +275,8 @@ samp <- samp[rep(seq_len(N), each = Niter)]
 samp[, iter := rep(seq_len(Niter), N)]
 samp[iter == 1][iso3 == "AFG"] #check
 
-setdiff(lat_dt$iso3, samp$iso3)
-setdiff(samp$iso3,lat_dt$iso3)
+# setdiff(lat_dt$iso3, samp$iso3)
+# setdiff(samp$iso3,lat_dt$iso3)
 ## === parameter values and samplers
 source(here("R/utilities/parameters.R"))
 
@@ -536,4 +545,44 @@ ggsave(file = here("plots/FS19_lat_effect.png"), w = 9, h = 8)
 # save(CEA, file = here("tmpdata/PSAreduct.RData")) 
 # 
 
+BCG_latitude <- BCG_latitude %>%
+  mutate(
+    VE_prop = VE / 100,
+    OR = 1 - VE_prop,
+    logOR = log(OR),
+    AbsLat = abs(Lat)
+  )
 
+model <- lm(logOR ~ AbsLat, data = BCG_latitude)
+
+summary(model)
+coef(model)
+
+predict_VE <- function(latitude, model) {
+  predicted_logOR <- predict(
+    model,
+    newdata = data.frame(AbsLat = abs(latitude))
+  )
+  
+  predicted_OR <- exp(predicted_logOR)
+  predicted_VE <- 1 - predicted_OR
+  
+  return(predicted_VE)
+}
+
+predict_VE(50, model)
+
+newdata <- data.frame(
+  AbsLat = seq(0, 60, by = 1)
+)
+
+newdata <- LAT
+
+newdata$AbsLat <- abs(LAT$LAT)
+
+newdata$logOR <- predict(model, newdata)
+newdata$OR <- exp(newdata$logOR)
+newdata$VE <- 1 - newdata$OR
+newdata$VE_percent <- 100 * newdata$VE
+
+head(newdata)
