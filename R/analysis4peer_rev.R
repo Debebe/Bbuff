@@ -105,7 +105,7 @@ F <-sum(df$lat_effect)
 
 ### let's work with actual data
 
-load("~/Documents/GitHub/Bbuff/indata/LAT.Rdata")
+load(here("indata/LAT.Rdata"))
 
 setDT(LAT)
 ## create population weight in the lat region
