@@ -223,3 +223,176 @@ q_compare[, safety_stock_t_CV10 := 100 * 0.10 * q_t]
 q_compare
 
 fwrite(q_compare, here("outdata/demand_safety_stock_normal_vs_t.csv"))
+
+
+## how much difference does it make
+load(here("outdata/CEA.RData")) # loads CEA, inc.: iso3, g, u, threshold, ...
+setDT(CEA)
+p_star_dt <- CEA[threshold == 0.3, .(CODE = iso3, g, u, p_star = g / (g + u))]
+p_star_dt <- p_star_dt[
+  is.finite(p_star) & p_star > 0 & p_star < 1
+] # valid ratio
+
+## countries with both a usable historical series (n>=15) and a valid g,h
+ss_codes <- intersect(pc_codes, p_star_dt$CODE)
+length(ss_codes) #74
+
+fit_country_ss <- function(cc) {
+  x <- exp(rets[CODE == cc]$logret)
+  x <- x[is.finite(x) & x > 0]
+  p <- p_star_dt[CODE == cc, p_star]
+  ## normal
+  f_norm <- fitdist(x, "norm")
+  mu_n <- f_norm$estimate["mean"]
+  sd_n <- f_norm$estimate["sd"]
+  ss_normal <- 100 * (qnorm(p, mu_n, sd_n) / mu_n - 1)
+  ## gamma
+  f_gamma <- fitdist(x, "gamma")
+  shape_g <- f_gamma$estimate["shape"]
+  rate_g <- f_gamma$estimate["rate"]
+  mu_g <- shape_g / rate_g
+  ss_gamma <- 100 * (qgamma(p, shape_g, rate_g) / mu_g - 1)
+  ## lognormal
+  f_lnorm <- fitdist(x, "lnorm")
+  mlog <- f_lnorm$estimate["meanlog"]
+  slog <- f_lnorm$estimate["sdlog"]
+  mu_l <- exp(mlog + slog^2 / 2)
+  ss_lnorm <- 100 * (qlnorm(p, mlog, slog) / mu_l - 1)
+  ## output
+  data.table(
+    CODE = cc, n = length(x), p_star = p,
+    ss_normal = ss_normal, ss_gamma = ss_gamma, ss_lnorm = ss_lnorm
+  )
+}
+
+ss_tab <- rbindlist(lapply(ss_codes, fit_country_ss))
+ss_tab <- merge(ss_tab, unique(comb_avail[, .(CODE, NAME)]), by = "CODE")
+ss_tab <- merge(
+  ss_tab, gof_tab[, .(CODE, best)],
+  by = "CODE"
+) # AIC-preferred family
+ss_tab[, `:=`(
+  diff_gamma_vs_normal = ss_gamma - ss_normal,
+  diff_lnorm_vs_normal = ss_lnorm - ss_normal
+)]
+setorder(ss_tab, ss_normal)
+
+fwrite(ss_tab, here("outdata/demand_safety_stock_by_country_dist.csv"))
+
+
+ss_summary <- data.table(
+  distribution = c("normal", "gamma", "lognormal"),
+  mean = c(
+    mean(ss_tab$ss_normal),
+    mean(ss_tab$ss_gamma),
+    mean(ss_tab$ss_lnorm)
+  ),
+  median = c(
+    median(ss_tab$ss_normal),
+    median(ss_tab$ss_gamma),
+    median(ss_tab$ss_lnorm)
+  ),
+  q25 = c(
+    quantile(ss_tab$ss_normal, .25),
+    quantile(ss_tab$ss_gamma, .25),
+    quantile(ss_tab$ss_lnorm, .25)
+  ),
+  q75 = c(
+    quantile(ss_tab$ss_normal, .75),
+    quantile(ss_tab$ss_gamma, .75),
+    quantile(ss_tab$ss_lnorm, .75)
+  )
+)
+
+fwrite(ss_summary, here("outdata/demand_safety_stock_by_dist_summary.csv"))
+
+## graph 1: dotchart
+ss_long <- melt(ss_tab,
+  id.vars = c("CODE", "NAME", "n", "p_star", "best"),
+  measure.vars = c("ss_normal", "ss_gamma", "ss_lnorm"),
+  variable.name = "distribution", value.name = "safety_stock"
+)
+ss_long[, distribution := factor(distribution,
+  labels = c("Normal", "Gamma", "Lognormal")
+)]
+ss_long[, CODE := factor(CODE, levels = ss_tab$CODE)]
+ss_breaks <- c(-10, 0, 10, 25, 50, 100, 200, 300)
+
+p_ss_country <- ggplot(
+  ss_long,
+  aes(x = safety_stock, y = CODE, colour = distribution)
+) +
+  geom_point(size = 1.6, shape = 1) +
+  scale_x_continuous(
+    trans = scales::pseudo_log_trans(sigma = 5),
+    breaks = ss_breaks
+  ) +
+  labs(
+    x = "Optimal safety stock (% of expected demand, pseudo-log scale)",
+    y = NULL, colour = "Distribution"
+  ) +
+  theme_linedraw() +
+  theme(axis.text.y = element_text(size = 5), legend.position = "top")
+
+p_ss_country
+
+ggsave(
+  here("plots/demand_safety_stock_by_country_dist.png"), p_ss_country,
+  width = 7, height = 0.12 * nrow(ss_tab) + 1.5, limitsize = FALSE
+)
+
+## graph 2: scatter
+ss_long <- merge(
+  ss_long,
+  ss_tab[, .(CODE, ss_normal_ref = ss_normal)],
+  by = "CODE"
+)
+ss_long[
+  distribution != "Normal",
+  diff_from_normal := safety_stock - ss_normal_ref
+]
+
+noteworthy_codes <- ss_tab[
+  pmax(abs(diff_gamma_vs_normal), abs(diff_lnorm_vs_normal)) > 2,
+  CODE
+]
+
+p_ss_scatter <- ggplot(
+  ss_long[distribution != "Normal"],
+  aes(ss_normal_ref, safety_stock)
+) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  geom_point(
+    aes(colour = best == tolower(distribution)),
+    size = 1.8, shape = 1
+  ) +
+  ggrepel::geom_text_repel(
+    data = ss_long[distribution != "Normal" & CODE %in% noteworthy_codes],
+    aes(label = CODE), size = 3, colour = "black",
+    max.overlaps = Inf, segment.size = 0.3, seed = 1
+  ) +
+  scale_x_continuous(
+    trans = scales::pseudo_log_trans(sigma = 5),
+    breaks = ss_breaks
+  ) +
+  scale_y_continuous(
+    trans = scales::pseudo_log_trans(sigma = 5),
+    breaks = ss_breaks,
+    expand = expansion(mult = c(0.05, 0.12))
+  ) +
+  facet_wrap(~distribution) +
+  labs(
+    x = "Safety stock under Normal (%, pseudo-log scale)",
+    y = "Safety stock under alternative (%, pseudo-log scale)",
+    colour = "AIC-preferred"
+  ) +
+  theme_linedraw() +
+  theme(legend.position = "top")
+
+p_ss_scatter
+
+ggsave(
+  here("plots/demand_safety_stock_dist_scatter.png"),
+  p_ss_scatter,
+  width = 10, height = 6
+)
