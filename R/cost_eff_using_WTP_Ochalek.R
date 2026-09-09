@@ -174,4 +174,11 @@ ggsave(file = here("plots/FS14.png"), w = 9, h = 8.3)
 #ggsave(file = here("plots/FS14.pdf"), w = 9, h = 8.2)
 
 
-
+## number and proportion of cntrs cost-effective using Ochalek and woods thresholds
+CEA |> 
+  group_by(source) |> 
+  count(ICER_Label) |> 
+  mutate(prop = n / sum(n))|>
+  group_by(source)|>
+  mutate(N=sum(n))|>filter(ICER_Label=="Cost-effective")
+ 
