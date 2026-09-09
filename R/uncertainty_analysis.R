@@ -200,13 +200,13 @@ sobol_by_country[, parameter := factor(
 sobol_by_countryy <- sobol_by_country %>%
   mutate(
     parameter = case_when(
-      parameter == "incbest" ~ "Mean incidence",
+      parameter == "incbest" ~ "Incidence",
       parameter == "uc_tot_vax_delv_ave" ~ "Vaccine delivery unit cost",
       parameter == "ucost_dstb.m" ~ "DS TB treatment unit cost",
       parameter == "ucost_tbm.m" ~ "MDR TB treatment unit cost",
       
-      parameter == "bcg_haz_tb" ~ "DS-TB risk in BCG vaccinated",
-      parameter == "bcg_haz_tbm" ~ "MDR TB risk in BCG vaccinated",
+      parameter == "bcg_haz_tb" ~ "RR of TB in BCG vaccinated",
+      parameter == "bcg_haz_tbm" ~ " RR of MDR TB in BCG vaccinated",
       
       parameter == "prop_tbm" ~ "Proportion of TB that is TBM",
       parameter == "post_tb_mort_hz" ~ "RR of mortality post DS-TB",
@@ -232,7 +232,7 @@ sobol_by_countryy <- sobol_by_country %>%
 
 p_sobol <- ggplot(
   sobol_by_countryy,
-  aes(x = parameter, y = S_hat)
+  aes(x = reorder(parameter,S_hat), y = S_hat)
 ) +
   geom_boxplot(outlier.size = 0.5, fill = "grey") +
   coord_flip() +
@@ -347,11 +347,11 @@ plot_df[, parameter := factor(
 plot_df <- plot_df %>%
   mutate(
     parameter = case_when(
-      parameter == "incbest" ~ "Mean incidence",
+      parameter == "incbest" ~ "Incidence",
       parameter == "uc_tot_vax_delv_ave" ~ "Vaccine delivery unit cost",
       
-      parameter == "bcg_haz_tb" ~ "DS-TB risk in BCG vaccinated",
-      parameter == "bcg_haz_tbm" ~ "MDR TB risk in BCG vaccinated",
+      parameter == "bcg_haz_tb" ~ "RR TB in  BCG vaccinated",
+      parameter == "bcg_haz_tbm" ~ "RR of MDR TB in BCG vaccinated",
     
       
       parameter == "cfr_utreat" ~ "CFR of untreated DS-TB",
@@ -363,11 +363,11 @@ plot_df <- plot_df %>%
 comparison_df <- comparison_df %>%
   mutate(
     parameter = case_when(
-      parameter == "incbest" ~ "Mean incidence",
+      parameter == "incbest" ~ "Incidence",
       parameter == "uc_tot_vax_delv_ave" ~ "Vaccine delivery unit cost",
       
-      parameter == "bcg_haz_tb" ~ "DS-TB risk in BCG vaccinated",
-      parameter == "bcg_haz_tbm" ~ "MDR TB risk in BCG vaccinated",
+      parameter == "bcg_haz_tb" ~ "RR of TB in BCG vaccinated",
+      parameter == "bcg_haz_tbm" ~ "RR of MDR TB in BCG vaccinated",
       
       
       parameter == "cfr_utreat" ~ "CFR of untreated DS-TB",
