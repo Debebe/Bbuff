@@ -366,7 +366,7 @@ comparison_df <- comparison_df %>%
       parameter == "incbest" ~ "Incidence",
       parameter == "uc_tot_vax_delv_ave" ~ "Vaccine delivery unit cost",
       
-      parameter == "bcg_haz_tb" ~ "RR of TB in BCG vaccinated",
+      parameter == "bcg_haz_tb" ~ "RR TB in  BCG vaccinated",
       parameter == "bcg_haz_tbm" ~ "RR of MDR TB in BCG vaccinated",
       
       
@@ -378,10 +378,37 @@ comparison_df <- comparison_df %>%
 
 
 
-p_total <- ggplot(plot_df, aes(x = parameter, y = S, colour = type)) +
+# p_total <- ggplot(plot_df, aes(x = parameter, y = S, colour = type)) +
+#   geom_segment(
+#     data = comparison_df,
+#     aes(x = parameter, xend = parameter, y = median_S1, yend = median_ST),
+#     colour = "black", inherit.aes = FALSE,
+#     arrow = arrow(ends = "both", length = unit(0.08, "in"), type = "closed")
+#   ) +
+#   geom_pointrange(
+#     aes(ymin = q25, ymax = q75),
+#     position = position_dodge(width = 0.3)
+#   ) +
+#   coord_flip() +
+#   scale_colour_manual(
+#     values = c("first-order" = "blue", "total-effect" = "red")
+#   ) +
+#   labs(
+#     x = NULL,
+#     y = "Sobol indices (median & IQR across countries)",
+#     colour = NULL,
+#     title = ""
+#   ) +
+#   theme_classic() +
+#   ggpubr::grids()
+# p_total
+
+
+
+p_total <- ggplot(plot_df, aes(x = reorder(parameter,S), y = S, colour = type)) +
   geom_segment(
     data = comparison_df,
-    aes(x = parameter, xend = parameter, y = median_S1, yend = median_ST),
+    aes(x = reorder(parameter,median_S1), xend = parameter, y = median_S1, yend = median_ST),
     colour = "black", inherit.aes = FALSE,
     arrow = arrow(ends = "both", length = unit(0.08, "in"), type = "closed")
   ) +
@@ -402,6 +429,7 @@ p_total <- ggplot(plot_df, aes(x = parameter, y = S, colour = type)) +
   theme_classic() +
   ggpubr::grids()
 p_total
+
 
 
 ggsave(here("plots/UQ_sobol_total_vs_first.png"),
