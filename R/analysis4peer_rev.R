@@ -94,7 +94,7 @@ ggplot(df, aes(M, CV, label = iso3)) +
 ## compile data from Leo Martinez to get average values
 df <- data.table::data.table(
   lat_mid= c(5, 15, 25, 35, 65),
-  wt=0.01*c(6.3,69.8,20.4,3.3, 0.2), 
+  wt=0.01*c(6.3,69.8,20.4,3.3, 0.2), ##prop pop living there
   palmer_value= 0.41)
 
 df[, lat_effect:=wt*((1-abs(lat_mid)/90)*palmer_value + abs(lat_mid)/90)]
@@ -106,6 +106,10 @@ F <-sum(df$lat_effect)
 ### let's work with actual data
 
 load(here("indata/LAT.Rdata"))
+bcg <- readRDS("~/Documents/GitHub/Bbuff/indata/bcg.Rds")|>as.data.table()
+setDT(bcg)
+bcg <- bcg[COVERAGE_CATEGORY=="WUENIC", ]
+bcg <- bcg[, .(CODE,TARGET_NUMBER)]
 
 setDT(LAT)
 ## create population weight in the lat region
@@ -129,7 +133,6 @@ VE_pooled_h <- 0.81
 F <-sum(df$lat_effect)
 
 
-
 VE_polar_m <- VE_pooled_m/F
 VE_polar_l <- VE_pooled_l/F
 VE_polar_h <- VE_pooled_h/F
@@ -141,18 +144,18 @@ LAT[,VE_h:= ((1-abs(LAT)/90)*palmer_value + abs(LAT)/90 )*VE_polar_h]
 
 ## reflect values exceeding one from mean and l
 
-# LAT[VE_h > 1, `:=`(
-#   VE_l = VE_l - (VE_h - 1),
-#   VE_m = VE_m - (VE_h - 1),
-#   VE_h = 1
-# )]
+LAT[VE_h > 1, `:=`(
+  VE_l = VE_l - (VE_h - 1),
+  VE_m = VE_m - (VE_h - 1),
+  VE_h = 1
+)]
 
 ##
-LAT[VE_h > 1, `:=`(
-  VE_l = VE_l / VE_h,
-  VE_m = VE_m / VE_h,
-  VE_h = VE_h/ VE_h
-)]
+# LAT[VE_h > 1, `:=`(
+#   VE_l = VE_l / VE_h,
+#   VE_m = VE_m / VE_h,
+#   VE_h = VE_h/ VE_h
+# )]
 
 ## check - VE all countries
 
@@ -206,8 +209,6 @@ ggplot(
   theme(
     axis.text.x = element_text(angle = 90)
   )
-
-
 
 
 ggplot(
