@@ -19,11 +19,11 @@ outa<- fread(here("outdata/output_table.csv")) %>%
     "rslt_ly_tbm", "rslt_ly_tb" #"rslt_tb_seq", "rslt_tbmseq"
     
     ))%>%
-  mutate(Type= case_when(variable%in% c("rslt_bcg_doses","rslt_att", "rslt_hosp_tbm") ~ "Resource",
-                         grepl("cost", variable) ~ "Cost($M)", TRUE ~"Health"))%>%
+  mutate(Type= case_when(variable%in% c("rslt_bcg_doses","rslt_att", "rslt_hosp_tbm") ~ "Resource used",
+                         grepl("cost", variable) ~ "Cost($M)", TRUE ~"Health outcomes"))%>%
   dplyr::select(Type, Item=variable, `Status quo`=sq_txt, Counterfactual=cf_txt, Incremental= av_txt)%>%
-  mutate(Type= factor(Type, levels= c("Resource", "Cost($M)", "Health")))%>%
-  arrange(factor(Type, levels = c("Resource", "Cost($M)", "Health")))%>%
+  mutate(Type= factor(Type, levels= c("Resource used", "Cost($M)", "Health outcomes")))%>%
+  arrange(factor(Type, levels = c("Resource used", "Cost($M)", "Health outcomes")))%>%
   mutate(Item= case_when(Item=="rslt_att" ~"ATT for TB",
                          Item=="rslt_bcg_doses" ~"BCG doses",
                          Item=="rslt_inc" ~"TB incidence",
@@ -131,11 +131,11 @@ outr<- fread(here("outdata/output_table_who.csv")) %>%
                         "rslt_ly_tbm", "rslt_ly_tb" #, "rslt_tb_seq", "rslt_tbmseq"
                         
   ))%>%
-  mutate(Type= case_when(variable%in% c("rslt_bcg_doses","rslt_att", "rslt_hosp_tbm") ~ "Resource",
-                         grepl("cost", variable) ~ "Cost($M)", TRUE ~"Health"))%>%
+  mutate(Type= case_when(variable%in% c("rslt_bcg_doses","rslt_att", "rslt_hosp_tbm") ~ "Resource used",
+                         grepl("cost", variable) ~ "Cost($M)", TRUE ~"Health outcomes"))%>%
   select(Region,Type, Item=variable, `Status quo`=sq_txt, Counterfactual=cf_txt, Incremental= av_txt)%>%
-  mutate(Type= factor(Type, levels= c("Resource", "Cost($M)", "Health")))%>%
-  arrange(factor(Type, levels = c("Resource", "Cost($M)", "Health")))%>%
+  mutate(Type= factor(Type, levels= c("Resource used", "Cost($M)", "Health outcomes")))%>%
+  arrange(factor(Type, levels = c("Resource used", "Cost($M)", "Health outcomes")))%>%
   mutate(Item= case_when(Item=="rslt_att" ~"ATT for TB",
                          Item=="rslt_bcg_doses" ~"BCG doses",
                          Item=="rslt_inc" ~"TB incidence",
@@ -285,7 +285,7 @@ print(doc, target = "outdata/table3_10cntrs.docx")
 
 # Desired orders
 region_order <- c("AFR","AMR","EMR","EUR","SEA","WPR")
-type_order <- c("Resource","Cost($M)","Health")
+type_order <- c("Resource used","Cost($M)","Health")
 item_order <- unique(na.omit(outrg$Item))
 
 # Fill down Type to data rows
