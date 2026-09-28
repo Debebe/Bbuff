@@ -2,6 +2,7 @@ rm(list = ls())
 library(data.table)
 library(ggrepel)
 library(dplyr)
+library(here)
 
 ### analyse BCG data
 #bcg <- readRDS("~/Documents/BCG/data/bcg.Rds")|>as.data.table()
@@ -106,12 +107,27 @@ F <-sum(df$lat_effect)
 ### let's work with actual data
 
 load(here("indata/LAT.Rdata"))
-bcg <- readRDS("~/Documents/GitHub/Bbuff/indata/bcg.Rds")|>as.data.table()
+bcg <- readRDS(here("indata/bcg.Rds"))|>as.data.table()
 setDT(bcg)
 bcg <- bcg[COVERAGE_CATEGORY=="WUENIC", ]
 bcg <- bcg[, .(CODE,TARGET_NUMBER)]
 
+
+names(LAT)
+#"country"     "iso2"        "iso3"        "iso_numeric" "LON"         "LAT"     
+
+missing_lat <- data.table(country= c("Solomon Islands",
+                                     "Marshall Islands","Tajikistan"),
+                          iso2= c("SL","MH","TJ"),
+                          iso3=c("SLB","MHL","TJK"),
+                          iso_numeric=c(999,999,999),
+                          LON=c(159.00, 168.00,71.00),
+                          LAT=c(-8.00, 9.00,39.00))
+
+LAT <- rbind(LAT,missing_lat)
+
 setDT(LAT)
+
 ## create population weight in the lat region
 # LAT[, wt := fcase(
 #   abs(LAT) >= 0  & abs(LAT) < 10, 0.063,
@@ -144,17 +160,12 @@ LAT[,VE_h:= ((1-abs(LAT)/90)*palmer_value + abs(LAT)/90 )*VE_polar_h]
 
 ## reflect values exceeding one from mean and l
 
-LAT[VE_h > 1, `:=`(
-  VE_l = VE_l - (VE_h - 1),
-  VE_m = VE_m - (VE_h - 1),
-  VE_h = 1
-)]
+LAT[, sd:= (VE_h-VE_l)/3.92]
 
-##
 # LAT[VE_h > 1, `:=`(
-#   VE_l = VE_l / VE_h,
-#   VE_m = VE_m / VE_h,
-#   VE_h = VE_h/ VE_h
+#   VE_l = VE_l - (VE_h - 1),
+#   VE_m = VE_m - (VE_h - 1),
+#   VE_h = 1
 # )]
 
 ## check - VE all countries
@@ -237,8 +248,8 @@ ggplot(
 
 
 ## if Ve>1, penalise and make it one 
-lat_dt <-LAT[, .(iso3,LAT,VE_m, VE_l,VE_h)]
-
+lat_dt <-LAT[, .(iso3,LAT,VE_m, sd)]
+lat_dt[,VE_m:=ifelse(VE_m>1, 1, VE_m)] # some locations have mean slightly higher than 1 (1.0008)
 
 #rm(list = ls())
 
@@ -276,8 +287,8 @@ samp <- samp[rep(seq_len(N), each = Niter)]
 samp[, iter := rep(seq_len(Niter), N)]
 samp[iter == 1][iso3 == "AFG"] #check
 
-# setdiff(lat_dt$iso3, samp$iso3)
-# setdiff(samp$iso3,lat_dt$iso3)
+ #setdiff(lat_dt$iso3, samp$iso3)
+ setdiff(samp$iso3,lat_dt$iso3)
 ## === parameter values and samplers
 source(here("R/utilities/parameters.R"))
 
@@ -289,10 +300,15 @@ samp <- samp %>%
   rowwise() %>%
   mutate(
     # vax efficacy
+    # bcg_haz_tb = 1 - sample_beta(
+    #   mean=VEc_m,
+    #   l=VEc_l,
+    #   h=VEc_h
+    # ),
+    
     bcg_haz_tb = 1 - sample_beta(
-      mean=VEc_m,
-      l=VEc_l,
-      h=VEc_h
+      mean=VE_m,
+      sd=sd
     ),
     
     bcg_haz_tbm = sample_gamma(
@@ -508,41 +524,194 @@ ggplot(CEA[ICER > 0 ], aes(iso3, ICER)) +
 #cea <- na.omit(CEA)
 ggsave(file = here("plots/FS19_lat_effect.png"), w = 9, h = 8)
 
+icer30 <- CEA[threshold==0.3,]
 
 
-## PSA inputs and outputs
+non_cost_effective <- CEA|>
+  filter(threshold==0.3)|>
+  filter(ICER_Label=="ICER >= 0.3 GDP")|>
+  group_by(region)|>
+  count(iso3, ICER_Label) 
 
-# load(here("tmpdata/PSA.RData"))     # full PSA data with results. 
-# gdp_inc_le_costs <- readRDS(here("outdata/gdp_inc_le_costs.rds"))
-# load(here("indata/whokey.Rdata"))     # region and cntry iso codes
-# 
-# CEA <- D%>%
-#   dplyr::select(who_region, iso3,iter,
-#                 ## epi_inputs
-#                 incbest, notif, cdr,bcg_coverage,
-#                 ## cost inputs
-#                 GDP,
-#                 uc_tot_vax_delv_ave, ucost_proc_bcg,
-#                 ucost_dstb.m, ucost_dstb.sd,
-#                 ucost_tbm.m,ucost_tbm.sd, 
-#                 
-#                 ## other epi and consequence inputs
-#                 
-#                 bcg_haz_tb,bcg_haz_tbm,
-#                 # post tb
-#                 prop_tbm,       
-#                 post_tb_mort_hz, post_tbm_mort_hz, 
-#                 
-#                 cfr_treat, cfr_utreat,cfr_treat_tbm, prop_sev_seq,      
-#                 tbm_hrqol_mil_seq,tbm_hrqol_mod_seq,tbm_hrqol_sev_seq, 
-#                 prop_mild_seq, prop_mod_seq,
-#                 
-#                 ## cost and health outcomes
-#                 
-#                 rslt_health_sq,rslt_health_cf,
-#                 rslt_cost_sq,rslt_cost_cf )|>na.omit()|>as.data.table()
-# 
-# 
-# save(CEA, file = here("tmpdata/PSAreduct.RData")) 
-# 
+
+icer30 <- CEA|>
+  filter(threshold==0.3, ICER>0)
+
+summary(icer30$ICER)
+
+#====
+CEA|>
+  filter(threshold==0.3)|>
+  filter(ICER_Label=="ICER >= 0.3 GDP")|>
+  count(region)|>
+  kbl()|>
+  kable_classic_2(full_width = F)
+
+
+kable(non_cost_effective, format = "html") %>%
+  kable_styling(font_size = 8) %>%
+  kable_classic_2(full_width = F)|>
+  row_spec(
+    0:nrow(non_cost_effective),
+    extra_css = "line-height: 0.7; padding-top: 2px; padding-bottom: 2px;"
+  )
+
+### metaregression
+BCG_lat <- readxl::read_excel("indata/BCG_latitude.xlsx", sheet = "Sheet2")|>as.data.table()
+BCG_lat[,tpos:=TBBCG,]
+BCG_lat[,tneg:=BCGPop-TBBCG,]
+
+BCG_lat[,cpos:=TBNoBCG,]
+BCG_lat[,cneg:=NoBCGPop-TBNoBCG,]
+
+library(metafor)
+library(dplyr)
+
+##or 
+
+data("dat.bcg", package = "metadat")
+
+print(dat.bcg, row.names = FALSE)
+
+# Calculate log RR and sampling variance
+dat <- escalc(
+  measure = "RR",
+  ai = TBBCG,
+  bi = BCGPop - TBBCG,
+  ci = TBNoBCG,
+  di = NoBCGPop - TBNoBCG,
+  data = BCG_lat,
+  slab = paste(LAT, source, sep = ", ")
+) %>%
+  arrange(LAT)
+
+
+res0 <- rma(
+  yi,
+  vi,
+  data = dat,
+  test = "knha"
+)
+
+
+# Random-effects meta-analysis
+res <- rma(
+  yi,
+  vi,
+  mods = ~LAT,
+  data = dat,
+  test = "knha"
+)
+
+
+forest(
+  res0,
+  atransf = exp,
+  slab = dat$source,
+  at = log(c(0.05, 0.25, 1, 4)),
+  xlim = c(-10, 5),
+  shade = "zebra",
+  xlab = "Risk Ratio"
+)
+
+predict(
+  res,
+  newmods = dat$LAT,
+  transf = exp,
+  digits = 2
+)
+
+
+pred <- predict(
+  res,
+  newmods = abs(LAT$LAT),
+  transf = exp
+)
+
+setDT(LAT)
+
+LAT[, `:=`(
+  RR_pred = pred$pred,
+  RR_low  = pred$ci.lb,
+  RR_high = pred$ci.ub,
+  VE_pred = 1 - pred$pred,
+  VE_low  = 1 - pred$ci.ub,
+  VE_high = 1 - pred$ci.lb
+)]
+
+
+library(dplyr)
+library(ggplot2)
+
+LAT %>%
+  mutate(
+    LAT_factor = factor(
+      LAT,
+      levels = sort(unique(LAT))
+    )
+  ) %>%
+  ggplot(aes(x = LAT_factor, y = VE_pred)) +
+  geom_errorbar(
+    aes(ymin = VE_low, ymax = VE_high),
+    width = 0.2
+  ) +
+  geom_point(size = 2) +
+  geom_hline(
+    yintercept = 0,
+    linetype = "dashed"
+  ) +
+  scale_x_discrete(
+    labels = function(x) sprintf("%.2f", as.numeric(x))
+  ) +
+  scale_y_continuous(
+    breaks = seq(0, 1, 0.1)
+  ) +
+  labs(
+    x = "Latitude (degrees)",
+    y = "Vaccine effectiveness"
+  ) +
+  theme_classic() +
+  theme(
+    axis.text.x = element_text(
+      angle = 90,
+      vjust = 0.5,
+      hjust = 1
+    )
+  )
+
+LAT %>%
+  filter(iso3%in% CEA$iso3)|>
+  mutate(
+    LAT_factor = factor(
+      LAT,
+      levels = sort(unique(LAT))
+    )
+  ) %>%
+  ggplot(aes(x = LAT_factor, y = VE_pred)) +
+  geom_errorbar(
+    aes(ymin = VE_low, ymax = VE_high),
+    width = 0.2
+  ) +
+  geom_point(size = 2) +
+  geom_hline(
+    yintercept = 0,
+    linetype = "dashed"
+  ) +
+  scale_x_discrete(
+    labels = function(x) sprintf("%.2f", as.numeric(x))
+  ) +
+  scale_y_continuous(
+    breaks = seq(0, 1, 0.1)
+  ) +
+  labs(
+    x = "Latitude (degrees)",
+    y = "Vaccine effectiveness"
+  ) +
+  theme(
+    axis.text.x = element_text(
+      angle = 90,
+      vjust = 0.5,
+      hjust = 1
+    )
+  )
 
