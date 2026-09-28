@@ -6,29 +6,17 @@ library(data.table)
 library(dplyr)
 library(WDI)
 library(here)
+library(readxl)
+library(tidyr)
+library(patchwork)
+library(gt) # for tabling
+
 
 ## load threshold harmonised by Pete
-thresholds_all <- read_csv("indata/thresholds_harmonized_long.csv")|>as.data.table()
+thresholds_all <- fread("indata/thresholds_harmonized_long.csv")
 ## main data from model simulation that contains data.table D
-load("~/Documents/GitHub/Bbuff/tmpdata/PSA.RData")
+load(here("tmpdata/PSA.RData"))
 
-## If there is "Ochalek 2026 (update)" select that, 
-## if not go for "Ochalek 2018"  if not then "Woods 2016"
-
-# thresholds <- copy(thresholds_all)[
-#   , priority := fcase(
-#     source == "Ochalek 2026 (update)", 1L,
-#     source == "Ochalek 2018",          2L,
-#     source == "Woods 2016",            3L,
-#     default = 999L
-#   )
-# ][
-#   order(iso3, priority)
-# ][
-#   , .SD[1], by = iso3
-# ][
-#   , priority := NULL
-# ][,.(source, iso3, low, mid,high)]
 
 
 ## We need to inflate thresholds to similar year
@@ -67,7 +55,6 @@ inflation <- rbind(inflation, copy(inflation[year == 2025])[,
 
 
 gdp_def <-  inflation[, usd_gdp_defl_rate:=value[year==2026]/value][year!=2025,.(year,usd_gdp_defl_rate)]
-
 def_rate_woods <-as.numeric(gdp_def[year==2013,usd_gdp_defl_rate])
 def_rate_Ochalek <-as.numeric(gdp_def[year==2015,usd_gdp_defl_rate])
 
@@ -75,9 +62,20 @@ def_rate_Ochalek <-as.numeric(gdp_def[year==2015,usd_gdp_defl_rate])
 thresholds_all[, mid := fcase(
   source == "Ochalek 2018", mid * def_rate_Ochalek,
   source == "Woods 2016",   mid * def_rate_woods,
-  default = mid
+  default = as.double(mid)
 )]
 
+thresholds_all[, low := fcase(
+  source == "Ochalek 2018", low * def_rate_Ochalek,
+  source == "Woods 2016",   low * def_rate_woods,
+  default = as.double(low)
+)]
+
+thresholds_all[, high := fcase(
+  source == "Ochalek 2018", high * def_rate_Ochalek,
+  source == "Woods 2016",   high * def_rate_woods,
+  default = as.double(high)
+)]
 
 dff <- inner_join(thresholds_all,D, by="iso3")|>as.data.table()
 
@@ -86,6 +84,8 @@ CEA <- dff[, .(
   ## expected net benefit at WTP=30%GDP
   ENB = mean(mid * (rslt_health_sq - rslt_health_cf) -(rslt_cost_sq - rslt_cost_cf)),
   WTP = mean(mid),
+  lo= mean(low),
+  hi=mean(high),
   ## ICER
   ICER = mean(rslt_cost_sq - rslt_cost_cf) /
     mean(rslt_health_sq - rslt_health_cf)),
@@ -99,14 +99,9 @@ CEA <- na.omit(CEA)
 
 CEA[, ICER_Label := ifelse(ICER < WTP, "Cost-effective", "Not cost effective")]
 
-# CEA[, iso3 := factor(
-#   iso3,
-#   levels = unique(iso3[order(ICER)]),
-#   ordered = TRUE
-# )]
+
 
 CEA[, source := trimws(gsub("(update)", "", source, fixed = TRUE))]
-
 CEA[, iso3_sorce:= paste(iso3,source)]
 
 
@@ -116,62 +111,12 @@ CEA[, iso3_sorce := factor(
   ordered = TRUE
 )]
 
+saveRDS(CEA, file= here("tmpdata/CEA_ochalek_co.Rds"))
+
 all_colors <- c("black", "black", 2, 4, 5) # colors
 
 all_colors <- c( 2, 4, 5) # colors
 
-
-#ggplot(CEA[ICER > 0 & Region == "AFR"], aes(x = iso3_sorce)) +
-ggplot(CEA[ICER > 0], aes(x = iso3)) +
-  
-  # ICER points
-  geom_point(
-    aes(y = ICER, shape = ICER_Label),
-    size = 1.5
-  ) +
-  
-  # WTP threshold colored by source
-  geom_point(
-    aes(y = WTP, shape = "Threshold", colour = source),
-    size = 1.5
-  ) +
-  
-  scale_shape_manual(
-    name = "",
-    values = c(
-      "Cost-effective" = 19,
-      "Not cost effective" = 1,
-      "Threshold" = 3
-    )) +
-    
-  #scale_colour_discrete(name = "Threshold source", values= all_colors) +
-  scale_colour_manual(name = "Threshold source", values= all_colors) +
-    
-  scale_y_log10(labels = scales::comma) +
-  
-  facet_wrap(~Region, scales = "free") + #xlim(0, 10000)+
-
-  
-  theme_linedraw() +
-  theme(
-    legend.position = "top",
-    legend.box = "vertical",
-    legend.box.spacing = unit(0, "pt"),
-    legend.margin = margin(0, 0, 0, 0),
-    plot.margin = margin(0, 5, 5, 5), 
-    axis.title.x = element_text(size = 10),
-    axis.text.x = element_text(size = 6.5),
-    strip.text = element_text(size = 10), 
-    legend.text = element_text(size = 10),
-    legend.title = element_text(size = 10.2),
-  ) +
-  
-  xlab("Country ISO3 code") +
-  ylab("Incremental cost-effectiveness ratio (USD/DALY)") +   
-  coord_flip()
-
-ggsave(file = here("plots/FS14.png"), w = 9, h = 8.3)
-#ggsave(file = here("plots/FS14.pdf"), w = 9, h = 8.2)
 
 
 ## number and proportion of cntrs cost-effective using Ochalek and woods thresholds
@@ -181,4 +126,262 @@ CEA |>
   mutate(prop = n / sum(n))|>
   group_by(source)|>
   mutate(N=sum(n))|>filter(ICER_Label=="Cost-effective")
- 
+
+## without dodges
+make_cea_plot <- function(region) {
+  
+  data_region <- CEA[ICER > 0 & Region == region]
+  data_region[, plot_id := reorder(iso3_sorce, ICER)]
+  #data_region[, plot_id := reorder(iso3, ICER)]
+  
+  ggplot(data_region,
+    aes(x = plot_id)) +
+    geom_point(aes(y = ICER, shape = ICER_Label), size = 1.0) +
+    geom_point(aes(y = WTP, shape = "Threshold", colour = source), size = 1.0) +
+    geom_errorbar(aes(ymin = lo, ymax = hi, colour = source),width = 0.2) +
+    scale_shape_manual(name = "",values = c("Cost-effective" = 19, "Not cost effective" = 1,
+        "Threshold" = 3)) +
+    scale_colour_manual(name = "Source", values = all_colors) +
+    scale_y_log10(labels = scales::comma) +
+    scale_x_discrete(labels = function(x) sub(" .*", "", x)) +
+    facet_wrap(~Region, scales = "free") +
+    theme_linedraw() +
+    theme(
+      legend.position = "top",
+      plot.margin = margin(0, 5, 5, 5),
+      axis.text.x = element_text(size = 7),
+      axis.text.y = element_text(size = 7),
+      strip.text = element_text(size=9),
+      legend.text = element_text(size = 10),
+      legend.title = element_text(size = 10, face = "bold"))  + coord_flip()
+}
+
+## with dodges
+make_cea_plot <- function(region) {
+  
+  data_region <- CEA[ICER > 0 & Region == region]
+  
+  # Order countries by their median ICER
+  data_region[, country_order := median(ICER, na.rm = TRUE), by = iso3]
+  data_region[, plot_id := reorder(iso3, country_order)]
+  
+  # Same dodge used for all layers so everything lines up
+  dodge <- position_dodge(width = 0.65)
+  
+  ggplot(
+    data_region,
+    aes(x = plot_id)
+  ) +
+    
+    # ICER
+    geom_point(
+      aes(
+        y = ICER,
+        shape = ICER_Label#,
+        # colour = source,
+        # group = source
+      ),
+      size = 1.0,
+      position = dodge
+    ) +
+    
+    # WTP threshold
+    geom_point(
+      aes(
+        y = WTP,
+        shape = "Threshold",
+        colour = source,
+        group = source
+      ),
+      size = 1.0,
+      position = dodge
+    ) +
+    
+    # Uncertainty interval
+    geom_errorbar(
+      aes(
+        ymin = lo,
+        ymax = hi,
+        colour = source,
+        group = source
+      ),
+      width = 0.15,
+      position = dodge
+    ) +
+    
+    scale_shape_manual(
+      name = "",
+      values = c(
+        "Cost-effective" = 19,
+        "Not cost effective" = 1,
+        "Threshold" = 3
+      )
+    ) +
+    
+    scale_colour_manual(
+      name = "Source",
+      values = all_colors
+    ) +
+    
+    scale_y_log10(
+      labels = scales::comma
+    ) +
+    
+    scale_x_discrete(
+      drop = FALSE
+    ) +
+    
+    facet_wrap(
+      ~Region,
+      scales = "free"
+    ) +
+    
+    theme_linedraw() +
+    
+    theme(
+      legend.position = "top",
+      plot.margin = margin(0, 5, 5, 5),
+      axis.text.x = element_text(size = 8),
+      axis.text.y = element_text(size = 8),
+      strip.text = element_text(size = 9),
+      legend.text = element_text(size = 10),
+      legend.title = element_text(
+        size = 10,
+        face = "bold"
+      )
+    ) +
+    
+    coord_flip()
+}
+
+
+eur <- make_cea_plot("EUR") + ylab("") + xlab("")
+amr <- make_cea_plot("AMR") + ylab("") + xlab("")
+sea <- make_cea_plot("SEA") + ylab("") + xlab("")
+afr <- make_cea_plot("AFR") + ylab("") + xlab("")
+emr <- make_cea_plot("EMR") + ylab("Incremental cost-effectiveness ratio (USD/DALY)") + xlab("")
+wpr <- make_cea_plot("WPR") + ylab("") + xlab("")
+
+
+comb <- (afr+eur + amr)/(sea + emr + wpr) +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "bottom") 
+
+ggsave(comb, file = here("plots/FS14_comb.png"), w = 9, h = 10)
+
+
+## check sampled VE after latitude adjustment
+
+bcg_haz <-D[, .(iso3, iter,bcg_haz_tb)]
+bcg_haz[, VE:=1-bcg_haz_tb]
+
+
+lat_ve <- ggplot(bcg_haz, aes(x = VE)) +
+  geom_density(fill = "grey70", alpha = 0.6) +
+  facet_wrap(~iso3, scales = "free_y") +
+  labs(
+    x = "Vaccine effectiveness (VE)",
+    y = "Density"
+  ) +
+  theme_linedraw() +
+  theme(
+    strip.text = element_text(size = 8),
+    axis.text = element_text(size = 7)
+  )
+
+ggsave(lat_ve, file = here("plots/lat_ve.png"), w = 13, h = 8)
+
+
+## compare CE between main analysis and alternative thresholds
+
+load("~/Documents/GitHub/Bbuff/outdata/CEA.RData")
+
+CEA_main <- CEA
+CEA_main[, "WTP = 0.3xGDP":= ifelse(ICER < ICER_val, "Cost-effective", "Not cost effective")]
+CEA_main <-CEA_main[threshold==0.3, .(iso3,region,`WTP = 0.3xGDP`)]
+
+CEA_ochalek_co <- readRDS("~/Documents/GitHub/Bbuff/tmpdata/CEA_ochalek_co.Rds")
+CEA_ochalek_co <- CEA_ochalek_co|>select(Region, iso3,source,"WTP=Ochalek/Woods"= ICER_Label)
+
+both <- left_join(CEA_main,CEA_ochalek_co, by= "iso3")|>
+  mutate(source= factor(source, levels = c("Woods 2016","Ochalek 2018","Ochalek 2026")))
+
+
+both <-na.omit(both)
+
+
+
+d <- both[
+  !is.na(source) &
+    !is.na(`WTP=Ochalek/Woods`)
+]
+
+# Counts
+tab <- d[
+  ,
+  .N,
+  by = .(
+    `WTP = 0.3xGDP`,
+    `WTP=Ochalek/Woods`,
+    source
+  )
+]
+
+# Row percentages within source
+tab[
+  ,
+  pct := N / sum(N) * 100,
+  by = .(`WTP = 0.3xGDP`, source)
+]
+
+
+tab[, n_pct := sprintf("%d (%.1f%%)", N, pct)]
+
+# Wide table
+result <- dcast(
+  tab,
+  `WTP = 0.3xGDP` ~ source + `WTP=Ochalek/Woods`,
+  value.var = "n_pct",
+  fill = "0 (0.0%)"
+)
+
+result_gt <-result %>%
+  gt() %>%
+  cols_label(
+    `WTP = 0.3xGDP` = "WTP = 0.3 × GDP",
+    `Woods 2016_Cost-effective` = "CE",
+    `Woods 2016_Not cost effective` = "NCE",
+    `Ochalek 2018_Cost-effective` = "CE",
+    `Ochalek 2018_Not cost effective` = "NCE",
+    `Ochalek 2026_Cost-effective` = "CE",
+    `Ochalek 2026_Not cost effective` = "NCE"
+  ) %>%
+  tab_spanner(
+    label = "Woods 2016",
+    columns = c(
+      `Woods 2016_Cost-effective`,
+      `Woods 2016_Not cost effective`
+    )
+  ) %>%
+  tab_spanner(
+    label = "Ochalek 2018",
+    columns = c(
+      `Ochalek 2018_Cost-effective`,
+      `Ochalek 2018_Not cost effective`
+    )
+  ) %>%
+  tab_spanner(
+    label = "Ochalek 2026",
+    columns = c(
+      `Ochalek 2026_Cost-effective`,
+      `Ochalek 2026_Not cost effective`
+    )
+  )
+
+gtsave(result_gt, here(here("outdata/CE_crosstab.png")))
+gtsave(
+  result_gt,
+  here("outdata/WTP_crosstab.pdf"),
+  vwidth = 1200,
+  vheight = 300
+)
