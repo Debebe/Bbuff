@@ -86,6 +86,36 @@ CEA <- CEA%>%
 save(CEA, file = here("outdata/CEA.RData"))
 
 
+non_cost_effective <- CEA|>
+  filter(threshold==0.3)|>
+  filter(ICER_Label=="ICER >= 0.3 GDP") |>
+  group_by(g_whoregion)|>
+  count(iso3, ICER_Label) 
+
+## Number and percentage cost effective by threshold
+CEA|>
+  rename(WTP=ICER_val)|>
+  filter(ICER>0)|>
+  filter(WTP>=ICER)|>
+  count(threshold) |>
+  mutate(p=round(100*n/110, 0))
+
+xx <- CEA|>
+  filter(threshold==0.3)
+
+CEA|>
+  filter(threshold==0.3)|>
+  filter(ICER_Label=="ICER < 0.3 GDP") |>
+  count()
+
+kable(non_cost_effective, format = "html") %>%
+  kable_styling(font_size = 8) %>%
+  kable_classic_2(full_width = F)|>
+  row_spec(
+    0:nrow(non_cost_effective),
+    extra_css = "line-height: 0.7; padding-top: 2px; padding-bottom: 2px;"
+  )
+
 
 ## TODO buffers
 CEA[, summary(ENB30)]
